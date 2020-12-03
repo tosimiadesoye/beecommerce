@@ -1,0 +1,41 @@
+.nav {
+    background: #fff;
+    text-decoration: none;
+    
+    /* color: rgb(252, 86, 86); */
+  }
+  
+  .nav-list {
+    padding: 1.4rem 0;
+    display: flex; 
+     justify-content: center; 
+    text-decoration: none; 
+  }
+.home:first-child {
+    margin: 0 auto 0 2rem;
+  }
+  ​
+  .nav-{
+    
+    margin-right: 120px;
+    background-color: indianred;
+  }
+a{
+  /* justify-content: center; */
+  text-decoration: none;
+  color: inherit;
+  margin-right: 40px;
+  
+}
+  ​
+
+  ​
+  .menu-icon {
+    cursor: pointer;
+  }
+
+
+  
+ 
+  
+  
