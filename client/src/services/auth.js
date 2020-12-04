@@ -13,15 +13,15 @@ const login = (username, password) => {
     const API_URI = 'http://localhost:5000/api/auth/signin/'
     
       
-    axios.post(API_URI, {
+   return axios.post(API_URI, {
         username,
         password
       })
         .then(response => {
             console.log(response.data)
-            if (response.data.accessToken) {
-             localStorage.setItem("user", JSON.stringify(response.data))
-            }
+             if (response.data.accessToken) {
+              localStorage.setItem("user", JSON.stringify(response.data))
+             }
             return response.data
         })
      

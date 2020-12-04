@@ -38,16 +38,18 @@ function Login(props) {
         setMessage("");
         setLoading(true);
         form.current.validateAll();
-        console.log(form)
-        console.log(checkBtn)
-        console.log(props)
+        // console.log(form)
+        // console.log(checkBtn)
+       
 
        if (checkBtn.current.context._errors.length === 0) {
            AuthServices.login(username, password).then(
                () => {
-                   
-                   props.history.push("/profile");
-                   window.location.reload();
+                //    console.log(this)
+                   //props.history is not working
+                //    props.history.push("/profile");
+                //    console.log(window.location.reload(), "history");
+
                },
                (error) => {
                    const resMessage = (error.response &&
@@ -69,7 +71,7 @@ function Login(props) {
         <Form className='signup-form'
         onSubmit={handleLogin}
       ref={form}>
-        <h1 className='sign-up'>Sign Up</h1>
+        <h1 className='sign-up'>Login</h1>
     <p>Please fill in this form to create an account.</p>
   
     <label htmlFor="username"><b>username</b></label>
@@ -96,7 +98,10 @@ function Login(props) {
           onChange={onChangePassword}
           validations={[required]}
         />
-       
+        {loading && (
+                <span className="spinner-border spinner-border-sm"></span>
+            )}
+             <button type="submit" >Login</button>
 
         {message && (
           <div className={'' ? "alert alert-success" : "alert alert-danger"
@@ -105,11 +110,11 @@ function Login(props) {
           >
             {message}
           </div>)}
-          <button type="submit" className="signupbtn" >Sign Up</button>
+      
             <CheckButton style={{ display: 'none' }} ref={checkBtn }/>
         
    <div >   
-          <Link to='/signup'>Don't have an account, signup?</Link>
+          <Link to='/signup'>Don't have an account?<button>Sign up</button></Link>
     </div> 
         </Form>
   

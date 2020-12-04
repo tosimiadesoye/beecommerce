@@ -1,10 +1,10 @@
 import axios from "axios";
-import authHeader from './authHeader';
+import authHeader from './authHeader'
 
 const API_URI = "http://localhost:5000/api/test/";
 
 const getPublicContent = () => {
-    return axios.get(API_URI + all);
+    return axios.get(API_URI + 'all');
 };
 
 const getUserBoard = () => {
@@ -20,7 +20,7 @@ const getModeratorBoard = () => {
 }
 
 const getAdminBoard = () => {
-    return axios.get(API_URL + "admin", { headers: authHeader() });
+    return axios.get(API_URI + "admin", { headers: authHeader() });
 };
   
 export default {

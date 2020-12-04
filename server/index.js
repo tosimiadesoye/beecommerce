@@ -2,6 +2,8 @@ const express = require('express');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
+
 const corsOptions = {
     origin: 'http://localhost:5000',
     optionSuccessStatus: 200
@@ -25,6 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors(corsOptions.origin))
+app.use(cookieParser())
 //importing product routes
 require('./src/routesHandler/app')(app)
 

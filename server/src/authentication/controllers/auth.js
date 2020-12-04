@@ -98,20 +98,28 @@ exports.signin = (req, res) => {
                 });
             }
         //jwt-sign Payload to sign, could be an literal, buffer or string secretOrPrivateKey - Either the secret for HMAC algorithms, or the PEM encoded private key for RSA and ECDSA.
+            
+            const expiration = process.env.DB_ENV === 'testing'? 100: 604800000;
             const token = jwt.sign({ id: user.id }, config.secret, {
-                expiresIn: 86400 // expressed in seconds or a string describing a time span - 24 hours
+                expiresIn: process.env.DB_ENV === 'testing'? '1d' : '7d',
             });
-            let authorities = [];
-            for (let i = 0; i < user.roles.length; i++) {
-                authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
-            }
-            console.log(authorities)
-            res.status(200).send({
-                id: user._id,
-                username: user.username,
-                email: user.email,
-                roles: authorities,
-                accessToken: token
+             res.cookie('token', token, {
+                expires: new Date(Date.now() + expiration),
+                secure: false, // set to true if your using https
+                httpOnly: true,
+             })
+           
+              let authorities = [];
+              for (let i = 0; i < user.roles.length; i++) {
+                  authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
+              }
+            
+             res.status(200).json({
+                 id: user._id,
+                 username: user.username,
+                 email: user.email,
+                 roles: authorities,
+                 accessToken: token
             });
         });
 };

@@ -1,19 +1,23 @@
 import AuthServices from '../../../services/auth';
 
 const Profile = () => {
-    const currentUser = AuthServices.getCurrentUser(); 
+  const currentUser = AuthServices.getCurrentUser(); 
+  console.log(currentUser.username)
+  console.log(currentUser.id)
+  console.log(currentUser.email)
+  console.log(currentUser.accessToken)
     return (
         <div>
             <header>
                 <h3>
                     <strong>
                         {currentUser.username}
-                    </strong> Profile
+                    </strong>'s Profile
                 </h3>
-                <p>
+                 <p>
         <strong>Token:</strong> {currentUser.accessToken.substring(0, 20)} ...{" "}
         {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
-      </p>
+      </p> 
       <p>
         <strong>Id:</strong> {currentUser.id}
       </p>
@@ -23,7 +27,10 @@ const Profile = () => {
       <strong>Authorities:</strong>
       <ul>
         {currentUser.roles &&
-          currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
+              currentUser.roles.map((role, index) => {
+                console.log(role)
+                return(<li key={index}>{role}</li>)
+              })}
       </ul>
 </header>
     </div>

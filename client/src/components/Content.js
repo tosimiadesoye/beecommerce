@@ -1,9 +1,12 @@
-import React from 'react'
+ import Home from '../pages/Home'
 
 function Content() {
     return (
         
-            <div id="content" >Content</div>
+        <div id="content" >
+             <Home /> 
+        hi
+        </div>
         
     )
 }
