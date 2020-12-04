@@ -5,10 +5,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import About from './pages/About';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
-import SignUp from './pages/Signup';
+import Signup from './pages/auth/authentication/Signup'
 import Layout from './components/Layout';
-import axios from 'axios'
-// import Login from './pages/Lognin'
+import axios from 'axios';
+import Login from './pages/auth/authentication/Lognin'
 // import Navbar from './components/navbar/Navbar'
 import './App.css';
 import Content from './components/Content';
@@ -61,18 +61,18 @@ function App() {
             <Content/>
             </>
         )} />
-        <Route path='/sign-up' render={() => (
+        <Route path='/signup' render={() => (
           <>
             <Navbar/>
-            <SignUp />
+            <Signup />
             </>
         )} />
-        {/* <Route path='/login' render={() => (
+         <Route path='/login' render={() => (
           <>
             <Navbar/>
             <Login/>
             </>
-        )} /> */}
+        )} /> 
       </Switch>
     </BrowserRouter>
   );

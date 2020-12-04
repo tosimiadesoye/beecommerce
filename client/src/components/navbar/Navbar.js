@@ -27,13 +27,13 @@ const Navbar = () => {
                         </Link>
                     </div>
                   <div className='nav-item'>
-                        <Link to="/sign-up" className='a' >
+                        <Link to="/signup" className='a' >
                         Sign up
                         </Link>
                     </div>
                   <div className='nav-item'>
-                        <Link to="/signin" className='a'>
-                        Sign in
+                        <Link to="/login" className='a'>
+                        Login
                         </Link>
                     </div>
                     

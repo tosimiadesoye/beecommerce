@@ -2,16 +2,17 @@ import  { useState, useRef } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import { isEmail } from "validator";
+import { isEmail, isEmpty } from "validator";
+import { Link} from 'react-router-dom'
 
 import authServices from '../../../services/auth';
-import './signup.css';
+import './signup.css'
 
   
 const required = value => {
-  if (!value) {
+  if (isEmpty(value)) {
     return (
-      <div role='alert'>This field is required</div>
+      <div role='alert' className='required'>This field is required</div>
     );
   };
 };
@@ -19,7 +20,7 @@ const required = value => {
 const validEmail = value => {
   if (!isEmail(value)) {
     return (
-      <div role='alert'>This is not a valid Email</div>
+      <div role='alert' className='required'>This is not a valid Email</div>
     )
   }
 }
@@ -27,7 +28,7 @@ const validEmail = value => {
 const verifyUsername = (value) => {
   if (value.length < 3 || value.length > 20) {
     return (
-      <div role='alert'>
+      <div role='alert' className='required'>
         The username must be between 3 and 20 characters.
       </div>
     )
@@ -35,17 +36,17 @@ const verifyUsername = (value) => {
 }
 
 const verifyPassword = (value) => {
-  if (value.length < 8 || value.length > 40) {
+  if (value.trim().length < 8) {
     return (
-      <div role='alert'>
-        The password must be between 8 and 40 characters.
+      <div role='alert' className='required'>
+        The password must be at least 8 characters long
     </div>
   )
 }
 }
 
 
-const SignUp = () => {
+const Signup = () => {
   const checkBtn = useRef();
   const form = useRef();
 
@@ -56,17 +57,17 @@ const SignUp = () => {
   const [message, setMessage] = useState("")
 
 
-  const onChangeUsername = (e) => {
+  const onChangeUsername = (e) => { //setting username input as the value for username
     const username = e.target.value;
     setUsername(username)
 }
 
-const onChangeEmail = (e) => {
+const onChangeEmail = (e) => { //setting email input as the value for email
   const email = e.target.value;
   setEmail(email);
 };
 
-const onChangePassword = (e) => {
+const onChangePassword = (e) => { //setting password input as the value for password
   const password = e.target.value;
   setPassword(password);
 };
@@ -76,24 +77,23 @@ const onChangePassword = (e) => {
     setMessage("");
     setSuccessful(false);
     form.current.validateAll();
-    console.log(checkBtn)
-    console.log(form.current.context)
+   
     
     if (checkBtn.current.context._errors.length === 0) {
       authServices.register(username, email, password).then(
         (response) => {
+          console.log(response.data)
           setMessage(response.data.message);
           setSuccessful(true);
         },
         (error) => {
-          const resMessage =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
+          console.log(error.response.data)
+          console.log(error.message)
+          const responseMessage =
+            (error.response &&error.response.data && error.response.data.message) ||
             error.message ||
             error.toString();
-
-          setMessage(resMessage);
+          setMessage(responseMessage);
           setSuccessful(false);
         }
       );
@@ -104,11 +104,12 @@ const onChangePassword = (e) => {
       <Form className='signup-form'
         onSubmit={handleSignup}
       ref={form}>
-        <h1 >Sign Up</h1>
+        <h1 className='sign-up'>Sign Up</h1>
     <p>Please fill in this form to create an account.</p>
   
-    <label htmlFor="username"><b>username</b></label>
+    <label htmlFor="username"><b>Username</b></label>
         <Input
+           className='input'
           type="text"
           placeholder="Enter username"
           name="username"
@@ -120,6 +121,7 @@ const onChangePassword = (e) => {
 
     <label htmlFor="email"><b>Email</b></label>
         <Input
+          className='input'
           type="text"
           placeholder="Enter Email"
           name="email"
@@ -128,37 +130,33 @@ const onChangePassword = (e) => {
           validations={[required, validEmail]}
          />
 
-    <label htmlFor="psw"><b>Password</b></label>
+    <label htmlFor="password"><b>Password</b></label>
         <Input type="password"
+           className='input'
           placeholder="Enter Password"
-          name="psw"
+          name="password"
           value={password}
           onChange={onChangePassword}
           validations={[required, verifyPassword]}
-           />
+        />
+       
 
         {message && (
-          <div>
-          <div className={
-            successful ? "alert alert-success" : "alert alert-danger"
+          <div className={successful ? "alert alert-success" : "alert alert-danger"
           }
           role='alert'
           >
             {message}
-          </div>
+          </div>)}
+          <button type="submit" >Sign Up</button>
             <CheckButton style={{ display: 'none' }} ref={checkBtn }/>
-          </div>
-          
-)}
         
-  <div className="clearfix">
-          <button type="submit" className="signupbtn">Sign Up</button>
-          <p>already have an account?</p>
-          <button type="submit" className="signinbtn">Sign In</button>
+   <div >   
+          <Link to='/signin'>Already have an account? <button>Login</button></Link>
     </div> 
         </Form>
   
     );
   };
   
-  export default SignUp;
+  export default Signup;

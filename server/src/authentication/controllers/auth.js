@@ -10,7 +10,7 @@ var bcrypt = require("bcryptjs");
 exports.signup = async (req, res) => {
     //new Schema
     try {
-        const salt = await bcrypt.genSaltSync(8);
+        const salt = bcrypt.genSaltSync(8);
         const password = await req.body.password;
         const user = new User({
             username: req.body.username,

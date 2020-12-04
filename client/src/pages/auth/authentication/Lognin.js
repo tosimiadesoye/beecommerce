@@ -2,23 +2,23 @@ import { useState, useRef } from 'react';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-
+import {isEmpty } from "validator";
+import { Link } from 'react-router-dom'
+import './signup.css'
 import AuthServices from '../../../services/auth';
-import form from 'react-validation/build/form';
 
 const required = (value) => {
-    if (!value) {
+    if (isEmpty(value)) {
         return (
-            <div>This field is required</div>
+            <div role='alert' className='required'> This field is required</div>
         )
     }
 }
 
-function Login() {
+function Login(props) {
     const checkBtn = useRef();
     const form = useRef();
     const [username, setUsername] = useState('')
-    // const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("")
@@ -38,69 +38,79 @@ function Login() {
         setMessage("");
         setLoading(true);
         form.current.validateAll();
-        if (checkButton.current.context > _.length === 0) {
-            AuthServices.login(username, password).then(
-                () => {
-                    props.history.push("/profile");
-                    window.location.reload();
-                },
-                (error) => {
-                    const resMessage = (error.response &&
-                        error.response.data &&
-                        error.response.data.message) ||
-                        error.message ||
-                        error.toString();
+        console.log(form)
+        console.log(checkBtn)
+        console.log(props)
+
+       if (checkBtn.current.context._errors.length === 0) {
+           AuthServices.login(username, password).then(
+               () => {
+                   
+                   props.history.push("/profile");
+                   window.location.reload();
+               },
+               (error) => {
+                   const resMessage = (error.response &&
+                       error.response.data &&
+                       error.response.data.message) ||
+                       error.message ||
+                       error.toString();
                     
-                    setLoading(false);
-                    setMessage(resMessage);
-                }
-            );
-            }else {
-                setLoading(false)
-        }
+                   setLoading(false);
+                   setMessage(resMessage);
+               }
+           );
+           }else {
+               setLoading(false)
+       }
     }
     return (
+
         <Form className='signup-form'
         onSubmit={handleLogin}
       ref={form}>
-        <h1 >Sign Up</h1>
+        <h1 className='sign-up'>Sign Up</h1>
     <p>Please fill in this form to create an account.</p>
   
     <label htmlFor="username"><b>username</b></label>
         <Input
+           className='input'
           type="text"
           placeholder="Enter username"
-                name="username"
-                value={username}
+          name="username"
+          value={username}
           onChange = {onChangeUsername}
           validations={[required]}
           />
         
 
-    <label htmlFor="psw"><b>Password</b></label>
-        <Input type="password"
-          placeholder="Enter Password"
-          name="psw"
-                value={password}
-                onChange={onChangePassword}
-          validations={[required]}
-            />
-        <button className="" disabled={loading}>
-              {loading && (
-                <span className=''></span>
-              )}
-              <span>Login</span>
-            </button>    
+   
+         
 
-            {message && (
-            <div className="">
-              <div className="alert alert-danger" role="alert">
-                {message}
-              </div>
-            </div>
-          )}
-          <CheckButton style={{ display: "none" }} ref={checkBtn} />
+    <label htmlFor="password"><b>Password</b></label>
+        <Input type="password"
+           className='input'
+          placeholder="Enter Password"
+          name="password"
+          value={password}
+          onChange={onChangePassword}
+          validations={[required]}
+        />
+       
+
+        {message && (
+          <div className={'' ? "alert alert-success" : "alert alert-danger"
+          }
+          role='alert'
+          >
+            {message}
+          </div>)}
+          <button type="submit" className="signupbtn" >Sign Up</button>
+            <CheckButton style={{ display: 'none' }} ref={checkBtn }/>
         
+   <div >   
+          <Link to='/signup'>Don't have an account, signup?</Link>
+    </div> 
         </Form>
   
     )

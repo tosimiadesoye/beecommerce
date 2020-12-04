@@ -18,12 +18,13 @@ const login = (username, password) => {
         password
       })
         .then(response => {
+            console.log(response.data)
             if (response.data.accessToken) {
              localStorage.setItem("user", JSON.stringify(response.data))
             }
             return response.data
         })
-      .catch(err=> console.log("error: ", err))
+     
 }
 
 const logout = () => {
