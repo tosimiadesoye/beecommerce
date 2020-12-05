@@ -1,10 +1,10 @@
- import Home from '../pages/Home'
+//  import Home from '../pages/Home'
 
 function Content() {
     return (
         
         <div id="content" >
-             <Home /> 
+             {/* <Home />  */}
         hi
         </div>
         

@@ -45,20 +45,20 @@ padding-top: var(--main-padding);
 
 
    #content{
-    background-color:#DAF7A6;
+    background-color: #f7f7e7;
     grid-area: content;
     border-radius: var(--main-radius);
 padding-top: var(--main-padding);
   }
 
   #content1{
-    background-color: #DAF7A8;
+    background-color: #f7f7c7;
     grid-area: content1;
     border-radius: var(--main-radius);
 padding-top: var(--main-padding);
   }
   #content2{
-    background-color: #DAF7B6;
+    background-color: #f7f7af;
     grid-area: content2;
   }
   #content3{

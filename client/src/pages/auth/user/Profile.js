@@ -1,13 +1,15 @@
 import AuthServices from '../../../services/auth';
+import Home from '../../Home'
 
 const Profile = () => {
   const currentUser = AuthServices.getCurrentUser(); 
-  console.log(currentUser.username)
-  console.log(currentUser.id)
-  console.log(currentUser.email)
-  console.log(currentUser.accessToken)
+  // console.log(currentUser.username)
+  // console.log(currentUser.id)
+  // console.log(currentUser.email)
+  // console.log(currentUser.accessToken)
     return (
-        <div>
+      <div>
+        <Home/>
             <header>
                 <h3>
                     <strong>
@@ -28,7 +30,7 @@ const Profile = () => {
       <ul>
         {currentUser.roles &&
               currentUser.roles.map((role, index) => {
-                console.log(role)
+                // console.log(role)
                 return(<li key={index}>{role}</li>)
               })}
       </ul>

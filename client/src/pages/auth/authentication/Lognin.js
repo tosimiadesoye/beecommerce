@@ -18,6 +18,7 @@ const required = (value) => {
 function Login(props) {
     const checkBtn = useRef();
     const form = useRef();
+    
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false);
@@ -47,8 +48,8 @@ function Login(props) {
                () => {
                 //    console.log(this)
                    //props.history is not working
-                //    props.history.push("/profile");
-                //    console.log(window.location.reload(), "history");
+                    // props.history.push("/profile");
+                    // console.log(window.location.reload(), "history");
 
                },
                (error) => {
