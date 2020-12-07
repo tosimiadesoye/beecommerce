@@ -15,9 +15,6 @@ const port = process.env.PORT || 5000;
 const app = express();
 
 
-//the file directory that the images goes to
-app.use('/public/upload', express.static("public/upload"));
-
 dotenv.config();
 
 //passing the middleware before the routes to avoid getting undefined

@@ -6,7 +6,7 @@ exports.createProduct = async payLoad => {
 }
 
 exports.findAllProducts = async () => {
-    const product = await Product.find();
+    const product = await Product.find()
     return product
 } 
     

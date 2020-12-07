@@ -1,17 +1,14 @@
 const router = require("express").Router();
-const multer = require("multer");
 const controller = require("../app/controllers/app");
-const imageUploadMulter = require('../app/image/app');
 
-router.post("/", controller.createNewProduct);
-//upload a single image
-//router.post("/", imageUploadMulter.upload.single('upload'), controller.createNewProduct);
-router.get("/", controller.getProduct);//
-router.get("/:id", controller.productById);//
-router.delete("/:id", controller.getProductByIdAndDelete);
-router.put("/:id", controller.getProductByIdAndUpdate);
-router.put("/", controller.updateManyProducts);
-router.delete("/", controller.deleteManyProducts);
+
+router.post("/api/product", controller.createNewProduct);
+router.get("/api/product/:pId", controller.getProduct);//
+router.get("/api/product/:id", controller.productById);//
+router.delete("/api/product/:id", controller.getProductByIdAndDelete);
+router.patch("/api/product/:id", controller.getProductByIdAndUpdate);
+router.put("/api/product", controller.updateManyProducts);
+router.delete("/api/product", controller.deleteManyProducts);
 
 
 module.exports = router;
