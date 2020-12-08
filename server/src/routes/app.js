@@ -2,8 +2,12 @@ const router = require("express").Router();
 const controller = require("../app/controllers/app");
 
 
+
+
+
+router.get("/api/product", controller.getProduct);
+//
 router.post("/api/product", controller.createNewProduct);
-router.get("/api/product/:pId", controller.getProduct);//
 router.get("/api/product/:id", controller.productById);//
 router.delete("/api/product/:id", controller.getProductByIdAndDelete);
 router.patch("/api/product/:id", controller.getProductByIdAndUpdate);

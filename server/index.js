@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 require('./config/mongodb');
 
 //importing auth routes
- require('./src/routesHandler/auth')(app)
+//   require('./src/routesHandler/auth')(app)
 
 
 app.listen(port, () => {

@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
+mongoose.set('debug', true)
 const Schema = mongoose.Schema;
+
 
 const ProductSchema = new Schema({
     id: Number,
     brand: String,
+    name: String,
     price: String,
     price_sign: String,
     currency: String,
@@ -20,5 +23,5 @@ const ProductSchema = new Schema({
     product_colors: Array
 }, { timestamps: true });
 
-const product = mongoose.model("Makeup", ProductSchema)
+const product = mongoose.model("Makeups", ProductSchema)
 module.exports = product;

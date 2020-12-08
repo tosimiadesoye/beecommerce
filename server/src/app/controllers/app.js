@@ -1,12 +1,14 @@
 const productRepo = require('../repository/app');
-
+const Product = require('../models/app');
+console.log(Product)
 exports.createNewProduct = async (req, res) => {
     
     try {
         const payLoad = {
-            id: req.body.id,
+        id: req.body.id,
         brand: req.body.brand,
-        price: req.body.body.price,
+        name: req.body.name,
+        price: req.body.price,
         price_sign: req.body.price_sign,
         currency: req.body.currency,
         image_link: req.body.image_link,
@@ -33,36 +35,76 @@ exports.createNewProduct = async (req, res) => {
     } catch(err){
         console.log(err)
         //internal server error
-        res.status(500).json({
+        res.status(400).json({
             error: err,
             status: false,
         })
     }
 }
-
-exports.getProduct = async (req, res) => {
-    const {page = req.body.PId, limit = 10} = parseInt(req.body)
-    try {
-        let product =
-            await productRepo.findAllProducts({})
-                .sort({ brand: 'abc' })
-                .limit(limit)
-                .skip(page * limit)
-                .exec();
-                
-        console.log(product)
+ exports.getProduct = async (req, res) => {
+     try {
+         let product = await Product.find({})
+         console.log(product)
+         res.status(200).json({
+             status: true,
+             data: product
+         })
+     } catch (err) {
+         //bad request
+         res.status(400).json({
+             error: err.message,
+             status: false
+         })
+     }
+ }
+/*exports.getProduct = (req, res) => {
+    Product.find({}, (err, data) => {
+        if (err) {
+            console.error(err);
+            res.status(400).json({
+                status: false,
+                error: err.message
+            })
+        }
+        console.log(data);
         res.status(200).json({
             status: true,
-            data: product
+            data: data
         })
-    } catch (err) {
-        //bad request
-        res.status(400).json({
-            error: err.message,
-            status: false
-        })
-    }
+    });
 }
+
+*/
+
+
+
+
+// exports.getProduct = async (req, res) => {
+//     // const {page = req.body.PId, limit = 10} = parseInt(req.body)
+//     try {
+//         // let product = await productRepo.findAllProducts({})
+//         let product = await Product.find({}, (err, data) => {
+//             if (err) console.error("error: " + err)
+//             console.log('data: ', data)
+//          })
+//         //                 .sort({ brand: 'asc' })
+//         //                 .limit(limit)
+//         //                 .skip(page * limit)
+//         //                 .exec();
+                
+//         console.log(product)
+//         res.status(200).json({
+//             status: true,
+//             data: product
+//         })
+//     } catch (err) {
+//         //bad request
+//         res.status(400).json({
+//             error: err.message,
+//             status: false
+//         })
+//     }
+// }
 
 exports.productById = async (req, res) => {
     
