@@ -6,8 +6,10 @@
 const authHeader = () => {
   const user = JSON.parse(localStorage.getItem('user'))
   // console.log(user, 'user')
-    if (user.accessToken) {
-      return { 'x-access-token':  user.accessToken };
+    if (user && user.accessToken) {
+      return {
+        'x-access-token': user.accessToken
+      };
     } else {
       return {}
   }

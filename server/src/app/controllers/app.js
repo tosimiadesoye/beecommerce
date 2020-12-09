@@ -44,10 +44,10 @@ exports.createNewProduct = async (req, res) => {
  exports.getProduct = async (req, res) => {
      try {
          let product = await Product.find({})
-         console.log(product)
+        //  console.log(product)
          res.status(200).json({
              status: true,
-             data: product
+             items: product
          })
      } catch (err) {
          //bad request

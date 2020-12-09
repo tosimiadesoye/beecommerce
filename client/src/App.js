@@ -1,15 +1,16 @@
-import Navbar from './components/navbar/Navbar';
+import Navigation from './components/navbar/Navbar';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import About from './pages/About';
+import Shop from './pages/Shop';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
-import Signup from './pages/auth/authentication/Signup'
+import Signup from './pages/auth/Signup'
 import Layout from './components/Layout';
 import axios from 'axios';
-import Login from './pages/auth/authentication/Lognin'
+import Login from './pages/auth/Lognin'
 import './App.css';
 import Content from './components/Content';
-import Profile from './pages/auth/user/Profile';
+import Profile from './pages/user/Profile';
+import BoardUser from './pages/Board/BoardUser'
 
 function App() {
  
@@ -19,45 +20,63 @@ function App() {
   return (
 <BrowserRouter>
 <Switch>
-        <Route exact path='/' render={() => (
+        <Route exact path={['/', '/home'] } render={() => (
           <>
-            {/* <Navbar/> */}
+              <Navigation/>  
             <Layout />
           </>
         )} />
         <Route path='/shop' render={() => (
           <>
-            <Navbar />
-            <About/>
+            <Navigation />
+            <Shop/>
             </>
         )} />
         <Route path='/services' render={() => (
           <>
-            <Navbar />
+            <Navigation />
             <Services/>
             </>
         )} />
         <Route path='/contact-us' render={() => (
           <>
-            <Navbar /> 
+            <Navigation /> 
             <Content/>
             </>
         )} />
         <Route path='/signup' render={() => (
           <>
-            <Navbar/>
+            <Navigation/>
             <Signup />
             </>
         )} />
          <Route path='/login' render={() => (
           <>
-            <Navbar/>
+            <Navigation/>
             <Login/>
             </>
         )} /> 
         <Route exact path="/profile" render={() => (
            <>
-           <Navbar/>
+           <Navigation/>
+           <Profile/>
+           </>
+        )} />
+        <Route exact path="/user" render={() => (
+           <>
+           <Navigation/>
+           <BoardUser/>
+           </>
+        )} />
+        <Route exact path="/mod" render={() => (
+           <>
+           <Navigation/>
+           <Profile/>
+           </>
+        )} />
+        <Route exact path="/admin" render={() => (
+           <>
+           <Navigation/>
            <Profile/>
            </>
         )}/>
@@ -71,11 +90,7 @@ export default App;
 
      
         {/* <Switch>
-          <Route exact path={["/", "/home"]} component={Home} />
-        
-      
-          
-          <Route path="/user" component={BoardUser} />
+         
           <Route path="/mod" component={BoardModerator} />
           <Route path="/admin" component={BoardAdmin} />
         </Switch>

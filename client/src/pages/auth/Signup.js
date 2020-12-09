@@ -5,7 +5,7 @@ import CheckButton from "react-validation/build/button";
 import { isEmail, isEmpty } from "validator";
 import { Link} from 'react-router-dom'
 
-import authServices from '../../../services/auth';
+import authServices from '../../services/auth';
 import './signup.css'
 
   
@@ -152,7 +152,7 @@ const onChangePassword = (e) => { //setting password input as the value for pass
             <CheckButton style={{ display: 'none' }} ref={checkBtn }/>
         
    <div >   
-          <Link to='/signin'>Already have an account? <button>Login</button></Link>
+          <Link to='/login'>Already have an account? <button>Login</button></Link>
     </div> 
         </Form>
   

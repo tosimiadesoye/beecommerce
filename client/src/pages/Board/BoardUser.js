@@ -1,14 +1,18 @@
-import UserService from '../../../services/auth';
+import { useEffect, useState } from 'react';
+import UserService from '../../services/user';
 
 
 const BoardUser = () => {
     const [content, setContent] = useState("");
-    useEffect(() => {
+ 
+  useEffect(() => {
         UserService.getUserBoard().then(
           (response) => {
-            setContent(response.data);
+            console.log(response)
+            // setContent(response.data);
           },
           (error) => {
+            console.log(error.response)
             const _content =
               (error.response &&
                 error.response.data &&
@@ -23,9 +27,9 @@ const BoardUser = () => {
     
     return (
         <div>
-           <header className="jumbotron">
+           {/* <header className="jumbotron">
         <h3>{content}</h3>
-      </header> 
+      </header>  */}
         </div>
     )
 }

@@ -5,7 +5,7 @@ import CheckButton from "react-validation/build/button";
 import {isEmpty } from "validator";
 import { Link } from 'react-router-dom'
 import './signup.css'
-import AuthServices from '../../../services/auth';
+import AuthServices from '../../services/auth';
 
 const required = (value) => {
     if (isEmpty(value)) {
@@ -48,8 +48,8 @@ function Login(props) {
                () => {
                 //    console.log(this)
                    //props.history is not working
-                    // props.history.push("/profile");
-                    // console.log(window.location.reload(), "history");
+                    props.history.push("/profile");
+                    console.log(window.location.reload(), "history");
 
                },
                (error) => {

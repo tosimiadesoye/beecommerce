@@ -8,8 +8,8 @@ const Home = () => {
     
     UserServices.getPublicContent().then(
       (response) => {
-        console.log(response)
-         console.log(response.data)
+        // console.log(response)
+        //  console.log(response.data)
         setContent(response.data);
       },
       (error) => {
