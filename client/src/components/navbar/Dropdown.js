@@ -26,7 +26,10 @@ const CustomDropdown = (props) => {
                     {options.length &&
                         options.map(({ header, title }) => (
                             <DropdownItem header={header}>
+                                <Nav.Link as={Link} to="/shop">
                                 {title}
+                                </Nav.Link>
+                                
                         </DropdownItem>
                     ))
                     }
