@@ -8,7 +8,7 @@ const Eyeliner = () => {
     },[])
     const allEyeliner = async () => {
         const result = await MakeupService.getEyeliner().then(res => {
-            console.log(res)
+           
             if (!res.error) {
                 console.log(res.data)
                 setEyeliner(res.data.data)
@@ -20,7 +20,7 @@ const Eyeliner = () => {
     return (
         <>
         {!eyeliner ? "" : eyeliner.map(items => {
-            console.log(items)
+           
             return (
                 <div key={items._id}>
                    

@@ -7,6 +7,11 @@ const getProduct = () => {
 
 const PRODUCT_URI = 'http://localhost:5000/api/product_type?keyword='
 
+const findMakeup = (value) => {
+    const CATEGORY_URI = `http://localhost:5000/api/category?keyword=${value}`
+    return axios.get(CATEGORY_URI)
+}
+
 const getBlush = () => {
     return axios.get(PRODUCT_URI + 'blush')
 }
@@ -43,6 +48,7 @@ const getNailPolish= () => {
 }
 export default {
     getProduct,
+    findMakeup,
     getBlush,
     getBronzer,
     getEyebrow,

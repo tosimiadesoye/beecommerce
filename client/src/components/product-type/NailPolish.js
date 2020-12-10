@@ -8,9 +8,9 @@ const NailPolish = () => {
     },[])
     const allNailPolish = async () => {
         const result = await MakeupService.getNailPolish().then(res => {
-            console.log(res)
+           
             if (!res.error) {
-                console.log(res.data)
+               
                 setNailPolish(res.data.data)
             }
         })
@@ -20,7 +20,7 @@ const NailPolish = () => {
     return (
         <>
         {!nailPolish ? "" : nailPolish.map(items => {
-            console.log(items)
+           
             return (
                 <div key={items._id}>
                    

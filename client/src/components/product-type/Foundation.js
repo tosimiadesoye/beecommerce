@@ -8,9 +8,9 @@ const Foundation = () => {
     },[])
     const allFoundation = async () => {
         const result = await MakeupService.getFoundation().then(res => {
-            console.log(res)
+           
             if (!res.error) {
-                console.log(res.data)
+                
                 setFoundation(res.data.data)
             }
         })
@@ -20,7 +20,7 @@ const Foundation = () => {
     return (
         <>
         {!foundation ? "" : foundation.map(items => {
-            console.log(items)
+            
             return (
                 <div key={items._id}>
                    

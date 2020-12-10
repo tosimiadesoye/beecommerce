@@ -8,9 +8,9 @@ const Lipstick = () => {
     },[])
     const allLipstick = async () => {
         const result = await MakeupService.getLipstick().then(res => {
-            console.log(res)
+           
             if (!res.error) {
-                console.log(res.data)
+                
                 setLipstick(res.data.data)
             }
         })
@@ -20,7 +20,7 @@ const Lipstick = () => {
     return (
         <>
         {!lipstick ? "" : lipstick.map(items => {
-            console.log(items)
+            
             return (
                 <div key={items._id}>
                    

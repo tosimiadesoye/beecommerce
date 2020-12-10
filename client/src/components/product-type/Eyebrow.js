@@ -8,7 +8,7 @@ const Eyebrow = () => {
     },[])
     const allEyebrow = async () => {
         const result = await MakeupService.getEyebrow().then(res => {
-            console.log(res)
+            
             if (!res.error) {
                 console.log(res.data)
                 setEyebrow(res.data.data)
@@ -20,7 +20,7 @@ const Eyebrow = () => {
     return (
         <>
         {!eyebrow ? "" : eyebrow.map(items => {
-            console.log(items)
+           
             return (
                 <div key={items._id}>
                    

@@ -176,3 +176,20 @@ exports.getProductType = async (req, res) => {
         })
     }
 }
+
+exports.getCategory = async (req, res) => {
+    const keyword = req.query.keyword;
+    try {    
+        console.log(keyword)
+        const product = await Product.find({
+            category: {
+                $regex: keyword, $options: 'i'
+            }
+        })
+        res.status(200).json({data: product})
+    } catch (err) {
+        res.status(400).json({
+            error: err.message
+        })
+    }
+}

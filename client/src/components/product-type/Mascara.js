@@ -8,9 +8,9 @@ const Mascara = () => {
     },[])
     const allMascara = async () => {
         const result = await MakeupService.getMascara().then(res => {
-            console.log(res)
+            
             if (!res.error) {
-                console.log(res.data)
+                
                 setMascara(res.data.data)
             }
         })
@@ -20,7 +20,7 @@ const Mascara = () => {
     return (
         <>
         {!mascara ? "" : mascara.map(items => {
-            console.log(items)
+            
             return (
                 <div key={items._id}>
                    

@@ -1,5 +1,5 @@
 import AuthServices from '../../services/auth';
-// import Home from '../../Home'
+ import Home from '../Home'
 
 const Profile = () => {
   const currentUser = AuthServices.getCurrentUser(); 
@@ -9,7 +9,7 @@ const Profile = () => {
   // console.log(currentUser.accessToken)
     return (
       <div>
-        {/* <Home/> */}
+         <Home/> 
             <header>
                 <h3>
                     <strong>

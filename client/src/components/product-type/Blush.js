@@ -12,7 +12,7 @@ function Blush() {
         const result = await MakeupService.getBlush().then(res => {
             console.log(res)
             if (!res.error) {
-                console.log(res.data)
+               
                 setBlush(res.data.data)
             }
         })
@@ -22,14 +22,13 @@ function Blush() {
     return (
       <>
             {!blush ? "" : blush.map(items => {
-                console.log(items)
+                
                 return (
                     <div>
                         <CardColumns  key={items._id}>
                           <Card>
                             <Card.Img src={items.api_featured_image} style={{ width: '10rem' }} alt='api featured image' /> 
     <Card.Body>
-
        <Card.Title>{ items.product_type}</Card.Title>
        <Card.Text>{items.description}</Card.Text>                       <p>{items.category}</p> 
                     

@@ -8,9 +8,9 @@ const Eyeshadow = () => {
     },[])
     const allEyeshadow = async () => {
         const result = await MakeupService.getEyeshadow().then(res => {
-            console.log(res)
+            
             if (!res.error) {
-                console.log(res.data)
+                
                 setEyeshadow(res.data.data)
             }
         })
@@ -20,7 +20,7 @@ const Eyeshadow = () => {
     return (
         <>
         {!eyeshadow ? "" : eyeshadow.map(items => {
-            console.log(items)
+            
             return (
                 <div key={items._id}>
                    

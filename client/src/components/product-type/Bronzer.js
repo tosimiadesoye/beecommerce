@@ -10,7 +10,7 @@ const Bronzer = () => {
         const result = await MakeupService.getBronzer().then(res => {
             console.log(res)
             if (!res.error) {
-                console.log(res.data)
+                
                 setBronzer(res.data.data)
             }
         })
@@ -20,7 +20,7 @@ const Bronzer = () => {
     return (
         <>
         {!bronzer ? "" : bronzer.map(items => {
-            console.log(items)
+          
             return (
                 <div key={items._id}>
                    

@@ -8,9 +8,9 @@ const LipLiner = () => {
     },[])
     const allLipLiner = async () => {
         const result = await MakeupService.getLipLiner().then(res => {
-            console.log(res)
+           
             if (!res.error) {
-                console.log(res.data)
+               
                 setLipLiner(res.data.data)
             }
         })
@@ -20,7 +20,7 @@ const LipLiner = () => {
     return (
         <>
         {!lipLiner ? "" : lipLiner.map(items => {
-            console.log(items)
+            
             return (
                 <div key={items._id}>
                    
