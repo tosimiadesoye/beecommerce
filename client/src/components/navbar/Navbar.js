@@ -12,7 +12,8 @@ const dropdownConfig = [
     customKey: 1,
     options: [
       {title: "Shop", header: true},
-      {title: "Shop all", header: false}
+      { title: "Shop all", header: false },
+      // { title: "Blush", header: false },
     ],
     name: "dropdownOpen1"
   }

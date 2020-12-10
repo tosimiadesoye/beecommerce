@@ -1,31 +1,37 @@
 const cartRepository = require('../repository/app');
-const productRepository = require('../../app/repository')
+const productRepository = require('../../app/repository/app')
 
 exports.addToCart = async (req, res) => {
-    const productId = req.body.productId
-    const quantity = Number.parseInt(req.body.quantity)
+    let { productId } = req.body;
+    console.log(productId)
+    let quantity = Number.parseInt(req.body.quantity)
+    console.log(quantity)
     try {
-        let cart = await cartRepository.cart();
-        let productDetails = await productRepo.findProductById(productId)
+        let cart = await cartRepository.cart(); //find cart
+        let productDetails = await productRepository.findProductById(productId)
         //if the product doesn't exist
         if (!productDetails) {
             return res.status(400).send({
                 type: "Product not found",
-                msg: "Bad request"
+                msg: "invalid request"
             })
         }
-        // if cart exists
+      
         if (cart) {
             //check if index exists
-            const index = cart.items.findIndex(item => items.productId._id === productId);
+            console.log(cart)
+            const index = cart.items.findIndex(item => item.productId._id == productId);
+            console.log(index)
             //------This removes an item from the the cart if the quantity is 
             //set to zero, We can use this method to remove an item from the list------- 
             if (index !== -1 && quantity <= 0) {
-                cart.items.splice(index, 1);
+                cart.items.splice(index, 1); //replace one element at index
                 if (cart.items.length === 0) {
                     cart.subTotal = 0;
                 } else {
-                    cart.subTotal = cart.items.map(item => item.total).reduce((acc, next) => acc + next);
+                    cart.subTotal = cart.items.map(item => item.total).reduce((accumulator, next) => {
+                        return accumulator + next
+                    });
                 }
             }
             else if (index !== -1) { //----------Check if product exist, just add the 
@@ -33,7 +39,12 @@ exports.addToCart = async (req, res) => {
                 cart.items[index].quantity = cart.items[index].quantity + quantity;
                 cart.items[index].total = cart.items[index].quantity * productDetails.price;
                 cart.items[index].price = productDetails.price
-                cart.subTotal = cart.items.map(item => item.total).reduce((acc, next) => acc + next);
+                console.log(cart.items[index].quantity)
+                console.log(cart.items[index].total)
+                console.log(cart.items[index].price)
+                cart.subTotal = cart.items.map(item => item.total).reduce((accumulator, next) => {
+                    return accumulator + next
+                });
             }
             //----Check if quantity is greater than 0 then add item to items array ---- 
             else if (quantity > 0) {
@@ -69,7 +80,7 @@ exports.addToCart = async (req, res) => {
                 }],
                 subTotal: parseInt(productDetails.price * quantity)
             }
-            cart = await cartRepository.addItem(cartData)
+            cart = await cartRepository.addItem(cartData) //create this item 
             // let data = await cart.save(); 
             res.json(cart);
         }

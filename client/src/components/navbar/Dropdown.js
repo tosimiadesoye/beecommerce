@@ -24,14 +24,19 @@ const CustomDropdown = (props) => {
                 </DropdownToggle>
                 <DropdownMenu>
                     {options.length &&
-                        options.map(({ header, title }) => (
-                            <DropdownItem header={header}>
-                                <Nav.Link as={Link} to="/shop">
-                                {title}
-                                </Nav.Link>
-                                
-                        </DropdownItem>
-                    ))
+                        options.map(({ header, title, id }) => {
+                            // console.log(header)
+                            // console.log(title)
+                           
+                            return(
+                                <DropdownItem header={header}>
+                                    <Nav.Link as={Link} to="/shop">
+                                        {title}
+                                    </Nav.Link>
+                               
+                                </DropdownItem>
+                            )
+                        })
                     }
                 </DropdownMenu>
             </Dropdown>

@@ -1,11 +1,6 @@
 import './layout.css'
-import Content from './Content'
-import Content1 from './Content1'
-import Content2 from './Content2'
-import Content3 from './Content3'
 import Footer from './Footer'
-import Navigation from './navbar/Navbar'
-
+import { Link } from 'react-router-dom'
 
 
 const Layout = () => {
@@ -15,10 +10,27 @@ const Layout = () => {
             <main className='main'>
             </main>
           
-                <Content />
-                <Content1 />
-                <Content2 />
-                <Content3 />
+            <div id='content' >
+                <Link to='/lip-liner'>lipliner</Link>
+                <Link to='/lipstick'>lipstick</Link>
+                <Link to='/mascara'>mascara</Link>
+                <Link to='/nail-polish'>nail-polish</Link>
+
+            </div>
+            <div id='content1' >
+                <Link to='/blush'>Blush</Link>
+                <Link to='/bronzer'>Bronzer</Link>
+                </div>
+            <div id='content2'>
+                <Link to='/eyebrow'>Eyebrow</Link>
+                <Link to='/eyeliner'>eyeliner</Link>
+            </div>
+            <div id='content3'>
+            <Link to='/eyeshadow'>eyeshadow</Link>
+            <Link to='/foundation'>foundation</Link>
+            </div>
+           
+               
                 <Footer />
           
             </div>

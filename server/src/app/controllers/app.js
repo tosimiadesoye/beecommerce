@@ -43,7 +43,7 @@ exports.createNewProduct = async (req, res) => {
 }
  exports.getProduct = async (req, res) => {
      try {
-         let product = await Product.find({})
+         let product = await productRepo.findAllProducts()
         //  console.log(product)
          res.status(200).json({
              status: true,
@@ -57,54 +57,7 @@ exports.createNewProduct = async (req, res) => {
          })
      }
  }
-/*exports.getProduct = (req, res) => {
-    Product.find({}, (err, data) => {
-        if (err) {
-            console.error(err);
-            res.status(400).json({
-                status: false,
-                error: err.message
-            })
-        }
-        console.log(data);
-        res.status(200).json({
-            status: true,
-            data: data
-        })
-    });
-}
 
-*/
-
-
-
-
-// exports.getProduct = async (req, res) => {
-//     // const {page = req.body.PId, limit = 10} = parseInt(req.body)
-//     try {
-//         // let product = await productRepo.findAllProducts({})
-//         let product = await Product.find({}, (err, data) => {
-//             if (err) console.error("error: " + err)
-//             console.log('data: ', data)
-//          })
-//         //                 .sort({ brand: 'asc' })
-//         //                 .limit(limit)
-//         //                 .skip(page * limit)
-//         //                 .exec();
-                
-//         console.log(product)
-//         res.status(200).json({
-//             status: true,
-//             data: product
-//         })
-//     } catch (err) {
-//         //bad request
-//         res.status(400).json({
-//             error: err.message,
-//             status: false
-//         })
-//     }
-// }
 
 exports.productById = async (req, res) => {
     
@@ -204,5 +157,22 @@ exports.deleteManyProducts = async (req, res) => {
                 status: false,
                 error: err
             })
+    }
+}
+
+exports.getProductType = async (req, res) => {
+    const keyword = req.query.keyword;
+    try {    
+        console.log(keyword)
+        const product = await Product.find({
+            product_type: {
+                $regex: keyword, $options: 'i'
+            }
+        })
+        res.status(200).json({data: product})
+    } catch (err) {
+        res.status(400).json({
+            error: err.message
+        })
     }
 }

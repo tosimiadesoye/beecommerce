@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
+mongoose.set('debug', true)
 const Schema = mongoose.Schema;
 //for holding the instance of a product
 let CartItemSchema = new Schema({
     productId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Makeup"
+        ref: "Makeups" //The model that populate() should use if populating this path.
     },
-    Quantity: Number,
+    quantity: Number,
     price: Number,
     total: Number
 }, { timestamps: true });
@@ -20,5 +21,5 @@ const CartSchema = new Schema({
     }
 }, { timestamps: true });
 
-const cart = mongoose.model('Cart', CartSchema);
+const cart = mongoose.model('Cart', CartSchema, 'cart');
 module.exports = cart;

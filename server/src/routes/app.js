@@ -1,18 +1,14 @@
 const router = require("express").Router();
 const controller = require("../app/controllers/app");
 
-
-
-
-
 router.get("/api/product", controller.getProduct);
-//
 router.post("/api/product", controller.createNewProduct);
 router.get("/api/product/:id", controller.productById);//
 router.delete("/api/product/:id", controller.getProductByIdAndDelete);
 router.patch("/api/product/:id", controller.getProductByIdAndUpdate);
 router.put("/api/product", controller.updateManyProducts);
 router.delete("/api/product", controller.deleteManyProducts);
-
+router.get("/api/product_type", controller.getProductType)
+//e.g http://localhost:5000/api/product_type?keyword=bronzer
 
 module.exports = router;

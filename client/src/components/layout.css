@@ -10,7 +10,8 @@
     display: grid;
     height: 200vh; /*maximum height*/
      grid-template-columns: 1fr 1fr 1fr 1fr; /*columns same sizes*/
-    grid-template-rows: 1.5fr 1.2fr 0.9fr .8fr; /* rows different sizes */
+     grid-template-rows: 1.5fr 1.2fr 0.9fr .8fr;
+   /* grid-template-rows: 1.5fr 1.2fr 0.9fr .8fr; /* rows different sizes */
     grid-template-areas: 
     "content main main main"
     "content content1 content2 content3 "
@@ -69,6 +70,8 @@ padding-top: var(--main-padding);
   #content2{
     background-color: #f7f7af;
     grid-area: content2;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
   }
   #content3{
     background-color: #DAF7A1;
@@ -76,12 +79,7 @@ padding-top: var(--main-padding);
     border-radius: var(--main-radius);
 padding-top: var(--main-padding);
   }
-  #content4{
-    background-color: #DAF7A1;
-    grid-area: content4;
-    border-radius: var(--main-radius);
-padding-top: var(--main-padding);
-  }
+
   footer{
       background-color: #DAF7C8;
       grid-area: footer;
@@ -99,7 +97,6 @@ padding-top: var(--main-padding);
          "content1"
          "content2"
          "content3"
-         /* "content4" */
          "footer"
          ;
         }

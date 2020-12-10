@@ -7,6 +7,7 @@ exports.cart = async () => {
         path: "items.productId",
         select: 'name price total'
     })
+    console.log(carts)
     return carts[0];
 }
 
