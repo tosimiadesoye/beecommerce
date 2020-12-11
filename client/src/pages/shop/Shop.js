@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-import Card from "react-bootstrap/Card";
-import CardColumns from "react-bootstrap/CardColumns";
+
 
 const Shop = ({ product, makeupProduct }) => {
   useEffect(() => {
@@ -12,6 +11,7 @@ const Shop = ({ product, makeupProduct }) => {
       {!product
         ? ""
         : product.map((data) => {
+          
             return (
               <div key={data._id} className="parent">
                  <div
@@ -24,8 +24,8 @@ const Shop = ({ product, makeupProduct }) => {
                 />
                
                   <h6>{data.name}</h6>
-                  <p>{data.product_type}</p>
-                  {/* <Card.Text>{data.description}</Card.Text>{" "} */}
+                 
+                   <p>{data.description >= 10 ? "" : data.description}</p>
                   <p>{data.category}</p>
 
                   <p>{data.rating}</p>

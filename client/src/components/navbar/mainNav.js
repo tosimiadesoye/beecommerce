@@ -4,14 +4,26 @@ import AuthService from "../../services/auth";
 import { Container } from "reactstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-
+import CustomDropdown from "./Dropdown";
 import "./navbar.css";
+
+const dropdownConfig = [
+  {
+    customKey: 1,
+    options: [
+      { title: "Shop", header: true },
+      { title: "Shop all", header: false },
+      // { title: "Blush", header: false },
+    ],
+    name: "dropdownOpen1",
+  },
+];
 
 const Navigation = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
+  const [keysForDropdown, setKeysForDropdown] = useState({});
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
@@ -29,53 +41,63 @@ const Navigation = () => {
     AuthService.logout();
   };
 
+  useEffect(() => {
+    const keys = dropdownConfig.map((dropdown) => dropdown.name); //loopinf through the dropdownConfig above
+    const object = keys.reduce((accumulator, currentValue) => {
+      accumulator[currentValue] = false; //currentValue is name
+
+      return accumulator;
+    }, {});
+    setKeysForDropdown({ ...object });
+  }, []);
+
+  const _handleToggle = (e) => {
+    setKeysForDropdown({
+      ...keysForDropdown,
+      [e.target.name]: !keysForDropdown[e.target.name],
+    });
+  };
+
+  const _handleMouseEnter = (e) => {
+    setKeysForDropdown({
+      ...keysForDropdown,
+      [e.target.name]: !keysForDropdown[e.target.name],
+    });
+  };
+
+  const _handleMouseLeave = (e) => {
+    setKeysForDropdown({
+      ...keysForDropdown,
+      [e.target.name]: !keysForDropdown[e.target.name],
+    });
+  };
+
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+      <Navbar bg="light" variant="light">
         <Navbar.Brand as={Link} to="/">
           Logo
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <NavDropdown title="Shop" id="collasible-nav-dropdown">
-              <NavDropdown.Item
-                as={Link} to="/shop">
-                Shop all
-              </NavDropdown.Item>
-              <NavDropdown.Item  as={Link} to="/foundation">
-                Foundation
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/mascara">
-                Mascara
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/blush">
-                Blush
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/bronzer">
-                Bronzer
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/eyebrow">
-                Eyebrow
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/eyeliner">
-                Eyeliner
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/lip-liner">
-                Lip-liner
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/lipstick">
-                Lipstick
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/nail-polish">
-                Nail polish
-              </NavDropdown.Item>
-            </NavDropdown>
+            {/* <Nav.Link as={Link} to="/shop">Shop</Nav.Link> */}
+            <Container>
+              {keysForDropdown &&
+                dropdownConfig.map((dropdown) => (
+                  <CustomDropdown
+                    {...dropdown}
+                    key={dropdown.customKey}
+                    stateKeys={keysForDropdown}
+                    handleToggle={_handleToggle}
+                    handleMouseLeave={_handleMouseLeave}
+                    handleMouseEnter={_handleMouseEnter}
+                  ></CustomDropdown>
+                ))}
+            </Container>
+
             <Nav.Link as={Link} to="/home">
               Home
-            </Nav.Link>
-            <Nav.Link as={Link} to="/cart">
-              Cart
             </Nav.Link>
 
             <Nav.Link as={Link} to="/services">

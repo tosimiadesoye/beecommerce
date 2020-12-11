@@ -50,7 +50,7 @@ main {
 }
 
 footer {
-  background-color: #daf7c8;
+  background-color: #000;
   grid-area: footer;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);
