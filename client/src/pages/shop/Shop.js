@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-
+import Spinner from 'react-bootstrap/Spinner';
 
 const Shop = ({ product, makeupProduct }) => {
   useEffect(() => {
@@ -9,7 +9,9 @@ const Shop = ({ product, makeupProduct }) => {
   return (
     <div>
       {!product
-        ? ""
+        ? <Spinner animation="border" role="status">
+        <span className="sr-only">Loading...</span>
+      </Spinner> 
         : product.map((data) => {
           
             return (

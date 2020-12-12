@@ -1,0 +1,12 @@
+[
+    {"id":0, "name": "blush"},
+    {"id":1, "name":  "bronzer"},
+    {"id":2, "name": "eyebrow"},
+    {"id":3, "name": "eyeliner"},
+    {"id":4, "name": "eyeshadow"},
+    {"id":5, "name": "foundation"},
+    {"id":6, "name": "lip_liner"},
+    {"id":7, "name": "lipstick"},
+    {"id":8, "name": "mascara"},
+    {"id":9, "name": "nail_polish"}
+]

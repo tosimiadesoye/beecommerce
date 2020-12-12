@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Navigation from "./components/navbar/Navbar";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Shop from "./pages/shop/Shop";
@@ -8,21 +9,18 @@ import Layout from "./components/Layout";
 import Login from "./pages/auth/Lognin";
 import Profile from "./pages/user/Profile";
 import BoardUser from "./pages/Board/BoardUser";
-import Blush from "./components/product-type/Blush";
-import Bronzer from "./components/product-type/Bronzer";
-import Eyebrow from "./components/product-type/Eyebrow";
-import Eyeliner from "./components/product-type/Eyeliner";
-import Eyeshadow from "./components/product-type/Eyeshadow";
-import Foundation from "./components/product-type/Foundation";
-import LipLiner from "./components/product-type/LipLiner";
-import Lipstick from "./components/product-type/Lipstick";
-import Mascara from "./components/product-type/Mascara";
-import NailPolish from "./components/product-type/NailPolish";
+import MakeupType from "./components/product-type/MakeupType";
+import MakeupList from "./components/product-type/MakeupList";
+import axios from "axios";
 import Search from "./components/Search";
-import { useState, useEffect } from "react";
+import authService from "./services/product";
 import MakeupService from "./services/product";
+
+import data from "./models/makeup.json";
 function App() {
+  const [makeupType, setMakeupType] = useState(data);
   const [product, setProduct] = useState("");
+  const [product_type, setProduct_type] = useState("");
 
   const makeupProduct = async () => {
     const response = await MakeupService.getProduct();
@@ -31,6 +29,24 @@ function App() {
     }
   };
 
+  const productType = async () => {
+
+      makeupType.map((item) => {
+       
+      return  axios
+          .get(`http://localhost:5000/api/product_type?keyword=${item}`)
+          .then((res) => {
+            if (!res.error) {
+              console.log(res.data.data)
+              setProduct_type(res.data.data);
+            }
+          })
+          .catch((error) => {
+            console.log("error: ", error);
+          })
+      });
+    // return result;
+  };
   return (
     <BrowserRouter>
       <Switch>
@@ -39,7 +55,10 @@ function App() {
           path={["/", "/home"]}
           render={() => (
             <>
-              <Navigation />
+              <Navigation
+                setMakeupType={setMakeupType}
+                makeupType={makeupType}
+              />
 
               <Layout />
             </>
@@ -49,7 +68,10 @@ function App() {
           path="/shop"
           render={() => (
             <>
-              <Navigation />
+               <Navigation
+                setMakeupType={setMakeupType}
+                makeupType={makeupType}
+              />
               <Search product={product} setProduct={setProduct} />
               <Shop
                 product={product}
@@ -63,7 +85,10 @@ function App() {
           path="/services"
           render={() => (
             <>
-              <Navigation />
+              <Navigation
+                setMakeupType={setMakeupType}
+                makeupType={makeupType}
+              />
               <Services />
             </>
           )}
@@ -72,7 +97,10 @@ function App() {
           path="/contact-us"
           render={() => (
             <>
-              <Navigation />
+              <Navigation
+                setMakeupType={setMakeupType}
+                makeupType={makeupType}
+              />
               <Contact />
             </>
           )}
@@ -81,7 +109,10 @@ function App() {
           path="/signup"
           render={() => (
             <>
-              <Navigation />
+              <Navigation
+                setMakeupType={setMakeupType}
+                makeupType={makeupType}
+              />
               <Signup />
             </>
           )}
@@ -90,7 +121,10 @@ function App() {
           path="/login"
           render={() => (
             <>
-              <Navigation />
+              <Navigation
+                setMakeupType={setMakeupType}
+                makeupType={makeupType}
+              />
               <Login />
             </>
           )}
@@ -100,7 +134,10 @@ function App() {
           path="/profile"
           render={() => (
             <>
-              <Navigation />
+              <Navigation
+                setMakeupType={setMakeupType}
+                makeupType={makeupType}
+              />
               <Profile />
             </>
           )}
@@ -120,7 +157,10 @@ function App() {
           path="/mod"
           render={() => (
             <>
-              <Navigation />
+              <Navigation
+                setMakeupType={setMakeupType}
+                makeupType={makeupType}
+              />
               <Profile />
             </>
           )}
@@ -135,107 +175,39 @@ function App() {
             </>
           )}
         />
+
         <Route
-          exact
-          path="/blush"
+          path="/:id"
           render={() => (
             <>
-              <Navigation />
-              <Blush />
-            </>
-          )}
-        />
-        <Route
-          exact
-          path="/bronzer"
-          render={() => (
-            <>
-              <Navigation />
-              <Bronzer />
-            </>
-          )}
-        />
-        <Route
-          exact
-          path="/eyebrow"
-          render={() => (
-            <>
-              <Navigation />
-              <Eyebrow />
-            </>
-          )}
-        />
-        <Route
-          exact
-          path="/eyeliner"
-          render={() => (
-            <>
-              <Navigation />
-              <Eyeliner />
-            </>
-          )}
-        />
-        <Route
-          exact
-          path="/eyeshadow"
-          render={() => (
-            <>
-              <Navigation />
-              <Eyeshadow />
-            </>
-          )}
-        />
-        <Route
-          exact
-          path="/foundation"
-          render={() => (
-            <>
-              <Navigation />
-              <Foundation />
+              <Navigation
+                setMakeupType={setMakeupType}
+                makeupType={makeupType}
+              />
+              <MakeupList
+                makeupType={makeupType}
+                setProduct_type={setProduct_type}
+                product_type={product_type}
+                productType={productType}
+              />
             </>
           )}
         />
 
-        <Route
+        {/* <Route
           exact
-          path="/lip-liner"
+          path="/type"
           render={() => (
             <>
               <Navigation />
-              <LipLiner />
+              <MakeupType
+                setProduct_type={setProduct_type}
+                product_type={product_type}
+                productType={productType}
+              />
             </>
           )}
-        />
-        <Route
-          exact
-          path="/lipstick"
-          render={() => (
-            <>
-              <Navigation />
-              <Lipstick />
-            </>
-          )}
-        />
-        <Route
-          exact
-          path="/mascara"
-          render={() => (
-            <>
-              <Navigation />
-              <Mascara />
-            </>
-          )}
-        />
-        <Route
-          exact
-          path="/nail-polish"
-          render={() => (
-            <>
-              <Navigation />
-              <NailPolish />
-            </>
-          )}
-        />
+        />  */}
       </Switch>
     </BrowserRouter>
   );

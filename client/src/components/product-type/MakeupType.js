@@ -2,26 +2,32 @@ import { useState, useEffect } from "react";
 import MakeupService from "../../services/product";
 import CardColumns from "react-bootstrap/CardColumns";
 import Card from "react-bootstrap/Card";
+import Spinner from 'react-bootstrap/Spinner'
 
-function Blush() {
-  const [blush, setBlush] = useState("");
+const MakeupType = ({ productType, product_type }) => {
   useEffect(() => {
-    allBlush();
-  }, []);
-  const allBlush = async () => {
-    const result = await MakeupService.getBlush().then((res) => {
-      console.log(res);
-      if (!res.error) {
-        setBlush(res.data.data);
-      }
-    });
-    return result;
-  };
+    productType()
+  },[])
+  // const [blush, setBlush] = useState("");
+  // useEffect(() => {
+  //   allBlush();
+  // }, []);
+  // const allBlush = async () => {
+  //   const result = await MakeupService.getBlush().then((res) => {
+  //     console.log(res);
+  //     if (!res.error) {
+  //       setBlush(res.data.data);
+  //     }
+  //   });
+  //   return result;
+  // };
 
   return (
     <>
-      {!blush
-        ? ""
+      {/* {!blush
+        ?  <Spinner animation="border" role="status">
+        <span className="sr-only">Loading...</span>
+      </Spinner> 
         : blush.map((items) => {
             return (
               <div>
@@ -54,9 +60,9 @@ function Blush() {
                 </CardColumns>
               </div>
             );
-          })}
+          })} */}
     </>
   );
 }
 
-export default Blush;
+export default MakeupType;

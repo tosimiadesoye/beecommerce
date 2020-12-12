@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link,useParams, useRouteMatch } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AuthService from "../../services/auth";
 import { Container } from "reactstrap";
@@ -8,11 +8,12 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
 import "./navbar.css";
 
-const Navigation = () => {
+const Navigation = ({makeupType}) => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
-
+  let { id } = useParams();
+  let{url}=useRouteMatch()
   useEffect(() => {
     const user = AuthService.getCurrentUser();
 
@@ -39,41 +40,23 @@ const Navigation = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
             <NavDropdown title="Shop" id="collasible-nav-dropdown">
-              <NavDropdown.Item
-                as={Link} to="/shop">
-                Shop all
-              </NavDropdown.Item>
-              <NavDropdown.Item  as={Link} to="/foundation">
-                Foundation
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/mascara">
-                Mascara
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/blush">
-                Blush
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/bronzer">
-                Bronzer
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/eyebrow">
-                Eyebrow
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/eyeliner">
-                Eyeliner
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/lip-liner">
-                Lip-liner
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/lipstick">
-                Lipstick
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/nail-polish">
-                Nail polish
-              </NavDropdown.Item>
+            <Nav.Link as={Link} to="/shop">
+              Shop all
+            </Nav.Link>
+              {!makeupType? "" : makeupType.map((type, idx) => {
+                console.log(url)
+                console.log(type)
+                return (
+                  <NavDropdown.Item key={idx} as={Link} to={`/${type}`}>
+                    {type}
+                  </NavDropdown.Item>
+                )
+              })}
             </NavDropdown>
             <Nav.Link as={Link} to="/home">
               Home
             </Nav.Link>
+            
             <Nav.Link as={Link} to="/cart">
               Cart
             </Nav.Link>
@@ -81,7 +64,6 @@ const Navigation = () => {
             <Nav.Link as={Link} to="/services">
               Services
             </Nav.Link>
-
             {/* 
           {showModeratorBoard && (
             <div >
