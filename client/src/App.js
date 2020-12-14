@@ -14,12 +14,13 @@ import axios from "axios";
 import Search from "./components/Search";
 import authService from "./services/product";
 import MakeupService from "./services/product";
-
+import Cart from "./pages/Cart";
 import data from "./models/makeup.json";
 function App() {
   const [makeupType, setMakeupType] = useState(data);
   const [product, setProduct] = useState("");
   const [makeup_type, setMakeup_type] = useState("");
+  const [type, setType] = useState("")
 
   const makeupProduct = async () => {
     const response = await MakeupService.getProduct();
@@ -28,22 +29,18 @@ function App() {
     }
   };
 
-  const productType = async () => {
-
-      makeupType.map((item) => {
-       
-      return  axios
+  const productType = async (item) => {
+   return await axios
           .get(`http://localhost:5000/api/product_type?keyword=${item}`)
           .then((res) => {
             if (!res.error) {
-              
               setMakeup_type(res.data.data);
             }
           })
           .catch((error) => {
             console.log("error: ", error);
           })
-      });
+     
     // return result;
     
   };
@@ -79,6 +76,7 @@ function App() {
                 product={product}
                 setProduct={setProduct}
                 makeupProduct={makeupProduct}
+               
               />
             </>
           )}
@@ -182,7 +180,13 @@ function App() {
             </>
           )}
         />
- 
+        <Route path='/cart' render={() => {
+          <>
+            <Cart
+             
+              />
+          </>
+ }} />
      <Route
      path="/:slug"
   render={({match}) => (
@@ -190,13 +194,15 @@ function App() {
          <Navigation
       setMakeupType={setMakeupType}
       makeupType={makeupType}
-        
+   setType={setType}
       /> 
       <MakeupList
        {...match}
         setMakeup_type={setMakeup_type}
         makeup_type={makeup_type}
         productType={productType}
+        type={type}
+     
       />
     </>
   )}

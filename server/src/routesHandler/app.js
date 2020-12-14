@@ -7,5 +7,5 @@ module.exports = app => {
     app.use("/", route)
     app.use("/", auth)
     app.use("/", user)
-    app.use("/cart", cartRoutes); 
+    app.use("/api/cart", cartRoutes); 
 }

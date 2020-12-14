@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Spinner from 'react-bootstrap/Spinner';
 
-const Shop = ({ product, makeupProduct }) => {
+const Shop = ({ product, makeupProduct, addToCart }) => {
   useEffect(() => {
     makeupProduct();
   }, []);
@@ -42,6 +42,7 @@ const Shop = ({ product, makeupProduct }) => {
                       );
                     })} */}
                 </div>
+                <button onClick={()=>addToCart(data._id)} >Add to bag</button>
               </div>
             );
           })}

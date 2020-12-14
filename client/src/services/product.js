@@ -9,40 +9,18 @@ const findMakeup = (value) => {
   const CATEGORY_URI = `http://localhost:5000/api/category?keyword=${value}`;
   return axios.get(CATEGORY_URI);
 };
-const PRODUCT_URI = "http://localhost:5000/api/product_type?keyword=";
 
+const CART_URL = 'http://localhost:5000/api/cart'
+const postCart = (id, quantity) => {
+  return axios.post(CART_URL, {
+    id,
+  quantity  
+  }
+  )
+}
 
-// const getBronzer = () => {
-//   return axios.get(PRODUCT_URI + "bronzer");
-// };
-
-// const getEyebrow = () => {
-//   return axios.get(PRODUCT_URI + "eyebrow");
-// };
-
-// const getEyeliner = () => {
-//   return axios.get(PRODUCT_URI + "eyeliner");
-// };
-// const getEyeshadow = () => {
-//   return axios.get(PRODUCT_URI + "eyeshadow");
-// };
-// const getFoundation = () => {
-//   return axios.get(PRODUCT_URI + "foundation");
-// };
-// const getLipLiner = () => {
-//   return axios.get(PRODUCT_URI + "lip_liner");
-// };
-// const getLipstick = () => {
-//   return axios.get(PRODUCT_URI + "lipstick");
-// };
-
-// const getMascara = () => {
-//   return axios.get(PRODUCT_URI + "mascara");
-// };
-// const getNailPolish = () => {
-//   return axios.get(PRODUCT_URI + "nail_polish");
-// };
 export default {
   getProduct,
   findMakeup,
+  postCart
 };
