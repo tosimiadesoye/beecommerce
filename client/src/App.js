@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Navigation from "./components/navbar/Navbar";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, useRouteMatch } from "react-router-dom";
 import Shop from "./pages/shop/Shop";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
@@ -9,7 +9,6 @@ import Layout from "./components/Layout";
 import Login from "./pages/auth/Lognin";
 import Profile from "./pages/user/Profile";
 import BoardUser from "./pages/Board/BoardUser";
-import MakeupType from "./components/product-type/MakeupType";
 import MakeupList from "./components/product-type/MakeupList";
 import axios from "axios";
 import Search from "./components/Search";
@@ -20,7 +19,7 @@ import data from "./models/makeup.json";
 function App() {
   const [makeupType, setMakeupType] = useState(data);
   const [product, setProduct] = useState("");
-  const [product_type, setProduct_type] = useState("");
+  const [makeup_type, setMakeup_type] = useState("");
 
   const makeupProduct = async () => {
     const response = await MakeupService.getProduct();
@@ -37,8 +36,8 @@ function App() {
           .get(`http://localhost:5000/api/product_type?keyword=${item}`)
           .then((res) => {
             if (!res.error) {
-              console.log(res.data.data)
-              setProduct_type(res.data.data);
+              
+              setMakeup_type(res.data.data);
             }
           })
           .catch((error) => {
@@ -46,19 +45,21 @@ function App() {
           })
       });
     // return result;
+    
   };
+  
   return (
     <BrowserRouter>
-      <Switch>
+     <Switch>
         <Route
           exact
           path={["/", "/home"]}
           render={() => (
             <>
-              <Navigation
-                setMakeupType={setMakeupType}
-                makeupType={makeupType}
-              />
+               <Navigation
+               setMakeupType={setMakeupType}
+               makeupType={makeupType}
+              /> 
 
               <Layout />
             </>
@@ -68,11 +69,12 @@ function App() {
           path="/shop"
           render={() => (
             <>
-               <Navigation
+                <Navigation
                 setMakeupType={setMakeupType}
                 makeupType={makeupType}
-              />
-              <Search product={product} setProduct={setProduct} />
+              /> 
+              <Search product={product}
+                setProduct={setProduct} />
               <Shop
                 product={product}
                 setProduct={setProduct}
@@ -88,7 +90,7 @@ function App() {
               <Navigation
                 setMakeupType={setMakeupType}
                 makeupType={makeupType}
-              />
+              /> 
               <Services />
             </>
           )}
@@ -100,7 +102,7 @@ function App() {
               <Navigation
                 setMakeupType={setMakeupType}
                 makeupType={makeupType}
-              />
+              /> 
               <Contact />
             </>
           )}
@@ -112,7 +114,7 @@ function App() {
               <Navigation
                 setMakeupType={setMakeupType}
                 makeupType={makeupType}
-              />
+              /> 
               <Signup />
             </>
           )}
@@ -124,7 +126,7 @@ function App() {
               <Navigation
                 setMakeupType={setMakeupType}
                 makeupType={makeupType}
-              />
+              /> 
               <Login />
             </>
           )}
@@ -137,7 +139,7 @@ function App() {
               <Navigation
                 setMakeupType={setMakeupType}
                 makeupType={makeupType}
-              />
+              /> 
               <Profile />
             </>
           )}
@@ -147,7 +149,9 @@ function App() {
           path="/user"
           render={() => (
             <>
-              <Navigation />
+               <Navigation
+                setMakeupType={setMakeupType}
+                makeupType={makeupType}/> 
               <BoardUser />
             </>
           )}
@@ -160,7 +164,7 @@ function App() {
               <Navigation
                 setMakeupType={setMakeupType}
                 makeupType={makeupType}
-              />
+              /> 
               <Profile />
             </>
           )}
@@ -170,45 +174,38 @@ function App() {
           path="/admin"
           render={() => (
             <>
-              <Navigation />
+              <Navigation
+                   setMakeupType={setMakeupType}
+                   makeupType={makeupType}
+              /> 
               <Profile />
             </>
           )}
         />
+ 
+     <Route
+     path="/:slug"
+  render={({match}) => (
+    <> 
+         <Navigation
+      setMakeupType={setMakeupType}
+      makeupType={makeupType}
+        
+      /> 
+      <MakeupList
+       {...match}
+        setMakeup_type={setMakeup_type}
+        makeup_type={makeup_type}
+        productType={productType}
+      />
+    </>
+  )}
+/>
 
-        <Route
-          path="/:id"
-          render={() => (
-            <>
-              <Navigation
-                setMakeupType={setMakeupType}
-                makeupType={makeupType}
-              />
-              <MakeupList
-                makeupType={makeupType}
-                setProduct_type={setProduct_type}
-                product_type={product_type}
-                productType={productType}
-              />
-            </>
-          )}
-        />
 
-        {/* <Route
-          exact
-          path="/type"
-          render={() => (
-            <>
-              <Navigation />
-              <MakeupType
-                setProduct_type={setProduct_type}
-                product_type={product_type}
-                productType={productType}
-              />
-            </>
-          )}
-        />  */}
-      </Switch>
+
+    
+   </Switch>
     </BrowserRouter>
   );
 }

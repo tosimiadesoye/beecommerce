@@ -1,4 +1,4 @@
-import { Link,useParams, useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AuthService from "../../services/auth";
 import { Container } from "reactstrap";
@@ -8,12 +8,11 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
 import "./navbar.css";
 
-const Navigation = ({makeupType}) => {
+const Navigation = ({ makeupType }) => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
-  let { id } = useParams();
-  let{url}=useRouteMatch()
+
   useEffect(() => {
     const user = AuthService.getCurrentUser();
 
@@ -40,23 +39,28 @@ const Navigation = ({makeupType}) => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
             <NavDropdown title="Shop" id="collasible-nav-dropdown">
-            <Nav.Link as={Link} to="/shop">
-              Shop all
-            </Nav.Link>
-              {!makeupType? "" : makeupType.map((type, idx) => {
-                console.log(url)
-                console.log(type)
-                return (
-                  <NavDropdown.Item key={idx} as={Link} to={`/${type}`}>
-                    {type}
-                  </NavDropdown.Item>
-                )
-              })}
+              <Nav.Link as={Link} to="/shop">
+                Shop all
+              </Nav.Link>
+              {!makeupType
+                ? ""
+                : makeupType.map((type, idx) => {
+                   
+                    return (
+                      <NavDropdown.Item
+                        key={idx}
+                        as={Link}
+                        to={`/${type}`}
+                      >
+                        {type}
+                      </NavDropdown.Item>
+                    );
+                  })}
             </NavDropdown>
             <Nav.Link as={Link} to="/home">
               Home
             </Nav.Link>
-            
+
             <Nav.Link as={Link} to="/cart">
               Cart
             </Nav.Link>
