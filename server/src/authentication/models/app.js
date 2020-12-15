@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+mongoose.set('debug', true)
 mongoose.Promise = global.Promise; //represents the completion of an asynchronous operation;
 
 const db = {};

@@ -23,8 +23,7 @@ const getCart = () => {
 }
 
 const emptyCart = () => {
-  const EMPTY_CART_URL = "http://localhost:5000/empty/api/cart";
-  return axios.delete(EMPTY_CART_URL)
+  return axios.delete(CART_URL)
 }
 export default {
   getProduct,

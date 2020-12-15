@@ -25,7 +25,7 @@ function App() {
   const makeupProduct = async () => {
     const response = await MakeupService.getProduct();
     if (!response.error) {
-      setProduct(response.data.items);
+      setProduct(response.data.product);
     }
   };
 
@@ -34,7 +34,8 @@ function App() {
       .get(`http://localhost:5000/api/product_type?keyword=${item}`)
       .then((res) => {
         if (!res.error) {
-          setMakeup_type(res.data.data);
+          console.log(res)
+          setMakeup_type(res.data.product);
         }
       })
       .catch((error) => {

@@ -45,9 +45,9 @@ function Login(props) {
 
        if (checkBtn.current.context._errors.length === 0) {
            AuthServices.login(username, password).then(
-               () => {
-                //    console.log(this)
+               (res) => {
                    //props.history is not working
+                   console.log(res)
                     props.history.push("/profile");
                     console.log(window.location.reload(), "history");
 

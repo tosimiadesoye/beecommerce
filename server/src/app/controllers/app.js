@@ -29,7 +29,7 @@ exports.createNewProduct = async (req, res) => {
 
     res.status(201).json({
       status: true,
-      data: product,
+      product: product,
     });
   } catch (err) {
     console.log(err);
@@ -46,7 +46,7 @@ exports.getProduct = async (req, res) => {
     //
     res.status(200).json({
       status: true,
-      items: product,
+      product: product,
     });
   } catch (err) {
     //bad request
@@ -61,10 +61,10 @@ exports.productById = async (req, res) => {
   try {
     let _id = req.params.id;
     let productDetails = await productRepo.findProductById(_id);
-    console.log(productDetails);
+
     res.status(200).json({
       status: true,
-      data: productDetails,
+      product: productDetails,
     });
   } catch (err) {
     res.status(400).json({
@@ -78,10 +78,10 @@ exports.getProductByIdAndDelete = async (req, res) => {
   try {
     let _id = req.params.id;
     let productDetails = await productRepo.deleteProductById(_id);
-    console.log(productDetails);
+
     res.status(200).json({
       status: true,
-      data: productDetails,
+      product: productDetails,
     });
   } catch (err) {
     res.status(400).json({
@@ -98,10 +98,10 @@ exports.getProductByIdAndUpdate = async (req, res) => {
     let productDetails = await productRepo.updateProductById(_id, req.body, {
       new: true,
     });
-    console.log(productDetails);
+
     res.status(200).json({
       status: true,
-      data: productDetails,
+      product: productDetails,
     });
   } catch (err) {
     res.status(500).json({
@@ -143,7 +143,7 @@ exports.deleteManyProducts = async (req, res) => {
 
     res.status(200).json({
       status: true,
-      data: product,
+      product: product,
     });
   } catch (err) {
     res.status(500).json({
@@ -162,7 +162,7 @@ exports.getProductType = async (req, res) => {
         $options: "i",
       },
     });
-    res.status(200).json({ data: product });
+    res.status(200).json({ product: product });
   } catch (err) {
     res.status(400).json({
       error: err.message,
@@ -178,9 +178,9 @@ exports.getCategory = async (req, res) => {
   try {
     const product = await Product.find({
         description: { $regex: keyword, $options: "" }
-      //was gonna check 3 of these items ...category, name , description, but the above works
+      //was gonna check 3 of these products ...category, name , description, but the above works
     });
-    res.status(200).json({ data: product });
+    res.status(200).json({ product: product });
   } catch (err) {
     res.status(400).json({
       error: err.message,
