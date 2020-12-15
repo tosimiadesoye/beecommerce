@@ -100,7 +100,7 @@ const Layout = () => {
             alt="shop nail polish"
           />
           <Card.Body>
-            <Button variant='dark' as={Link} to="/nail-polish">
+            <Button variant='dark' as={Link} to="/nail_polish">
             Nail polish
             </Button>
           </Card.Body>
@@ -136,7 +136,7 @@ const Layout = () => {
               alt="shop lip liner"
             />
             <Card.Body>
-              <Button variant='dark' as={Link} to="/lip-liner">
+              <Button variant='dark' as={Link} to="/lip_liner">
                 lipLiner
               </Button>
             </Card.Body>

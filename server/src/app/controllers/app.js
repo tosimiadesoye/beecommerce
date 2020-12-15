@@ -172,8 +172,8 @@ exports.getProductType = async (req, res) => {
 
 exports.getCategory = async (req, res) => {
     const keyword = req.query.keyword;
-    //* means any character
-    //. means any number
+    //* matches any character
+    //. matches any number
   // db.makeups.find({"description" : /.*liner.*/}, {name:1, category:1, description:1} )
   try {
     const product = await Product.find({

@@ -42,7 +42,8 @@ const Shop = ({ product, makeupProduct, addToCart }) => {
                       );
                     })} */}
                 </div>
-                <button onClick={()=>addToCart(data._id)} >Add to bag</button>
+                {/* default quantity of product is 1 */}
+                <button onClick={()=>addToCart(data._id, 1)} >Add to bag</button>
               </div>
             );
           })}

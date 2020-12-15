@@ -73,4 +73,3 @@ const MakeupList = (props) => {
 };
 
 export default MakeupList;
-

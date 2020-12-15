@@ -50,7 +50,7 @@ const Navigation = ({ makeupType }) => {
                       <NavDropdown.Item
                         key={idx}
                         as={Link}
-                        to={`/${type}`}
+                        to={`/type/${type}`}
                       >
                         {type}
                       </NavDropdown.Item>
@@ -61,7 +61,7 @@ const Navigation = ({ makeupType }) => {
               Home
             </Nav.Link>
 
-            <Nav.Link as={Link} to="/cart">
+            <Nav.Link as={Link} to="/product/cart">
               Cart
             </Nav.Link>
 

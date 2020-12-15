@@ -40,11 +40,14 @@ function App() {
           .catch((error) => {
             console.log("error: ", error);
           })
-     
-    // return result;
-    
   };
-  
+  const addToCart = async (productId, quantity) => {
+    return await MakeupService.postCart(productId, quantity)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <BrowserRouter>
      <Switch>
@@ -76,7 +79,7 @@ function App() {
                 product={product}
                 setProduct={setProduct}
                 makeupProduct={makeupProduct}
-               
+               addToCart={addToCart}
               />
             </>
           )}
@@ -180,7 +183,7 @@ function App() {
             </>
           )}
         />
-        <Route path='/cart' render={() => {
+        <Route path='/product/cart' render={() => {
           <>
             <Cart
              
@@ -188,13 +191,13 @@ function App() {
           </>
  }} />
      <Route
-     path="/:slug"
+     path="/type/:slug"
   render={({match}) => (
     <> 
          <Navigation
       setMakeupType={setMakeupType}
       makeupType={makeupType}
-   setType={setType}
+  //  setType={setType}
       /> 
       <MakeupList
        {...match}
