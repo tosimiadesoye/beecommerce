@@ -8,12 +8,10 @@ const MakeupList = (props) => {
 
   const {
     type,
-    makeupType,
     params,
-    path,
+    addToCart,
     makeup_type,
     productType,
-    setMakeup_type,
     url,
   } = props;
  
@@ -63,7 +61,7 @@ const MakeupList = (props) => {
                       );
                     })} */}
                 </div>
-
+                <button onClick={()=>addToCart(type._id, 1)} >Add to bag</button>
               </div>
             );
            }

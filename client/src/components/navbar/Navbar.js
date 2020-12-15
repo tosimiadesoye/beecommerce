@@ -38,6 +38,7 @@ const Navigation = ({ makeupType }) => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
+            
             <NavDropdown title="Shop" id="collasible-nav-dropdown">
               <Nav.Link as={Link} to="/shop">
                 Shop all
@@ -55,19 +56,19 @@ const Navigation = ({ makeupType }) => {
                         {type}
                       </NavDropdown.Item>
                     );
-                  })}
+                })}
             </NavDropdown>
             <Nav.Link as={Link} to="/home">
               Home
             </Nav.Link>
 
-            <Nav.Link as={Link} to="/product/cart">
+            <Nav.Link as={Link} to="/cart">
               Cart
             </Nav.Link>
-
             <Nav.Link as={Link} to="/services">
               Services
             </Nav.Link>
+            
             {/* 
           {showModeratorBoard && (
             <div >
@@ -84,7 +85,7 @@ const Navigation = ({ makeupType }) => {
               </Link>
             </div>
           )} */}
-
+  
             {currentUser && (
               <div>
                 <Link to={"/user"} className="nav-link">
@@ -121,7 +122,8 @@ const Navigation = ({ makeupType }) => {
                   </Link>
                 </div>
               </div>
-            )}
+              )}
+           
           </Nav>
         </Navbar.Collapse>
       </Navbar>
