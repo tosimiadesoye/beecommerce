@@ -1,9 +1,20 @@
 import { useState, useEffect } from "react";
 import CartService from "../services/product";
 import Spinner from "react-bootstrap/Spinner";
+import makeStyles from '@material-ui/core/styles/makeStyles'
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1)
+    },
+  },
+}))
+
 const Cart = (props) => {
   const [cart, setCart] = useState([]);
-
+  const classes = useStyles();
+  
   useEffect(() => {
     cartItems();
   }, []);
@@ -48,7 +59,7 @@ const Cart = (props) => {
   };
   console.log(cart);
   return (
-    <>
+    <div className={classes.root}>
       {!cart.items ? (
         <Spinner animation="border" role="status">
           <span className="sr-only">Loading...</span>
@@ -57,7 +68,7 @@ const Cart = (props) => {
         cart.items.map((item) => {
           return (
             <>
-              <div key={item._id}>
+              <div key={item._id} >
                 <h4>{item.productId.name}</h4>
                 <img
                   src={item.productId.api_featured_image}
@@ -96,7 +107,7 @@ const Cart = (props) => {
         <h6>subTotal{cart.subTotal}</h6>
         <button onClick={() => emptyCartItem()}>Empty cart</button>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AuthService from "../../services/auth";
-import { Container } from "reactstrap";
+
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import "./navbar.css";
 
 const Navigation = ({ makeupType }) => {
@@ -63,7 +63,7 @@ const Navigation = ({ makeupType }) => {
             </Nav.Link>
 
             <Nav.Link as={Link} to="/cart">
-              Cart
+               <AddShoppingCartIcon />
             </Nav.Link>
             <Nav.Link as={Link} to="/services">
               Services

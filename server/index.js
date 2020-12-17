@@ -36,9 +36,6 @@ app.get('/', (req, res) => {
 //importing mongo db connection from config
 require('./config/mongodb');
 
-//importing auth routes
-//   require('./src/routesHandler/auth')(app)
-
 
 app.listen(port, () => {
     console.log('Port running on localhost ' + port)

@@ -8,8 +8,8 @@ const Search = ({ setProduct }) => {
   const findMakeupItems = async (value) => {
     const result = await AuthService.findMakeup(value).then((res) => {
       if (!res.error) {
-        console.log(res.data.data);
-        return setProduct(res.data.data);
+        console.log(res.data.product);
+        return setProduct(res.data.product);
       }
     });
     return result;

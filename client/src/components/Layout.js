@@ -70,7 +70,7 @@ const Layout = () => {
             alt="shop eyeshadow"
           />
           <Card.Body>
-            <Button variant='dark' as={Link} to="/eyeshadow">
+            <Button variant='dark' as={Link} to="/type/eyeshadow">
               eyeshadow
             </Button>
           </Card.Body>
@@ -85,7 +85,7 @@ const Layout = () => {
             alt="shop lipstick"
           />
           <Card.Body>
-            <Button variant='dark' as={Link} to="/lipstick">
+            <Button variant='dark' as={Link} to="/type/lipstick">
             Lipstick
             </Button>
           </Card.Body>
@@ -100,7 +100,7 @@ const Layout = () => {
             alt="shop nail polish"
           />
           <Card.Body>
-            <Button variant='dark' as={Link} to="/nail_polish">
+            <Button variant='dark' as={Link} to="/type/nail_polish">
             Nail polish
             </Button>
           </Card.Body>
@@ -108,10 +108,10 @@ const Layout = () => {
         <br />
 
         {/* 
-        <Link to="/mascara">mascara</Link>
+        <Link to="/type/mascara">mascara</Link>
       */}
         {/* 
-        <Link to="/foundation">foundation</Link> */}
+        <Link to="/type/foundation">foundation</Link> */}
       </div>
       <div id="content1">
         <CardGroup>
@@ -123,7 +123,7 @@ const Layout = () => {
               alt="shop blush"
             />
             <Card.Body>
-              <Button variant='dark' as={Link} to="/blush">
+              <Button variant='dark' as={Link} to="/type/blush">
                 Blush
               </Button>
             </Card.Body>
@@ -136,7 +136,7 @@ const Layout = () => {
               alt="shop lip liner"
             />
             <Card.Body>
-              <Button variant='dark' as={Link} to="/lip_liner">
+              <Button variant='dark' as={Link} to="/type/lip_liner">
                 lipLiner
               </Button>
             </Card.Body>
@@ -151,7 +151,7 @@ const Layout = () => {
               alt="shop eyebrow"
             />
             <Card.Body>
-              <Button variant='dark' as={Link} to="/eyebrow">
+              <Button variant='dark' as={Link} to="/type/eyebrow">
                 eyebrow
               </Button>
             </Card.Body>
@@ -164,7 +164,7 @@ const Layout = () => {
               alt="shop eyeliner"
             />
             <Card.Body>
-              <Button variant='dark' as={Link} to="/eyeliner">
+              <Button variant='dark' as={Link} to="/type/eyeliner">
                 eyeliner
               </Button>
             </Card.Body>
@@ -186,7 +186,7 @@ const Layout = () => {
             alt="shop bronzer"
           />
           <Card.Body>
-            <Button variant='dark' as={Link} to="/bronzer">
+            <Button variant='dark' as={Link} to="/type/bronzer">
               Bronzer
             </Button>
           </Card.Body>

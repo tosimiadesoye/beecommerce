@@ -16,6 +16,7 @@ import authService from "./services/product";
 import MakeupService from "./services/product";
 import Cart from "./pages/Cart";
 import data from "./models/makeup.json";
+import './App.css'
 function App() {
   const [makeupType, setMakeupType] = useState(data);
   const [product, setProduct] = useState("");
@@ -50,8 +51,10 @@ function App() {
       .catch((error) => console.log(error));
   };
   return (
+    <div className='fonts'>
     <BrowserRouter>
       <Switch>
+        
         <Route
           exact
           path={["/", "/home"]}
@@ -225,7 +228,8 @@ function App() {
           )}
         />
       </Switch>
-    </BrowserRouter>
+      </BrowserRouter>
+      </div>
   );
 }
 
