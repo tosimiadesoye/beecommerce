@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const getProduct = () => {
-  const API_URI = "http://localhost:5000/api/product";
+  const API_URI = "http://localhost:5000/api/product/1";
   return axios.get(API_URI);
 };
 

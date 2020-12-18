@@ -11,7 +11,7 @@ import Profile from "./pages/user/Profile";
 import BoardUser from "./pages/Board/BoardUser";
 import MakeupList from "./components/product-type/MakeupList";
 import axios from "axios";
-import Search from "./components/Search";
+// import Search from "./components/Search";
 import authService from "./services/product";
 import MakeupService from "./services/product";
 import Cart from "./pages/Cart";
@@ -89,8 +89,9 @@ function App() {
               <Navigation
                 setMakeupType={setMakeupType}
                 makeupType={makeupType}
+                product={product} setProduct={setProduct}
               />
-              <Search product={product} setProduct={setProduct} />
+              {/* <Search product={product} setProduct={setProduct} /> */}
               <Shop
                 product={product}
                 setProduct={setProduct}
