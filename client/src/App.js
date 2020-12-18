@@ -91,17 +91,18 @@ function App() {
                 makeupType={makeupType}
                 product={product} setProduct={setProduct}
               />
-              {/* <Search product={product} setProduct={setProduct} /> */}
               <Shop
                 product={product}
                 setProduct={setProduct}
                 makeupProduct={makeupProduct}
                 addToCart={addToCart}
               />
+              {/* <Search product={product} setProduct={setProduct} /> */}
+             {/* <Shop/> */}
             </>
           )}
         />
-        
+         
         <Route
           exact
           path="/contact-us"
