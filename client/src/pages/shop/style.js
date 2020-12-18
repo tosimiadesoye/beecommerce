@@ -3,18 +3,19 @@ const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
     },
-    paper: {
-      padding: theme.spacing(8),
+  container: {
+       border: '1px solid black',
       textAlign: "center",
-      color: theme.palette.text.secondary,
-      marginLeft: theme.spacing(7),
-      MarginRight: theme.spacing(0),
-      borderRadius: '10px',
-      // maxWidth: 300,
+      // color: theme.palette.text.secondary,
+    width: '100%',
+    height: '70%',
+    paddingLeft: theme.spacing(10),
+    paddingRight: theme.spacing(20),
+     maxWidth: 100,
       
     },
   width: {
-      maxWidth: 200,
+      maxWidth: 100,
       
       // backgroundColor: "#f3e5f5"
     },
