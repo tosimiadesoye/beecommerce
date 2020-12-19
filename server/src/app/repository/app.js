@@ -5,9 +5,13 @@ exports.createProduct = async payLoad => {
     return product
 }
 
-exports.findAllProducts = async () => {
-    
-    const product = await Product.find()
+exports.findAllProducts = async (req, body) => {
+    console.log(req.params.pId, "your pId")
+    const { page = req.params.pId, limit = 10 } = parseInt(req.query);
+    const product = await Product.find() 
+    .limit(limit)
+    .skip(page * limit)
+    .exec();
     return product
 } 
     

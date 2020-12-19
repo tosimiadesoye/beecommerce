@@ -5,26 +5,30 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+import { Paper } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    border: "1px solid black",
     marginTop: theme.spacing(7),
-    boxShadow: "0 0 20px 2px",
-    backgroundColor: "#f8bbd0",
   },
-  productMargin: {
+  marg: {
     marginTop: theme.spacing(7),
-    marginLeft: theme.spacing(-3),
+    marginLeft: theme.spacing(0),
   },
   itemDisplay: {
-    marginTop: theme.spacing(7),
+     marginTop: theme.spacing(7),
     // marginLeft: theme.spacing(25),
   },
-  total: {
-    float: "right",
-    paddingLeft: "30px",
-    marginLeft: theme.spacing(3),
+  color: {
+    borderRadius: "30%",
+    width: "20px",
+    height: "20px",
+    display: "block",
+
+    "&:hover": {
+      backgroundColor: "yellow",
+    },
   },
 }));
 
@@ -100,7 +104,7 @@ const Cart = (props) => {
                       justify="space-between"
                       container
                       spacing={1}
-                      className={classes.productMargin}
+                      className={classes.marg}
                       // sm={4} xs={4}
                     >
                       <Grid item>
@@ -113,6 +117,19 @@ const Cart = (props) => {
                         <p style={{ wordWrap: "break-word" }}>
                           {item.productId.name}
                         </p>
+
+                        {item.productId.product_colors.map((colors) => {
+                          return (
+                            <p
+                              style={{
+                                backgroundColor: colors.hex_value,
+                                display: "inline-block",
+                                wordWrap: "break-word",
+                              }}
+                              className={classes.color}
+                            ></p>
+                          );
+                        })} 
                       </Grid>
 
                       <Grid item className={classes.itemDisplay}>
@@ -120,23 +137,23 @@ const Cart = (props) => {
                       </Grid>
                       <Grid className={classes.itemDisplay} item>
                         <Grid justify="space-between" container spacing={1}>
-                          <Button
+                          <button
                             onClick={() =>
-                              decrementQuantity(item.productId._id)
+                              incrementQuantity(item.productId._id)
                             }
                           >
-                            -
-                          </Button>
+                            +
+                          </button>
                           <h5>{item.quantity}</h5>
 
                           <div>
-                            <Button
+                            <button
                               onClick={() =>
-                                incrementQuantity(item.productId._id)
+                                decrementQuantity(item.productId._id)
                               }
                             >
-                              +
-                            </Button>
+                              -
+                            </button>
                           </div>
                         </Grid>
                       </Grid>
@@ -149,16 +166,11 @@ const Cart = (props) => {
                 );
               })
             )}
-            <Box mb="50px">
+            <div>
               {/* key={!product?"":product._id} */}
-              <h4 className={classes.total}>{`£${cart.subTotal}`}</h4>
-              <button variant="contained" onClick={() => emptyCartItem()}>
-                Empty cart
-              </button>
-              <button variant="contained" onClick={() => emptyCartItem()}>
-                Check out
-              </button>
-            </Box>
+              <h6>subTotal{cart.subTotal}</h6>
+              <button onClick={() => emptyCartItem()}>Empty cart</button>
+            </div>
           </div>
         </Box>
       </Grid>
