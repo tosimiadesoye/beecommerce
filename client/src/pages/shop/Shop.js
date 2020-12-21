@@ -7,9 +7,7 @@ import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-import Collapse from "@material-ui/core/Collapse";
-import IconButton from "@material-ui/core/IconButton";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
 import CardActions from "@material-ui/core/CardActions";
 import CardActionArea from "@material-ui/core/CardActions";
 
@@ -19,8 +17,8 @@ import useStyles from "./style";
 // import './shop.css'
 
 const Cards = ({ product, makeupProduct }) => {
-  const [expanded, setExpanded] = useState(false);
-const classes = useStyles();
+
+  const classes = useStyles();
 
   useEffect(() => {
     makeupProduct();
@@ -30,7 +28,11 @@ const classes = useStyles();
     <>
       <Box
         m="70px"
-        // style={{ border: "3px solid black" }}
+        // style={{
+        //   justifyContent: "center",
+        //   alignContent: "center",
+        //   textAlign: "center",
+        // }}
       >
         <Grid container>
           <Grid container>
@@ -41,30 +43,25 @@ const classes = useStyles();
             ) : (
               product.map((data) => {
                 return (
-                  <Grid container
-                  className={classes.sizes}
+                  <Grid
+                    container
+                    className={classes.sizes}
                   >
                     <div>
                       <Card key={data._id}
                         className={classes.container}
-                     square
+                        square
                       >
                         <CardActionArea>
                           <CardMedia
                             component="img"
-                            alt="Contemplative Reptile"
+                            alt={data.name}
                             style={{ width: "5rem" }}
                             image={data.api_featured_image}
                             title={data.name}
                           />
                           <CardContent>
-                            <Typography
-                              gutterBottom
-                              variant="hp"
-                              component="h2"
-                            >
-                              {`£ ${data.price}`}
-                            </Typography>
+                          
                             <Typography
                               variant="body2"
                               color="textSecondary"
@@ -72,14 +69,25 @@ const classes = useStyles();
                             >
                               {data.name}
                             </Typography>
+                            <Typography
+                              gutterBottom
+                              variant="hp"
+                              component="h2"
+                            >
+                              {`£ ${data.price}`}
+                            </Typography>
                           </CardContent>
                         </CardActionArea>
                         <CardActions>
-                          <Button variant='contained' size="small" color="black">
+                          <Button
+                            variant="contained"
+                            size="small"
+                            color="black"
+                          >
                             View item
                           </Button>
                         </CardActions>
-                        <div></div>
+                       
                       </Card>
                     </div>
                   </Grid>

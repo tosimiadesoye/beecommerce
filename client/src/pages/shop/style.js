@@ -24,7 +24,10 @@ const useStyles = makeStyles((theme) => ({
  
      },
 
-    
+  rating: {
+    marginLeft: '100px',
+    marginRight: '50px'
+    }
   
   }));
 export default useStyles  

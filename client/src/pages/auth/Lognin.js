@@ -16,6 +16,7 @@ const required = (value) => {
 }
 
 function Login(props) {
+    console.log(props)
     const checkBtn = useRef();
     const form = useRef();
     

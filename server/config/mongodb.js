@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
-const config = require('./app');
+ const config = require('./app');
+const dotenv = require('dotenv');
+dotenv.config()
 
 const server = require('../src/authentication/server')
+
 mongoose.connect(config.dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -9,6 +12,8 @@ mongoose.connect(config.dbUrl, {
     useFindAndModify: false,
     //  useMongoClient: true
 });
+
+
 // mongoose.set("useCreateIndex", true);
 mongoose.connection.on('connected', () => {
     console.log('connected to mongo database');

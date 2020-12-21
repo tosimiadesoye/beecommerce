@@ -14,7 +14,7 @@ const ProductSchema = new Schema({
     product_link: String,
     website_link: String,
     description: String,
-    rating: Object,
+    rating: Number,
     category: String,
     product_type: String,
     tag_list: Array,
@@ -23,5 +23,5 @@ const ProductSchema = new Schema({
     product_colors: Array
 }, { timestamps: true });
 
-const product = mongoose.model("Makeups", ProductSchema)
+const product = mongoose.model("makeups", ProductSchema)
 module.exports = product;
