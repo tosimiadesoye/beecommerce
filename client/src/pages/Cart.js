@@ -57,7 +57,7 @@ const Cart = (props) => {
 
   const decrementQuantity = async (id) => {
     try {
-      const response = await CartService.postCart(id, -1);
+      const response =  CartService.postCart(id, -1);
       console.log(response);
       cartItems();
     } catch (err) {
@@ -65,10 +65,9 @@ const Cart = (props) => {
     }
   };
 
-  const emptyCartItem = async () => {
+  const emptyCartItem = () => {
     try {
-      const response = CartService.emptyCart();
-      await response;
+      CartService.emptyCart();
       cartItems();
       props.history.push("/");
     } catch (err) {

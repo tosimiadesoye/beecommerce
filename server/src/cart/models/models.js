@@ -8,11 +8,11 @@ let CartItemSchema = new Schema({
         type:mongoose.Schema.Types.Object,
         ref: "Makeups" //The model that populate() should use if populating this path.
     },
-    quantity:Number,
-    // quantity: {
-    //     type: Number,
-    //     default: 1
-    // },
+    // quantity:Number,
+     quantity: {
+         type: Number,
+         default: 1
+     },
     price: Number,
     total: Number,
     
