@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import Navigation from "./components/navbar/Navbar";
-import { BrowserRouter, Switch, Route, useRouteMatch } from "react-router-dom";
-import Shop from "./pages/shop/Shop";
+import { BrowserRouter, Switch, Route} from "react-router-dom";
+import ShopAll from "./pages/shop/Shop";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Signup from "./pages/auth/Signup";
@@ -11,8 +11,6 @@ import Profile from "./pages/user/Profile";
 import BoardUser from "./pages/Board/BoardUser";
 import MakeupList from "./components/product-type/MakeupList";
 import axios from "axios";
-// import Search from "./components/Search";
-import authService from "./services/product";
 import MakeupService from "./services/product";
 import Cart from "./pages/Cart";
 import data from "./models/makeup.json";
@@ -91,7 +89,7 @@ function App() {
                 makeupType={makeupType}
                 product={product} setProduct={setProduct}
               />
-              <Shop
+              <ShopAll
                 product={product}
                 setProduct={setProduct}
                 makeupProduct={makeupProduct}
@@ -237,11 +235,11 @@ function App() {
 
 export default App;
 
-{
+
   /* <Switch>
          
           <Route path="/mod" component={BoardModerator} />
           <Route path="/admin" component={BoardAdmin} />
         </Switch>
       <Switch> */
-}
+

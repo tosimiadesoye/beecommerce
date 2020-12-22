@@ -14,7 +14,7 @@ import Card from "react-bootstrap/Card";
 import Carousel from "react-bootstrap/Carousel";
 import CardGroup from "react-bootstrap/CardGroup";
 import Button from "react-bootstrap/Button";
-import CardColumns from "react-bootstrap/CardColumns";
+
 const Layout = () => {
   return (
     <div className="layout">

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
@@ -9,23 +9,33 @@ import CardActionArea from "@material-ui/core/CardActions";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
-import PropTypes from 'prop-types';
-
+import IndividualItem from "./IndividualItem";
+import {
+  BrowserRouter,
+  Route,
+  Link,
+  Switch,
+  useRouteMatch,
+  matchPath,
+} from "react-router-dom";
 import clsx from "clsx";
 import useStyles from "../../pages/shop/style";
-import { CardActions } from "@material-ui/core";
+import CardActions from "@material-ui/core/CardActions";
 import Rating from "@material-ui/lab/Rating";
 
 const MakeupList = (props) => {
   const classes = useStyles();
-  const { type, params, addToCart, makeup_type, productType, url } = props;
+  const { type, params, addToCart, makeup_type, productType } = props;
+  let { path, url } = useRouteMatch();
 
+  console.log(path);
+  console.log(url);
   useEffect(() => {
     productType(type);
   }, [type]);
 
   return (
-    <>
+    <BrowserRouter>
       <Box m="70px">
         <Grid container>
           <Grid container>
@@ -34,18 +44,12 @@ const MakeupList = (props) => {
                 <span className="sr-only">Loading...</span>
               </Spinner>
             ) : (
-                makeup_type.map((type) => {
-                  //I have a propType of null
-                //   type.rating.PropTypes = {
-                //   value: PropTypes.number.isRequired
-                // }
+              makeup_type.map((type) => {
                 if (params.slug === type.product_type) {
-                  console.log(type);
                   return (
                     <Grid container className={classes.sizes}>
                       <div>
                         <Card
-                         
                           key={type._id}
                           className={classes.container}
                           square
@@ -75,37 +79,38 @@ const MakeupList = (props) => {
                               </Typography>
 
                               <Box
-                                  
                                 component="fieldset"
                                 mb={3}
-                               
                                 borderColor="transparent"
                               >
-                          
-                                  <Rating
-                              
-                                   name="customized-empty"
+                                <Rating
+                                  name="customized-empty"
                                   defaultValue={type.rating}
                                   precision={0.5}
                                   emptyIcon={
-                                    <StarBorderIcon
-                                       fontSize="inherit"
-                                    />
+                                    <StarBorderIcon fontSize="inherit" />
                                   }
                                   readOnly
-                                /> 
-                              </Box> 
+                                />
+                              </Box>
                             </CardContent>
                           </CardActionArea>
-                          <CardActions>
-                            <Button
-                              variant="contained"
-                              size="small"
-                              color="black"
-                            >
-                              View item
-                            </Button>
-                          </CardActions>
+                          <Link
+                            to={{
+                              pathname: `${url}/${type._id}`,
+                              state: { itemData: type },
+                            }}
+                          >
+                            <CardActions>
+                              <Button
+                                variant="contained"
+                                size="small"
+                                color="black"
+                              >
+                                View item
+                              </Button>
+                            </CardActions>
+                          </Link>
                         </Card>
                       </div>
                     </Grid>
@@ -116,7 +121,20 @@ const MakeupList = (props) => {
           </Grid>
         </Grid>
       </Box>
-    </>
+
+      <Switch>
+        <Route
+           exact
+          path={`${url}/:_id`}
+          render={({ match }) => (
+            <IndividualItem
+              {...match}
+              type={type}
+              addToCart={addToCart} />
+          )}
+        />
+      </Switch>
+    </BrowserRouter>
   );
 };
 

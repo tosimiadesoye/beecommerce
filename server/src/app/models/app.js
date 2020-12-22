@@ -23,5 +23,5 @@ const ProductSchema = new Schema({
     product_colors: Array
 }, { timestamps: true });
 
-const product = mongoose.model("makeups", ProductSchema)
+const product = mongoose.model("Makeups", ProductSchema)
 module.exports = product;

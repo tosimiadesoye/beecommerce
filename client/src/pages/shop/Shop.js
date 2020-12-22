@@ -7,33 +7,33 @@ import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-
 import CardActions from "@material-ui/core/CardActions";
 import CardActionArea from "@material-ui/core/CardActions";
-
+import {
+  BrowserRouter,
+  Route,
+  Link,
+  Switch,
+  useRouteMatch,
+  useParams,
+} from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
 import useStyles from "./style";
+import IndividualItem from './IndividualItem'
 // import './shop.css'
 
-const Cards = ({ product, makeupProduct }) => {
-
+const ShopAll = ({ product, makeupProduct, addToCart }) => {
   const classes = useStyles();
-
+  let { path, url } = useRouteMatch()
+ 
   useEffect(() => {
     makeupProduct();
   }, []);
 
   return (
     <>
-      <Box
-        m="70px"
-        // style={{
-        //   justifyContent: "center",
-        //   alignContent: "center",
-        //   textAlign: "center",
-        // }}
-      >
+      <Box m="70px">
         <Grid container>
           <Grid container>
             {!product ? (
@@ -41,17 +41,12 @@ const Cards = ({ product, makeupProduct }) => {
                 <span className="sr-only">Loading...</span>
               </Spinner>
             ) : (
-              product.map((data) => {
+              product.map((data, index) => {
+                console.log(data)
                 return (
-                  <Grid
-                    container
-                    className={classes.sizes}
-                  >
+                  <Grid container className={classes.sizes}>
                     <div>
-                      <Card key={data._id}
-                        className={classes.container}
-                        square
-                      >
+                      <Card key={data._id} className={classes.container} square>
                         <CardActionArea>
                           <CardMedia
                             component="img"
@@ -61,7 +56,6 @@ const Cards = ({ product, makeupProduct }) => {
                             title={data.name}
                           />
                           <CardContent>
-                          
                             <Typography
                               variant="body2"
                               color="textSecondary"
@@ -78,16 +72,25 @@ const Cards = ({ product, makeupProduct }) => {
                             </Typography>
                           </CardContent>
                         </CardActionArea>
+                        
+                        <Link 
+                           to={{
+                            pathname: `${url}/${index}`,
+                            state:{itemData:data}
+                          }}
+                        > 
                         <CardActions>
                           <Button
                             variant="contained"
                             size="small"
                             color="black"
+                            // component={Link}
+                           
                           >
                             View item
                           </Button>
                         </CardActions>
-                       
+                         </Link> 
                       </Card>
                     </div>
                   </Grid>
@@ -97,8 +100,15 @@ const Cards = ({ product, makeupProduct }) => {
           </Grid>
         </Grid>
       </Box>
+   
+     <Switch>
+        <Route exact path={ `${path}/:id`}
+        >  
+         <IndividualItem  addToCart={ addToCart}/>
+        </Route>
+        </Switch>
     </>
   );
 };
 
-export default Cards;
+export default ShopAll;

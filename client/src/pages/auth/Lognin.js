@@ -49,8 +49,7 @@ function Login(props) {
                (res) => {
                    //props.history is not working
                    console.log(res)
-                    props.history.push("/");
-                    console.log(window.location.reload(), "history");
+                   window.location.replace("/")
 
                },
                (error) => {
