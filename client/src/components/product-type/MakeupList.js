@@ -21,7 +21,7 @@ import {
 import clsx from "clsx";
 import useStyles from "../../pages/shop/style";
 import CardActions from "@material-ui/core/CardActions";
-import Rating from "@material-ui/lab/Rating";
+import ating from "@material-ui/lab/Rating";
 
 const MakeupList = (props) => {
   const classes = useStyles();
