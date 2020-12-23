@@ -1,9 +1,7 @@
 import { useState} from "react";
 import Navigation from "./components/navbar/Navbar";
 import { BrowserRouter, Switch, Route} from "react-router-dom";
-import ShopAll from "./pages/shop/Shop";
-import Services from "./pages/Services";
-import Contact from "./pages/Contact";
+import ShopCardContainer from "./pages/shop/ShopCardContainer";
 import Signup from "./pages/auth/Signup";
 import Layout from "./components/Layout";
 import Login from "./pages/auth/Lognin";
@@ -17,9 +15,9 @@ import data from "./models/makeup.json";
 import './App.css'
 function App() {
   const [makeupType, setMakeupType] = useState(data);
-  const [product, setProduct] = useState("");
-  const [makeup_type, setMakeup_type] = useState("");
-  const [type, setType] = useState("");
+  const [product, setProduct] = useState([]);
+  const [makeup_type, setMakeup_type] = useState('');
+  const [type, setType] = useState([]);
 
   const makeupProduct = async () => {
     const response = await MakeupService.getProduct();
@@ -34,6 +32,7 @@ function App() {
       .then((res) => {
         if (!res.error) {
           console.log(res)
+          console.log(item)
           setMakeup_type(res.data.product);
         }
       })
@@ -89,31 +88,18 @@ function App() {
                 makeupType={makeupType}
                 product={product} setProduct={setProduct}
               />
-              <ShopAll
+              <ShopCardContainer
                 product={product}
                 setProduct={setProduct}
                 makeupProduct={makeupProduct}
                 addToCart={addToCart}
               />
-              {/* <Search product={product} setProduct={setProduct} /> */}
-             {/* <Shop/> */}
+             
             </>
           )}
         />
          
-        <Route
-          exact
-          path="/contact-us"
-          render={() => (
-            <>
-              <Navigation
-                setMakeupType={setMakeupType}
-                makeupType={makeupType}
-              />
-              <Contact />
-            </>
-          )}
-        />
+   
         <Route
           exact
           path="/signup"
@@ -154,58 +140,9 @@ function App() {
             </>
           )}
         />
-        <Route
-          exact
-          path="/user"
-          render={() => (
-            <>
-              <Navigation
-                setMakeupType={setMakeupType}
-                makeupType={makeupType}
-              />
-              <BoardUser />
-            </>
-          )}
-        />
-        <Route
-          exact
-          path="/mod"
-          render={() => (
-            <>
-              <Navigation
-                setMakeupType={setMakeupType}
-                makeupType={makeupType}
-              />
-              <Profile />
-            </>
-          )}
-        />
-        <Route
-          exact
-          path="/admin"
-          render={() => (
-            <>
-              <Navigation
-                setMakeupType={setMakeupType}
-                makeupType={makeupType}
-              />
-              <Profile />
-            </>
-          )}
-        />
-     <Route
-          exact
-          path="/services"
-          render={() => (
-            <>
-              <Navigation
-                setMakeupType={setMakeupType}
-                makeupType={makeupType}
-              />
-              <Services />
-            </>
-          )}
-        />
+        
+   
+
         <Route
           exact
           path="/type/:slug"
