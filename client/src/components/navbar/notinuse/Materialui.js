@@ -10,14 +10,13 @@ import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import Button from "@material-ui/core/Button";
-import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from "@material-ui/icons/Search";
+import InputBase from "@material-ui/core/InputBase";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
-import useStyles from '../style.js'
-import SvgIcon from '@material-ui/core/SvgIcon';
+import useStyles from "../style.js";
+import SvgIcon from "@material-ui/core/SvgIcon";
 import makeupService from "../../../services/product";
-
 
 const Navigation = ({ makeupType, setProduct }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -52,15 +51,12 @@ const Navigation = ({ makeupType, setProduct }) => {
     e.preventDefault();
     findMakeupItems(keyword);
   };
- 
-  
 
   const handleClose = () => {
     setAnchorEl(null);
   };
   const open = Boolean(anchorEl);
   const ITEM_HEIGHT = 48;
-
 
   const logOut = () => {
     AuthService.logout();
@@ -70,8 +66,8 @@ const Navigation = ({ makeupType, setProduct }) => {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileIconMenuOpen = (event) => {
-     setAnchorEl(event.currentTarget);
-   };
+    setAnchorEl(event.currentTarget);
+  };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -92,14 +88,14 @@ const Navigation = ({ makeupType, setProduct }) => {
   function HomeIcon(props) {
     return (
       <>
-      <SvgIcon {...props}>
-         <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /> 
+        <SvgIcon {...props}>
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
         </SvgIcon>
-        </>
+      </>
     );
   }
   const menuId = "primary-search-account-menu";
-  
+
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
@@ -112,93 +108,85 @@ const Navigation = ({ makeupType, setProduct }) => {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-      <IconButton
-        aria-label="more"
-        aria-controls="long-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
-             
-              <Link  color="inherit">shop</Link>
-            </IconButton>
-            <Menu
-        id="long-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={open}
-        onClose={handleClose}
-        PaperProps={{
-          style: {
-            maxHeight: ITEM_HEIGHT * 4.5,
-            width: '20ch',
-          },
-        }}
+        <IconButton
+          aria-label="more"
+          aria-controls="long-menu"
+          aria-haspopup="true"
+          onClick={handleClick}
+        >
+          <Link color="inherit">shop</Link>
+        </IconButton>
+        <Menu
+          id="long-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={open}
+          onClose={handleClose}
+          PaperProps={{
+            style: {
+              maxHeight: ITEM_HEIGHT * 4.5,
+              width: "20ch",
+            },
+          }}
+        >
+          <Link to="/shop">Shop all</Link>
+          {makeupType.map((type, idx) => (
+            <MenuItem
+              key={idx}
+              selected={type === "Pyxis"}
+              onClick={handleClose}
             >
-              <Link to='/shop'>Shop all</Link>
-        {makeupType.map((type, idx) => (
-          <MenuItem
-           
-            key={idx}
-            selected={type === 'Pyxis'}
-            onClick={handleClose}>
-            <Link to={`/type/${type}`}>
-            {type}
-            </Link> 
-
-          </MenuItem>
-        ))}
-      </Menu>
+              <Link to={`/type/${type}`}>{type}</Link>
+            </MenuItem>
+          ))}
+        </Menu>
         <Link to="/home">
-        <HomeIcon />
+          <HomeIcon />
         </Link>
       </MenuItem>
       <MenuItem>
         <Link to="/cart">
-          <AddShoppingCartIcon/>
+          <AddShoppingCartIcon />
         </Link>
       </MenuItem>
 
       <MenuItem>
-    
-          
-  
-
-            {/* if you can access user.username - nav should logout else it should be login or sign up */}
-            {currentUser ? (
-              <div>
-                <div>
+        {/* if you can access user.username - nav should logout else it should be login or sign up */}
+        {currentUser ? (
+          <div>
+            <div>
               <Link to={"/profile"} className="nav-link">
-              <AccountCircle /> 
-                    {currentUser.username}
-                  </Link>
-                </div>
-                <div>
-                  <a href="/login" className="nav-link" onClick={logOut}>
-                    Logout
-                  </a>
-                </div>
-              </div>
-            ) : (
-              <div className="Navigation-nav ml-auto">
-                <div>
-                  <Link to={"/login"} className="nav-link">
-                    Login
-                  </Link>
-                </div>
+                <AccountCircle />
+                {currentUser.username}
+              </Link>
+            </div>
+            <div>
+              <a href="/login" className="nav-link" onClick={logOut}>
+                Logout
+              </a>
+            </div>
+          </div>
+        ) : (
+          <div className="Navigation-nav ml-auto">
+            <div>
+              <Link to={"/login"} className="nav-link">
+                Login
+              </Link>
+            </div>
 
-                <div>
-                  <Link to={"/signup"} className="nav-link">
-                    Sign Up
-                  </Link>
-                </div>
-              </div>
-              )}
+            <div>
+              <Link to={"/signup"} className="nav-link">
+                Sign Up
+              </Link>
+            </div>
+          </div>
+        )}
       </MenuItem>
     </Menu>
   );
   return (
     <div className={classes.grow}>
-      <AppBar position="static" style={{ backgroundColor: 'white' }}>
+      <AppBar position="static" style={{ backgroundColor: "white" }}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -208,113 +196,96 @@ const Navigation = ({ makeupType, setProduct }) => {
           >
             <MenuIcon />
           </IconButton>
-         
+
           <Typography className={classes.title} variant="h6" noWrap>
             <Link to="/">Logo</Link>
           </Typography>
-         
+
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-          <form onSubmit={handleSubmit} inline>
-      <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-            placeholder="Search…"
-            value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-        </div>
-        <Button variant="primary" type="submit">
-          submit
-        </Button> 
-      </form>
-          
-          <IconButton
-        aria-label="more"
-        aria-controls="long-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
-             
-              <Link  color="inherit">shop</Link>
+            <form onSubmit={handleSubmit} inline>
+              <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <SearchIcon />
+                </div>
+                <InputBase
+                  placeholder="Search…"
+                  value={keyword}
+                  onChange={(e) => setKeyword(e.target.value)}
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                  }}
+                  inputProps={{ "aria-label": "search" }}
+                />
+              </div>
+              <Button variant="primary" type="submit">
+                submit
+              </Button>
+            </form>
+
+            <IconButton
+              aria-label="more"
+              aria-controls="long-menu"
+              aria-haspopup="true"
+              onClick={handleClick}
+            >
+              <Link color="inherit">shop</Link>
             </IconButton>
             <Menu
-        id="long-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={open}
-        onClose={handleClose}
-        PaperProps={{
-          style: {
-            maxHeight: ITEM_HEIGHT * 4.5,
-            width: '20ch',
-          },
-        }}
+              id="long-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={open}
+              onClose={handleClose}
+              PaperProps={{
+                style: {
+                  maxHeight: ITEM_HEIGHT * 4.5,
+                  width: "20ch",
+                },
+              }}
             >
-              <Link to='/shop'>Shop all</Link>
-        {makeupType.map((type, idx) => (
-          <MenuItem
-           
-            key={idx}
-            selected={type === 'Pyxis'}
-            onClick={handleClose}>
-            <Link to={`/type/${type}`}>
-            {type}
-            </Link> 
-
-          </MenuItem>
-        ))}
-      </Menu>
-            <IconButton  color="inherit">
+              <Link to="/shop">Shop all</Link>
+              {makeupType.map((type, idx) => (
+                <MenuItem
+                  key={idx}
+                  selected={type === "Pyxis"}
+                  onClick={handleClose}
+                >
+                  <Link to={`/type/${type}`}>{type}</Link>
+                </MenuItem>
+              ))}
+            </Menu>
+            <IconButton color="inherit">
               <Link to="/home">Home</Link>
-              
             </IconButton>
             <IconButton color="inherit">
-           
-              
-               <Link to="/cart"><AddShoppingCartIcon/></Link> 
-
+              <Link to="/cart">
+                <AddShoppingCartIcon />
+              </Link>
             </IconButton>
-          
-            <IconButton
-              
-            >
 
-            {/* if you can access user.username - nav should logout else it should be login or sign up */}
-            {currentUser ? (
-              <div>
+            <IconButton>
+              {/* if you can access user.username - nav should logout else it should be login or sign up */}
+              {currentUser ? (
                 <div>
-              <Link to={"/profile"} >
-              <AccountCircle /> 
-                    {currentUser.username}
-                  </Link>
+                  <div>
+                    <Link to={"/profile"}>
+                      <AccountCircle />
+                      {currentUser.username}
+                    </Link>
+                  </div>
+                  <div>
+                    <a href="/login" onClick={logOut}>
+                      Logout
+                    </a>
+                  </div>
                 </div>
+              ) : (
                 <div>
-                  <a href="/login" onClick={logOut}>
-                    Logout
-                  </a>
+                  <Link to={"/login"}>Login</Link>
+                  <Link to={"/signup"}>Sign Up</Link>
                 </div>
-              </div>
-            ) : (
-           
-                <div>
-                  <Link to={"/login"} >
-                        Login
-                  </Link>
-                  <Link to={"/signup"}>
-                    Sign Up
-                  </Link>
-                </div>
-
-
-            
               )}
             </IconButton>
           </div>
@@ -332,7 +303,6 @@ const Navigation = ({ makeupType, setProduct }) => {
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-
     </div>
   );
 };

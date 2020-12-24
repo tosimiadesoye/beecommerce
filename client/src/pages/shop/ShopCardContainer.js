@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Route, useRouteMatch, Switch } from "react-router-dom";
 
 import IndividualItem from "./IndividualItem";
-import MakeupCard from "./MakeupCard";
+import MakeupCard from "./ProductCard";
 
 const ShopCardContainer = ({ product, makeupProduct, addToCart }) => {
   let { path, url } = useRouteMatch();

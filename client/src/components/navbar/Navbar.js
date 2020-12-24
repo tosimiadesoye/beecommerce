@@ -6,7 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
-const Navigation = ({ makeupType }) => {
+const Navigation = ({ makeupType, setType }) => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -42,18 +42,16 @@ const Navigation = ({ makeupType }) => {
               </Nav.Link>
               {makeupType && (
                 <div>
-                  {makeupType.map((type, idx) => {
-                    console.log(type)
-                    return (
-                      <NavDropdown.Item
-                        key={idx}
-                        as={Link}
-                        to={`/type/${type}`}
-                      >
-                        {type}
-                      </NavDropdown.Item>
-                    );
-                  })}
+                  {makeupType.map((type, idx) => (
+                    <NavDropdown.Item
+                      key={idx}
+                      as={Link}
+                      to={`/type/${type}`}
+                      
+                    >
+                      {type}
+                    </NavDropdown.Item>
+                  ))}
                 </div>
               )}
             </NavDropdown>
@@ -64,8 +62,6 @@ const Navigation = ({ makeupType }) => {
             <Nav.Link as={Link} to="/cart">
               Cart
             </Nav.Link>
-         
-
 
             {/* if you can access user.username - nav should logout else it should be login or sign up */}
             {currentUser ? (

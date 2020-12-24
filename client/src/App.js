@@ -16,7 +16,7 @@ import './App.css'
 function App() {
   const [makeupType, setMakeupType] = useState(data);
   const [product, setProduct] = useState([]);
-  const [makeup_type, setMakeup_type] = useState('');
+  const [makeup_type, setMakeup_type] = useState([]);
   const [type, setType] = useState([]);
 
   const makeupProduct = async () => {
@@ -29,17 +29,20 @@ function App() {
   const productType = async (item) => {
     return await axios
       .get(`http://localhost:5000/api/product_type?keyword=${item}`)
+    
       .then((res) => {
-        if (!res.error) {
-          console.log(res)
-          console.log(item)
-          setMakeup_type(res.data.product);
+        if (res) {
+          console.log(res.data.product)
+           setMakeup_type(res.data.product);
+           
         }
       })
       .catch((error) => {
         console.log("error: ", error);
       });
   };
+
+  debugger
   const addToCart = async (productId, quantity) => {
     return await MakeupService.postCart(productId, quantity)
       .then((response) => {
