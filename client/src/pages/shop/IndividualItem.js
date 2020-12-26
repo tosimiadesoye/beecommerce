@@ -3,12 +3,11 @@ import { useLocation } from "react-router-dom";
 
 const IndividualItem = (props) => {
     let location = useLocation();
-    console.log(location, 'hi')
-    console.log('hi')
-console.log(props)
+    let id = location.state.itemData;
+console.log(id)
     return (
-        <div>
-            hi
+        <div key={location.key}>
+      <p>{id.name}</p> 
         </div>
     )
 }

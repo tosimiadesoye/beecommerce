@@ -44,7 +44,7 @@ p::before{
     font-size:14px;
     color:#5a5a5a
 }
-button{
+.button{
     float:right;
     padding:8px 12px;
     margin:8px 0 0;

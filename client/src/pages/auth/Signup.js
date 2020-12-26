@@ -148,11 +148,11 @@ const onChangePassword = (e) => { //setting password input as the value for pass
           >
             {message}
           </div>)}
-          <button type="submit" >Sign Up</button>
+          <button type="submit" className='button' >Sign Up</button>
             <CheckButton style={{ display: 'none' }} ref={checkBtn }/>
         
    <div >   
-          <Link to='/login'>Already have an account? <button>Login</button></Link>
+          <Link to='/login'>Already have an account? </Link>
     </div> 
         </Form>
   

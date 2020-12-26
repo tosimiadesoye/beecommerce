@@ -41,47 +41,46 @@ exports.createNewProduct = async (req, res) => {
   }
 };
 
-exports.getProduct = async (req, res) => {
-console.log(req.params.pId, "your pId")
-    const { page = req.params.pId, limit = 10 } = parseInt(req.query);
-    
-    try {
-  
-    let product = await Product.find() 
-        
-        .limit(limit)
-        .skip(page * limit)
-        .exec();
-        
-
-        res.status(200).json({
-            product: product
-        })
-    } catch(error){
-        res.status(400).json({
-            status: false,
-            err: error.message
-       }) 
-    }
-   
-
-};
 // exports.getProduct = async (req, res) => {
-//   try {
-//     let product = await productRepo.findAllProducts();
-//     //
-//     res.status(200).json({
-//       status: true,
-//       product: product,
-//     });
-//   } catch (err) {
-//     //bad request
-//     res.status(400).json({
-//       error: err.message,
-//       status: false,
-//     });
-//   }
-// };
+// console.log(req.params.pId, "your pId")
+//     const { page = req.params.pId, limit = 10 } = parseInt(req.query);
+    
+//     try {
+  
+//     let product = await Product.find() 
+        
+//         .limit(limit)
+//         .skip(page * limit)
+//         .exec();
+        
+
+//         res.status(200).json({
+//             product: product
+//         })
+//     } catch(error){
+//         res.status(400).json({
+//             status: false,
+//             err: error.message
+//        }) 
+//     }
+ //};
+
+ exports.getProduct = async (req, res) => {
+   try {
+     let product = await productRepo.findAllProducts();
+     
+     res.status(200).json({
+       status: true,
+       product: product,
+     });
+   } catch (err) {
+    // bad request
+     res.status(400).json({
+       error: err.message,
+       status: false,
+     });
+   }
+ };
 
 exports.productById = async (req, res) => {
   try {

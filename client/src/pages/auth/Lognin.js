@@ -102,7 +102,7 @@ function Login(props) {
         {loading && (
                 <span className="spinner-border spinner-border-sm"></span>
             )}
-             <button type="submit" >Login</button>
+             <button type="submit" className='button' >Login</button>
 
         {message && (
           <div className={'' ? "alert alert-success" : "alert alert-danger"
@@ -115,7 +115,7 @@ function Login(props) {
             <CheckButton style={{ display: 'none' }} ref={checkBtn }/>
         
    <div >   
-          <Link to='/signup'>Don't have an account?<button>Sign up</button></Link>
+          <Link to='/signup'>Don't have an account?</Link>
     </div> 
         </Form>
   
