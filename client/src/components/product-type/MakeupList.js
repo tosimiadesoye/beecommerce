@@ -11,13 +11,13 @@ import {
 
 const MakeupList = (props) => {
   const { type, params, addToCart, makeup_type, productType } = props;
-  let { path, url } = useRouteMatch();
-  console.log(props)
+
+  console.log(makeup_type);
   useEffect(() => {
     productType(type);
   }, [type]);
   return (
-    <BrowserRouter>
+    <>
       {makeup_type && (
         <div className="grid grid-cols-3 gap-4">
           {makeup_type.map((type) => {
@@ -36,11 +36,12 @@ const MakeupList = (props) => {
                     />
                     <Link
                       to={{
-                        pathname: `${url}/${type._id}`,
+                        pathname: `/:slug/${type._id}`,
                         state: { itemData: type },
                       }}
+                      className="text-black"
                     >
-                      <button className="bg-gray-400 rounded-lg truncate">
+                      <button className="bg-gray-400 box-border border-0 p-2 rounded-sm truncate">
                         View item
                       </button>
                     </Link>
@@ -55,18 +56,8 @@ const MakeupList = (props) => {
           })}
         </div>
       )}
-      <>
-        <>
-          <Route
-            exact
-            path={`${path}/:_id`}
-            render={({ match }) => (
-              <IndividualItem {...match} type={type} addToCart={addToCart} />
-            )}
-          />
-        </>
-      </>
-    </BrowserRouter>
+      
+    </>
   );
 };
 export default MakeupList;

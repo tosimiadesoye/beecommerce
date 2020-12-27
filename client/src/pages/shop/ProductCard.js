@@ -1,19 +1,8 @@
-import {
-  BrowserRouter,
-  Route,
-  useRouteMatch,
-  Switch,
-  Link,
-} from "react-router-dom";
-import PropTypes from "prop-types";
-import IndividualItem from "./IndividualItem";
-const ProductCard = ({ info, addToCart }) => {
-  let { url,path, } = useRouteMatch();
-  console.log(url);
+import { Link } from "react-router-dom";
 
+const ProductCard = ({ info }) => {
   return (
-    <BrowserRouter>
-    
+    <>
       <div className="py-8 place-content-center flex flex-row mx-5 my-5 border-0 shadow border-white rounded">
         <div>
           <img
@@ -24,32 +13,25 @@ const ProductCard = ({ info, addToCart }) => {
           />
           <Link
             to={{
-              pathname: `${url}/${info._id}`,
+              pathname: `/shop/${info._id}`,
               state: { itemData: info },
             }}
+            className="text-black"
           >
-            <button className="bg-gray-400 rounded-lg truncate">
+            <div>
+            <button className="bg-gray-400 box-border border-0 p-2 rounded-sm truncate">
               View item
             </button>
+            </div>
+            
           </Link>
         </div>
-        <div className="text-black text-gray-900 px-2 py-1 truncate ">
+        <div className="text-black text-gray-900 space-x-4 px-2 py-1 truncate ">
           <p className="truncate">{info.name}</p>
           <p>{`£ ${info.price}`}</p>
         </div>
       </div>
-     
-
-      <Switch>
-        <Route
-          exact
-          path={`${path}/:_id`}
-          render={({ match }) => (
-            <IndividualItem {...match} addToCart={addToCart} />
-          )}
-        />
-      </Switch>
-    </BrowserRouter>
+    </>
   );
 };
 

@@ -5,7 +5,6 @@ const IndividualItem = () => {
   let location = useLocation();
   let id = location.state.itemData;
 
-  debugger;
   return (
     <div key={location.key}>
       <p>{id.brand}</p>

@@ -11,10 +11,8 @@ import axios from "axios";
 import MakeupService from "./services/product";
 import Cart from "./pages/Cart";
 import data from "./models/makeup.json";
-import {
-  ProductContentPagination,
-  MakeupTypeContentPagination,
-} from "./components/PaginationContent.js";
+import { ProductContentPagination } from "./components/PaginationContent.js";
+import IndividualItem from "./pages/shop/IndividualItem";
 import "./App.css";
 function App() {
   const [makeupType, setMakeupType] = useState(data);
@@ -28,7 +26,6 @@ function App() {
     const response = await MakeupService.getProduct();
     if (response) {
       setProduct(response.data.product);
-    
     }
   };
 
@@ -64,7 +61,7 @@ function App() {
     indexOfFirstProducts,
     indexOfLastProducts
   );
-  console.log(currentMakeupType)
+
   return (
     <div className="fonts">
       <BrowserRouter>
@@ -116,7 +113,6 @@ function App() {
                 />
 
                 <ProductContentPagination
-                  
                   product={product}
                   activePage={activePage}
                   setCurrentPage={setCurrentPage}
@@ -183,7 +179,35 @@ function App() {
                   type={type}
                   addToCart={addToCart}
                 />
-                
+              </>
+            )}
+          />
+          <Route
+            exact
+            path={`/shop/:_id`}
+            render={() => (
+              <>
+                <Navigation
+                  setMakeupType={setMakeupType}
+                  makeupType={makeupType}
+                  setType={setType}
+                />
+                <IndividualItem addToCart={addToCart} />
+              </>
+            )}
+          />
+
+          <Route
+            exact
+            path={`/:slug/:_id`}
+            render={({ match }) => (
+              <>
+                <Navigation
+                  setMakeupType={setMakeupType}
+                  makeupType={makeupType}
+                  setType={setType}
+                />
+                <IndividualItem {...match} type={type} addToCart={addToCart} />
               </>
             )}
           />

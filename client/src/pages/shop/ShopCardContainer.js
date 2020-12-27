@@ -26,10 +26,10 @@ const ShopCardContainer = ({ product, makeupProduct, addToCart }) => {
 };
 
 
-// ShopCardContainer.propTypes = {
-//   product: PropTypes.array,
-//   makeupProduct: PropTypes.func,
-//   addToCart: PropTypes.func
-// };
+ ShopCardContainer.propTypes = {
+   product: PropTypes.array,
+   makeupProduct: PropTypes.func,
+   addToCart: PropTypes.func
+ };
 
 export default ShopCardContainer;
