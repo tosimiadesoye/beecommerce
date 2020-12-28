@@ -17,7 +17,7 @@ exports.signup = async (req, res) => {
             email: req.body.email,
             password: bcrypt.hashSync(password, salt) //generate a hash for the password - 8 is the salt
         });
-       
+    
         user.save((err, user) => {
             if (err) {
                 res.status(500).send({ message: err });

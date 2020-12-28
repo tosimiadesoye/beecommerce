@@ -7,11 +7,15 @@ exports.cart = async () => {
         //the specified paths in the document with document(s) from other collection(s).
         path: "items.productId",
         // select: 'name price total' // select projection: {name price and total}
-    })
-    return carts[0];
+        })
+    
+    return carts;
+    
 }
+
 
 exports.addItem = async payLoad => {
     const newItem = await Cart.create(payLoad);
     return newItem
 }
+

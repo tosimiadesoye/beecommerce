@@ -1,11 +1,11 @@
-import { colors } from "@material-ui/core";
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-const IndividualItem = ({ addToCart }) => {
+const IndividualItem = ({ addToCart  }) => {
   let location = useLocation();
   let id = location.state.itemData;
-  console.log(id);
+  
+
   return (
     <div key={location.key}>
       <p>{id.name}</p>

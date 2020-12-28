@@ -13,6 +13,7 @@ import Cart from "./pages/Cart";
 import data from "./models/makeup.json";
 import { ProductContentPagination } from "./components/PaginationContent.js";
 import IndividualItem from "./pages/shop/IndividualItem";
+import Search from "./components/Search";
 import "./App.css";
 function App() {
   const [makeupType, setMakeupType] = useState(data);
@@ -46,7 +47,7 @@ function App() {
   const addToCart = async (productId, quantity) => {
     return await MakeupService.postCart(productId, quantity)
       .then((response) => {
-        console.log(response);
+        return response;
       })
       .catch((error) => console.log(error));
   };
@@ -104,7 +105,7 @@ function App() {
                   product={product}
                   setProduct={setProduct}
                 />
-
+                <Search setProduct={setProduct} />
                 <ShopCardContainer
                   product={currentProduct}
                   setProduct={setProduct}

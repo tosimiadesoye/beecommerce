@@ -1,18 +1,12 @@
 import { useEffect } from "react";
-import Spinner from "react-bootstrap/Spinner";
-import IndividualItem from "./IndividualItem";
 import {
-  BrowserRouter,
-  Route,
-  Switch,
-  useRouteMatch,
+
   Link,
 } from "react-router-dom";
 
 const MakeupList = (props) => {
-  const { type, params, addToCart, makeup_type, productType } = props;
+  const { type, params, makeup_type, productType } = props;
 
-  console.log(makeup_type);
   useEffect(() => {
     productType(type);
   }, [type]);
