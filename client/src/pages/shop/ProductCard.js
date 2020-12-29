@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const ProductCard = ({ info }) => {
   return (
     <>
-      <div className="py-8 place-content-center flex flex-row mx-5 my-5 border-0 shadow border-white rounded">
+      <div className=" py-8 place-content-center flex flex-row mx-5 my-5 border-0 shadow border-white rounded truncate">
         <div>
           <img
             alt={info.name}
@@ -13,20 +13,22 @@ const ProductCard = ({ info }) => {
           />
           <Link
             to={{
-              pathname: `/shop/${info._id}`,
+              pathname: `/:slug/${info._id}`,
               state: { itemData: info },
             }}
             className="text-black"
           >
             <div>
-            <button className="bg-gray-400 box-border border-0 p-2 rounded-sm truncate">
-              View item
-            </button>
+              <button
+                className="shadow-sm p-2 rounded-sm bg-blue-300 truncate border border-transparent 
+                "
+              >
+                View item
+              </button>
             </div>
-            
           </Link>
         </div>
-        <div className="text-black text-gray-900 space-x-4 px-2 py-1 truncate ">
+        <div className="text-black text-gray-900 space-x-4 px-2 py-1 truncate">
           <p className="truncate">{info.name}</p>
           <p>{`£ ${info.price}`}</p>
         </div>

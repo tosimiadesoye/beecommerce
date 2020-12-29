@@ -22,6 +22,7 @@ function App() {
   const [type, setType] = useState([]);
   const [activePage, setCurrentPage] = useState(1);
   const displayedProductsPerPage = 9;
+  const [cart, setCart] = useState([])
 
   const makeupProduct = async () => {
     const response = await MakeupService.getProduct();
@@ -44,13 +45,16 @@ function App() {
       });
   };
 
-  const addToCart = async (productId, quantity) => {
-    return await MakeupService.postCart(productId, quantity)
-      .then((response) => {
-        return response;
-      })
-      .catch((error) => console.log(error));
-  };
+ 
+  // const addToCart = async (productId, quantity) => {
+  //   return await MakeupService.postCart(productId, quantity)
+  //     .then((response) => {
+  //       return response;
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
+
+
 
   const indexOfLastProducts = activePage * displayedProductsPerPage;
   const indexOfFirstProducts = indexOfLastProducts - displayedProductsPerPage;
@@ -105,12 +109,12 @@ function App() {
                   product={product}
                   setProduct={setProduct}
                 />
-                <Search setProduct={setProduct} />
+                <Search searchProduct={setProduct} />
                 <ShopCardContainer
                   product={currentProduct}
                   setProduct={setProduct}
                   makeupProduct={makeupProduct}
-                  addToCart={addToCart}
+                
                 />
 
                 <ProductContentPagination
@@ -172,13 +176,14 @@ function App() {
                   makeupType={makeupType}
                   setType={setType}
                 />
+                <Search searchProduct={setMakeup_type} />
                 <MakeupList
                   {...match}
                   setMakeup_type={setMakeup_type}
                   makeup_type={makeup_type}
                   productType={productType}
                   type={type}
-                  addToCart={addToCart}
+                  
                 />
               </>
             )}
@@ -193,7 +198,7 @@ function App() {
                   makeupType={makeupType}
                   setType={setType}
                 />
-                <IndividualItem addToCart={addToCart} />
+                <IndividualItem  />
               </>
             )}
           />
@@ -201,14 +206,14 @@ function App() {
           <Route
             exact
             path={`/:slug/:_id`}
-            render={({ match }) => (
+            render={() => (
               <>
                 <Navigation
                   setMakeupType={setMakeupType}
                   makeupType={makeupType}
                   setType={setType}
                 />
-                <IndividualItem {...match} type={type} addToCart={addToCart} />
+                <IndividualItem/>
               </>
             )}
           />

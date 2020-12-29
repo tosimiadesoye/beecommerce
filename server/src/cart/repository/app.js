@@ -1,21 +1,50 @@
-const Cart = require("../models/models");
-
-//creating two methods that will get all cart items in our database and add an item to the cart model
-exports.cart = async () => {
-    const carts = await Cart.find()
-        .populate({// Population is the process of automatically replacing 
-        //the specified paths in the document with document(s) from other collection(s).
-        path: "items.productId",
-        // select: 'name price total' // select projection: {name price and total}
-        })
+class Cart {
+    constructor() {
+       this.data = {};
+       this.data.items = [];
+       this.data.totals = 0;
+       this.data.formattedTotals = '';
+    }
+    inCart(productID = 0) {
+        let found = false;
+        this.data.items.forEach(item => {
+           if(item.id === productID) {
+               found = true;
+           }
+        });
+        return found;
+    }
+    inCart(productID = 0) {
+        let found = false;
+        this.data.items.forEach(item => {
+           if(item.id === productID) {
+               found = true;
+           }
+        });
+        return found;
+    }
     
-    return carts;
     
-}
+    calculateTotals() {
+        this.data.totals = 0;
+        this.data.items.forEach(item => {
+            let price = item.price;
+            let qty = item.qty;
+            let amount = price * qty;
+    
+            this.data.totals += amount;
+        });
+        this.setFormattedTotals();
+    }
+    
+    setFormattedTotals() {
+        let format = new Intl.NumberFormat(config.locale.lang, {style: 'currency', currency: config.locale.currency });
+        let totals = this.data.totals;
+        this.data.formattedTotals = format.format(totals);
+    }
+ }
+ 
 
+  
 
-exports.addItem = async payLoad => {
-    const newItem = await Cart.create(payLoad);
-    return newItem
-}
-
+ module.exports = new Cart();
