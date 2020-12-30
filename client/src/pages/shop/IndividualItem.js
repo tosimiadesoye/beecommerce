@@ -7,13 +7,22 @@ const IndividualItem = () => {
   const [shadeName, setShadeName] = useState();
 
   const addProductToCart = (productId, quantity) => {
-    let cartItem = JSON.parse(localStorage.getItem("cart")) || [];
+    let cartString = localStorage.getItem("cart")
+    let product = []
+    if (cartString) {
+      product = JSON.parse(cartString) || [];
+    }
+   const cartItem = cartString.concat([item, quantity])
     const itemExist = cartItem.find((data) => {
-      return data.productId == productId;
+      console.log(data.productId._id, productId._id)
+      return data.productId._id == productId._id;
     });
+  
     if (itemExist) {
       cartItem[quantity] += quantity;
-    } else {
+    } else if (cartItem === []) {
+      return cartItem
+    }else {
       const newCart = {
         productId,
         quantity,
