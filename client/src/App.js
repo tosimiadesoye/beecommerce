@@ -85,7 +85,7 @@ function App() {
               </>
             )}
           />
-          <Route
+          {/* <Route
             exact
             path="/cart"
             render={() => (
@@ -97,7 +97,7 @@ function App() {
                 <Cart />
               </>
             )}
-          />
+          /> */}
           <Route
             exact
             path="/shop"
