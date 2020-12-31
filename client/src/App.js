@@ -15,6 +15,7 @@ import { ProductContentPagination } from "./components/PaginationContent.js";
 import IndividualItem from "./pages/shop/IndividualItem";
 import Search from "./components/Search";
 import "./App.css";
+
 function App() {
   const [makeupType, setMakeupType] = useState(data);
   const [product, setProduct] = useState([]);
@@ -217,6 +218,9 @@ function App() {
               </>
             )}
           />
+         
+
+          
         </Switch>
       </BrowserRouter>
     </div>

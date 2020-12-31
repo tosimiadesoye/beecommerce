@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AuthService from "../../services/auth";
+import { Dropdown } from "./Dropdown";
+import DropdownRender from "./Dropdown";
 
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-
-const Navigation = ({ makeupType, setType }) => {
+const Navigation = ({ makeupType, setType, fixed }) => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
-
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const user = AuthService.getCurrentUser();
 
@@ -29,72 +27,106 @@ const Navigation = ({ makeupType, setType }) => {
 
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-        <Navbar.Brand as={Link} to="/">
-          Logo
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ml-auto">
-            <NavDropdown title="Shop" id="collasible-nav-dropdown">
-              <Nav.Link as={Link} to="/shop">
-                Shop all
-              </Nav.Link>
-              {makeupType && (
-                <div>
-                  {makeupType.map((type, idx) => (
-                    <NavDropdown.Item
-                      key={idx}
-                      as={Link}
-                      to={`/type/${type}`}
-                      
+      <div className="flex flex-wrap py-2">
+        <div className="w-full px-4">
+          <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-transparent rounded">
+            <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+              <div className="w-full relative flex justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start">
+                <Link
+                  className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-black"
+                  to="/"
+                >
+                  Logo
+                </Link>
+                <button
+                  className="text-black cursor-pointer text-xl leading-none px-3 
+                  py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+                  type="button"
+                  onClick={() => setMenuOpen(!menuOpen)}
+                >
+                  <i className="fas fa-bars"></i>
+                </button>
+              </div>
+              <div
+                className={
+                  "lg:flex flex-grow items-center" +
+                  (menuOpen ? " flex" : " hidden")
+                }
+                id="example-navbar-info"
+              >
+                <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+                  <Dropdown makeupType={makeupType} color="white" />
+                  <li className="nav-item">
+                    <Link
+                      className="px-3 py-2 flex items-center text-black uppercase font-bold leading-snug text-black hover:opacity-75"
+                      to="/home"
                     >
-                      {type}
-                    </NavDropdown.Item>
-                  ))}
-                </div>
-              )}
-            </NavDropdown>
-            <Nav.Link as={Link} to="/home">
-              Home
-            </Nav.Link>
+                      Home
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className="px-3 py-2 flex items-center text-black uppercase font-bold leading-snug text-black hover:opacity-75"
+                      to="/cart"
+                    >
+                      Cart
+                    </Link>
+                  </li>
+                  {currentUser ? (
+                    <div>
+                      <li className="nav-item">
+                        <Link
+                          to={"/profile"}
+                          className="px-3 py-2 flex items-center text-black uppercase font-bold leading-snug text-black hover:opacity-75"
+                        >
+                          {currentUser.username}
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        <Link
+                          to="/login"
+                          className="px-3 py-2 flex items-center text-black uppercase font-bold leading-snug text-black hover:opacity-75"
+                          onClick={logOut}
+                        >
+                          Logout
+                        </Link>
+                      </li>
+                    </div>
+                  ) : (
+                    <div className="Navigation-nav ml-auto">
+                      <li className="nav-item">
+                        <Link
+                          to={"/login"}
+                          className="px-3 py-2 flex items-center text-black uppercase font-bold leading-snug text-black hover:opacity-75"
+                        >
+                          Login
+                        </Link>
+                      </li>
 
-            <Nav.Link as={Link} to="/cart">
-              Cart
-            </Nav.Link>
-
-            {/* if you can access user.username - nav should logout else it should be login or sign up */}
-            {currentUser ? (
-              <div>
-                <div>
-                  <Link to={"/profile"} className="nav-link">
-                    {currentUser.username}
-                  </Link>
-                </div>
-                <div>
-                  <a href="/login" className="nav-link" onClick={logOut}>
-                    Logout
-                  </a>
-                </div>
+                      <li className="nav-item">
+                        <Link
+                          to={"/signup"}
+                          className="px-3 py-2 flex items-center text-black uppercase font-bold leading-snug text-black hover:opacity-75"
+                        >
+                          Sign Up
+                        </Link>
+                      </li>
+                    </div>
+                  )}
+                  {/* <li className="nav-item">
+                    <Link
+                      className="px-3 py-2 flex items-center text-black uppercase font-bold leading-snug text-black hover:opacity-75"
+                      href="#pablo"
+                    >
+                      Settings
+                    </Link>
+                  </li> */}
+                </ul>
               </div>
-            ) : (
-              <div className="Navigation-nav ml-auto">
-                <div>
-                  <Link to={"/login"} className="nav-link">
-                    Login
-                  </Link>
-                </div>
-
-                <div>
-                  <Link to={"/signup"} className="nav-link">
-                    Sign Up
-                  </Link>
-                </div>
-              </div>
-            )}
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+            </div>
+          </nav>
+        </div>
+      </div>
     </>
   );
 };

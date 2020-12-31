@@ -1,6 +1,6 @@
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
-import Carousel from "react-bootstrap/Carousel";
+// import Carousel from "react-bootstrap/Carousel";
 import CardContainer from "./CardContainer";
 
 const items = [
@@ -52,7 +52,7 @@ const Layout = () => {
         </div>
       </div>
       <div>
-      <div className="">
+      {/* <div className="">
         <Carousel>
           <Carousel.Item interval={1000}>
             <img
@@ -93,7 +93,7 @@ const Layout = () => {
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
-      </div>
+      </div> */}
 </div>
       <div className="grid justify-items-stretch m-5">
         <h3 className="justify-self-center uppercase mb-5">Upcoming Collection</h3>
