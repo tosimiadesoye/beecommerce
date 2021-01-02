@@ -1,73 +1,92 @@
 import { useState, useEffect } from "react";
-import CartService from "../services/product";
+import RenderCart from "./RenderCart";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
-  const showProduct = () => {
-    const product = localStorage.getItem("cart");
+ const [total, setTotal] = useState(0)
 
+  const incrementQuantity = (id) => {
+    const product = JSON.parse(localStorage.getItem("products"));
+    for (let i = product.length - 1; i >= 0; i--) {
+      if (product[i].productId._id === id) {
+        console.log(product[i])
+        product[i].quantity = product[i].quantity + 1;
+        product[i].subTotal = product[i].subTotal * product[i].quantity;
+        break;
+      }
+    }
+    localStorage.setItem('products', JSON.stringify(product))
+  };
+  const decrementQuantity = (id) => {
+    const product = JSON.parse(localStorage.getItem("products"));
+    for (let i = product.length - 1; i >= 0; i--) {
+      if (product[i].productId._id === id) {
+        console.log(product[i])
+        product[i].quantity = product[i].quantity - 1;
+        product[i].subTotal = product[i].subTotal * product[i].quantity;
+        break;
+      }
+    }
+   localStorage.setItem('products', JSON.stringify(product))
+    
+  };
+
+  const calTotal = () => {
+    const product = JSON.parse(localStorage.getItem("products"));
+    if (product !== null) {
+      let addSubtotal = product.map(item => item.subTotal).reduce((accumulator, nextValue) => accumulator + nextValue)
+      setTotal(addSubtotal)
+    }
+  };
+  
+  const showProduct = () => {
+    const product = localStorage.getItem("products");
     if (product !== null) {
       setCart(JSON.parse(product));
     }
   };
-
-  console.log(cart);
+console.log(total)
   useEffect(() => {
     showProduct();
+     calTotal();
+   
   }, []);
+
+ 
   return (
-    <div className='container h-50 w-50 mt-10 shadow-lg bg-red-300'>
+    <div className="container h-50 w-100 mt-10 shadow-lg bg-red-300">
       <div className="flex flex-row space-x-4 gap-4 p-9  ">
         <h4 className="">Product</h4>
         <h4 className="">Price</h4>
         <h4 className="">Qty</h4>
-        <h4 className=" sm:overflow-clip overflow-hidden ">Total</h4>
+        <h4
+        // className=" sm:overflow-clip overflow-hidden"
+        >
+          subTotal
+        </h4>
       </div>
 
       {cart && (
         <div>
-          {cart.map((item) => {
-            console.log(item);
+          {cart.map((item, id) => {
             return (
-              <div  className="flex flex-row gap-4 space-x-4 ">
-                <div>
-                  <img
-                    src={item.api_featured_image}
-                    className='w-40'
-                    alt={item.name}
-                  />
-                  <p style={{ wordWrap: "break-word" }}>{item.name}</p>
-                </div>
-                <div>
-                  {" "}
-                  <h5> {`£ ${item.price}`}</h5>
-                </div>
-
-                <div>
-                  <button>-</button>
-                  <button>1</button>
-                  <button>+</button>
-                </div>
-<div><button>£20</button></div>
-                
+              <div key={id} className="flex flex-row gap-4 space-x-4 ">
+                <RenderCart
+                  info={item}
+                  incrementQuantity={incrementQuantity}
+                  decrementQuantity={decrementQuantity}
+                  
+                />
               </div>
             );
           })}
         </div>
       )}
-      <div></div>
+      <h3>{!total? "": total}</h3>  
     </div>
   );
 };
 
 export default Cart;
 
-{
-  /* <button onClick={() => decrementQuantity(item.productId._id)}>
-x
 
-</button> */
-}
-{
-  /* */
-}

@@ -2,7 +2,7 @@ import React from "react";
 
 const Card = ({ item }) => {
   return (
-    <div>
+    <div className=''>
       <div key={item.name} className="ml-12">
         <img className="h-70 w-13" src={item.image} alt={item.name} />
         <div className="text-center">
