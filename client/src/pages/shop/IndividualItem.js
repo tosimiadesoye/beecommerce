@@ -43,21 +43,23 @@ const IndividualItem = () => {
   };
 
   return (
-    <div className="container md:h-50 md:w-50 m mt-10 ">
+
       <div
         key={location.key}
-        className="flex flex-row  shadow place-content-center justify-center truncate"
+        className="flex flex-col md:flex-row lg-flex-row 
+        container text-center
+        shadow items-center justify-center truncate space-x-0 md:space-x-10"
       >
         <div>
           <img
-            style={{ width: "10rem" }}
-            className=""
+            // style={{ width: "15rem" }}
+            className="w-20 md:w-60 "
             src={item.api_featured_image}
             alt={item.name}
           />
         </div>
 
-        <div>
+        <div className=''>
           <h2 className="mb-7">{`${item.brand} ${item.category}`}</h2>
           <h4 className="mb-7">{item.name}</h4>
           <h5 className="mb-7">{`£${item.price}`}</h5>
@@ -66,13 +68,11 @@ const IndividualItem = () => {
             {shadeName &&
               shadeName.map((color) => (
                 <>
-                  
-                    <option className=''>{color.colour_name}</option>
-                  
+                  <option>{color.colour_name}</option>
                 </>
               ))}
           </select>
-          <div className="mb-7 space-x-1">
+          <div className="mb-7 space-x-1 flex flex-wrap gap-2">
             {item.product_colors.map((color) => (
               <>
                 <button
@@ -87,15 +87,18 @@ const IndividualItem = () => {
               </>
             ))}
           </div>
-          <button
-            className=" shadow p-2 rounded-sm bg-blue-300 focus:ring-2"
-            onClick={() => addProductToCart(item, 1, item.price)}
-          >
-            Add to bag
-          </button>
+          <div>
+            <button
+              className=" shadow p-2 rounded-sm bg-blue-300 focus:ring-2"
+              onClick={() => addProductToCart(item, 1, item.price)}
+            >
+              Add to bag
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    
+      
   );
 };
 

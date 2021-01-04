@@ -3,10 +3,7 @@ import AuthServices from '../../services/auth';
 
 const Profile = () => {
   const currentUser = AuthServices.getCurrentUser(); 
-  // console.log(currentUser.username)
-  // console.log(currentUser.id)
-  // console.log(currentUser.email)
-  // console.log(currentUser.accessToken)
+ 
     return (
       <div>
          <Home/> 

@@ -39,24 +39,26 @@ const Cart = () => {
     setCart(cartItem);
   };
 
+  const calTotal = () => {
+    const cartItem = JSON.parse(localStorage.getItem("cart"));
+    console.log(cart)
+    if (cartItem !== null) {
+      let addSubtotal = cartItem
+        .map((item) => item.subTotal)
+        .reduce((accumulator, nextValue) => accumulator + nextValue);
+      setTotal(addSubtotal);
+  
+    }
+  };
+
   const getProductFromStorage = () => {
     return setCart(JSON.parse(localStorage.getItem("cart")));
   };
 
   const removeProductFromStorage = () => {
     const remove = localStorage.removeItem("cart");
-    setCart(remove);
-  };
-
-  const calTotal = () => {
-    const cartItem = JSON.parse(localStorage.getItem("cart"));
-    console.log(cart);
-    if (cartItem !== null) {
-      let addSubtotal = cart
-        .map((item) => item.subTotal)
-        .reduce((accumulator, nextValue) => accumulator + nextValue);
-      setTotal(addSubtotal);
-    }
+    setCart(remove)
+    window.location.replace('/')
   };
 
   useEffect(() => {
@@ -96,8 +98,11 @@ const Cart = () => {
         </div>
       )}
       <h2>Total</h2>
-      <h3>{total && total}</h3>
-      <h2 onClick={() => removeProductFromStorage()}>Remove Cart</h2>
+      <h3>{`£${total && total}`}</h3>
+      <button onClick={() => removeProductFromStorage()}>Empty cart</button>
+      <button>
+                Check out
+              </button>
     </div>
   );
 };

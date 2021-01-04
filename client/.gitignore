@@ -28,6 +28,7 @@ package-lock.json
 src/index.scss
 src/index.css
 src/index.css.map
+src/tailwind.scss
 src/tailwind.css
 src/tailwind.css.map
 src/components/navbar/notinuse

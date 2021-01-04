@@ -9,7 +9,7 @@ import Profile from "./pages/user/Profile";
 import MakeupList from "./components/product-type/MakeupList";
 import axios from "axios";
 import MakeupService from "./services/product";
-import Cart from "./pages/Cart";
+import Cart from "./pages/cart/Cart";
 import data from "./models/makeup.json";
 import { ProductContentPagination } from "./components/PaginationContent.js";
 import IndividualItem from "./pages/shop/IndividualItem";
