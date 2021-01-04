@@ -1,58 +1,69 @@
+import { set } from "mongoose";
 import { useState, useEffect } from "react";
 import RenderCart from "./RenderCart";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
- const [total, setTotal] = useState(0)
+  const [total, setTotal] = useState(0);
 
   const incrementQuantity = (id) => {
-    const product = JSON.parse(localStorage.getItem("products"));
-    for (let i = product.length - 1; i >= 0; i--) {
-      if (product[i].productId._id === id) {
-        console.log(product[i])
-        product[i].quantity = product[i].quantity + 1;
-        product[i].subTotal = product[i].subTotal * product[i].quantity;
+    const cartItem = JSON.parse(localStorage.getItem("cart"));
+    for (let i = cartItem.length - 1; i >= 0; i--) {
+      if (cartItem[i].productId._id === id) {
+        let price = parseFloat(cartItem[i].productId.price);
+        cartItem[i].quantity = cartItem[i].quantity + 1;
+        cartItem[i].subTotal = price * cartItem[i].quantity;
         break;
       }
     }
-    localStorage.setItem('products', JSON.stringify(product))
+    localStorage.setItem("cart", JSON.stringify(cartItem));
+    setCart(cartItem);
   };
   const decrementQuantity = (id) => {
-    const product = JSON.parse(localStorage.getItem("products"));
-    for (let i = product.length - 1; i >= 0; i--) {
-      if (product[i].productId._id === id) {
-        console.log(product[i])
-        product[i].quantity = product[i].quantity - 1;
-        product[i].subTotal = product[i].subTotal * product[i].quantity;
+    const cartItem = JSON.parse(localStorage.getItem("cart"));
+
+    let index = cartItem.findIndex((item) => item.productId._id === id);
+    for (let i = cartItem.length - 1; i >= 0; i--) {
+      if (cartItem[i].productId._id === id) {
+        let price = parseFloat(cartItem[i].productId.price);
+        cartItem[i].quantity = cartItem[i].quantity - 1;
+        cartItem[i].subTotal = price * cartItem[i].quantity;
+        //delete a cartItem from local storage if the quantity is zero
+        if (index !== -1 && cartItem[i].quantity <= 0) {
+          cartItem.splice(index, 1);
+        }
         break;
       }
     }
-   localStorage.setItem('products', JSON.stringify(product))
-    
+    localStorage.setItem("cart", JSON.stringify(cartItem));
+    setCart(cartItem);
+  };
+
+  const getProductFromStorage = () => {
+    return setCart(JSON.parse(localStorage.getItem("cart")));
+  };
+
+  const removeProductFromStorage = () => {
+    const remove = localStorage.removeItem("cart");
+    setCart(remove);
   };
 
   const calTotal = () => {
-    const product = JSON.parse(localStorage.getItem("products"));
-    if (product !== null) {
-      let addSubtotal = product.map(item => item.subTotal).reduce((accumulator, nextValue) => accumulator + nextValue)
-      setTotal(addSubtotal)
+    const cartItem = JSON.parse(localStorage.getItem("cart"));
+    console.log(cart);
+    if (cartItem !== null) {
+      let addSubtotal = cart
+        .map((item) => item.subTotal)
+        .reduce((accumulator, nextValue) => accumulator + nextValue);
+      setTotal(addSubtotal);
     }
   };
-  
-  const showProduct = () => {
-    const product = localStorage.getItem("products");
-    if (product !== null) {
-      setCart(JSON.parse(product));
-    }
-  };
-console.log(total)
+
   useEffect(() => {
-    showProduct();
-     calTotal();
-   
+    getProductFromStorage();
+    calTotal();
   }, []);
 
- 
   return (
     <div className="container h-50 w-100 mt-10 shadow-lg bg-red-300">
       <div className="flex flex-row space-x-4 gap-4 p-9  ">
@@ -68,25 +79,27 @@ console.log(total)
 
       {cart && (
         <div>
-          {cart.map((item, id) => {
+          {cart.map((item) => {
             return (
-              <div key={id} className="flex flex-row gap-4 space-x-4 ">
+              <div
+                key={item.productId.name}
+                className="flex flex-row gap-4 space-x-4 "
+              >
                 <RenderCart
                   info={item}
                   incrementQuantity={incrementQuantity}
                   decrementQuantity={decrementQuantity}
-                  
                 />
               </div>
             );
           })}
         </div>
       )}
-      <h3>{!total? "": total}</h3>  
+      <h2>Total</h2>
+      <h3>{total && total}</h3>
+      <h2 onClick={() => removeProductFromStorage()}>Remove Cart</h2>
     </div>
   );
 };
 
 export default Cart;
-
-

@@ -2,37 +2,44 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 const IndividualItem = () => {
+  const [shadeName, setShadeName] = useState([]);
   let location = useLocation();
   const item = location.state.itemData;
-  const [shadeName, setShadeName] = useState();
 
   const addProductToCart = (productId, quantity, price) => {
-    let products = [];
-    if (localStorage.getItem("products")) {
-      products = JSON.parse(localStorage.getItem("products"));
+    let cart = [];
+    if (localStorage.getItem("cart")) {
+      cart = JSON.parse(localStorage.getItem("cart"));
     }
     let isAlreadyIn = false;
     let number;
     let subTotal = parseFloat(price);
 
-    for (let i = products.length - 1; i >= 0; i--) {
-      if (products[i].productId._id === productId._id) {
+    for (let i = cart.length - 1; i >= 0; i--) {
+      if (cart[i].productId._id === productId._id) {
         isAlreadyIn = true;
         number = i;
         break;
       }
     }
     if (isAlreadyIn) {
-      products[number].quantity = products[number].quantity + quantity;
-      products[number].subTotal = products[number].quantity * subTotal;
+      cart[number].quantity = cart[number].quantity + quantity;
+      cart[number].subTotal = cart[number].quantity * subTotal;
     } else {
-      products.push({
+      cart.push({
         productId: productId,
         quantity: quantity,
         subTotal: subTotal,
       });
     }
-    localStorage.setItem("products", JSON.stringify(products));
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
+  const changeColorName = (colorName) => {
+    const name = item.product_colors.filter(
+      (name) => name.colour_name === colorName
+    );
+    setShadeName(name);
   };
 
   return (
@@ -43,7 +50,7 @@ const IndividualItem = () => {
       >
         <div>
           <img
-             style={{ width: "10rem" }}
+            style={{ width: "10rem" }}
             className=""
             src={item.api_featured_image}
             alt={item.name}
@@ -54,32 +61,31 @@ const IndividualItem = () => {
           <h2 className="mb-7">{`${item.brand} ${item.category}`}</h2>
           <h4 className="mb-7">{item.name}</h4>
           <h5 className="mb-7">{`£${item.price}`}</h5>
-          
-          <select className="mb-7 space-x-1">
-            {item.product_colors.map((color) => (
-              <>
+
+          <select className="mb-7 space-x-1 appearance-none select-none">
+            {shadeName &&
+              shadeName.map((color) => (
                 <>
-                  <option>{color.colour_name}</option>
+                  
+                    <option className=''>{color.colour_name}</option>
+                  
                 </>
-              </>
-            ))}
+              ))}
           </select>
           <div className="mb-7 space-x-1">
-             {item.product_colors.map((color) => (
+            {item.product_colors.map((color) => (
               <>
-                 <button
-                  //  className="inline-block break-normal md:break-all w-8 hover:opacity-70"
+                <button
+                  className="inline-block  w-3 hover:opacity-70"
                   style={{
                     backgroundColor: color.hex_value,
                   }}
-
-                  // onClick={() => showColor(color.color_name)}
+                  onClick={() => changeColorName(color.colour_name)}
                 >
                   &nbsp;
-              
                 </button>
               </>
-            ))} 
+            ))}
           </div>
           <button
             className=" shadow p-2 rounded-sm bg-blue-300 focus:ring-2"

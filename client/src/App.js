@@ -25,7 +25,7 @@ function App() {
   const displayedProductsPerPage = 9;
   const [cart, setCart] = useState([])
 
-  const makeupProduct = async () => {
+  const makeupProduct =  async() => {
     const response = await MakeupService.getProduct();
     if (response) {
       setProduct(response.data.product);

@@ -1,6 +1,6 @@
 import React from "react";
 
-const RenderCart = ({ info, incrementQuantity, decrementQuantity }) => {
+const RenderCart = ({ info, incrementQuantity, decrementQuantity}) => {
 
   return (
     <div className='flex flex-row space-x-4 gap-4 p-9'>
