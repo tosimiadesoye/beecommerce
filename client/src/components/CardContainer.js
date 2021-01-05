@@ -5,7 +5,7 @@ export const Block = ({ info }) => {
   return (
     <div>
       {info && (
-        <div className="flex flex-row items-center">
+        <div className="flex flex-col md:flex-row items-center uppercase ">
           {info.map((item) => (
             <div key={item.name} className="ml-12">
               <CardBlock item={item} />

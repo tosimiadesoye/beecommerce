@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
         },
         //filename is the name of the file within the destination
     filename: (req, file, callback) => {
-            callback(null, file.fieldname + '_' + Date.now())
+            callback(null, Date.now() + file.originalname)
         }
 })
 //functions to control which files are accepted

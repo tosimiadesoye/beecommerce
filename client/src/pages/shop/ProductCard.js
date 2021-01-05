@@ -5,19 +5,19 @@ const ProductCard = ({ info }) => {
     <>
       <div
         className=" py-6 md:py-8 
-       place-content-center
-       flex flex-row mx-5 my-5 border-0 border-white bg-gray-300 rounded truncate"
+      place-content-center
+       flex flex-row items-center mx-5 my-5 border-0 border-white bg-gray-300 rounded truncate"
       >
         <div>
           <img
             alt={info.name}
-            style={{ width: "6rem" }}
+            // style={{ width: "6rem" }}
             src={info.api_featured_image}
-            className="shadow"
+            className="shadow w-24 object-scale-down"
           />
         </div>
-        <div className="text-black text-gray-900 space-x-4 px-2 py-1 inline-block break-words">
-          <p className="truncate">{info.name}</p>
+        <div className="text-black text-gray-900 space-x-4 px-2 py-1  truncate">
+          <p className=" break-all">{info.name}</p>
           <p>{`£ ${info.price}`}</p>
           <Link
             to={{

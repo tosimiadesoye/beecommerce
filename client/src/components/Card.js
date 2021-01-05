@@ -4,12 +4,11 @@ import { Link } from "react-router-dom";
 export const CardBlock = ({ item }) => {
   return (
     <>
-   <div className="w-1/3">
+   {/* <div className="w-1/3">
           <img src={item.image} alt="eyeshadow" />
-        </div>
+        </div> */}
         <div
-          className="px-16 py-20 text-center box-border border-white bg-gradient-to-l
-         md:bg-gradient-to-r from-yellow-500 via-red-300 to-yellow-900"
+          className={item.style}
         >
           <h2 className="text-5xl font-normal leading-normal mt-0 mb-2 text-pink-800">
            {item.category}

@@ -6,19 +6,38 @@ import { Block } from "./CardContainer";
 
 const newCart = [
   {
-    image: "/images/eyeshadow.jpg",
+    style: `px-16 py-20 text-center box-border border-white bg-gradient-to-l
+    md:bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500`,
     category: "new!",
     type: "eyeshadow",
     description:
       "LUSCIOUS COLOR, EXPLOSIVE SHINE. NOURISHED, FULLER-LOOKING LIPS.",
-    button:'shop our eyeshasow'
+    button: "shop our eyeshasow",
+  },
+  {
+    style: `px-16 py-20 text-center box-border border-white bg-gradient-to-l
+    md:bg-gradient-to-r from-yellow-500 via-red-300 to-yellow-900`,
+    category: "new!",
+    type: "eyeshadow",
+    description:
+      "LUSCIOUS COLOR, EXPLOSIVE SHINE. NOURISHED, FULLER-LOOKING LIPS.",
+    button: "shop our eyeshasow",
+  },
+  {
+    style: `px-16 py-20 text-center box-border border-white bg-gradient-to-l
+         md:bg-gradient-to-r from-yellow-400 via-red-200 to-blue-500`,
+    category: "new!",
+    type: "eyeshadow",
+    description:
+      "LUSCIOUS COLOR, EXPLOSIVE SHINE. NOURISHED, FULLER-LOOKING LIPS.",
+    button: "shop our eyeshasow",
   },
 ];
 
 const Layout = () => {
   return (
     <div>
-      <div className="grid grid-rows-2 grid-flow-col gap-3 gap-x-0">
+       <div className="grid grid-rows-2 grid-flow-col gap-3 gap-x-0">
         <div className=" ml-20 row-span-3 ">
           <img className="h-80 w-5/6 " src="/images/blush.jpg" alt="display" />
         </div>
@@ -28,9 +47,9 @@ const Layout = () => {
         <div className="mr-20 col-span-2 ">
           <img className="h-40 " src="/images/eyebrow.jpg" alt="Third slide" />
         </div>
-      </div>
+      </div> 
 
-      {/* <div className="flex flex-col md:flex-row px-16 py-20 items-center uppercase ">
+      {/* <div>
         <Block info={newCart} />
       </div> */}
 
@@ -53,9 +72,10 @@ const Layout = () => {
             LUSCIOUS COLOR, EXPLOSIVE SHINE. NOURISHED, FULLER-LOOKING LIPS.
           </h5>
           <button
-            className='bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
-           shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1" type="button" 
-           style="transition: all .15s ease'
+            className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
+           shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+            type="button"
+            style={{ transition: "all .15s ease" }}
           >
             <Link
               to="/type/eyeshadow"
@@ -74,9 +94,10 @@ const Layout = () => {
           <CardContainer info={items} />
         </div>
         <button
-          className='bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
-           shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1" type="button" 
-           style="transition: all .15s ease'
+          className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
+           shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+          type="button"
+          style={{ transition: "all .15s ease" }}
         >
           <Link
             to="/shop"
@@ -107,9 +128,10 @@ const Layout = () => {
             LUSCIOUS COLOR, EXPLOSIVE SHINE. NOURISHED, FULLER-LOOKING LIPS.
           </h5>
           <button
-            className='bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
-           shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1" type="button" 
-           style="transition: all .15s ease'
+            className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
+           shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+            type="button"
+            style={{ transition: "all .15s ease" }}
           >
             <Link
               to="/type/lipstick"
@@ -128,9 +150,10 @@ const Layout = () => {
           <CardContainer info={latest} />
         </div>
         <button
-          className='bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
-           shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1" type="button" 
-           style="transition: all .15s ease'
+          className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
+           shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+          type="button"
+          style={{ transition: "all .15s ease" }}
         >
           <Link
             to="/type/bronzer"
@@ -159,9 +182,10 @@ const Layout = () => {
             LUSCIOUS COLOR, EXPLOSIVE SHINE. NOURISHED, FULLER-LOOKING LIPS.
           </h5>
           <button
-            className='bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
-           shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1" type="button" 
-           style="transition: all .15s ease'
+            className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
+           shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+            type="button"
+            style={{ transition: "all .15s ease" }}
           >
             <Link
               to="/type/bronzer"

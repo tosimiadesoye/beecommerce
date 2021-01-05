@@ -17,7 +17,7 @@ mongoose.connect(config.dbUrl, {
 // mongoose.set("useCreateIndex", true);
 mongoose.connection.on('connected', () => {
     console.log('connected to mongo database');
-   //need to know why this is outputting undefined
+   
     server.initial()
 });
 

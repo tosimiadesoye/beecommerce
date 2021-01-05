@@ -5,20 +5,21 @@ export const ProductContentPagination = (props) => {
   const { product, activePage, setCurrentPage } = props;
 
   const handlePageChange = (pageNumber) => {
-    console.log(`active page is ${pageNumber}`);
+  
     setCurrentPage(pageNumber);
   };
   return (
     <div>
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center ">
         <Pagination
           activePage={activePage}
           itemsCountPerPage={9}
           totalItemsCount={product.length}
           pageRangeDisplayed={3}
           onChange={handlePageChange}
-          itemClass="page-item"
+           itemClass="page-item"
           linkClass="page-link"
+          
         />
       </div>
     </div>

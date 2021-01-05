@@ -23,7 +23,7 @@ function App() {
   const [type, setType] = useState([]);
   const [activePage, setCurrentPage] = useState(1);
   const displayedProductsPerPage = 9;
-  const [cart, setCart] = useState([])
+  
 
   const makeupProduct =  async() => {
     const response = await MakeupService.getProduct();
@@ -47,13 +47,7 @@ function App() {
   };
 
  
-  // const addToCart = async (productId, quantity) => {
-  //   return await MakeupService.postCart(productId, quantity)
-  //     .then((response) => {
-  //       return response;
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
+ 
 
 
 
@@ -63,10 +57,10 @@ function App() {
     indexOfFirstProducts,
     indexOfLastProducts
   );
-  const currentMakeupType = makeup_type.slice(
-    indexOfFirstProducts,
-    indexOfLastProducts
-  );
+  // const currentMakeupType = makeup_type.slice(
+  //   indexOfFirstProducts,
+  //   indexOfLastProducts
+  // );
 
   return (
     <div className="fonts">

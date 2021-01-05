@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const controller = require("../app/controllers/app");
-
+// const multer = require('../app/image/index')
 router.get("/api/product", controller.getProduct);
 // router.get("/api/product/:pId", controller.getProduct);
+// router.post("/api/product", multer.upload.single('photos'), controller.createNewProduct);
 router.post("/api/product", controller.createNewProduct);
 router.get("/api/product/:id", controller.productById);//
 router.delete("/api/product/:id", controller.getProductByIdAndDelete);

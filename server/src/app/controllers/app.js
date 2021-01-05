@@ -19,7 +19,7 @@ exports.createNewProduct = async (req, res) => {
       product_type: req.body.product_type,
       tag_list: req.body.tag_list,
       product_api_url: req.body.product_api_url,
-      api_featured_image: req.body.api_featured_image,
+      api_featured_image: req.file.path,
       product_colors: req.body.product_colors,
     };
 
