@@ -2,14 +2,16 @@ import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import { items, latest } from "./LayoutArrays";
 import CardContainer from "./CardContainer";
+import { Block } from "./CardContainer";
 
 const newCart = [
   {
     image: "/images/eyeshadow.jpg",
-    category: "new",
+    category: "new!",
     type: "eyeshadow",
-    discription:
+    description:
       "LUSCIOUS COLOR, EXPLOSIVE SHINE. NOURISHED, FULLER-LOOKING LIPS.",
+    button:'shop our eyeshasow'
   },
 ];
 
@@ -27,10 +29,16 @@ const Layout = () => {
           <img className="h-40 " src="/images/eyebrow.jpg" alt="Third slide" />
         </div>
       </div>
+
+      {/* <div className="flex flex-col md:flex-row px-16 py-20 items-center uppercase ">
+        <Block info={newCart} />
+      </div> */}
+
       <div className="flex flex-col md:flex-row px-16 py-20 items-center uppercase ">
         <div className="w-1/3">
           <img src="/images/eyeshadow.jpg" alt="eyeshadow" />
         </div>
+
         <div
           className="px-16 py-20 text-center box-border border-white bg-gradient-to-l
          md:bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500"
