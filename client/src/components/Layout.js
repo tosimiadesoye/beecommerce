@@ -1,38 +1,10 @@
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
-import { items, latest } from "./LayoutArrays";
+import { items, latest, newCart } from "./LayoutArrays";
 import CardContainer from "./CardContainer";
 import { Block } from "./CardContainer";
 
-const newCart = [
-  {
-    style: `px-16 py-20 text-center box-border border-white bg-gradient-to-l
-    md:bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500`,
-    category: "new!",
-    type: "eyeshadow",
-    description:
-      "LUSCIOUS COLOR, EXPLOSIVE SHINE. NOURISHED, FULLER-LOOKING LIPS.",
-    button: "shop our eyeshasow",
-  },
-  {
-    style: `px-16 py-20 text-center box-border border-white bg-gradient-to-l
-    md:bg-gradient-to-r from-yellow-500 via-red-300 to-yellow-900`,
-    category: "new!",
-    type: "eyeshadow",
-    description:
-      "LUSCIOUS COLOR, EXPLOSIVE SHINE. NOURISHED, FULLER-LOOKING LIPS.",
-    button: "shop our eyeshasow",
-  },
-  {
-    style: `px-16 py-20 text-center box-border border-white bg-gradient-to-l
-         md:bg-gradient-to-r from-yellow-400 via-red-200 to-blue-500`,
-    category: "new!",
-    type: "eyeshadow",
-    description:
-      "LUSCIOUS COLOR, EXPLOSIVE SHINE. NOURISHED, FULLER-LOOKING LIPS.",
-    button: "shop our eyeshasow",
-  },
-];
+
 
 const Layout = () => {
   return (
@@ -49,9 +21,7 @@ const Layout = () => {
         </div>
       </div> 
 
-      {/* <div>
-        <Block info={newCart} />
-      </div> */}
+       
 
       <div className="flex flex-col md:flex-row px-16 py-20 items-center uppercase ">
         <div className="w-1/3">
@@ -197,7 +167,9 @@ const Layout = () => {
           </button>
         </div>
       </div>
-
+      <div>
+        <Block info={newCart} />
+      </div>
       <Footer />
     </div>
   );

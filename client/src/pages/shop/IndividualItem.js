@@ -34,7 +34,7 @@ const IndividualItem = () => {
         subTotal: subTotal,
       });
     }
-    
+
     localStorage.setItem("cart", JSON.stringify(cart));
   };
 
@@ -59,7 +59,7 @@ const IndividualItem = () => {
   useEffect(() => {
     setTimer();
     // return = () => {
-      
+
     // }
   }, [setTimer()]);
 
@@ -87,9 +87,7 @@ const IndividualItem = () => {
         <select className="mb-7 space-x-1 appearance-none select-none">
           {shadeName &&
             shadeName.map((color) => (
-              <div key={color.colour_name}>
-                <option>{color.colour_name}</option>
-              </div>
+              <option key={color.colour_name}>{color.colour_name}</option>
             ))}
         </select>
         <div className="mb-7 space-x-1 flex flex-wrap gap-2">

@@ -27,7 +27,7 @@ const Cart = () => {
         let price = parseFloat(cartItem[i].productId.price);
         cartItem[i].quantity = cartItem[i].quantity - 1;
         cartItem[i].subTotal = price * cartItem[i].quantity;
-        //delete a cartItem from local storage if the quantity is zero
+        //delete a product from local storage if the quantity is zero
         if (index !== -1 && cartItem[i].quantity <= 0) {
           cartItem.splice(index, 1);
         }
@@ -40,20 +40,33 @@ const Cart = () => {
 
   const calTotal = () => {
     const cartItem = JSON.parse(localStorage.getItem("cart"));
-    
+
     if (cartItem !== null) {
+      let itemCount = cartItem
+        .map((item) => item.quantity)
+        .reduce((accumulator, nextValue) => accumulator + nextValue, 0);
       let addSubtotal = cartItem
         .map((item) => item.subTotal)
-        .reduce((accumulator, nextValue) => accumulator + nextValue, 0);
-     
-      setTotal(addSubtotal);
+        .reduce((accumulator, nextValue) => accumulator + nextValue, 0)
+        .toFixed(2);
+
+      setTotal({ itemCount, addSubtotal });
     }
   };
   const getProductFromStorage = () => {
     return setCart(JSON.parse(localStorage.getItem("cart")));
   };
 
-  const removeProductFromStorage = () => {
+  const removeOneItemFromCart = (id) => {
+    const cartItem = JSON.parse(localStorage.getItem("cart"));
+    const remove = cartItem.filter((item) => {
+      return item.productId._id !== id;
+    });
+    localStorage.setItem("cart", JSON.stringify(remove));
+    setCart(remove);
+  };
+
+  const removeAllProductsFromStorage = () => {
     const remove = localStorage.removeItem("cart");
     setCart(remove);
     window.location.replace("/shop");
@@ -63,18 +76,14 @@ const Cart = () => {
     getProductFromStorage();
     calTotal();
   }, []);
-
+  console.log(total);
   return (
     <div className="container  shadow-lg bg-red-300">
       <div className="flex flex-row gap-8 md:gap-48 p-9 mx-4">
         <h4>Product</h4>
         <h4>Price</h4>
         <h4>Qty</h4>
-        <h4
-        // className=" sm:overflow-clip overflow-hidden"
-        >
-          subTotal
-        </h4>
+        <h4>subTotal</h4>
       </div>
 
       {cart && (
@@ -89,6 +98,7 @@ const Cart = () => {
                   info={item}
                   incrementQuantity={incrementQuantity}
                   decrementQuantity={decrementQuantity}
+                  removeOneItemFromCart={removeOneItemFromCart}
                 />
               </div>
             );
@@ -97,11 +107,17 @@ const Cart = () => {
       )}
       <div className="float-right flex flex-col gap-5">
         <div>
-          <h2>Total</h2>
-       
-          <h3>{`£${total && total}`} </h3>
+          <h2>Total price</h2>
+          <h3>{`£${total && total.addSubtotal}`} </h3>
         </div>
-        <div>
+
+        <div >
+          
+            <div>
+              <h2>Total Items</h2>
+              <h3>{total && total.itemCount} </h3>
+            </div>
+          
           <button
             className="text-white shadow  bg-black shadow border border-solid
                border-white hover:bg-pink hover:text-black
@@ -109,7 +125,7 @@ const Cart = () => {
                  rounded outline-none focus:outline-none mr-1 mb-1"
             type="button"
             style={{ transition: "all .15s ease" }}
-            onClick={() => removeProductFromStorage()}
+            onClick={() => removeAllProductsFromStorage()}
           >
             Empty cart
           </button>{" "}

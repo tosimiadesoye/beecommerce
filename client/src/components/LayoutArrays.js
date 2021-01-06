@@ -28,3 +28,32 @@ export const items = [
   ,
   ];
   
+  export const newCart = [
+    {
+      style: `px-16 py-20 text-center box-border border-white bg-gradient-to-l
+      md:bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500`,
+      category: "new!",
+      type: "eyeshadow",
+      description:
+        "LUSCIOUS COLOR, EXPLOSIVE SHINE. NOURISHED, FULLER-LOOKING LIPS.",
+      button: "shop our eyeshasow",
+    },
+    {
+      style: `px-16 py-20 text-center box-border border-white bg-gradient-to-l
+      md:bg-gradient-to-r from-yellow-500 via-red-300 to-yellow-900`,
+      category: "new!",
+      type: "eyeshadow",
+      description:
+        "LUSCIOUS COLOR, EXPLOSIVE SHINE. NOURISHED, FULLER-LOOKING LIPS.",
+      button: "shop our eyeshasow",
+    },
+    {
+      style: `px-16 py-20 text-center box-border border-white bg-gradient-to-l
+           md:bg-gradient-to-r from-yellow-400 via-red-200 to-blue-500`,
+      category: "new!",
+      type: "eyeshadow",
+      description:
+        "LUSCIOUS COLOR, EXPLOSIVE SHINE. NOURISHED, FULLER-LOOKING LIPS.",
+      button: "shop our eyeshasow",
+    },
+  ];

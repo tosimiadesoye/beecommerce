@@ -1,22 +1,20 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import AuthService from "../../services/auth";
 import { Dropdown } from "./Dropdown";
 
 const Navigation = ({ makeupType, fixed }) => {
- 
   const [currentUser, setCurrentUser] = useState(undefined);
   const [menuOpen, setMenuOpen] = useState(false);
-   useEffect(() => {
-     const user = AuthService.getCurrentUser();
+  useEffect(() => {
+    const user = AuthService.getCurrentUser();
 
-     if (user) {
+    if (user) {
       //   console.log(user.username)
       //  console.log(user.roles)
-       setCurrentUser(user);
-       
-     }
-   }, []);
+      setCurrentUser(user);
+    }
+  }, []);
 
   const logOut = () => {
     AuthService.logout();
@@ -29,21 +27,16 @@ const Navigation = ({ makeupType, fixed }) => {
           <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-transparent rounded">
             <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
               <div className="w-full relative flex justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start">
-                 <Link
-                  className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-black"
-                  to="/"
-                > 
-                  Logo
-                  </Link> 
-              
-                <img  src="/images/dysmorphique_dolly.svg" alt="logo" />
-                {/* </div> */}
-                 
-                  {/* <p className="invisible">Logo</p> */}
-               
+                <img
+                  className="w-20"
+                  src="/images/Female-Bee-With-Mirror.svg"
+                  alt="svg logo"
+                />
+
                 <button
                   className="text-black cursor-pointer text-xl leading-none px-3 
-                  py-1 border border-solid border-transparent rounded bg-gray-800 block lg:hidden outline-none focus:outline-none"
+                  py-1 border border-solid border-black
+                   rounded bg-transparent block lg:hidden outline-none focus:outline-none"
                   type="button"
                   onClick={() => setMenuOpen(!menuOpen)}
                 >
@@ -60,7 +53,8 @@ const Navigation = ({ makeupType, fixed }) => {
                 <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
                   <li className="nav-item">
                     <Link
-                      className="px-3 py-2 flex items-center text-black uppercase font-bold leading-snug text-black hover:opacity-75"
+                      className="px-3 py-2 flex items-center 
+                      text-black uppercase font-bold leading-snug text-black hover:opacity-75"
                       to="/home"
                     >
                       Home
@@ -76,7 +70,7 @@ const Navigation = ({ makeupType, fixed }) => {
                       Cart
                     </Link>
                   </li>
-               
+
                   {currentUser ? (
                     <div>
                       <li className="nav-item">

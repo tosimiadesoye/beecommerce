@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.css";
-import { Col } from "react-bootstrap";
+
 
 const Shipping = () => {
   return (

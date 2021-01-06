@@ -21,7 +21,6 @@ const MakeupList = (props) => {
           })}
         </div>
       )}
-      
     </>
   );
 };
