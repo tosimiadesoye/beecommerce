@@ -44,7 +44,7 @@ const RenderCart = (props) => {
       <div>
         {" "}
           <h5> {`£ ${info.subTotal}`}</h5>
-          <button className="bg-red-500 text-white active:bg-pink-600 font-bold uppercase 
+          <button className="bg-black text-white active:bg-pink-600 font-bold uppercase 
           text-xs px-4 py-2 rounded  hover:shadow-md outline-none focus:outline-none mr-1 mb-1"
             type="button" style={{transition: "all .15s ease"}}
  onClick={()=>removeOneItemFromCart(info.productId._id)}>delete</button> 

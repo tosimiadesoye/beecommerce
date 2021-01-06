@@ -7,6 +7,7 @@ import Layout from "./components/Layout";
 import Login from "./pages/auth/Lognin";
 import Profile from "./pages/user/Profile";
 import MakeupList from "./components/product-type/MakeupList";
+import Checkout from "./components/Checkout";
 import axios from "axios";
 import MakeupService from "./services/product";
 import Cart from "./pages/cart/Cart";
@@ -14,6 +15,7 @@ import data from "./models/makeup.json";
 import { ProductContentPagination } from "./components/PaginationContent.js";
 import IndividualItem from "./pages/shop/IndividualItem";
 import Search from "./components/Search";
+
 import "./App.css";
 
 function App() {
@@ -45,11 +47,6 @@ function App() {
         console.log("error: ", error);
       });
   };
-
- 
- 
-
-
 
   const indexOfLastProducts = activePage * displayedProductsPerPage;
   const indexOfFirstProducts = indexOfLastProducts - displayedProductsPerPage;
@@ -214,7 +211,9 @@ function App() {
           />
          
 
-          
+          <Route exact path={'/checkout'} render={() => (
+            <Checkout/>
+          )} />
         </Switch>
       </BrowserRouter>
     </div>
@@ -223,9 +222,4 @@ function App() {
 
 export default App;
 
-/* <Switch>
-         
-          <Route path="/mod" component={BoardModerator} />
-          <Route path="/admin" component={BoardAdmin} />
-        </Switch>
-      <Switch> */
+

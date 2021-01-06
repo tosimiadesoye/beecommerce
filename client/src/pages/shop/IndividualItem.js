@@ -54,13 +54,11 @@ const IndividualItem = () => {
   };
 
   const setTimer = () => {
-    return setTimeout(() => setIsVisible(false), 4000);
+    return setTimeout(() => setIsVisible(false), 5000);
   };
   useEffect(() => {
     setTimer();
-    // return = () => {
 
-    // }
   }, [setTimer()]);
 
   return (
@@ -120,7 +118,7 @@ const IndividualItem = () => {
             <p
               // className='float-right shadow bg-pink-500 border border-black'
               className="
-            
+              bg-pink-300
             float-right   -600 font-bold
             text-black
               text-sm px-6 py-3 rounded border-blue border-2 hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"

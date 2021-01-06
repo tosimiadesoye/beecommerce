@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+
 
 
 const Shipping = () => {
   return (
     <form>
-      <h1>Shipping method</h1>
+      <h2>Shipping method</h2>
       <p>Select the one you want</p>
       <input type="checkbox" />
       <p>Next day delivery</p>
@@ -15,7 +15,7 @@ const Shipping = () => {
       <input type="checkbox" />
       <p>Personal Pickup</p>
       <p>Free</p>
-      <h1>Coupon code</h1>
+      <h2>Coupon code</h2>
       <p>Enter your cupon code</p>
       <input type="text" />
       <button>apply</button>

@@ -4,14 +4,13 @@ import AuthService from "../../services/auth";
 import { Dropdown } from "./Dropdown";
 
 const Navigation = ({ makeupType, fixed }) => {
+
   const [currentUser, setCurrentUser] = useState(undefined);
   const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const user = AuthService.getCurrentUser();
 
     if (user) {
-      //   console.log(user.username)
-      //  console.log(user.roles)
       setCurrentUser(user);
     }
   }, []);
@@ -19,6 +18,8 @@ const Navigation = ({ makeupType, fixed }) => {
   const logOut = () => {
     AuthService.logout();
   };
+  const cart = JSON.parse(localStorage.getItem('cart'))
+ 
 
   return (
     <>
@@ -67,12 +68,12 @@ const Navigation = ({ makeupType, fixed }) => {
                       className="px-3 py-2 flex items-center text-black uppercase font-bold leading-snug text-black hover:opacity-75"
                       to="/cart"
                     >
-                      Cart
+                      Cart({cart !== null? cart.length: 0})
                     </Link>
                   </li>
 
                   {currentUser ? (
-                    <div>
+                    <div className="Navigation-nav ml-auto">
                       <li className="nav-item">
                         <Link
                           to={"/profile"}
@@ -112,14 +113,6 @@ const Navigation = ({ makeupType, fixed }) => {
                       </li>
                     </div>
                   )}
-                  {/* <li className="nav-item">
-                    <Link
-                      className="px-3 py-2 flex items-center text-black uppercase font-bold leading-snug text-black hover:opacity-75"
-                      href="#pablo"
-                    >
-                      Settings
-                    </Link>
-                  </li> */}
                 </ul>
               </div>
             </div>

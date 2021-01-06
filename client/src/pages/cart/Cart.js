@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import RenderCart from "./RenderCart";
 
 const Cart = () => {
@@ -78,7 +79,7 @@ const Cart = () => {
   }, []);
   console.log(total);
   return (
-    <div className="container  shadow-lg bg-red-300">
+    <div className="container bg-gray-300">
       <div className="flex flex-row gap-8 md:gap-48 p-9 mx-4">
         <h4>Product</h4>
         <h4>Price</h4>
@@ -106,18 +107,19 @@ const Cart = () => {
         </div>
       )}
       <div className="float-right flex flex-col gap-5">
+        <div className='flex flex-row gap-4'>
+        <div>
+          <h2>Total Items</h2>
+          <h3>{total && total.itemCount} </h3>
+        </div>
         <div>
           <h2>Total price</h2>
           <h3>{`£${total && total.addSubtotal}`} </h3>
         </div>
 
-        <div >
-          
-            <div>
-              <h2>Total Items</h2>
-              <h3>{total && total.itemCount} </h3>
-            </div>
-          
+        </div>
+        
+        <div>
           <button
             className="text-white shadow  bg-black shadow border border-solid
                border-white hover:bg-pink hover:text-black
@@ -136,7 +138,9 @@ const Cart = () => {
             type="button"
             style={{ transition: "all .15s ease" }}
           >
-            Check out
+            <Link className="text-white" to="/checkout">
+              Check out
+            </Link>
           </button>
         </div>
       </div>
