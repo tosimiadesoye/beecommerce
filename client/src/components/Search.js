@@ -1,9 +1,6 @@
 import { useState} from "react";
 import AuthService from "../services/product";
 
-
-
-
 const Search = ({ searchProduct }) => {
   const [keyword, setKeyword] = useState("");
   

@@ -3,8 +3,7 @@ import React from "react";
 const RenderCart = (props) => {
   const {
     info,
-    incrementQuantity,
-    decrementQuantity,
+   editQuantity,
     removeOneItemFromCart,
   } = props;
   return (
@@ -27,7 +26,7 @@ const RenderCart = (props) => {
       <div className="border-2 border-gray-900 w-20 h-11 md:h-10 text-center">
         <button
           className="mr-2"
-          onClick={() => decrementQuantity(info.productId._id)}
+          onClick={() => editQuantity(info.productId._id, false)}
         >
           -
         </button>
@@ -36,7 +35,7 @@ const RenderCart = (props) => {
 
         <button
           className="mr-2"
-          onClick={() => incrementQuantity(info.productId._id)}
+          onClick={() => editQuantity(info.productId._id, true)}
         >
           +
         </button>

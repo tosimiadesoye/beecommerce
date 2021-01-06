@@ -6,27 +6,15 @@ const Cart = () => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
 
-  const incrementQuantity = (id) => {
-    const cartItem = JSON.parse(localStorage.getItem("cart"));
-    for (let i = cartItem.length - 1; i >= 0; i--) {
-      if (cartItem[i].productId._id === id) {
-        let price = parseFloat(cartItem[i].productId.price);
-        cartItem[i].quantity = cartItem[i].quantity + 1;
-        cartItem[i].subTotal = price * cartItem[i].quantity;
-        break;
-      }
-    }
-    localStorage.setItem("cart", JSON.stringify(cartItem));
-    setCart(cartItem);
-  };
-  const decrementQuantity = (id) => {
+  const editQuantity = (id, checkBoolean) => {
     const cartItem = JSON.parse(localStorage.getItem("cart"));
 
     let index = cartItem.findIndex((item) => item.productId._id === id);
     for (let i = cartItem.length - 1; i >= 0; i--) {
       if (cartItem[i].productId._id === id) {
         let price = parseFloat(cartItem[i].productId.price);
-        cartItem[i].quantity = cartItem[i].quantity - 1;
+
+        cartItem[i].quantity =checkBoolean?cartItem[i].quantity + 1: cartItem[i].quantity - 1;
         cartItem[i].subTotal = price * cartItem[i].quantity;
         //delete a product from local storage if the quantity is zero
         if (index !== -1 && cartItem[i].quantity <= 0) {
@@ -37,10 +25,11 @@ const Cart = () => {
     }
     localStorage.setItem("cart", JSON.stringify(cartItem));
     setCart(cartItem);
+    calTotalAndItemCount(cartItem)
   };
+    
 
-  const calTotal = () => {
-    const cartItem = JSON.parse(localStorage.getItem("cart"));
+  const calTotalAndItemCount = (cartItem) => {
 
     if (cartItem !== null) {
       let itemCount = cartItem
@@ -55,7 +44,9 @@ const Cart = () => {
     }
   };
   const getProductFromStorage = () => {
-    return setCart(JSON.parse(localStorage.getItem("cart")));
+    const storage = JSON.parse(localStorage.getItem("cart"))
+    calTotalAndItemCount(storage)
+   setCart(storage);
   };
 
   const removeOneItemFromCart = (id) => {
@@ -67,7 +58,7 @@ const Cart = () => {
     setCart(remove);
   };
 
-  const removeAllProductsFromStorage = () => {
+  const removeAllProductsInStorage = () => {
     const remove = localStorage.removeItem("cart");
     setCart(remove);
     window.location.replace("/shop");
@@ -75,7 +66,7 @@ const Cart = () => {
 
   useEffect(() => {
     getProductFromStorage();
-    calTotal();
+    
   }, []);
   console.log(total);
   return (
@@ -97,8 +88,7 @@ const Cart = () => {
               >
                 <RenderCart
                   info={item}
-                  incrementQuantity={incrementQuantity}
-                  decrementQuantity={decrementQuantity}
+                  editQuantity={editQuantity}
                   removeOneItemFromCart={removeOneItemFromCart}
                 />
               </div>
@@ -127,7 +117,7 @@ const Cart = () => {
                  rounded outline-none focus:outline-none mr-1 mb-1"
             type="button"
             style={{ transition: "all .15s ease" }}
-            onClick={() => removeAllProductsFromStorage()}
+            onClick={() => removeAllProductsInStorage()}
           >
             Empty cart
           </button>{" "}
