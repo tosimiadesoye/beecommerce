@@ -44,15 +44,14 @@ exports.createNewProduct = async (req, res) => {
 // exports.getProduct = async (req, res) => {
 // console.log(req.params.pId, "your pId")
 //     const { page = req.params.pId, limit = 10 } = parseInt(req.query);
-    
+
 //     try {
-  
-//     let product = await Product.find() 
-        
+
+//     let product = await Product.find()
+
 //         .limit(limit)
 //         .skip(page * limit)
 //         .exec();
-        
 
 //         res.status(200).json({
 //             product: product
@@ -61,26 +60,26 @@ exports.createNewProduct = async (req, res) => {
 //         res.status(400).json({
 //             status: false,
 //             err: error.message
-//        }) 
+//        })
 //     }
- //};
+//};
 
- exports.getProduct = async (req, res) => {
-   try {
-     let product = await productRepo.findAllProducts();
-     
-     res.status(200).json({
-       status: true,
-       product: product,
-     });
-   } catch (err) {
+exports.getProduct = async (req, res) => {
+  try {
+    let product = await productRepo.findAllProducts();
+
+    res.status(200).json({
+      status: true,
+      product: product,
+    });
+  } catch (err) {
     // bad request
-     res.status(400).json({
-       error: err.message,
-       status: false,
-     });
-   }
- };
+    res.status(400).json({
+      error: err.message,
+      status: false,
+    });
+  }
+};
 
 exports.productById = async (req, res) => {
   try {
@@ -196,14 +195,36 @@ exports.getProductType = async (req, res) => {
 };
 
 exports.getCategory = async (req, res) => {
-    const keyword = req.query.keyword;
-    //* matches any character
-    //. matches any number
+  const keyword = req.query.keyword;
+  //* matches any character
+  //. matches any number
   // db.makeups.find({"description" : /.*liner.*/}, {name:1, category:1, description:1} )
   try {
     const product = await Product.find({
-        description: { $regex: keyword, $options: "" }
+      description: { $regex: keyword, $options: "" },
       //was gonna check 3 of these products ...category, name , description, but the above works
+    });
+    res.status(200).json({ product: product });
+  } catch (err) {
+    res.status(400).json({
+      error: err.message,
+      why:'this',
+    });
+  }
+};
+
+//trying to create a query function that returns tag_list products
+//function doesn't work
+exports.getTagList = async (req, res) => {
+
+  const keyword = req.query.keyword;
+  console.log('hello')
+  try {
+    const product = await Product.find({
+      tag_list: {
+        $regex: keyword,
+        $options: "i",
+      },
     });
     res.status(200).json({ product: product });
   } catch (err) {

@@ -12,7 +12,7 @@ import axios from "axios";
 import MakeupService from "./services/product";
 import Cart from "./pages/cart/Cart";
 import data from "./models/makeup.json";
-import ProductContentPagination  from "./components/PaginationContent.js";
+import ProductContentPagination from "./components/PaginationContent.js";
 import DisplayOnlyOneItem from "./pages/shop/DisplayOnlyOneItem";
 import Search from "./components/Search";
 
@@ -25,9 +25,8 @@ function App() {
   const [type, setType] = useState([]);
   const [activePage, setCurrentPage] = useState(1);
   const displayedProductsPerPage = 9;
-  
 
-  const makeupProduct =  async() => {
+  const makeupProduct = async () => {
     const response = await MakeupService.getProduct();
     if (response) {
       setProduct(response.data.product);
@@ -72,9 +71,9 @@ function App() {
         product_type: makeup.product_type,
         brand: makeup.brand,
         category: makeup.category,
-    }
-  })
-}
+      };
+    });
+  };
 
   return (
     <div className="fonts">
@@ -94,7 +93,7 @@ function App() {
               </>
             )}
           />
-         <Route
+          <Route
             exact
             path="/cart"
             render={() => (
@@ -106,7 +105,7 @@ function App() {
                 <Cart />
               </>
             )}
-          /> 
+          />
           <Route
             exact
             path="/shop"
@@ -123,7 +122,6 @@ function App() {
                   product={parseProducts(currentProduct)}
                   setProduct={setProduct}
                   makeupProduct={makeupProduct}
-                
                 />
 
                 <ProductContentPagination
@@ -192,7 +190,6 @@ function App() {
                   makeup_type={parseProducts(makeup_type)}
                   productType={productType}
                   type={type}
-                  
                 />
               </>
             )}
@@ -207,7 +204,7 @@ function App() {
                   makeupType={makeupType}
                   setType={setType}
                 />
-                <DisplayOnlyOneItem  />
+                <DisplayOnlyOneItem />
               </>
             )}
           />
@@ -222,15 +219,25 @@ function App() {
                   makeupType={makeupType}
                   setType={setType}
                 />
-                <DisplayOnlyOneItem/>
+                <DisplayOnlyOneItem />
               </>
             )}
           />
-         
 
-          <Route exact path={'/checkout'} render={() => (
-            <Checkout/>
-          )} />
+          <Route
+            exact
+            path={"/checkout"}
+            render={() => (
+              <>
+                <Navigation
+                  setMakeupType={setMakeupType}
+                  makeupType={makeupType}
+                  setType={setType}
+                />
+                <Checkout />
+              </>
+            )}
+          />
         </Switch>
       </BrowserRouter>
     </div>
@@ -238,5 +245,3 @@ function App() {
 }
 
 export default App;
-
-

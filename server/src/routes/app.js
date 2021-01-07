@@ -12,6 +12,7 @@ router.put("/api/product", controller.updateManyProducts);
 router.delete("/api/product", controller.deleteManyProducts);
 router.get("/api/product_type", controller.getProductType);//e.g http://localhost:5000/api/product_type?keyword=bronzer
 router.get("/api/category", controller.getCategory)
+router.get("/api/product/tag_list", controller.getTagList)
 
 
 module.exports = router;
