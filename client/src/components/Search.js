@@ -1,6 +1,6 @@
 import { useState} from "react";
 import AuthService from "../services/product";
-
+import PropTypes from 'prop-types' 
 const Search = ({ searchProduct }) => {
   const [keyword, setKeyword] = useState("");
   
@@ -44,4 +44,7 @@ const Search = ({ searchProduct }) => {
   );
 };
 
+Search.propTypes = {
+  searchProduct: PropTypes.func.isRequired
+}
 export default Search;

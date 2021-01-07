@@ -68,7 +68,7 @@ const Cart = () => {
     getProductFromStorage();
     
   }, []);
-  console.log(total);
+ 
   return (
     <div className="container bg-gray-300">
       <div className="flex flex-row gap-8 md:gap-48 p-9 mx-4">
@@ -100,11 +100,11 @@ const Cart = () => {
         <div className='flex flex-row gap-4'>
         <div>
           <h2>Total Items</h2>
-          <h3>{total && total.itemCount} </h3>
+          <h3>{ total.itemCount} </h3>
         </div>
         <div>
           <h2>Total price</h2>
-          <h3>{`£${total && total.addSubtotal}`} </h3>
+          <h3>{`£${total.addSubtotal}`} </h3>
         </div>
 
         </div>

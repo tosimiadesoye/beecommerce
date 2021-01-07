@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const ProductCard = ({ info }) => {
   return (
@@ -11,7 +12,7 @@ const ProductCard = ({ info }) => {
         <div>
           <img
             alt={info.name}
-            // style={{ width: "6rem" }}
+            
             src={info.api_featured_image}
             className="shadow w-24 object-scale-down"
           />
@@ -29,7 +30,7 @@ const ProductCard = ({ info }) => {
               className="bg-yellow-50 text-black active:bg-yellow-60 font-bold uppercase
                  text-sm px-6 py-3 rounded shadow-sm hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
               type="button"
-              style={{ transition: "all .15s ease"}}
+              style={{ transition: "all .15s ease" }}
             >
               View item
             </button>
@@ -40,12 +41,18 @@ const ProductCard = ({ info }) => {
   );
 };
 
-// ProductCard.propTypes = {
-//   info: PropTypes.exact({
-//     name:PropTypes.string.isRequired,
-//     price:PropTypes.string.isRequired,
-//     _id:PropTypes.object.isRequired,
-//     api_featured_image:PropTypes.string.isRequired,
-//   })
-// }
+ProductCard.propTypes = {
+  info: PropTypes.exact({
+    api_featured_image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.string,
+    _id: PropTypes.string.isRequired,
+    product_colors: PropTypes.array.isRequired,
+    category: PropTypes.string,
+    brand: PropTypes.string,
+    id: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    product_type: PropTypes.string,
+  }),
+};
 export default ProductCard;

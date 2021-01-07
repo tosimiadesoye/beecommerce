@@ -12,8 +12,8 @@ import axios from "axios";
 import MakeupService from "./services/product";
 import Cart from "./pages/cart/Cart";
 import data from "./models/makeup.json";
-import { ProductContentPagination } from "./components/PaginationContent.js";
-import IndividualItem from "./pages/shop/IndividualItem";
+import ProductContentPagination  from "./components/PaginationContent.js";
+import DisplayOnlyOneItem from "./pages/shop/DisplayOnlyOneItem";
 import Search from "./components/Search";
 
 import "./App.css";
@@ -59,6 +59,23 @@ function App() {
   //   indexOfLastProducts
   // );
 
+  const parseProducts = (makeupData) => {
+    return makeupData.map((makeup) => {
+      return {
+        api_featured_image: makeup.api_featured_image,
+        price: makeup.price,
+        name: makeup.name,
+        id: makeup.id,
+        product_colors: makeup.product_colors,
+        _id: makeup._id,
+        description: makeup.description,
+        product_type: makeup.product_type,
+        brand: makeup.brand,
+        category: makeup.category,
+    }
+  })
+}
+
   return (
     <div className="fonts">
       <BrowserRouter>
@@ -98,19 +115,19 @@ function App() {
                 <Navigation
                   setMakeupType={setMakeupType}
                   makeupType={makeupType}
-                  product={product}
+                  product={parseProducts(product)}
                   setProduct={setProduct}
                 />
                 <Search searchProduct={setProduct} />
                 <ShopCardContainer
-                  product={currentProduct}
+                  product={parseProducts(currentProduct)}
                   setProduct={setProduct}
                   makeupProduct={makeupProduct}
                 
                 />
 
                 <ProductContentPagination
-                  product={product}
+                  product={parseProducts(product)}
                   activePage={activePage}
                   setCurrentPage={setCurrentPage}
                 />
@@ -172,7 +189,7 @@ function App() {
                 <MakeupList
                   {...match}
                   setMakeup_type={setMakeup_type}
-                  makeup_type={makeup_type}
+                  makeup_type={parseProducts(makeup_type)}
                   productType={productType}
                   type={type}
                   
@@ -190,7 +207,7 @@ function App() {
                   makeupType={makeupType}
                   setType={setType}
                 />
-                <IndividualItem  />
+                <DisplayOnlyOneItem  />
               </>
             )}
           />
@@ -205,7 +222,7 @@ function App() {
                   makeupType={makeupType}
                   setType={setType}
                 />
-                <IndividualItem/>
+                <DisplayOnlyOneItem/>
               </>
             )}
           />

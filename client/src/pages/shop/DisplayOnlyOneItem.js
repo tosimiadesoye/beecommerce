@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-const IndividualItem = () => {
+const DisplayOnlyOneItem = () => {
   const [shadeName, setShadeName] = useState([]);
   const [popover, setPopover] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
@@ -46,7 +46,7 @@ const IndividualItem = () => {
     setShadeName(name);
   };
 
-  const flash = (name) => {
+  const flashCard = (name) => {
     const nameOfItemAddedToCart = item.name === name;
     if (nameOfItemAddedToCart) {
       setPopover(`You added ${item.name} to cart`);
@@ -58,7 +58,6 @@ const IndividualItem = () => {
   };
   useEffect(() => {
     setTimer();
-
   }, [setTimer()]);
 
   return (
@@ -70,7 +69,7 @@ const IndividualItem = () => {
     >
       <div>
         <img
-          // style={{ width: "15rem" }}
+          
           className="w-20 md:w-60 "
           src={item.api_featured_image}
           alt={item.name}
@@ -92,6 +91,7 @@ const IndividualItem = () => {
           {item.product_colors.map((color) => (
             <>
               <button
+                key={color.hex_value}
                 className="inline-block  w-3 hover:opacity-70"
                 style={{
                   backgroundColor: color.hex_value,
@@ -108,7 +108,7 @@ const IndividualItem = () => {
             className=" shadow p-2 rounded-sm bg-blue-300 focus:ring-2"
             onClick={() => {
               addProductToCart(item, 1, item.price);
-              flash(item.name);
+              flashCard(item.name);
               setIsVisible(true);
             }}
           >
@@ -134,4 +134,5 @@ const IndividualItem = () => {
   );
 };
 
-export default IndividualItem;
+
+export default DisplayOnlyOneItem;

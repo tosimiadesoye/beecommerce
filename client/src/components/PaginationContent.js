@@ -1,7 +1,7 @@
 import React from "react";
 import Pagination from "react-js-pagination";
-
-export const ProductContentPagination = (props) => {
+import PropTypes from 'prop-types';
+ const ProductContentPagination = (props) => {
   const { product, activePage, setCurrentPage } = props;
 
   const handlePageChange = (pageNumber) => {
@@ -26,5 +26,12 @@ export const ProductContentPagination = (props) => {
   );
 };
 
+
+ProductContentPagination.propTypes = {
+  product: PropTypes.array,
+  activePage: PropTypes.number,
+  setCurrentPage: PropTypes.func,
+}
+export default ProductContentPagination
 
 
