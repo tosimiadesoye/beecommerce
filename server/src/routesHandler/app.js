@@ -1,11 +1,10 @@
-const route = require("../routes/app");
-const auth = require("../routes/authRoutes");
-const user = require("../routes/userRoutes");
-const contact = require("../routes/contact");
+const routeUtil = require("../routes");
+
 
 module.exports = (app) => {
-  app.use("/", route);
-  app.use("/", auth);
-  app.use("/", user);
-  app.use("/", contact);
+  app.use("/", routeUtil.app);
+  app.use("/", routeUtil.auth);
+  app.use("/", routeUtil.user);
+  app.use("/", routeUtil.contact);
+  app.use('/', routeUtil.order)
 };

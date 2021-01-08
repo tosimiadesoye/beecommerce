@@ -41,28 +41,52 @@ exports.createNewProduct = async (req, res) => {
   }
 };
 
-// exports.getProduct = async (req, res) => {
-// console.log(req.params.pId, "your pId")
-//     const { page = req.params.pId, limit = 10 } = parseInt(req.query);
+exports.getLayoutProducts = async (req, res) => {
+  console.log(req.params.pId, "your pId");
+  const { page = req.params.pId, limit = 4 } = parseInt(req.query);
 
-//     try {
+  try {
+    let product = await Product.find()
 
-//     let product = await Product.find()
+      .limit(limit)
+      .skip(page * limit)
+      .exec();
 
-//         .limit(limit)
-//         .skip(page * limit)
-//         .exec();
+    res.status(200).json({
+      product: product,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      err: error.message,
+    });
+  }
+};
 
-//         res.status(200).json({
-//             product: product
-//         })
-//     } catch(error){
-//         res.status(400).json({
-//             status: false,
-//             err: error.message
-//        })
-//     }
-//};
+exports.getLayoutProductForType = async (req, res) => {
+  const { page = req.params.pId, limit = 3 } = parseInt(req.query);
+  const keyword = req.query.keyword;
+  try {
+    let product = await Product.find({
+      product_type: {
+        $regex: keyword,
+        $options: "i",
+      },
+    })
+      .limit(limit)
+      .skip(page * limit)
+      .exec();
+
+    res.status(200).json({
+      product: product,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      err: error.message,
+    });
+  }
+};
 
 exports.getProduct = async (req, res) => {
   try {
@@ -208,7 +232,7 @@ exports.getCategory = async (req, res) => {
   } catch (err) {
     res.status(400).json({
       error: err.message,
-      why:'this',
+      why: "this",
     });
   }
 };
@@ -216,15 +240,48 @@ exports.getCategory = async (req, res) => {
 //trying to create a query function that returns tag_list products
 //function doesn't work
 exports.getTagList = async (req, res) => {
-
-  const keyword = req.query.keyword;
-  console.log('hello')
+  const {tag, type}= req.query;
+  //localhost:5000/api/product/tag_list?keyword=Vegan
   try {
     const product = await Product.find({
-      tag_list: {
-        $regex: keyword,
-        $options: "i",
-      },
+      $and: [
+        {
+          tag_list: {
+            $regex: tag,
+          },
+        },
+        {
+          product_type: {
+            $regex: type,
+          },
+        },
+      ],
+    });
+    res.status(200).json({ product: product });
+  } catch (err) {
+    res.status(400).json({
+      error: err.message,
+    });
+  }
+};
+
+exports.getProductBrandAndType = async (req, res) => {
+  const { brand, type } = req.query;
+  // localhost:5000/api/product/query?brand=colourpop&type=lip_liner
+  try {
+    const product = await Product.find({
+      $and: [
+        {
+          brand: {
+            $regex: brand,
+          },
+        },
+        {
+          product_type: {
+            $regex: type,
+          },
+        },
+      ],
     });
     res.status(200).json({ product: product });
   } catch (err) {

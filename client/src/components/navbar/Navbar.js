@@ -28,11 +28,14 @@ const Navigation = ({ makeupType, fixed }) => {
           <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-transparent rounded">
             <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
               <div className="w-full relative flex justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start">
+                <Link to='/'>
                 <img
                   className="w-20"
                   src="/images/Female-Bee-With-Mirror.svg"
                   alt="svg logo"
                 />
+              </Link>
+
 
                 <button
                   className="text-black cursor-pointer text-xl leading-none px-3 
@@ -61,7 +64,7 @@ const Navigation = ({ makeupType, fixed }) => {
                       Home
                     </Link>
                   </li>
-                  <Dropdown makeupType={makeupType} color="white" />
+                  <Dropdown makeupType={makeupType} menuOpen={menuOpen} color="white" />
 
                   <li className="nav-item">
                     <Link
