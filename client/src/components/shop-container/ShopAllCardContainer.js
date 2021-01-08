@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import PropTypes from "prop-types";
-import ProductCard from "./ProductCard";
+import ProductCard from "../product/ProductCard";
 
-const ShopCardContainer = (props) => {
+const ShopAllCardContainer = (props) => {
   const { product, makeupProduct, addToCart } = props;
 
   useEffect(() => {
@@ -24,10 +24,10 @@ const ShopCardContainer = (props) => {
   );
 };
 
-ShopCardContainer.propTypes = {
+ShopAllCardContainer.propTypes = {
   product: PropTypes.array,
   makeupProduct: PropTypes.func,
   addToCart: PropTypes.func,
 };
 
-export default ShopCardContainer;
+export default ShopAllCardContainer;

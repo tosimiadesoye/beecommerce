@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { items, latest, newCart } from "./LayoutArrays";
 import CardContainer from "./CardContainer";
 import { Block } from "./CardContainer";
+import {ShopAllCardContainer} from './shop-container'
 
 
 
@@ -62,6 +63,7 @@ const Layout = () => {
         <h3 className=" uppercase mb-5">Upcoming Collection</h3>
         <div className="mb-6">
           <CardContainer info={items} />
+          {/* <ShopAllCardContainer product={ items}/> */}
         </div>
         <button
           className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3

@@ -1,21 +1,19 @@
 import { useState } from "react";
-import Navigation from "./components/navbar/Navbar";
+import { Navigation } from "./components/navbar";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import ShopCardContainer from "./pages/shop/ShopCardContainer";
+import {ShopAllCardContainer,MakeupTypeCardContainer,} from "./components/shop-container";
 import Signup from "./pages/auth/Signup";
 import Layout from "./components/Layout";
 import Login from "./pages/auth/Lognin";
 import Profile from "./pages/user/Profile";
-import MakeupList from "./components/product-type/MakeupList";
 import Checkout from "./components/Checkout";
 import axios from "axios";
 import MakeupService from "./services/product";
 import Cart from "./pages/cart/Cart";
 import data from "./models/makeup.json";
 import ProductContentPagination from "./components/PaginationContent.js";
-import DisplayOnlyOneItem from "./pages/shop/DisplayOnlyOneItem";
+import { DisplayOnlyOneItem } from "./components/product";
 import Search from "./components/Search";
-
 import "./App.css";
 
 function App() {
@@ -118,7 +116,7 @@ function App() {
                   setProduct={setProduct}
                 />
                 <Search searchProduct={setProduct} />
-                <ShopCardContainer
+                <ShopAllCardContainer
                   product={parseProducts(currentProduct)}
                   setProduct={setProduct}
                   makeupProduct={makeupProduct}
@@ -184,7 +182,7 @@ function App() {
                   setType={setType}
                 />
                 <Search searchProduct={setMakeup_type} />
-                <MakeupList
+                <MakeupTypeCardContainer
                   {...match}
                   setMakeup_type={setMakeup_type}
                   makeup_type={parseProducts(makeup_type)}

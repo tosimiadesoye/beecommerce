@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import ProductCard from "../../pages/shop/ProductCard";
+import { ProductCard } from "../product";
 import PropTypes from "prop-types";
-const MakeupList = (props) => {
+const MakeupTypeCardContainer = (props) => {
   const { type, params, makeup_type, productType } = props;
 
   useEffect(() => {
@@ -26,11 +26,11 @@ const MakeupList = (props) => {
   );
 };
 
-MakeupList.propTypes = {
+MakeupTypeCardContainer.propTypes = {
   type: PropTypes.array,
   params: PropTypes.object,
   makeup_type: PropTypes.array,
-productType:PropTypes.func,
+  productType: PropTypes.func,
 };
 
-export default MakeupList;
+export default MakeupTypeCardContainer;
