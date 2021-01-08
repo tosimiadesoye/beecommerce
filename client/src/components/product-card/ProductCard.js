@@ -7,7 +7,7 @@ const ProductCard = ({ info }) => {
       <div
         className=" py-6 md:py-8 
       place-content-center
-       flex flex-row items-center mx-5 my-5 border-0 border-white bg-gray-300 rounded truncate"
+       flex flex-row items-center mx-5 my-5 border-0 border-white bg-gray-300 truncate"
       >
         <div>
           <img

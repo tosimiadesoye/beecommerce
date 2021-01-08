@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import PropTypes from "prop-types";
-import ProductCard from "../product/ProductCard";
+import ProductCard from "../product-card/ProductCard";
 
 const ShopAllCardContainer = (props) => {
   const { product, makeupProduct, addToCart } = props;

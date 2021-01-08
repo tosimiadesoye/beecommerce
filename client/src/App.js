@@ -4,16 +4,16 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import {ShopAllCardContainer,MakeupTypeCardContainer,} from "./components/shop-container";
 import Signup from "./pages/auth/Signup";
 import Layout from "./components/Layout";
-import TagList from "./components/TagList";
+
 import Login from "./pages/auth/Lognin";
 import Profile from "./pages/user/Profile";
 import Checkout from "./components/Checkout";
 import axios from "axios";
 import MakeupService from "./services/product";
 import Cart from "./pages/cart/Cart";
-import data from "./models/dropdownItem.json";
+import data from "./models/makeup.json";
 import ProductContentPagination from "./components/PaginationContent.js";
-import { DisplayOnlyOneItem } from "./components/product";
+import { DisplayOnlyOneItem } from "./components/product-card";
 import Search from "./components/Search";
 import "./App.css";
 
@@ -226,28 +226,7 @@ function App() {
                 />
               </>
             )}
-          />
-           <Route
-            exact
-            path="/:brand/:tag_list"
-            render={({ match }) => (
-              <>
-                <Navigation
-                  setMakeupType={setMakeupType}
-                  makeupType={makeupType}
-                  setType={setType}
-                />
-                <Search searchProduct={setMakeup_type} />
-                <TagList
-                  {...match}
-                  setTag={setTag}
-                  tag={parseProducts(tag)}
-                  productType={getProductTagAndType}
-                  type={type}
-                />
-              </>
-            )}
-          />
+         />
           <Route
             exact
             path={`/shop/:_id`}

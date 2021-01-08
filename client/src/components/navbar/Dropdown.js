@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Popper from "popper.js";
 import { Link } from "react-router-dom";
 
 export const Dropdown = ({ color, makeupType }) => {
-  const [dropdownPopoverShow, setDropdownPopoverShow] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownItem, setDropdownItem] = useState([]);
+ 
+  // dropdown props
+  const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef();
   const popoverDropdownRef = React.createRef();
   const openDropdownPopover = () => {
@@ -22,12 +22,6 @@ export const Dropdown = ({ color, makeupType }) => {
   color === "white"
     ? (bgColor = "bg-gray-800")
     : (bgColor = "bg-" + color + "-500");
-
-  const handleDropdown = (dropdownId) => {
-    const id = makeupType.filter((item) => item.id === dropdownId);
-    setDropdownItem(id);
-  };
-
   return (
     <>
       <div className="flex flex-wrap">
@@ -47,7 +41,8 @@ export const Dropdown = ({ color, makeupType }) => {
                   : openDropdownPopover();
               }}
             >
-              {color === "white" ? "Shop" : color + " Dropdown"}
+             {color === "white" ? "Shop" : color + " Dropdown"} 
+            
             </button>
             <div
               ref={popoverDropdownRef}
@@ -69,57 +64,24 @@ export const Dropdown = ({ color, makeupType }) => {
               </Link>
               {makeupType && (
                 <>
-                  {makeupType.map((data, idx) => {
-                    return (
-                      <>
-                        {/* {data.name} */}
-                        <button
-                          key={idx}
-                          className={
-                            "text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap  " +
-                            (color === "white"
-                              ? " text-gray-800"
-                              : "text-white")
-                          }
-                          onClick={() => {
-                            handleDropdown(data.id);
-                            setMenuOpen(!menuOpen);
-                          }}
-                        >
-                          {data.name}
-                        </button>
-                      </>
-                    );
-                  })}
+                  {makeupType.map((type, idx) => (
+                    <Link
+                      key={idx}
+                      to={`/type/${type}`}
+                      className={
+                        "text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent " +
+                        (color === "white" ? " text-gray-800" : "text-white")
+                      }
+                    >
+                      {type}
+                    </Link>
+                  ))}
                 </>
               )}
-                    {dropdownItem && (
-        <div>
-          {dropdownItem.map((data) => {
-            return data.items.map((type) => (
-              <>
-                <Link
-                  key={type}
-                  to={`/type/${type}`}
-                  className={
-                     `text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent float-left`
-                    +
-                    (color === "white" ? " text-gray-800" : "text-white") +
-                    (menuOpen ? " flex" : " hidden")
-                  }
-                >
-                  {type}
-                </Link>
-              </>
-            ));
-          })}{" "}
-        </div>
-      )}
             </div>
           </div>
         </div>
       </div>
-
     </>
   );
 };
@@ -127,7 +89,7 @@ export const Dropdown = ({ color, makeupType }) => {
 export default function DropdownRender() {
   return (
     <>
-      <Dropdown />
+      <Dropdown  />
     </>
   );
 }

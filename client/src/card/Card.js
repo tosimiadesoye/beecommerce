@@ -46,7 +46,9 @@ export const Card = ({ item }) => {
         alt={item.name}
       />
 
-      <div className=" text-gray-900 inline-block md:break-words text-center">
+      <div
+        className=" text-gray-900 inline-block md:break-words text-center"
+      >
         <p>{item.name}</p>
         <h6>{`£${item.price}`}</h6>
       </div>

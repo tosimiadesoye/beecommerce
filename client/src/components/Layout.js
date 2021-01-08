@@ -1,13 +1,16 @@
+import React,{ useEffect} from 'react'
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
-import { items, latest, newCart } from "./LayoutArrays";
-import CardContainer from "./CardContainer";
-import { Block } from "./CardContainer";
-import {ShopAllCardContainer} from './shop-container'
+import { newCart } from "./LayoutArrays";
+
+import { Block } from "../card/CardContainer";
+import {ShopAllCardContainer}from './shop-container'
 
 
 
-const Layout = () => {
+const Layout = ({ layoutProduct, product, bronzer,layoutProductForBronzer }) => {
+ 
+  
   return (
     <div>
        <div className="grid grid-rows-2 grid-flow-col gap-3 gap-x-0">
@@ -26,7 +29,7 @@ const Layout = () => {
 
       <div className="flex flex-col md:flex-row px-16 py-20 items-center uppercase ">
         <div className="w-1/3">
-          <img src="/images/eyeshadow.jpg" alt="eyeshadow" />
+          <img src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/847/original/open-uri20171224-4-1se9mcb?1514074989" alt="eyeshadow" />
         </div>
 
         <div
@@ -62,8 +65,8 @@ const Layout = () => {
       <div className="grid justify-items-center m-5">
         <h3 className=" uppercase mb-5">Upcoming Collection</h3>
         <div className="mb-6">
-          <CardContainer info={items} />
-          {/* <ShopAllCardContainer product={ items}/> */}
+           {/* <CardContainer info={product}/>  */}
+          <ShopAllCardContainer product={product} makeupProduct={ layoutProduct}/>
         </div>
         <button
           className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
@@ -119,7 +122,8 @@ const Layout = () => {
       <div className="grid justify-items-center m-5">
         <h3 className=" uppercase mb-5">Latest</h3>
         <div className="m-6">
-          <CardContainer info={latest} />
+          {/* <CardContainer info={bronzer} /> */}
+          <ShopAllCardContainer product={bronzer} makeupProduct={ layoutProductForBronzer}/>
         </div>
         <button
           className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
@@ -138,7 +142,7 @@ const Layout = () => {
       </div>
       <div className="flex flex-col md:flex-row px-16 py-20 items-center uppercase ">
         <div className="w-1/3">
-          <img src="/images/eyeshadow.jpg" alt="eyeshadow" />
+          <img src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/153/original/open-uri20171223-4-snvley?1514062270" alt="eyeshadow" />
         </div>
         <div
           className="px-16 py-20 text-center box-border border-white bg-gradient-to-l
@@ -160,11 +164,11 @@ const Layout = () => {
             style={{ transition: "all .15s ease" }}
           >
             <Link
-              to="/type/bronzer"
+              to="/type/nail_polish"
               className="text-white uppercase font-normal
              block  whitespace-no-wrap bg-transparent "
             >
-              shop our bronzer
+              shop our nail polish
             </Link>
           </button>
         </div>
