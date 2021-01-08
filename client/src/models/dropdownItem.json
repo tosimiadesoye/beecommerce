@@ -1,0 +1,40 @@
+[
+  {
+    "id": 0,
+    "name": "product type",
+    "items": [
+      "blush",
+      "bronzer",
+      "eyebrow",
+      "eyeliner",
+      "eyeshadow",
+      "foundation",
+      "lip_liner",
+      "lipstick",
+      "mascara",
+      "nail_polish"
+    ]
+  },
+  {
+    "id": 1,
+    "name": "Vegan",
+    "items": [
+      "blush",
+      "bronzer",
+      "eyebrow",
+      "eyeliner",
+      "eyeshadow",
+      "foundation",
+      "lip_liner",
+      "lipstick",
+      "mascara",
+      "nail_polish"
+    ]
+  },
+  {
+    "id": 3,
+
+    "name": "category",
+    "items": ["product-type"]
+  }
+]

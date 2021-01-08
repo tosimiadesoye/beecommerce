@@ -4,13 +4,14 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import {ShopAllCardContainer,MakeupTypeCardContainer,} from "./components/shop-container";
 import Signup from "./pages/auth/Signup";
 import Layout from "./components/Layout";
+import TagList from "./components/TagList";
 import Login from "./pages/auth/Lognin";
 import Profile from "./pages/user/Profile";
 import Checkout from "./components/Checkout";
 import axios from "axios";
 import MakeupService from "./services/product";
 import Cart from "./pages/cart/Cart";
-import data from "./models/makeup.json";
+import data from "./models/dropdownItem.json";
 import ProductContentPagination from "./components/PaginationContent.js";
 import { DisplayOnlyOneItem } from "./components/product";
 import Search from "./components/Search";
@@ -22,12 +23,29 @@ function App() {
   const [makeup_type, setMakeup_type] = useState([]);
   const [type, setType] = useState([]);
   const [activePage, setCurrentPage] = useState(1);
+  const [productForLayout, setProductForLayout] = useState([]);
+  const [tag, setTag] = useState([]);
+  const [bronzer, setBronzer] = useState([]);
   const displayedProductsPerPage = 9;
 
   const makeupProduct = async () => {
     const response = await MakeupService.getProduct();
     if (response) {
       setProduct(response.data.product);
+    }
+  };
+
+  const layoutProduct = async () => {
+    const response = await MakeupService.getLayoutProduct();
+    if (response) {
+      setProductForLayout(response.data.product);
+    }
+  };
+
+  const layoutProductForBronzer = async () => {
+    const response = await MakeupService.getLayoutProductForBronzer();
+    if (response) {
+      setBronzer(response.data.product);
     }
   };
 
@@ -45,16 +63,27 @@ function App() {
       });
   };
 
+  const getProductTagAndType = async (itemTag, itemType) => {
+    const API_URI = `http://localhost:5000/api/product/tag_list?brand=${itemTag}&type=${itemType}`;
+    return await axios
+      .get(API_URI)
+      .then((res) => {
+        if (res) {
+          console.log(res);
+          setTag(res);
+        }
+      })
+      .catch((error) => {
+        console.log("error: ", error);
+      });
+  };
+
   const indexOfLastProducts = activePage * displayedProductsPerPage;
   const indexOfFirstProducts = indexOfLastProducts - displayedProductsPerPage;
   const currentProduct = product.slice(
     indexOfFirstProducts,
     indexOfLastProducts
   );
-  // const currentMakeupType = makeup_type.slice(
-  //   indexOfFirstProducts,
-  //   indexOfLastProducts
-  // );
 
   const parseProducts = (makeupData) => {
     return makeupData.map((makeup) => {
@@ -69,6 +98,7 @@ function App() {
         product_type: makeup.product_type,
         brand: makeup.brand,
         category: makeup.category,
+        tag_list:makeup.tag_list
       };
     });
   };
@@ -87,7 +117,12 @@ function App() {
                   makeupType={makeupType}
                 />
 
-                <Layout />
+                <Layout
+                  product={parseProducts(productForLayout)}
+                  layoutProductForBronzer={layoutProductForBronzer}
+                  bronzer={parseProducts(bronzer)}
+                  layoutProduct={layoutProduct}
+                />
               </>
             )}
           />
@@ -187,6 +222,27 @@ function App() {
                   setMakeup_type={setMakeup_type}
                   makeup_type={parseProducts(makeup_type)}
                   productType={productType}
+                  type={type}
+                />
+              </>
+            )}
+          />
+           <Route
+            exact
+            path="/:brand/:tag_list"
+            render={({ match }) => (
+              <>
+                <Navigation
+                  setMakeupType={setMakeupType}
+                  makeupType={makeupType}
+                  setType={setType}
+                />
+                <Search searchProduct={setMakeup_type} />
+                <TagList
+                  {...match}
+                  setTag={setTag}
+                  tag={parseProducts(tag)}
+                  productType={getProductTagAndType}
                   type={type}
                 />
               </>
