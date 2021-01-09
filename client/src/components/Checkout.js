@@ -1,11 +1,14 @@
-import React from 'react'
-import Shipping from '../components/shipment/Shipping'
-const Checkout = () => {
-    return (
-        <div>
-            <Shipping/>
-        </div>
-    )
-}
+import React from "react";
 
-export default Checkout
+const Checkout = () => {
+
+  
+  return (
+    <div>
+          Thank you for shopping with us,
+               your order is on it's way
+    </div>
+  );
+};
+
+export default Checkout;

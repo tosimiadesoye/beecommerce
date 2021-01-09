@@ -74,7 +74,14 @@ const Navigation = ({ makeupType, fixed }) => {
                       Cart({cart !== null? cart.length: 0})
                     </Link>
                   </li>
-
+                  <li className="nav-item">
+                    <Link
+                      className="px-3 py-2 flex items-center text-black uppercase font-bold leading-snug text-black hover:opacity-75"
+                      to="/contact"
+                    >
+                      Contact
+                    </Link>
+                  </li>
                   {currentUser ? (
                     <div className="Navigation-nav ml-auto">
                       <li className="nav-item">

@@ -1,31 +1,35 @@
 import { useState } from "react";
 import { Navigation } from "./components/navbar";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import {ShopAllCardContainer,MakeupTypeCardContainer,} from "./components/shop-container";
+import {
+  ShopAllCardContainer,
+  MakeupTypeCardContainer,
+} from "./components/shop-container";
 import Signup from "./pages/auth/Signup";
 import Layout from "./components/Layout";
-
 import Login from "./pages/auth/Lognin";
 import Profile from "./pages/user/Profile";
 import Checkout from "./components/Checkout";
 import axios from "axios";
 import MakeupService from "./services/product";
 import Cart from "./pages/cart/Cart";
-import data from "./models/makeup.json";
+import { dropdownList } from "./models/productArrays";
 import ProductContentPagination from "./components/PaginationContent.js";
 import { DisplayOnlyOneItem } from "./components/product-card";
 import Search from "./components/Search";
 import "./App.css";
 
 function App() {
-  const [makeupType, setMakeupType] = useState(data);
+  const [makeupType, setMakeupType] = useState(dropdownList);
+  const [tag_list, setTag_list] = useState([]);
   const [product, setProduct] = useState([]);
   const [makeup_type, setMakeup_type] = useState([]);
   const [type, setType] = useState([]);
   const [activePage, setCurrentPage] = useState(1);
   const [productForLayout, setProductForLayout] = useState([]);
-  const [tag, setTag] = useState([]);
   const [bronzer, setBronzer] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
   const displayedProductsPerPage = 9;
 
   const makeupProduct = async () => {
@@ -62,20 +66,23 @@ function App() {
         console.log("error: ", error);
       });
   };
-
-  const getProductTagAndType = async (itemTag, itemType) => {
-    const API_URI = `http://localhost:5000/api/product/tag_list?brand=${itemTag}&type=${itemType}`;
+  const getProductTagList = async (item) => {
     return await axios
-      .get(API_URI)
+      // .get(`localhost:5000/api/product/tag_list?keyword=${item}`)
+
+      .get(`localhost:5000/api/product/query?brand=${item}`)
+
       .then((res) => {
         if (res) {
+          console.log("tag list response");
           console.log(res);
-          setTag(res);
+          setTag_list(res);
         }
       })
       .catch((error) => {
         console.log("error: ", error);
       });
+    
   };
 
   const indexOfLastProducts = activePage * displayedProductsPerPage;
@@ -98,7 +105,6 @@ function App() {
         product_type: makeup.product_type,
         brand: makeup.brand,
         category: makeup.category,
-        tag_list:makeup.tag_list
       };
     });
   };
@@ -135,7 +141,12 @@ function App() {
                   setMakeupType={setMakeupType}
                   makeupType={makeupType}
                 />
-                <Cart />
+                <Cart
+                  cart={cart}
+                  setCart={setCart}
+                  total={total}
+                  setTotal={setTotal}
+                />
               </>
             )}
           />
@@ -226,7 +237,28 @@ function App() {
                 />
               </>
             )}
-         />
+          />
+          <Route
+            exact
+            path="/type/:slug"
+            render={({ match }) => (
+              <>
+                <Navigation
+                  setMakeupType={setMakeupType}
+                  makeupType={makeupType}
+                  setType={setType}
+                />
+                <Search searchProduct={setMakeup_type} />
+                <MakeupTypeCardContainer
+                  {...match}
+                  setMakeup_type={setTag_list}
+                  makeup_type={parseProducts(tag_list)}
+                  productType={getProductTagList}
+                  type={type}
+                />
+              </>
+            )}
+          />
           <Route
             exact
             path={`/shop/:_id`}
@@ -267,7 +299,9 @@ function App() {
                   makeupType={makeupType}
                   setType={setType}
                 />
-                <Checkout />
+                <Checkout
+
+                />
               </>
             )}
           />

@@ -53,6 +53,7 @@ ProductCard.propTypes = {
     id: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
     product_type: PropTypes.string,
+    brand:PropTypes.string,
   }),
 };
 export default ProductCard;

@@ -1,11 +1,11 @@
 import React from 'react'
 
-const TagList = () => {
+const Contact = () => {
     return (
         <div>
-           hi 
+            
         </div>
     )
 }
 
-export default TagList
+export default Contact

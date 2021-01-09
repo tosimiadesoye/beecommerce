@@ -218,7 +218,7 @@ exports.getProductType = async (req, res) => {
   }
 };
 
-exports.getCategory = async (req, res) => {
+exports.getDescription = async (req, res) => {
   const keyword = req.query.keyword;
   //* matches any character
   //. matches any number
@@ -239,23 +239,16 @@ exports.getCategory = async (req, res) => {
 
 //trying to create a query function that returns tag_list products
 //function doesn't work
-exports.getTagList = async (req, res) => {
-  const {tag, type}= req.query;
+exports.getProductByCategory = async (req, res) => {
+  const {category}= req.query;
   //localhost:5000/api/product/tag_list?keyword=Vegan
   try {
     const product = await Product.find({
-      $and: [
-        {
-          tag_list: {
-            $regex: tag,
+   
+          category: {
+            $regex: category,$options: ""
           },
-        },
-        {
-          product_type: {
-            $regex: type,
-          },
-        },
-      ],
+     
     });
     res.status(200).json({ product: product });
   } catch (err) {
@@ -265,23 +258,16 @@ exports.getTagList = async (req, res) => {
   }
 };
 
-exports.getProductBrandAndType = async (req, res) => {
-  const { brand, type } = req.query;
+exports.getProductBrand= async (req, res) => {
+  const { brand} = req.query;
   // localhost:5000/api/product/query?brand=colourpop&type=lip_liner
   try {
     const product = await Product.find({
-      $and: [
-        {
+     
           brand: {
-            $regex: brand,
+            $regex: brand, $options: "" 
           },
-        },
-        {
-          product_type: {
-            $regex: type,
-          },
-        },
-      ],
+       
     });
     res.status(200).json({ product: product });
   } catch (err) {

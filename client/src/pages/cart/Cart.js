@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import RenderCart from "./RenderCart";
-
-const Cart = () => {
-  const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState(0);
+import Shipping from "../../components/shipment/Shipping";
+const Cart = (props) => {
+  const { cart, setCart, total, setTotal } = props;
 
   const editQuantity = (id, checkBoolean) => {
     const cartItem = JSON.parse(localStorage.getItem("cart"));
@@ -14,7 +13,9 @@ const Cart = () => {
       if (cartItem[i].productId._id === id) {
         let price = parseFloat(cartItem[i].productId.price);
 
-        cartItem[i].quantity =checkBoolean?cartItem[i].quantity + 1: cartItem[i].quantity - 1;
+        cartItem[i].quantity = checkBoolean
+          ? cartItem[i].quantity + 1
+          : cartItem[i].quantity - 1;
         cartItem[i].subTotal = price * cartItem[i].quantity;
         //delete a product from local storage if the quantity is zero
         if (index !== -1 && cartItem[i].quantity <= 0) {
@@ -25,12 +26,10 @@ const Cart = () => {
     }
     localStorage.setItem("cart", JSON.stringify(cartItem));
     setCart(cartItem);
-    calTotalAndItemCount(cartItem)
+    calTotalAndItemCount(cartItem);
   };
-    
 
   const calTotalAndItemCount = (cartItem) => {
-
     if (cartItem !== null) {
       let itemCount = cartItem
         .map((item) => item.quantity)
@@ -44,9 +43,9 @@ const Cart = () => {
     }
   };
   const getProductFromStorage = () => {
-    const storage = JSON.parse(localStorage.getItem("cart"))
-    calTotalAndItemCount(storage)
-   setCart(storage);
+    const storage = JSON.parse(localStorage.getItem("cart"));
+    calTotalAndItemCount(storage);
+    setCart(storage);
   };
 
   const removeOneItemFromCart = (id) => {
@@ -66,49 +65,51 @@ const Cart = () => {
 
   useEffect(() => {
     getProductFromStorage();
-    
   }, []);
- 
+
   return (
-    <div className="container bg-gray-300">
-      <div className="flex flex-row gap-8 md:gap-48 p-9 mx-4">
+    <div className="container ">
+      <div className=" bg-gray-300 flex flex-row gap-9 md:gap-20 p-9 mx-4">
         <h4>Product</h4>
         <h4>Price</h4>
         <h4>Qty</h4>
         <h4>subTotal</h4>
       </div>
+      <div className="flex flex-row  ">
+        {cart && (
+          <div>
+            {cart.map((item) => {
+              return (
+                <div
+                className="bg-gray-300"
+                  key={item.productId.name}
+                  //
+                >
+                  <RenderCart
+                    info={item}
+                    editQuantity={editQuantity}
+                    removeOneItemFromCart={removeOneItemFromCart}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        )}
+<div>
+          <Shipping cart={cart} total={total} />
+          <div>
+      <div className=" flex flex-col gap-5">
+        <div className="flex flex-row gap-4">
+          <div>
+            <h2>Total Items</h2>
+            <h3>{total.itemCount} </h3>
+          </div>
+          <div>
+            <h2>Total price</h2>
+            <h3>{`£${total.addSubtotal}`} </h3>
+          </div>
+        </div>
 
-      {cart && (
-        <div>
-          {cart.map((item) => {
-            return (
-              <div
-                key={item.productId.name}
-                //
-              >
-                <RenderCart
-                  info={item}
-                  editQuantity={editQuantity}
-                  removeOneItemFromCart={removeOneItemFromCart}
-                />
-              </div>
-            );
-          })}
-        </div>
-      )}
-      <div className="float-right flex flex-col gap-5">
-        <div className='flex flex-row gap-4'>
-        <div>
-          <h2>Total Items</h2>
-          <h3>{ total.itemCount} </h3>
-        </div>
-        <div>
-          <h2>Total price</h2>
-          <h3>{`£${total.addSubtotal}`} </h3>
-        </div>
-
-        </div>
-        
         <div>
           <button
             className="text-white shadow  bg-black shadow border border-solid
@@ -134,6 +135,10 @@ const Cart = () => {
           </button>
         </div>
       </div>
+      </div>
+        </div>
+      </div>
+     
     </div>
   );
 };

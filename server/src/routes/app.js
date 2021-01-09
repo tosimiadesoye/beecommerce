@@ -10,11 +10,11 @@ router.get("/api/product/:id", controller.productById);//
 router.delete("/api/product/:id", controller.getProductByIdAndDelete);
 router.patch("/api/product/:id", controller.getProductByIdAndUpdate);
 router.put("/api/product", controller.updateManyProducts);
-router.put("/api/product/query", controller.getProductBrandAndType);
+router.put("/api/product/query", controller.getProductBrand);
 router.delete("/api/product", controller.deleteManyProducts);
 router.get("/api/product_type", controller.getProductType);//e.g http://localhost:5000/api/product_type?keyword=bronzer
-router.get("/api/category", controller.getCategory)
-router.get("/api/product/tag_list", controller.getTagList)
+router.get("/api/category", controller.getDescription)
+
 
 
 module.exports = router;
