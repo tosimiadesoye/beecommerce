@@ -17,6 +17,7 @@ import { dropdownList } from "./models/productArrays";
 import ProductContentPagination from "./components/PaginationContent.js";
 import { DisplayOnlyOneItem } from "./components/product-card";
 import Search from "./components/Search";
+import Contact from './pages/Contact'
 import "./App.css";
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
   const [productForLayout, setProductForLayout] = useState([]);
   const [bronzer, setBronzer] = useState([]);
   const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState('0');
   const displayedProductsPerPage = 9;
 
   const makeupProduct = async () => {
@@ -105,6 +106,8 @@ function App() {
         product_type: makeup.product_type,
         brand: makeup.brand,
         category: makeup.category,
+        image_link: makeup.image_link,
+      item_available: makeup.item_available
       };
     });
   };
@@ -305,6 +308,24 @@ function App() {
               </>
             )}
           />
+
+<Route
+            exact
+            path={"/contact"}
+            render={() => (
+              <>
+                <Navigation
+                  setMakeupType={setMakeupType}
+                  makeupType={makeupType}
+                  setType={setType}
+                />
+                <Contact
+
+                />
+              </>
+            )}
+          />
+      
         </Switch>
       </BrowserRouter>
     </div>

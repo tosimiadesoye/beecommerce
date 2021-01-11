@@ -72,7 +72,7 @@ function Login(props) {
         <Form className='signup-form'
         onSubmit={handleLogin}
       ref={form}>
-        <h1 className='sign-up'>Login</h1>
+        <h1 className='sign-up h1'>Login</h1>
     <p>Please fill in this form to create an account.</p>
   
     <label htmlFor="username"><b>username</b></label>

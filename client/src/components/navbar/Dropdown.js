@@ -1,4 +1,3 @@
-  
 import React, { useState } from "react";
 import Popper from "popper.js";
 import { Link } from "react-router-dom";
@@ -55,7 +54,7 @@ export const Dropdown = ({ color, makeupType }) => {
               className={
                 (dropdownPopoverShow ? "block " : "hidden ") +
                 (color === "white" ? "bg-white " : bgColor + " ") +
-                "text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1"
+                "text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1 overflow-auto h-43"
               }
               style={{ minWidth: "12rem" }}
             >
@@ -68,60 +67,64 @@ export const Dropdown = ({ color, makeupType }) => {
               >
                 Shop all
               </Link>
-              {makeupType && (
-                <>
-                  {makeupType.map((data, idx) => {
-                    
-                    return (
-                      <>
-                        {/* {data.name} */}
-                        <button
-                          key={idx}
-                          className={
-                            "text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap  " +
-                            (color === "white"
-                              ? " text-gray-800"
-                              : "text-white")
-                          }
-                          onClick={() => {
-                            handleDropdown(data.id);
-                            setMenuOpen(!menuOpen);
-                          }}
-                        >
-                          {data.name}
-                        </button>
-                      </>
-                    );
-                  })}
-                </>
-              )}
-                    {dropdownItem && (
-        <div>
-          {dropdownItem.map((data) => {
-            return data.items.map((type) => (
-              <>
-                <Link
-                  key={type}
-                  to={`/type/${type}`}
-                  className={
-                     `text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent float-left`
-                    +
-                    (color === "white" ? " text-gray-800" : "text-white") +
-                    (menuOpen ? " flex" : " hidden")
-                  }
-                >
-                  {type}
-                </Link>
-              </>
-            ));
-          })}{" "}
-        </div>
-      )}
+              <div className='flex flex-row gap-4'>
+                <div className='overscroll-auto md:overscroll-contain lg:overscroll-normal'>
+                {makeupType && (
+                  <>
+                    {makeupType.map((data, idx) => {
+                      return (
+                        <>
+                          <button
+                            key={idx}
+                            className={
+                              "text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent hover:text-black" +
+                              (color === "white"
+                                ? " text-gray-800"
+                                : "text-white")
+                            }
+                            onClick={() => {
+                              handleDropdown(data.id);
+                              setMenuOpen(!menuOpen);
+                            }}
+                          >
+                            {data.name}
+                          </button>
+                        </>
+                      );
+                    })}
+                  </>
+                  )}
+                  </div>
+                <div className="rounded shadow float-right ml-30">
+                  {dropdownItem && (
+                    <div>
+                      {dropdownItem.map((data) => {
+                        return data.items.map((type) => (
+                          <>
+                            <Link
+                              key={type}
+                              to={`/type/${type}`}
+                              className={
+                                `  text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent ` +
+                                (color === "white"
+                                  ? " text-gray-800"
+                                  : "text-white") +
+                                (menuOpen ? " flex" : " hidden")
+                              }
+                            >
+                              {type}
+                            </Link>
+                          </>
+                        ));
+                      })}{" "}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
     </>
   );
 };

@@ -1,56 +1,61 @@
 import React from "react";
 
 const RenderCart = (props) => {
-  const {
-    info,
-   editQuantity,
-    removeOneItemFromCart,
-  } = props;
+  const { info, editQuantity, removeOneItemFromCart } = props;
   return (
     <>
-    <div className="flex flex-row  gap-9 md:gap-20 p-9  mx-4 ">
-      <div>
-        <img
-          src={info.productId.api_featured_image}
-          className="w-10 md:w-20"
-          alt={info.productId.name}
-        />
-        {/* style={{ wordWrap: "break-word" }} */}
-        <p className="inline-block break-normal w-20">{info.productId.name}</p>
-      </div>
-      <div>
-        {" "}
-        <h5> {`£ ${info.productId.price}`}</h5>
-      </div>
+      <div className="flex flex-row  gap-9 md:gap-20 p-9  mx-4 ">
+        <div>
+          <img
+            src={info.productId.api_featured_image}
+            className="w-10 md:w-20 shadow"
+            alt={info.productId.name}
+          />
+          {/* style={{ wordWrap: "break-word" }} */}
+        </div>
+        <div className="mr-2">
+          {" "}
+          <p className="inline-block break-normal w-20">
+            {info.productId.name}
+          </p>
+        </div>
+        <div>
+          {" "}
+          <h5> {`£ ${info.productId.price}`}</h5>
+        </div>
 
-      <div className="border-2 border-gray-900 w-20 h-11 md:h-10 text-center">
-        <button
-          className="mr-2"
-          onClick={() => editQuantity(info.productId._id, false)}
-        >
-          -
-        </button>
+        <div className="border-2 border-gray-900 w-20 h-11 md:h-10 text-center">
+          <button
+            className="mr-2"
+            onClick={() => editQuantity(info.productId._id, false)}
+          >
+            -
+          </button>
 
-        <button className="mr-2">{info.quantity}</button>
+          <button className="mr-2">{info.quantity}</button>
 
-        <button
-          className="mr-2"
-          onClick={() => editQuantity(info.productId._id, true)}
-        >
-          +
-        </button>
-      </div>
-      <div>
-        {" "}
+          <button
+            className="mr-2"
+            onClick={() => editQuantity(info.productId._id, true)}
+          >
+            +
+          </button>
+        </div>
+        <div>
+          {" "}
           <h5> {`£ ${info.subTotal}`}</h5>
-          <button className="bg-white text-red-900 active:bg-pink-600 font-bold uppercase 
+          <button
+            className="text-red-500 active:bg-pink-600 font-bold uppercase 
           text-xs px-4 py-2 rounded  hover:shadow-md outline-none focus:outline-none mr-1 mb-1"
-            type="button" style={{transition: "all .15s ease"}}
- onClick={()=>removeOneItemFromCart(info.productId._id)}>X</button> 
+            type="button"
+            style={{ transition: "all .15s ease" }}
+            onClick={() => removeOneItemFromCart(info.productId._id)}
+          >
+            X
+          </button>
+        </div>
       </div>
-      </div>
-       
-      </>
+    </>
   );
 };
 

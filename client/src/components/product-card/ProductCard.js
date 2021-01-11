@@ -53,7 +53,9 @@ ProductCard.propTypes = {
     id: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
     product_type: PropTypes.string,
-    brand:PropTypes.string,
+    brand: PropTypes.string,
+    image_link: PropTypes.string,
+    item_available: PropTypes.number
   }),
 };
 export default ProductCard;

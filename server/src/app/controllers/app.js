@@ -43,7 +43,7 @@ exports.createNewProduct = async (req, res) => {
 
 exports.getLayoutProducts = async (req, res) => {
   console.log(req.params.pId, "your pId");
-  const { page = req.params.pId, limit = 4 } = parseInt(req.query);
+  const { page = req.params.pId, limit = 3 } = parseInt(req.query);
 
   try {
     let product = await Product.find()
@@ -232,7 +232,6 @@ exports.getDescription = async (req, res) => {
   } catch (err) {
     res.status(400).json({
       error: err.message,
-      why: "this",
     });
   }
 };

@@ -20,14 +20,17 @@ const getLayoutProductForBronzer = () => {
   return axios.get(API_URI)
 }
 
-const getProductTagAndType = (tag, type) => {
-  const API_URI = `http://localhost:5000/api/product/tag_list?brand=${tag}&type=${type}`
-  return axios.get(API_URI)
+
+const postContact = (name, email, message) => {
+  const API_URI="http://localhost:5000/api/contact"
+  return axios.post(API_URI, {
+    name,email,message
+  })
 }
 export default {
   getProduct,
   findMakeup,
   getLayoutProduct,
   getLayoutProductForBronzer,
-  getProductTagAndType
+  postContact
 };

@@ -104,7 +104,7 @@ const onChangePassword = (e) => { //setting password input as the value for pass
       <Form className='signup-form'
         onSubmit={handleSignup}
       ref={form}>
-        <h1 className='sign-up'>Sign Up</h1>
+        <h1 className='sign-up h1'>Sign Up</h1>
     <p>Please fill in this form to create an account.</p>
   
     <label htmlFor="username"><b>Username</b></label>

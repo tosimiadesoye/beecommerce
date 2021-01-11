@@ -67,24 +67,18 @@ const Cart = (props) => {
     getProductFromStorage();
   }, []);
 
+if(cart === null) return <h1 className='text-center text-purple-500'> Your Cart is empty</h1>
+
   return (
     <div className="container ">
-      <div className=" bg-gray-300 flex flex-row gap-9 md:gap-20 p-9 mx-4">
-        <h4>Product</h4>
-        <h4>Price</h4>
-        <h4>Qty</h4>
-        <h4>subTotal</h4>
-      </div>
+    
       <div className="flex flex-row  ">
         {cart && (
-          <div>
+          <div
+          className='bg-gray-300 '>
             {cart.map((item) => {
               return (
-                <div
-                className="bg-gray-300"
-                  key={item.productId.name}
-                  //
-                >
+                <div key={item.productId.name} className="border-b-2">
                   <RenderCart
                     info={item}
                     editQuantity={editQuantity}
@@ -95,22 +89,24 @@ const Cart = (props) => {
             })}
           </div>
         )}
-<div>
-          <Shipping cart={cart} total={total} />
-          <div>
-      <div className=" flex flex-col gap-5">
-        <div className="flex flex-row gap-4">
-          <div>
-            <h2>Total Items</h2>
-            <h3>{total.itemCount} </h3>
-          </div>
-          <div>
-            <h2>Total price</h2>
-            <h3>{`£${total.addSubtotal}`} </h3>
-          </div>
-        </div>
+        <div className='shadow-lg  rounded '>
+          <div className='m-5 '>
+            <div className=" flex flex-col gap-5 text-center text-purple-500">
 
-        <div>
+                <div>
+                  <h3>Total Items</h3>
+                  <h4>{total.itemCount} </h4>
+                </div>
+                <div>
+                  <h4>SubTotal price</h4>
+                  <h4>{`£${total.addSubtotal}`} </h4>
+                </div>
+         
+            </div>
+          </div>
+          <Shipping cart={cart} total={total} />
+
+          <div>
           <button
             className="text-white shadow  bg-black shadow border border-solid
                border-white hover:bg-pink hover:text-black
@@ -134,11 +130,8 @@ const Cart = (props) => {
             </Link>
           </button>
         </div>
-      </div>
-      </div>
         </div>
       </div>
-     
     </div>
   );
 };

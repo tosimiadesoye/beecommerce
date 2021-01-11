@@ -1,9 +1,9 @@
-import React,{ useEffect} from 'react'
+import React from 'react'
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import { newCart } from "./LayoutArrays";
 
-import { Block } from "../card/CardContainer";
+import { Block } from "./card/CardContainer";
 import {ShopAllCardContainer}from './shop-container'
 
 
@@ -62,8 +62,10 @@ const Layout = ({ layoutProduct, product, bronzer,layoutProductForBronzer }) => 
         </div>
       </div>
 
-      <div className="grid justify-items-center m-5">
-        <h3 className=" uppercase mb-5">Upcoming Collection</h3>
+      <div
+        className="mb-5"
+      >
+        <h3 className=" uppercase mb-5 text-center">Upcoming Collection</h3>
         <div className="mb-6">
            {/* <CardContainer info={product}/>  */}
           <ShopAllCardContainer product={product} makeupProduct={ layoutProduct}/>
@@ -76,7 +78,7 @@ const Layout = ({ layoutProduct, product, bronzer,layoutProductForBronzer }) => 
         >
           <Link
             to="/shop"
-            className="text-white uppercase font-normal
+            className=" text-white uppercase font-normal
              block  whitespace-no-wrap bg-transparent "
           >
             shop all items
@@ -119,9 +121,9 @@ const Layout = ({ layoutProduct, product, bronzer,layoutProductForBronzer }) => 
         </div>
       </div>
 
-      <div className="grid justify-items-center m-5">
-        <h3 className=" uppercase mb-5">Latest</h3>
-        <div className="m-6">
+      <div className="mb-5">
+        <h3 className="text-center uppercase mb-5">Latest</h3>
+        <div className="mb-6">
           {/* <CardContainer info={bronzer} /> */}
           <ShopAllCardContainer product={bronzer} makeupProduct={ layoutProductForBronzer}/>
         </div>
