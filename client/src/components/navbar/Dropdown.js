@@ -95,7 +95,7 @@ export const Dropdown = ({ color, makeupType }) => {
                   </>
                   )}
                   </div>
-                <div className="rounded shadow float-right ml-30">
+                <div className="rounded shadow float-right ml-30 h-40 overflow-y-auto">
                   {dropdownItem && (
                     <div>
                       {dropdownItem.map((data) => {

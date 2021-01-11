@@ -60,6 +60,12 @@ const Cart = (props) => {
   const removeAllProductsInStorage = () => {
     const remove = localStorage.removeItem("cart");
     setCart(remove);
+    
+  };
+
+  
+  const redirect = () => {
+    
     window.location.replace("/shop");
   };
 
@@ -67,15 +73,14 @@ const Cart = (props) => {
     getProductFromStorage();
   }, []);
 
-if(cart === null) return <h1 className='text-center text-purple-500'> Your Cart is empty</h1>
+  if (cart === null)
+    return <h1 className="text-center text-purple-500"> Your Cart is empty</h1>;
 
   return (
     <div className="container ">
-    
       <div className="flex flex-row  ">
         {cart && (
-          <div
-          className='bg-gray-300 '>
+          <div className="bg-gray-300 ">
             {cart.map((item) => {
               return (
                 <div key={item.productId.name} className="border-b-2">
@@ -89,47 +94,25 @@ if(cart === null) return <h1 className='text-center text-purple-500'> Your Cart 
             })}
           </div>
         )}
-        <div className='shadow-lg  rounded '>
-          <div className='m-5 '>
+        <div className="shadow-lg  rounded ">
+          <div className="m-5 ">
             <div className=" flex flex-col gap-5 text-center text-purple-500">
-
-                <div>
-                  <h3>Total Items</h3>
-                  <h4>{total.itemCount} </h4>
-                </div>
-                <div>
-                  <h4>SubTotal price</h4>
-                  <h4>{`£${total.addSubtotal}`} </h4>
-                </div>
-         
+              <div>
+                <h3>Total Items</h3>
+                <h4>{total.itemCount} </h4>
+              </div>
+              <div>
+                <h4>SubTotal price</h4>
+                <h4>{`£${total.addSubtotal}`} </h4>
+              </div>
             </div>
           </div>
-          <Shipping cart={cart} total={total} />
-
-          <div>
-          <button
-            className="text-white shadow  bg-black shadow border border-solid
-               border-white hover:bg-pink hover:text-black
-                active:bg-white-600 font-bold uppercase text-sm px-6 py-3
-                 rounded outline-none focus:outline-none mr-1 mb-1"
-            type="button"
-            style={{ transition: "all .15s ease" }}
-            onClick={() => removeAllProductsInStorage()}
-          >
-            Empty cart
-          </button>{" "}
-          <button
-            className="text-white shadow  bg-black shadow border border-solid border-white 
-              hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
-               text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1"
-            type="button"
-            style={{ transition: "all .15s ease" }}
-          >
-            <Link className="text-white" to="/checkout">
-              Check out
-            </Link>
-          </button>
-        </div>
+          <Shipping
+            cart={cart}
+            total={total}
+            removeAllProductsInStorage={removeAllProductsInStorage}
+            redirect={redirect}
+          />
         </div>
       </div>
     </div>
