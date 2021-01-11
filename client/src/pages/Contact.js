@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import authServices from "../services/product";
 
-
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -41,7 +40,7 @@ const Contact = () => {
     >
       <h1 className="my-3 text-center">Contact customer care</h1>
       <div className="my-3">
-        <label className='mr-4'>
+        <label className="mr-4">
           <b>Name:</b>
         </label>
 
@@ -56,7 +55,7 @@ const Contact = () => {
         />
       </div>
       <div className="my-3">
-        <label className='mr-4'>
+        <label className="mr-4">
           <b>Email:</b>
         </label>
         <input
@@ -71,7 +70,7 @@ const Contact = () => {
       </div>
 
       <div className="my-3">
-        <label className='mr-4'>
+        <label className="mr-4">
           <b>message</b>
         </label>
         <textarea

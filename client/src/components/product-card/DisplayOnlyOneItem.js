@@ -89,6 +89,7 @@ const DisplayOnlyOneItem = () => {
           shadow items-center justify-center space-x-0 md:space-x-10
           "
       >
+        <div>
         <div className="w-20 md:w-60 flex text-black">
           <AliceCarousel
             autoPlay
@@ -100,6 +101,8 @@ const DisplayOnlyOneItem = () => {
             <img src={item.api_featured_image} alt={item.name} />
             <img src={item.image_link} alt={item.name} />
           </AliceCarousel>
+          </div>
+          
         </div>
 
         <div className="mt-5">
@@ -108,9 +111,7 @@ const DisplayOnlyOneItem = () => {
             <div className="mb-7">
               {item.item_available === 0 ? (
                 <h5 className="text-red-500">Out of Stock</h5>
-              ) : (
-                <h5>In Stock</h5>
-              )}
+              ) : ""}
             </div>
             <h4 className="mb-7">{item.name}</h4>
             <h5 className="mb-7">{`£${item.price}`}</h5>
@@ -132,17 +133,17 @@ const DisplayOnlyOneItem = () => {
             <select className="mb-7 space-x-1 appearance-none select-none">
               {shadeName &&
                 shadeName.map((color) => (
-                  <option key={color.colour_name}>{color.colour_name}</option>
+                  <option key={color.colour_name}>{`Color: ${color.colour_name}`}</option>
                 ))}
             </select>
           </div>
           <div>
-            <div className="mb-7 mr-6 space-x-1 flex flex-wrap gap-2 w-50 ">
+            <div className="mb-7 flex flex-wrap gap-1 px-4 w-50 ">
               {item.product_colors.map((color) => (
                 <>
                   <button
                     key={color.hex_value}
-                    className="inline-block w-3 hover:opacity-70"
+                    className="inline-block w-3 hover:opacity-70 rounded-full h-6 w-6"
                     style={{
                       backgroundColor: color.hex_value,
                     }}
