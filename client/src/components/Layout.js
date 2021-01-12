@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { newCart } from "./LayoutArrays";
 
 import { Block } from "./card/CardContainer";
-import { ShopAllCardContainer } from "./shop-container";
+import { ShopAllCardContainer,MakeupTypeCardContainer } from "./shop-container";
 
 const Layout = (props) => {
-  const { layoutProduct, product, bronzer, layoutProductForBronzer } = props;
+  const { layoutProduct, product, bronzer, layoutProductForBronzer,nailPolish,layoutProductForMascara,mascara } = props;
   return (
     <div>
       <div className="flex flex-col lg:flex-row m-2">
@@ -49,7 +49,7 @@ const Layout = (props) => {
       >
         <h3 className=" uppercase mt-5 text-center">Our uniquely made nail polish</h3>
         <div className="mb-6">
-          
+        
           <ShopAllCardContainer product={product} makeupProduct={ layoutProduct}/>
         </div>
         <button
@@ -106,10 +106,10 @@ const Layout = (props) => {
       <div
         className="mb-5"
       >
-        <h3 className=" uppercase mb-5 text-center">Upcoming Collection</h3>
+        <h3 className=" uppercase mb-5 text-center">Newly arrived mascara</h3>
         <div className="mb-6">
            {/* <CardContainer info={product}/>  */}
-          <ShopAllCardContainer product={product} makeupProduct={ layoutProduct}/>
+          <ShopAllCardContainer product={mascara} makeupProduct={layoutProductForMascara}/>
         </div>
         <button
           className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
@@ -118,52 +118,52 @@ const Layout = (props) => {
           style={{ transition: "all .15s ease" }}
         >
           <Link
-            to="/shop"
+            to="/mascara"
             className=" text-white uppercase font-normal
              block  whitespace-no-wrap bg-transparent "
           >
-            shop all items
+            shop our mascara
           </Link>
         </button>
       </div>
      
 
       <div className="flex flex-col md:flex-row px-16 py-20 items-center uppercase ">
-        <div className="w-1/3">
-          <img src="/images/lipStick.jpg" alt="eyeshadow" />
+        <div className="w-1/4 ">
+          <img src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/999/original/open-uri20171227-4-2ul0s6?1514341420" alt="eyeshadow" />
         </div>
         <div
-          className="px-16 py-20 text-center box-border border-white bg-gradient-to-l
+          className="px-32 py-20  text-center box-border border-white bg-gradient-to-l
          md:bg-gradient-to-r from-yellow-500 via-red-300 to-yellow-900"
         >
           <h2 className="text-5xl font-normal leading-normal mt-0 mb-2 text-pink-800">
             new!
           </h2>
           <h5 className="text-4xl font-normal leading-normal mt-0 mb-2 text-red-800">
-            lipstick
+            all things glossier
           </h5>
-          <h5 className="inline-block break-words">
-            LUSCIOUS COLOR, EXPLOSIVE SHINE. NOURISHED, FULLER-LOOKING LIPS.
+          <h5 className="inline-block break-words mb-2">
+            elegant new items from glossier.
           </h5>
-          <button
+           <button
             className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
             type="button"
             style={{ transition: "all .15s ease" }}
           >
             <Link
-              to="/type/lipstick"
+              to="/type/glossier"
               className="text-white uppercase font-normal
              block  whitespace-no-wrap bg-transparent "
             >
-              shop our lipstick
+              shop glossier
             </Link>
           </button>
         </div>
       </div>
 
       <div className="mb-5">
-        <h3 className="text-center uppercase mb-5">Latest</h3>
+        <h3 className="text-center uppercase mb-5"> our Latest lusious bronzer</h3>
         <div className="mb-6">
           {/* <CardContainer info={bronzer} /> */}
           <ShopAllCardContainer product={bronzer} makeupProduct={ layoutProductForBronzer}/>
@@ -195,10 +195,10 @@ const Layout = (props) => {
             new
           </h2>
           <h5 className="text-4xl font-normal leading-normal mt-0 mb-2 text-red-800">
-            lipstick
+            butter london
           </h5>
           <h5 className="inline-block break-words">
-            LUSCIOUS COLOR, EXPLOSIVE SHINE. NOURISHED, FULLER-LOOKING LIPS.
+            butter london products that would leave you coming back for more
           </h5>
           <button
             className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
@@ -207,11 +207,11 @@ const Layout = (props) => {
             style={{ transition: "all .15s ease" }}
           >
             <Link
-              to="/type/nail_polish"
+              to="/type/butter%20london"
               className="text-white uppercase font-normal
              block  whitespace-no-wrap bg-transparent "
             >
-              shop our nail polish
+              shop butter london
             </Link>
           </button>
         </div>

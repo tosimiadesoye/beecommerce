@@ -22,6 +22,7 @@ import "./App.css";
 
 function App() {
   const [makeupType, setMakeupType] = useState(dropdownList);
+  const [mascara, setMascara]=useState([])
   const [tag_list, setTag_list] = useState([]);
   const [product, setProduct] = useState([]);
   const [makeup_type, setMakeup_type] = useState([]);
@@ -44,6 +45,7 @@ function App() {
     const response = await MakeupService.getLayoutProduct();
     if (response) {
       setProductForLayout(response.data.product);
+    
     }
   };
 
@@ -54,6 +56,12 @@ function App() {
     }
   };
 
+ const layoutProductForMascara = async () => {
+    const response = await MakeupService.getLayoutProductForMascara();
+    if (response) {
+      setMascara(response.data.product);
+    }
+  };
   const productType = async (item) => {
     return await axios
       .get(`http://localhost:5000/api/product_type?keyword=${item}`)
@@ -69,7 +77,6 @@ function App() {
   };
   const getProductTagList = async (item) => {
     return await axios
-      // .get(`localhost:5000/api/product/tag_list?keyword=${item}`)
 
       .get(`localhost:5000/api/product/query?brand=${item}`)
 
@@ -129,8 +136,11 @@ function App() {
                 <Layout
                   product={parseProducts(productForLayout)}
                   layoutProductForBronzer={layoutProductForBronzer}
+                  layoutProductForMascara={layoutProductForMascara}
                   bronzer={parseProducts(bronzer)}
                   layoutProduct={layoutProduct}
+                  mascara={mascara}
+                
                 />
               </>
             )}

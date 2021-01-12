@@ -15,8 +15,13 @@ const getLayoutProduct = () => {
   return axios.get(API_URI)
 }
 
+const getLayoutProductForMascara = () => {
+  const API_URI = 'http://localhost:5000/api/product/10/product_type?keyword=mascara'
+  return axios.get(API_URI)
+}
+
 const getLayoutProductForBronzer = () => {
-  const API_URI = 'http://localhost:5000/api/product/10/product_type?keyword=Bronzer'
+  const API_URI = 'http://localhost:5000/api/product/5/product_type?keyword=bronzer'
   return axios.get(API_URI)
 }
 
@@ -32,5 +37,6 @@ export default {
   findMakeup,
   getLayoutProduct,
   getLayoutProductForBronzer,
+  getLayoutProductForMascara,
   postContact
 };
