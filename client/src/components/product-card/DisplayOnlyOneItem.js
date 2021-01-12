@@ -78,7 +78,7 @@ const DisplayOnlyOneItem = () => {
   useEffect(() => {
     setTimer();
   }, [setTimer()]);
-
+console.log(item.api_featured_image)
   return (
     <>
       <div

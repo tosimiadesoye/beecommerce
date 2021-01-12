@@ -15,10 +15,9 @@ const Shipping = ({ total, cart, removeAllProductsInStorage, redirect }) => {
       }
     });
   };
-  
+
   if (cart === null) return "";
 
-  
   return (
     <>
       <div className="flex flex-row text-center">
@@ -37,7 +36,6 @@ const Shipping = ({ total, cart, removeAllProductsInStorage, redirect }) => {
                     type="checkbox"
                     className="form-checkbox"
                     onClick={() => AddTotalPlusShipping(item.id)}
-                    required
                   />
                   <p>{`£${item.price > 0 ? item.price : "0.00"}`}</p>
                 </div>
@@ -80,9 +78,13 @@ const Shipping = ({ total, cart, removeAllProductsInStorage, redirect }) => {
                text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1"
               type="button"
               style={{ transition: "all .15s ease" }}
-              onClick={() => removeAllProductsInStorage()}
+              
             >
-              <Link className="text-white" to="/checkout">
+              <Link
+                className="text-white"
+                to="/checkout"
+                onClick={() => removeAllProductsInStorage()}
+              >
                 Check out
               </Link>
             </button>
