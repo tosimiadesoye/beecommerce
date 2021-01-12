@@ -78,7 +78,7 @@ const DisplayOnlyOneItem = () => {
   useEffect(() => {
     setTimer();
   }, [setTimer()]);
-console.log(item.api_featured_image)
+
   return (
     <>
       <div
@@ -86,10 +86,12 @@ console.log(item.api_featured_image)
         className="flex flex-col md:flex-row lg-flex-row 
          bg-gray-300
            container text-center
-          shadow items-center justify-center space-x-0 md:space-x-10
+          shadow items-center justify-center space-x-0 md:space-x-20 max-h-full
+          overflow-y-auto
           "
       >
         <div>
+      
         <div className="w-20 md:w-60 flex text-black">
           <AliceCarousel
             autoPlay
@@ -102,7 +104,11 @@ console.log(item.api_featured_image)
             <img src={item.image_link} alt={item.name} />
           </AliceCarousel>
           </div>
-          
+          <div>
+          <div className={showShowDescription ? "inline-block" : "hidden"}>
+            <p className="break-normal"> {expandDescription}</p>
+          </div>
+          </div>
         </div>
 
         <div className="mt-5">
@@ -126,9 +132,7 @@ console.log(item.api_featured_image)
               <FontAwesomeIcon className='animate-bounce w-6 hover:animate-none' icon="angle-down" />
             </div>
           </div>
-          <div className={showShowDescription ? "inline-block" : "hidden"}>
-            <p className="break-words mb-7"> {expandDescription}</p>
-          </div>
+          
           <div>
             <select className="mb-7 space-x-1 appearance-none select-none">
               {shadeName &&

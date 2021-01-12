@@ -4,14 +4,14 @@ const RenderCart = (props) => {
   const { info, editQuantity, removeOneItemFromCart } = props;
   return (
     <>
-      <div className="flex flex-row  gap-9 md:gap-20 p-9  mx-4 ">
+      <div className="flex flex-row gap-4 md:gap-9 lg:gap-20 p-9  mx-4 ">
         <div>
           <img
             src={info.productId.api_featured_image}
             className="w-10 md:w-20 shadow"
             alt={info.productId.name}
           />
-          {/* style={{ wordWrap: "break-word" }} */}
+          
         </div>
         <div className="mr-2">
           {" "}
@@ -24,7 +24,7 @@ const RenderCart = (props) => {
           <h5> {`£ ${info.productId.price}`}</h5>
         </div>
 
-        <div className="border-2 border-gray-900 w-20 h-11 md:h-10 text-center">
+        <div className="border-2 border-gray-900 w-20 h-13   md:h-10 text-center">
           <button
             className="mr-2"
             onClick={() => editQuantity(info.productId._id, false)}

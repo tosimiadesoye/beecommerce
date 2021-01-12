@@ -78,7 +78,7 @@ const Cart = (props) => {
 
   return (
     <div className="container ">
-      <div className="flex flex-row  ">
+      <div className="flex flex-col lg:flex-row  ">
         {cart && (
           <div className="bg-gray-300 ">
             {cart.map((item) => {

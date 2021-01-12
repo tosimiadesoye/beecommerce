@@ -87,7 +87,8 @@ const Navigation = ({ makeupType, fixed }) => {
                       <li className="nav-item">
                         <Link
                           to={"/profile"}
-                          className="px-3 py-2 flex items-center text-black uppercase font-bold leading-snug text-black hover:opacity-75"
+                          className="px-3 py-2 flex items-center text-black uppercase 
+                          font-bold leading-snug text-black hover:opacity-75"
                         >
                           {currentUser.username}
                         </Link>

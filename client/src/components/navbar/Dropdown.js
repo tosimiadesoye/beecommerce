@@ -75,7 +75,7 @@ export const Dropdown = ({ color, makeupType }) => {
                       return (
                         <>
                           <button
-                            key={idx}
+                            key={data.name}
                             className={
                               "text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent hover:text-black" +
                               (color === "white"
