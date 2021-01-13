@@ -1,15 +1,14 @@
-import AuthServices from "../../services/auth";
-import Home from "../Home";
+import {getCurrentUser} from "../../services/auth";
 import {Redirect} from 'react-router-dom'
 
 const Profile = () => {
-  const currentUser = AuthServices.getCurrentUser();
+  const currentUser = getCurrentUser();
    if (JSON.parse(localStorage.getItem('user'))===null) {
    return <Redirect to='/login'/>
  }
   return (
     <div>
-      <Home />
+    
       <header>
         <h3>
           <strong>{currentUser.username}</strong>'s Profile

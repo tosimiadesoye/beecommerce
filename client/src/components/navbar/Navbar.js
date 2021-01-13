@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import AuthService from "../../services/auth";
+import { getCurrentUser,logout} from "../../services/auth";
 import { Dropdown } from "./Dropdown";
 
 const Navigation = ({ makeupType, fixed }) => {
@@ -8,7 +8,7 @@ const Navigation = ({ makeupType, fixed }) => {
   const [currentUser, setCurrentUser] = useState(undefined);
   const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
-    const user = AuthService.getCurrentUser();
+    const user = getCurrentUser();
 
     if (user) {
       setCurrentUser(user);
@@ -16,7 +16,7 @@ const Navigation = ({ makeupType, fixed }) => {
   }, []);
 
   const logOut = () => {
-    AuthService.logout();
+    logout();
   };
   const cart = JSON.parse(localStorage.getItem('cart'))
  

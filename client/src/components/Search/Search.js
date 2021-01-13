@@ -1,11 +1,11 @@
 import { useState } from "react";
-import AuthService from "../services/product";
+import { findMakeup} from "../../services/product";
 import PropTypes from "prop-types";
 const Search = ({ searchProduct }) => {
   const [keyword, setKeyword] = useState("");
 
   const findMakeupItems = async (value) => {
-    const result = await AuthService.findMakeup(value).then((res) => {
+    const result = await findMakeup(value).then((res) => {
       if (res) {
         return searchProduct(res.data.product);
       }

@@ -5,7 +5,7 @@ import CheckButton from "react-validation/build/button";
 import { isEmpty } from "validator";
 import { Link } from "react-router-dom";
 import "./signup.css";
-import AuthServices from "../../services/auth";
+import { login} from "../../services/auth";
 
 const required = (value) => {
   if (isEmpty(value)) {
@@ -47,7 +47,7 @@ function Login(props) {
     // console.log(checkBtn)
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthServices.login(username, password).then(
+      login(username, password).then(
         (res) => {
           //props.history is not working
 

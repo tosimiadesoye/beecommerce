@@ -5,7 +5,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
-
+import ReactHtmlParser from 'react-html-parser';
 library.add(faAngleDown);
 
 const DisplayOnlyOneItem = () => {
@@ -52,9 +52,7 @@ const DisplayOnlyOneItem = () => {
   const handleExpandDescription = (description) => {
     if (description === item.description) {
       setExpandDescription(description);
-    } else {
-      setExpandDescription();
-    }
+    } 
   };
 
   const changeColorName = (colorName) => {
@@ -91,58 +89,57 @@ const DisplayOnlyOneItem = () => {
           "
       >
         <div>
-      
-        <div className="w-20 md:w-60 flex text-black">
-          <AliceCarousel
-            autoPlay
-            autoPlayInterval="4000"
-            autoPlayStrategy="default"
-            disableButtonsControls="true"
-            infinite
-          >
-            <img src={item.api_featured_image} alt={item.name} />
-            <img src={item.image_link} alt={item.name} />
-          </AliceCarousel>
+          <div className="w-20 md:w-60 flex text-black mt-5">
+            <AliceCarousel
+              autoPlay
+              autoPlayInterval="4000"
+              autoPlayStrategy="default"
+              disableButtonsControls="true"
+              infinite
+            >
+              <img src={item.api_featured_image} alt={item.name} />
+              <img src={item.image_link} alt={item.name} />
+            </AliceCarousel>
           </div>
           <div>
-          <div className={showDescription ? "inline-block" : "hidden"}>
-            <p className="break-normal w-40"> {expandDescription}</p>
-          </div>
+            <div className={showDescription ? "inline-block" : "hidden"}>
+              <p className="break-normal w-40"> {ReactHtmlParser(expandDescription)}</p>
+            </div>
           </div>
         </div>
 
         <div className="mt-5">
           <div>
-            <h2 >{`${item.brand} ${item.category}`}</h2>
-            <div >
-              {item.item_available === 0 ? (
-                <h5 className="text-red-500">Out of Stock</h5>
-              ) : ""}
-            </div>
-            <h4 >{item.name}</h4>
-            <h5 >{`£${item.price}`}</h5>
+            <h2>{`${item.brand} ${item.category}`}</h2>
+
+            <h4>{item.name}</h4>
+            <h5>{`£${item.price}`}</h5>
             <div
-              
               onClick={() => {
                 handleExpandDescription(item.description);
                 setShowDescription(!showDescription);
               }}
             >
               Description
-              <FontAwesomeIcon className='animate-bounce w-6 hover:animate-none' icon="angle-down" />
+              <FontAwesomeIcon
+                className="animate-bounce w-6 hover:animate-none"
+                icon="angle-down"
+              />
             </div>
           </div>
-          
+
           <div>
             <select className="space-x-1 appearance-none select-none">
               {shadeName &&
                 shadeName.map((color) => (
-                  <option key={color.colour_name}>{`Color: ${color.colour_name}`}</option>
+                  <option
+                    key={color.colour_name}
+                  >{`Color: ${color.colour_name}`}</option>
                 ))}
             </select>
           </div>
           <div>
-          <div className="mt-2 flex flex-wrap gap-1 px-4">
+            <div className="mb-2 flex flex-wrap gap-1 px-4">
               {item.product_colors.map((color) => (
                 <>
                   <button
@@ -161,16 +158,23 @@ const DisplayOnlyOneItem = () => {
           </div>
 
           <div>
-            <button
-              className=" shadow p-2 text-white mb-5 rounded-sm bg-black focus:ring-2"
-              onClick={() => {
-                addProductToCart(item, 1, item.price);
-                flashCard(item.name);
-                setCartAlertPopoverIsVisible(true);
-              }}
-            >
-              Add to bag
-            </button>
+            <div>
+              {item.item_available === 0 ? (
+                <h5 className="text-red-500">Out of Stock</h5>
+              ) : (
+                <button
+                  className=" shadow p-2 text-white mb-5 rounded-sm bg-black focus:ring-2"
+                  onClick={() => {
+                    addProductToCart(item, 1, item.price);
+                    flashCard(item.name);
+                    setCartAlertPopoverIsVisible(true);
+                  }}
+                >
+                  Add to bag
+                </button>
+              )}
+            </div>
+
             {cartAlertPopoverIsVisible ? (
               <p
                 className="

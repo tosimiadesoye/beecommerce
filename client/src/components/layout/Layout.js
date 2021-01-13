@@ -1,8 +1,7 @@
 import React from "react";
-import Footer from "./Footer";
+import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
-
-import { ShopAllCardContainer } from "./shop-container";
+import { ShopAllCardContainer } from "../../components";
 
 const Layout = (props) => {
   const {

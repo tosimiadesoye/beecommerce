@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import authServices from "../services/product";
+import { postContact } from "../../services/product";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -23,9 +23,7 @@ const Contact = () => {
 
   const handleContact = (e) => {
     e.preventDefault();
-
-    authServices
-      .postContact(name, email, message)
+    postContact(name, email, message)
       .then((res) => {
         console.log(res.data);
       })

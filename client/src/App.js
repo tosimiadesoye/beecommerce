@@ -1,29 +1,17 @@
-import { useState } from "react";
-import { Navigation } from "./components/navbar";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import {
-  ShopAllCardContainer,
-  MakeupTypeCardContainer,
-} from "./components/shop-container";
-import Signup from "./pages/auth/Signup";
-import Layout from "./components/Layout";
-import Login from "./pages/auth/Lognin";
-import Profile from "./pages/user/Profile";
-import Checkout from "./components/Checkout";
+import React, { useState } from "react";
+import Routes from "./Routes";
 import axios from "axios";
-import MakeupService from "./services/product";
-import Cart from "./pages/cart/Cart";
+import {
+  getLayoutProductForMascara,
+  getLayoutProductForBronzer,
+  getLayoutProduct,
+  getProduct,
+} from "./services/product";
 import { dropdownList } from "./models/productArrays";
-import ProductContentPagination from "./components/PaginationContent.js";
-import { DisplayOnlyOneItem } from "./components/product-card";
-import Search from "./components/Search";
-import Contact from './pages/Contact'
-import "./App.css";
 
 function App() {
   const [makeupType, setMakeupType] = useState(dropdownList);
-  const [mascara, setMascara]=useState([])
-  const [tag_list, setTag_list] = useState([]);
+  const [mascara, setMascara] = useState([]);
   const [product, setProduct] = useState([]);
   const [makeup_type, setMakeup_type] = useState([]);
   const [type, setType] = useState([]);
@@ -31,33 +19,31 @@ function App() {
   const [productForLayout, setProductForLayout] = useState([]);
   const [bronzer, setBronzer] = useState([]);
   const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState('0');
+  const [total, setTotal] = useState(0);
   const displayedProductsPerPage = 9;
-
   const makeupProduct = async () => {
-    const response = await MakeupService.getProduct();
+    const response = await getProduct();
     if (response) {
       setProduct(response.data.product);
     }
   };
 
   const layoutProduct = async () => {
-    const response = await MakeupService.getLayoutProduct();
+    const response = await getLayoutProduct();
     if (response) {
       setProductForLayout(response.data.product);
-    
     }
   };
 
   const layoutProductForBronzer = async () => {
-    const response = await MakeupService.getLayoutProductForBronzer();
+    const response = await getLayoutProductForBronzer();
     if (response) {
       setBronzer(response.data.product);
     }
   };
 
- const layoutProductForMascara = async () => {
-    const response = await MakeupService.getLayoutProductForMascara();
+  const layoutProductForMascara = async () => {
+    const response = await getLayoutProductForMascara();
     if (response) {
       setMascara(response.data.product);
     }
@@ -74,23 +60,6 @@ function App() {
       .catch((error) => {
         console.log("error: ", error);
       });
-  };
-  const getProductTagList = async (item) => {
-    return await axios
-
-      .get(`localhost:5000/api/product/query?brand=${item}`)
-
-      .then((res) => {
-        if (res) {
-          console.log("tag list response");
-          console.log(res);
-          setTag_list(res);
-        }
-      })
-      .catch((error) => {
-        console.log("error: ", error);
-      });
-    
   };
 
   const indexOfLastProducts = activePage * displayedProductsPerPage;
@@ -114,231 +83,38 @@ function App() {
         brand: makeup.brand,
         category: makeup.category,
         image_link: makeup.image_link,
-      item_available: makeup.item_available
+        item_available: makeup.item_available,
       };
     });
   };
 
   return (
-    <div className="fonts">
-      <BrowserRouter>
-        <Switch>
-          <Route
-            exact
-            path={["/", "/home"]}
-            render={() => (
-              <>
-                <Navigation
-                  setMakeupType={setMakeupType}
-                  makeupType={makeupType}
-                />
-
-                <Layout
-                  product={parseProducts(productForLayout)}
-                  layoutProductForBronzer={layoutProductForBronzer}
-                  layoutProductForMascara={layoutProductForMascara}
-                  bronzer={parseProducts(bronzer)}
-                  layoutProduct={layoutProduct}
-                  mascara={mascara}
-                
-                />
-              </>
-            )}
-          />
-          <Route
-            exact
-            path="/cart"
-            render={() => (
-              <>
-                <Navigation
-                  setMakeupType={setMakeupType}
-                  makeupType={makeupType}
-                />
-                <Cart
-                  cart={cart}
-                  setCart={setCart}
-                  total={total}
-                  setTotal={setTotal}
-                />
-              </>
-            )}
-          />
-          <Route
-            exact
-            path="/shop"
-            render={() => (
-              <>
-                <Navigation
-                  setMakeupType={setMakeupType}
-                  makeupType={makeupType}
-                  product={parseProducts(product)}
-                  setProduct={setProduct}
-                />
-                <Search searchProduct={setProduct} />
-                <ShopAllCardContainer
-                  product={parseProducts(currentProduct)}
-                  setProduct={setProduct}
-                  makeupProduct={makeupProduct}
-                />
-
-                <ProductContentPagination
-                  product={parseProducts(product)}
-                  activePage={activePage}
-                  setCurrentPage={setCurrentPage}
-                />
-              </>
-            )}
-          />
-
-          <Route
-            exact
-            path="/signup"
-            render={() => (
-              <>
-                <Navigation
-                  setMakeupType={setMakeupType}
-                  makeupType={makeupType}
-                />
-                <Signup />
-              </>
-            )}
-          />
-          <Route
-            exact
-            path="/login"
-            render={() => (
-              <>
-                <Navigation
-                  setMakeupType={setMakeupType}
-                  makeupType={makeupType}
-                />
-                <Login />
-              </>
-            )}
-          />
-          <Route
-            exact
-            path="/profile"
-            render={() => (
-              <>
-                <Navigation
-                  setMakeupType={setMakeupType}
-                  makeupType={makeupType}
-                />
-                <Profile />
-              </>
-            )}
-          />
-
-          <Route
-            exact
-            path="/type/:slug"
-            render={({ match }) => (
-              <>
-                <Navigation
-                  setMakeupType={setMakeupType}
-                  makeupType={makeupType}
-                  setType={setType}
-                />
-                <Search searchProduct={setMakeup_type} />
-                <MakeupTypeCardContainer
-                  {...match}
-                  setMakeup_type={setMakeup_type}
-                  makeup_type={parseProducts(makeup_type)}
-                  productType={productType}
-                  type={type}
-                />
-              </>
-            )}
-          />
-          <Route
-            exact
-            path="/type/:slug"
-            render={({ match }) => (
-              <>
-                <Navigation
-                  setMakeupType={setMakeupType}
-                  makeupType={makeupType}
-                  setType={setType}
-                />
-                <Search searchProduct={setMakeup_type} />
-                <MakeupTypeCardContainer
-                  {...match}
-                  setMakeup_type={setTag_list}
-                  makeup_type={parseProducts(tag_list)}
-                  productType={getProductTagList}
-                  type={type}
-                />
-              </>
-            )}
-          />
-          <Route
-            exact
-            path={`/shop/:_id`}
-            render={() => (
-              <>
-                <Navigation
-                  setMakeupType={setMakeupType}
-                  makeupType={makeupType}
-                  setType={setType}
-                />
-                <DisplayOnlyOneItem />
-              </>
-            )}
-          />
-
-          <Route
-            exact
-            path={`/:slug/:_id`}
-            render={() => (
-              <>
-                <Navigation
-                  setMakeupType={setMakeupType}
-                  makeupType={makeupType}
-                  setType={setType}
-                />
-                <DisplayOnlyOneItem />
-              </>
-            )}
-          />
-
-          <Route
-            exact
-            path={"/checkout"}
-            render={() => (
-              <>
-                <Navigation
-                  setMakeupType={setMakeupType}
-                  makeupType={makeupType}
-                  setType={setType}
-                />
-                <Checkout
-
-                />
-              </>
-            )}
-          />
-
-<Route
-            exact
-            path={"/contact"}
-            render={() => (
-              <>
-                <Navigation
-                  setMakeupType={setMakeupType}
-                  makeupType={makeupType}
-                  setType={setType}
-                />
-                <Contact
-
-                />
-              </>
-            )}
-          />
-      
-        </Switch>
-      </BrowserRouter>
-    </div>
+    <Routes
+      makeupType={makeupType}
+      setMakeupType={setMakeupType}
+      parseProducts={parseProducts}
+      productForLayout={productForLayout}
+      layoutProductForBronzer={layoutProductForBronzer}
+      layoutProductForMascara={layoutProductForMascara}
+      bronzer={bronzer}
+      layoutProduct={layoutProduct}
+      setType={setType}
+      setTotal={setTotal}
+      cart={cart}
+      setCart={setCart}
+      mascara={mascara}
+      setMascara={setMascara}
+      total={total}
+      product={product}
+      setProduct={setProduct}
+      currentProduct={currentProduct}
+      activePage={activePage}
+      makeupProduct={makeupProduct}
+      setCurrentPage={setCurrentPage}
+      makeup_type={makeup_type}
+      type={type}
+      productType={productType}
+    />
   );
 }
 

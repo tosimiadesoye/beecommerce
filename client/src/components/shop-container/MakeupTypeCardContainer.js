@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { ProductCard } from "../product-card";
+import { ProductCard } from "../../components";
 import PropTypes from "prop-types";
 const MakeupTypeCardContainer = (props) => {
   const { type, params, makeup_type, productType } = props;

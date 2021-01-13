@@ -5,7 +5,7 @@ import CheckButton from "react-validation/build/button";
 import { isEmail, isEmpty } from "validator";
 import { Link } from "react-router-dom";
 
-import authServices from "../../services/auth";
+import {register} from "../../services/auth";
 import "./signup.css";
 
 const required = (value) => {
@@ -83,7 +83,7 @@ const Signup = () => {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      authServices.register(username, email, password).then(
+      register(username, email, password).then(
         (response) => {
           
           setMessage(response.data.message);

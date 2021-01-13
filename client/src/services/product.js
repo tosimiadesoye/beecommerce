@@ -32,7 +32,7 @@ const postContact = (name, email, message) => {
     name,email,message
   })
 }
-export default {
+export {
   getProduct,
   findMakeup,
   getLayoutProduct,

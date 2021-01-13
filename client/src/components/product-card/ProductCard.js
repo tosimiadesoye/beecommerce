@@ -17,8 +17,8 @@ const ProductCard = ({ info }) => {
             className="shadow w-24 object-scale-down"
           />
         </div>
-        <div className="text-black text-gray-900 space-x-4 px-2 py-1  truncate">
-          <p className="">{info.name}</p>
+        <div className="text-black text-gray-900 space-x-4 px-2 py-1">
+          <p className="break-normal w-3">{info.name}</p>
           <p>{`£ ${info.price}`}</p>
           <Link
             to={{
