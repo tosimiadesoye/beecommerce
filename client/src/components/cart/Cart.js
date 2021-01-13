@@ -106,7 +106,7 @@ const Cart = (props) => {
             })}
           </div>
         )}
-        <div className="shadow-lg  rounded ">
+        <div className="shadow  rounded ">
           <div className="m-5 ">
             <div className=" flex flex-col gap-5 text-center text-purple-500">
               <div>

@@ -108,7 +108,7 @@ const DisplayOnlyOneItem = () => {
           </div>
         </div>
 
-        <div className="mt-5">
+        <div className="mt-5 w-50">
           <div>
             <h2>{`${item.brand} ${item.category}`}</h2>
 

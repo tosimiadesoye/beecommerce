@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const Dropdown = ({ color, makeupType }) => {
   const [dropdownPopoverShow, setDropdownPopoverShow] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  
   const [dropdownItem, setDropdownItem] = useState([]);
   const btnDropdownRef = React.createRef();
   const popoverDropdownRef = React.createRef();
@@ -84,7 +84,7 @@ export const Dropdown = ({ color, makeupType }) => {
                             }
                             onClick={() => {
                               handleDropdown(data.id);
-                              setMenuOpen(!menuOpen);
+                              
                             }}
                           >
                             {data.name}
@@ -108,8 +108,8 @@ export const Dropdown = ({ color, makeupType }) => {
                                 `  text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent ` +
                                 (color === "white"
                                   ? " text-gray-800"
-                                  : "text-white") +
-                                (menuOpen ? " flex" : " hidden")
+                                  : "text-white") 
+                               
                               }
                             >
                               {type}
