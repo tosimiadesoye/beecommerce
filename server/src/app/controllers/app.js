@@ -21,6 +21,7 @@ exports.createNewProduct = async (req, res) => {
       product_api_url: req.body.product_api_url,
       api_featured_image: req.file.path,
       product_colors: req.body.product_colors,
+      item_available: req.body.item_available,
     };
 
     let product = await Product.insertMany({

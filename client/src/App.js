@@ -32,7 +32,7 @@ function App() {
   const [productForLayout, setProductForLayout] = useState([]);
   const [bronzer, setBronzer] = useState([]);
   const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState("0");
+  const [total, setTotal] = useState(0);
   const displayedProductsPerPage = 9;
 
   const makeupProduct = async () => {

@@ -34,7 +34,7 @@ const Contact = () => {
   return (
     <form
       onSubmit={handleContact}
-      className="bg-gray-300 flex flex-col container w-50 shadow"
+      className="bg-gray-300 flex flex-col container md:w-50  shadow-sm"
     >
       <h1 className="my-3 text-center">Contact customer care</h1>
       <div className="my-3">

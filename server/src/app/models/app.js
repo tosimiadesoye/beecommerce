@@ -20,7 +20,8 @@ const ProductSchema = new Schema({
     tag_list: Array,
     product_api_url:String,
     api_featured_image: String,
-    product_colors: Array
+    product_colors: Array,
+    item_available:Number,
 }, { timestamps: true });
 
 const product = mongoose.model("Makeups", ProductSchema)
