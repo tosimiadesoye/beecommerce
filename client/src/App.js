@@ -21,6 +21,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const displayedProductsPerPage = 9;
+  const [brand, setBrand] = useState([]);
   const makeupProduct = async () => {
     const response = await getProduct();
     if (response) {
@@ -42,6 +43,20 @@ function App() {
     }
   };
 
+  const getProductBrand = async (item) => {
+    return await axios
+      .get(`localhost:5000/api/product/query?brand=${item}`)
+      .then((res) => {
+        if (res) {
+          setBrand(res.data.product);
+        }
+      })
+      .catch((error) => {
+        console.log("error: ", error);
+      });
+    
+  };
+console.log(brand)
   const layoutProductForMascara = async () => {
     const response = await getLayoutProductForMascara();
     if (response) {
@@ -114,6 +129,9 @@ function App() {
       makeup_type={makeup_type}
       type={type}
       productType={productType}
+      brand={brand}
+      setBrand={setBrand}
+      getProductBrand={getProductBrand}
     />
   );
 }

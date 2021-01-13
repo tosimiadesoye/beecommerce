@@ -16,7 +16,8 @@ import {
 import Contact from "./pages/Contact/Contact";
 import "./Routes.css";
 
-const Routes = (props) =>{
+const Routes = (props) => {
+  
   const {
     makeupType,
     setMakeupType,
@@ -31,6 +32,8 @@ const Routes = (props) =>{
     layoutProductForMascara,
     bronzer,
     total,
+    brand,
+    setBrand,
     product,
     mascara,
     currentProduct,
@@ -42,8 +45,9 @@ const Routes = (props) =>{
     makeup_type,
     makeupProduct,
     productType,
+    getProductBrand,
   } = props;
-
+  console.log(product)
   return (
     <div className="fonts">
       <BrowserRouter>
@@ -175,6 +179,28 @@ const Routes = (props) =>{
               </>
             )}
           />
+
+        
+          <Route
+            exact
+            path="/type/:slug"
+            render={({ match }) => (
+              <>
+                <Navigation
+                  setMakeupType={setMakeupType}
+                  makeupType={makeupType}
+                  setType={setType}
+                />
+                <Search searchProduct={setBrand} />
+                <MakeupTypeCardContainer
+                  {...match}
+                  setMakeup_type={setBrand}
+                  makeup_type={parseProducts(brand)}
+                  productType={getProductBrand}
+                  type={type}
+                />
+              </>)}/>
+          
 
           <Route
             exact

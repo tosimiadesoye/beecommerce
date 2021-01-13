@@ -2,6 +2,7 @@ import { useState } from "react";
 import { findMakeup} from "../../services/product";
 import PropTypes from "prop-types";
 const Search = ({ searchProduct }) => {
+ 
   const [keyword, setKeyword] = useState("");
 
   const findMakeupItems = async (value) => {
