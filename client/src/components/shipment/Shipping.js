@@ -2,14 +2,15 @@ import { useState } from "react";
 import { shippingPrices } from "../../models/productArrays";
 import { Link } from "react-router-dom";
 
-const Shipping = ({ total, cart, removeAllProductsInStorage, redirect }) => {
+const Shipping = (props) => {
+  const { total, cart, removeAllProductsInStorage, redirect } = props
   const [totalPlusShipping, setTotalPlusShipping] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
   const AddTotalPlusShipping = (id) => {
-    return shippingPrices.filter((item) => {
+    return shippingPrices.filter(item => {
       if (item.id === id) {
         setTotalPlusShipping(item.price + parseFloat(total.addSubtotal));
       }
@@ -62,7 +63,7 @@ const Shipping = ({ total, cart, removeAllProductsInStorage, redirect }) => {
               className="text-white shadow  bg-black shadow border border-solid
                border-white hover:bg-pink hover:text-black
                 active:bg-white-600 font-bold uppercase text-sm px-6 py-3
-                 rounded outline-none focus:outline-none mr-1 mb-1"
+                 rounded outline-none focus:outline-none mr-1 "
               type="button"
               style={{ transition: "all .15s ease" }}
               onClick={() => {
@@ -72,22 +73,17 @@ const Shipping = ({ total, cart, removeAllProductsInStorage, redirect }) => {
             >
               Empty cart
             </button>{" "}
-            <button
+            <Link
               className="text-white shadow  bg-black shadow border border-solid border-white 
               hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
-               text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1"
+               text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
               type="button"
               style={{ transition: "all .15s ease" }}
-              
+              to="/checkout"
+              onClick={() => removeAllProductsInStorage()}
             >
-              <Link
-                className="text-white"
-                to="/checkout"
-                onClick={() => removeAllProductsInStorage()}
-              >
-                Check out
-              </Link>
-            </button>
+              Check out
+            </Link>
           </div>
         </form>
       </div>

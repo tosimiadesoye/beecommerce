@@ -3,7 +3,7 @@ import React from 'react'
 function Footer() {
     return (
         
-             <footer className="item-f" >Footer</footer> 
+             <div className='bg-black ' >footer</div> 
         
     )
 }

@@ -60,12 +60,9 @@ const Cart = (props) => {
   const removeAllProductsInStorage = () => {
     const remove = localStorage.removeItem("cart");
     setCart(remove);
-    
   };
 
-  
   const redirect = () => {
-    
     window.location.replace("/shop");
   };
 
@@ -74,7 +71,22 @@ const Cart = (props) => {
   }, []);
 
   if (cart === null)
-    return <h1 className="text-center text-purple-500"> Your Cart is empty</h1>;
+    return (
+      <div className='flex flex-col items-center'>
+        <h1 className="text-center text-purple-500"> Your Cart is empty</h1>
+        <Link
+          to='/shop'
+              className="text-white shadow  bg-black shadow border border-solid border-white 
+              hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
+               text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
+              type="button"
+              style={{ transition: "all .15s ease" }}
+              
+            >
+              Go to shopping
+            </Link>
+      </div>
+    );
 
   return (
     <div className="container ">

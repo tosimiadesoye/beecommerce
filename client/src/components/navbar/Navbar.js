@@ -23,7 +23,7 @@ const Navigation = ({ makeupType, fixed }) => {
 
   return (
     <>
-      <div className="flex flex-wrap py-2">
+      <div className="flex flex-wrap py-2 ">
         <div className="w-full px-4">
           <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-transparent rounded">
             <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">

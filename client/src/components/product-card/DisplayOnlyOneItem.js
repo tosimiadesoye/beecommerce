@@ -14,7 +14,7 @@ const DisplayOnlyOneItem = () => {
   const [cartAlertPopoverIsVisible, setCartAlertPopoverIsVisible] = useState(
     false
   );
-  const [showShowDescription, setShowShowDescription] = useState(false);
+  const [showDescription, setShowDescription] = useState(false);
   const [expandDescription, setExpandDescription] = useState("");
   let location = useLocation();
   const item = location.state.itemData;
@@ -86,7 +86,7 @@ const DisplayOnlyOneItem = () => {
         className="flex flex-col md:flex-row lg-flex-row 
          bg-gray-300
            container text-center
-          shadow items-center justify-center space-x-0 md:space-x-20 max-h-full
+          shadow-sm items-center justify-center space-x-0 md:space-x-20
           overflow-y-auto
           "
       >
@@ -105,27 +105,27 @@ const DisplayOnlyOneItem = () => {
           </AliceCarousel>
           </div>
           <div>
-          <div className={showShowDescription ? "inline-block" : "hidden"}>
-            <p className="break-normal"> {expandDescription}</p>
+          <div className={showDescription ? "inline-block" : "hidden"}>
+            <p className="break-normal w-40"> {expandDescription}</p>
           </div>
           </div>
         </div>
 
         <div className="mt-5">
           <div>
-            <h2 className="mb-7">{`${item.brand} ${item.category}`}</h2>
-            <div className="mb-7">
+            <h2 >{`${item.brand} ${item.category}`}</h2>
+            <div >
               {item.item_available === 0 ? (
                 <h5 className="text-red-500">Out of Stock</h5>
               ) : ""}
             </div>
-            <h4 className="mb-7">{item.name}</h4>
-            <h5 className="mb-7">{`£${item.price}`}</h5>
+            <h4 >{item.name}</h4>
+            <h5 >{`£${item.price}`}</h5>
             <div
-              className="mb-7"
+              
               onClick={() => {
                 handleExpandDescription(item.description);
-                setShowShowDescription(!showShowDescription);
+                setShowDescription(!showDescription);
               }}
             >
               Description
@@ -134,7 +134,7 @@ const DisplayOnlyOneItem = () => {
           </div>
           
           <div>
-            <select className="mb-7 space-x-1 appearance-none select-none">
+            <select className="space-x-1 appearance-none select-none">
               {shadeName &&
                 shadeName.map((color) => (
                   <option key={color.colour_name}>{`Color: ${color.colour_name}`}</option>
@@ -142,7 +142,7 @@ const DisplayOnlyOneItem = () => {
             </select>
           </div>
           <div>
-            <div className="mb-7 flex flex-wrap gap-1 px-4 w-50 ">
+          <div className="mt-2 flex flex-wrap gap-1 px-4">
               {item.product_colors.map((color) => (
                 <>
                   <button
@@ -174,8 +174,9 @@ const DisplayOnlyOneItem = () => {
             {cartAlertPopoverIsVisible ? (
               <p
                 className="
-                bg-red-300
+                bg-white
                 text-center
+                shadow
             float-right   -600 font-bold
             text-black
               text-sm px-6 py-3 rounded border-blue border-2 hover:shadow-lg 

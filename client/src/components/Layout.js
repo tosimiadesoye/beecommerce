@@ -1,20 +1,33 @@
 import React from "react";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
-import { newCart } from "./LayoutArrays";
 
-import { Block } from "./card/CardContainer";
-import { ShopAllCardContainer,MakeupTypeCardContainer } from "./shop-container";
+import { ShopAllCardContainer } from "./shop-container";
 
 const Layout = (props) => {
-  const { layoutProduct, product, bronzer, layoutProductForBronzer,nailPolish,layoutProductForMascara,mascara } = props;
+  const {
+    layoutProduct,
+    product,
+    bronzer,
+    layoutProductForBronzer,
+  
+    layoutProductForMascara,
+    mascara,
+  } = props;
   return (
     <div>
       <div className="flex flex-col lg:flex-row m-2">
-       <img className=' md:max-h-42 lg:max-h-96 '  src='//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/001/000/original/open-uri20171227-4-14arcgf?1514342096' alt='layout'/>
-      <img className=' md:max-h-42 lg:max-h-96 '  src='//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/001/001/original/open-uri20171227-4-1das33x?1514342770'
-       />
-       <div
+        <img
+          className=" md:max-h-42 lg:max-h-96 "
+          src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/001/000/original/open-uri20171227-4-14arcgf?1514342096"
+          alt="skincare"
+        />
+        <img
+          className=" md:max-h-42 lg:max-h-96 "
+          src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/001/001/original/open-uri20171227-4-1das33x?1514342770"
+        alt='bronzer'
+        />
+        <div
           className=" md:max-h-42 lg:max-h-96 text-center uppercase box-border border-white bg-gradient-to-l
          md:bg-gradient-to-r from-yellow-900 via-yellow-600 to-yellow-500"
         >
@@ -25,7 +38,8 @@ const Layout = (props) => {
             Exicting
           </h5>
           <h5 className="inline-block break-words m-5">
-            Luxious color, sexy makeup that would leave wanting and turning eyes.
+            Luxious color, elegant makeup that would leave you wanting more and
+            turning eyes.
           </h5>
           <button
             className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
@@ -43,18 +57,21 @@ const Layout = (props) => {
           </button>
         </div>
       </div>
-  
-    <div
-        className="mt-10"
-      >
-        <h3 className=" uppercase mt-5 text-center">Our uniquely made nail polish</h3>
+
+      <div className="mt-10 ">
+        <h3 className=" uppercase mt-5 text-center">
+          Our uniquely made nail polish
+        </h3>
         <div className="mb-6">
-        
-          <ShopAllCardContainer product={product} makeupProduct={ layoutProduct}/>
+          <ShopAllCardContainer
+            product={product}
+            makeupProduct={layoutProduct}
+          />
         </div>
+
         <button
           className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
-           shadow-md hover:shadow-lg outline-none focus:outline-none mr-10 mb-1"
+           shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
           type="button"
           style={{ transition: "all .15s ease" }}
         >
@@ -68,9 +85,12 @@ const Layout = (props) => {
         </button>
       </div>
 
-<div className="flex flex-col md:flex-row px-16 py-20 items-center uppercase ">
+      <div className="flex flex-col md:flex-row px-16 py-20 items-center uppercase ">
         <div className="w-1/3">
-          <img src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/847/original/open-uri20171224-4-1se9mcb?1514074989" alt="eyeshadow" />
+          <img
+            src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/847/original/open-uri20171224-4-1se9mcb?1514074989"
+            alt="eyeshadow"
+          />
         </div>
 
         <div
@@ -103,13 +123,14 @@ const Layout = (props) => {
         </div>
       </div>
 
-      <div
-        className="mb-5"
-      >
+      <div className="mb-5">
         <h3 className=" uppercase mb-5 text-center">Newly arrived mascara</h3>
         <div className="mb-6">
-           {/* <CardContainer info={product}/>  */}
-          <ShopAllCardContainer product={mascara} makeupProduct={layoutProductForMascara}/>
+          {/* <CardContainer info={product}/>  */}
+          <ShopAllCardContainer
+            product={mascara}
+            makeupProduct={layoutProductForMascara}
+          />
         </div>
         <button
           className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
@@ -126,11 +147,13 @@ const Layout = (props) => {
           </Link>
         </button>
       </div>
-     
 
       <div className="flex flex-col md:flex-row px-16 py-20 items-center uppercase ">
         <div className="w-1/4 ">
-          <img src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/999/original/open-uri20171227-4-2ul0s6?1514341420" alt="eyeshadow" />
+          <img
+            src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/999/original/open-uri20171227-4-2ul0s6?1514341420"
+            alt="eyeshadow"
+          />
         </div>
         <div
           className="px-32 py-20  text-center box-border border-white bg-gradient-to-l
@@ -145,7 +168,7 @@ const Layout = (props) => {
           <h5 className="inline-block break-words mb-2">
             elegant new items from glossier.
           </h5>
-           <button
+          <button
             className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
             type="button"
@@ -163,10 +186,16 @@ const Layout = (props) => {
       </div>
 
       <div className="mb-5">
-        <h3 className="text-center uppercase mb-5"> our Latest lusious bronzer</h3>
+        <h3 className="text-center uppercase mb-5">
+          {" "}
+          our Latest lusious bronzer
+        </h3>
         <div className="mb-6">
           {/* <CardContainer info={bronzer} /> */}
-          <ShopAllCardContainer product={bronzer} makeupProduct={ layoutProductForBronzer}/>
+          <ShopAllCardContainer
+            product={bronzer}
+            makeupProduct={layoutProductForBronzer}
+          />
         </div>
         <button
           className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
@@ -185,7 +214,10 @@ const Layout = (props) => {
       </div>
       <div className="flex flex-col md:flex-row px-16 py-20 items-center uppercase ">
         <div className="w-1/3">
-          <img src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/153/original/open-uri20171223-4-snvley?1514062270" alt="eyeshadow" />
+          <img
+            src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/153/original/open-uri20171223-4-snvley?1514062270"
+            alt="eyeshadow"
+          />
         </div>
         <div
           className="px-16 py-20 text-center box-border border-white bg-gradient-to-l
@@ -216,9 +248,9 @@ const Layout = (props) => {
           </button>
         </div>
       </div>
-      <div>
+      {/* <div>
         <Block info={newCart} />
-      </div>
+      </div> */}
       <Footer />
     </div>
   );
