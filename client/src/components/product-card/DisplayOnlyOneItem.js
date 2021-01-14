@@ -5,7 +5,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import ReactHtmlParser from 'react-html-parser';
+import ReactHtmlParser from "react-html-parser";
 library.add(faAngleDown);
 
 const DisplayOnlyOneItem = () => {
@@ -52,7 +52,7 @@ const DisplayOnlyOneItem = () => {
   const handleExpandDescription = (description) => {
     if (description === item.description) {
       setExpandDescription(description);
-    } 
+    }
   };
 
   const changeColorName = (colorName) => {
@@ -103,7 +103,10 @@ const DisplayOnlyOneItem = () => {
           </div>
           <div>
             <div className={showDescription ? "inline-block" : "hidden"}>
-              <p className="break-normal w-40"> {ReactHtmlParser(expandDescription)}</p>
+              <p className="break-normal w-40">
+                {" "}
+                {ReactHtmlParser(expandDescription)}
+              </p>
             </div>
           </div>
         </div>

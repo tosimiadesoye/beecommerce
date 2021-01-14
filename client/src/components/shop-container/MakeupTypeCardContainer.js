@@ -14,7 +14,7 @@ const MakeupTypeCardContainer = (props) => {
           {makeup_type.map((type) => {
             if (
               params.slug === type.product_type ||
-              params.slug === type.brand
+              params.slug === type.brand || params.slug === type.category
             ) {
               return (
                 <div key={type.id}>

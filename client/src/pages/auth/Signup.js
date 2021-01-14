@@ -169,7 +169,7 @@ const Signup = () => {
       <CheckButton style={{ display: "none" }} ref={checkBtn} />
 
       <div>
-        <Link to="/login" to="/signup"
+        <Link to="/login" 
              className="text-white active:bg-black font-bold uppercase text-base px-8 py-3
             shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1">Already have an account? </Link>
       </div>

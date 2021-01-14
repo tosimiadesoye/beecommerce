@@ -94,5 +94,21 @@ export const dropdownList = [
 'zorah',
 'zorah biocosmetiques',]
   },
-  
+  {'id':2,
+  'name':'category',
+  'items':[
+    'pencil',
+    'liquid',
+    'concealer',
+  'lip_gloss',
+  'powder',
+  'cream',
+  'palette',
+  'highlighter',
+  'gel',
+  'contour',
+  'bb_cc',
+  'lip_stain',
+  'mineral',],
+  }
 ]
