@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const Dropdown = ({ color, makeupType }) => {
   const [dropdownPopoverShow, setDropdownPopoverShow] = useState(false);
-  
+
   const [dropdownItem, setDropdownItem] = useState([]);
   const btnDropdownRef = React.createRef();
   const popoverDropdownRef = React.createRef();
@@ -67,34 +67,35 @@ export const Dropdown = ({ color, makeupType }) => {
               >
                 Shop all
               </Link>
-              <div className='flex flex-row gap-4'>
-                <div className='overscroll-auto md:overscroll-contain lg:overscroll-normal'>
-                {makeupType && (
-                  <>
-                    {makeupType.map((data, idx) => {
-                      return (
-                        <>
-                          <button
-                            key={data.name}
-                            className={
-                              "text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent hover:text-black" +
-                              (color === "white"
-                                ? " text-gray-800"
-                                : "text-white")
-                            }
-                            onClick={() => {
-                              handleDropdown(data.id);
-                              
-                            }}
-                          >
-                            {data.name}
-                          </button>
-                        </>
-                      );
-                    })}
-                  </>
+              <div className="flex flex-row gap-4">
+                <div className="overscroll-auto md:overscroll-contain lg:overscroll-normal">
+                  {/* shows the types of links */}
+                  {makeupType && (
+                    <>
+                      {makeupType.map((data) => {
+                        return (
+                          <>
+                            <button
+                              key={data.name}
+                              className={
+                                "text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent hover:text-black" +
+                                (color === "white"
+                                  ? " text-gray-800"
+                                  : "text-white")
+                              }
+                              onClick={() => {
+                                handleDropdown(data.id);
+                              }}
+                            >
+                              {data.name}
+                            </button>
+                          </>
+                        );
+                      })}
+                    </>
                   )}
-                  </div>
+                </div>
+                {/* shows the products links */}
                 <div className="rounded shadow float-right ml-30 h-40 overflow-y-auto">
                   {dropdownItem && (
                     <div>
@@ -108,8 +109,7 @@ export const Dropdown = ({ color, makeupType }) => {
                                 `  text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent ` +
                                 (color === "white"
                                   ? " text-gray-800"
-                                  : "text-white") 
-                               
+                                  : "text-white")
                               }
                             >
                               {type}

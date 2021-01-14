@@ -3,10 +3,10 @@ import { useLocation } from "react-router-dom";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import ReactHtmlParser from "react-html-parser";
-library.add(faAngleDown);
+library.add(faAngleDown, faCheck);
 
 const DisplayOnlyOneItem = () => {
   const [shadeName, setShadeName] = useState([]);
@@ -19,6 +19,7 @@ const DisplayOnlyOneItem = () => {
   let location = useLocation();
   const item = location.state.itemData;
 
+  // this function check if a product exist before adding to cart
   const addProductToCart = (productId, quantity, price) => {
     let cart = [];
     if (localStorage.getItem("cart")) {
@@ -27,7 +28,7 @@ const DisplayOnlyOneItem = () => {
     let isAlreadyIn = false;
     let number;
     let subTotal = parseFloat(price);
-
+    //check if product is already
     for (let i = cart.length - 1; i >= 0; i--) {
       if (cart[i].productId._id === productId._id) {
         isAlreadyIn = true;
@@ -35,6 +36,7 @@ const DisplayOnlyOneItem = () => {
         break;
       }
     }
+    //if it is in increment quantity and the price
     if (isAlreadyIn) {
       cart[number].quantity = cart[number].quantity + quantity;
       cart[number].subTotal = cart[number].quantity * subTotal;
@@ -66,10 +68,17 @@ const DisplayOnlyOneItem = () => {
   const flashCard = (name) => {
     const nameOfItemAddedToCart = item.name === name;
     if (nameOfItemAddedToCart) {
-      setPopover(`You added ${item.name} to cart`);
+      const card = (
+        <div>
+          <FontAwesomeIcon icon="check" /> You added{" "}
+          <b className="text-bold">{item.name}</b>to cart
+        </div>
+      );
+      setPopover(card);
     }
   };
 
+  //popover is only true when a button id clicked
   const setTimer = () => {
     return setTimeout(() => setCartAlertPopoverIsVisible(false), 5000);
   };
@@ -132,6 +141,7 @@ const DisplayOnlyOneItem = () => {
           </div>
 
           <div>
+            {/*color name displayed  */}
             <select className="space-x-1 appearance-none select-none">
               {shadeName &&
                 shadeName.map((color) => (
@@ -142,6 +152,7 @@ const DisplayOnlyOneItem = () => {
             </select>
           </div>
           <div>
+            {/* color button clicked */}
             <div className="mb-2 flex flex-wrap gap-1 px-4">
               {item.product_colors.map((color) => (
                 <>
@@ -161,6 +172,7 @@ const DisplayOnlyOneItem = () => {
           </div>
 
           <div>
+            {/* if item is unavailable remove button */}
             <div>
               {item.item_available === 0 ? (
                 <h5 className="text-red-500">Out of Stock</h5>
@@ -177,7 +189,7 @@ const DisplayOnlyOneItem = () => {
                 </button>
               )}
             </div>
-
+            {/* notify users that a product has been added to cart */}
             {cartAlertPopoverIsVisible ? (
               <p
                 className="
