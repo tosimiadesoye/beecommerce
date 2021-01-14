@@ -15,7 +15,12 @@ import {
 import Login from "./pages/auth/Lognin";
 import Profile from "./pages/user/Profile";
 import axios from "axios";
-import { getLayoutProduct, getLayoutProductForBronzer, getProduct,getLayoutProductForMascara } from "./services/product";
+import {
+  getLayoutProduct,
+  getLayoutProductForBronzer,
+  getProduct,
+  getLayoutProductForMascara,
+} from "./services/product";
 
 import { dropdownList } from "./models/productArrays";
 
@@ -31,8 +36,7 @@ function App() {
   const [activePage, setCurrentPage] = useState(1);
   const [productForLayout, setProductForLayout] = useState([]);
   const [bronzer, setBronzer] = useState([]);
-  const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState(0);
+
   const displayedProductsPerPage = 9;
 
   const makeupProduct = async () => {
@@ -42,26 +46,26 @@ function App() {
     }
   };
 
-   const layoutProduct = async () => {
-     const response = await getLayoutProduct();
-     if (response) {
-       setProductForLayout(response.data.product);
-     }
-   };
+  const layoutProduct = async () => {
+    const response = await getLayoutProduct();
+    if (response) {
+      setProductForLayout(response.data.product);
+    }
+  };
 
-   const layoutProductForBronzer = async () => {
-     const response = await getLayoutProductForBronzer();
-     if (response) {
-       setBronzer(response.data.product);
-     }
-   };
+  const layoutProductForBronzer = async () => {
+    const response = await getLayoutProductForBronzer();
+    if (response) {
+      setBronzer(response.data.product);
+    }
+  };
 
-   const layoutProductForMascara = async () => {
-     const response = await getLayoutProductForMascara();
-     if (response) {
-       setMascara(response.data.product);
-     }
-   };
+  const layoutProductForMascara = async () => {
+    const response = await getLayoutProductForMascara();
+    if (response) {
+      setMascara(response.data.product);
+    }
+  };
   const productType = async (item) => {
     return await axios
       .get(`http://localhost:5000/api/product_type?keyword=${item}`)
@@ -75,7 +79,6 @@ function App() {
         console.log("error: ", error);
       });
   };
-
 
   const indexOfLastProducts = activePage * displayedProductsPerPage;
   const indexOfFirstProducts = indexOfLastProducts - displayedProductsPerPage;
@@ -137,12 +140,7 @@ function App() {
                   setMakeupType={setMakeupType}
                   makeupType={makeupType}
                 />
-                <Cart
-                  cart={cart}
-                  setCart={setCart}
-                  total={total}
-                  setTotal={setTotal}
-                />
+                <Cart />
               </>
             )}
           />

@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import RenderCart from "./RenderCart";
 import Shipping from "../../components/shipment/Shipping";
-const Cart = (props) => {
-  const { cart, setCart, total, setTotal } = props;
+const Cart = () => {
+  const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
 
   const editQuantity = (id, checkBoolean) => {
     const cartItem = JSON.parse(localStorage.getItem("cart"));
