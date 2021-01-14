@@ -4,13 +4,13 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmpty } from "validator";
 import { Link } from "react-router-dom";
-import "./signup.css";
-import { login} from "../../services/auth";
+// import "./signup.css";
+import { login } from "../../services/auth";
 
 const required = (value) => {
   if (isEmpty(value)) {
     return (
-      <div role="alert" className="required">
+      <div role="alert" className="text-red-500">
         {" "}
         This field is required
       </div>
@@ -70,15 +70,20 @@ function Login(props) {
     }
   };
   return (
-    <Form className="signup-form" onSubmit={handleLogin} ref={form}>
-      <h1 className="sign-up h1">Login</h1>
+    <Form
+      className="flex flex-col container bg-black rounded text-white items-center"
+      style={{ width: "340px", height: "485px" }}
+      onSubmit={handleLogin}
+      ref={form}
+    >
+      <h1 className="text-purple-400 border-purple-400 border-b-2 ">Login</h1>
       <p>Please fill in this form to create an account.</p>
 
       <label htmlFor="username">
         <b>username</b>
       </label>
       <Input
-        className="input"
+        className="border-b bg-black placeholder-white::placeholder"
         type="text"
         placeholder="Enter username"
         name="username"
@@ -92,7 +97,7 @@ function Login(props) {
       </label>
       <Input
         type="password"
-        className="input"
+        className="border-b bg-black placeholder-white::placeholder"
         placeholder="Enter Password"
         name="password"
         value={password}
@@ -100,7 +105,11 @@ function Login(props) {
         validations={[required]}
       />
       {loading && <span className="spinner-border spinner-border-sm"></span>}
-      <button type="submit" className="button">
+      <button
+        className="bg-transparent  text-purple-400 border border-purple-400
+ my-5 active:bg-black font-bold uppercase text-base px-8 py-3
+   shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+      >
         Login
       </button>
 
@@ -116,10 +125,17 @@ function Login(props) {
       <CheckButton style={{ display: "none" }} ref={checkBtn} />
 
       <div>
-        <Link to="/signup">Don't have an account?</Link>
+        <Link
+          to="/signup"
+          className="text-white active:bg-black font-bold uppercase text-base px-8 py-3
+            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+        >
+          Don't have an account?
+        </Link>
       </div>
     </Form>
   );
 }
 
 export default Login;
+

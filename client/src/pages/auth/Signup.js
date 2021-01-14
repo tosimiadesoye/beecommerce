@@ -11,7 +11,7 @@ import "./signup.css";
 const required = (value) => {
   if (isEmpty(value)) {
     return (
-      <div role="alert" className="required">
+      <div role="alert" className="text-red-500">
         This field is required
       </div>
     );
@@ -21,7 +21,7 @@ const required = (value) => {
 const validEmail = (value) => {
   if (!isEmail(value)) {
     return (
-      <div role="alert" className="required">
+      <div role="alert" className="text-red-500">
         This is not a valid Email
       </div>
     );
@@ -31,7 +31,7 @@ const validEmail = (value) => {
 const verifyUsername = (value) => {
   if (value.length < 3 || value.length > 20) {
     return (
-      <div role="alert" className="required">
+      <div role="alert" className="text-red-500">
         The username must be between 3 and 20 characters.
       </div>
     );
@@ -41,7 +41,7 @@ const verifyUsername = (value) => {
 const verifyPassword = (value) => {
   if (value.trim().length < 8) {
     return (
-      <div role="alert" className="required">
+      <div role="alert" className="text-red-500">
         The password must be at least 8 characters long
       </div>
     );
@@ -106,15 +106,18 @@ const Signup = () => {
     }
   };
   return (
-    <Form className="signup-form" onSubmit={handleSignup} ref={form}>
-      <h1 className="sign-up h1">Sign Up</h1>
+    <Form
+    className="flex flex-col container bg-black rounded text-white items-center"
+    style={{ width: "340px", height: "485px" }}
+      onSubmit={handleSignup} ref={form}>
+      <h1 className = "text-purple-400 border-purple-400 border-b-2 ">Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
 
       <label htmlFor="username">
         <b>Username</b>
       </label>
       <Input
-        className="input"
+        className="border-b bg-black placeholder-white::placeholder"
         type="text"
         placeholder="Enter username"
         name="username"
@@ -127,7 +130,7 @@ const Signup = () => {
         <b>Email</b>
       </label>
       <Input
-        className="input"
+        className="border-b bg-black placeholder-white::placeholder"
         type="text"
         placeholder="Enter Email"
         name="email"
@@ -141,7 +144,7 @@ const Signup = () => {
       </label>
       <Input
         type="password"
-        className="input"
+        className="border-b bg-black placeholder-white::placeholder"
         placeholder="Enter Password"
         name="password"
         value={password}
@@ -157,13 +160,18 @@ const Signup = () => {
           {message}
         </div>
       )}
-      <button type="submit" className="button">
+      <button type="submit"
+       className="bg-transparent border text-purple-400 border-purple-400
+       my-5 active:bg-black font-bold uppercase text-base px-8 py-2
+         shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1">
         Sign Up
       </button>
       <CheckButton style={{ display: "none" }} ref={checkBtn} />
 
       <div>
-        <Link to="/login">Already have an account? </Link>
+        <Link to="/login" to="/signup"
+             className="text-white active:bg-black font-bold uppercase text-base px-8 py-3
+            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1">Already have an account? </Link>
       </div>
     </Form>
   );

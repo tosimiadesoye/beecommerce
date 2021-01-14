@@ -9,7 +9,6 @@ const Layout = (props) => {
     product,
     bronzer,
     layoutProductForBronzer,
-
     layoutProductForMascara,
     mascara,
   } = props;
@@ -40,20 +39,15 @@ const Layout = (props) => {
             Luxious color, elegant makeup that would leave you wanting more and
             turning eyes.
           </h5>
-          <button
+          <Link
+            to="/shop"
             className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
             type="button"
             style={{ transition: "all .15s ease" }}
           >
-            <Link
-              to="/shop"
-              className="text-white uppercase font-normal
-             block  whitespace-no-wrap bg-transparent "
-            >
-              shop All
-            </Link>
-          </button>
+            shop All
+          </Link>
         </div>
       </div>
 
@@ -67,21 +61,16 @@ const Layout = (props) => {
             makeupProduct={layoutProduct}
           />
         </div>
-        <div className='mb-20'>
-          <button
+        <div className="mb-20">
+          <Link
+            to="/nail-polish"
             className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
             type="button"
             style={{ transition: "all .15s ease" }}
           >
-            <Link
-              to="/nail-polish"
-              className=" text-white uppercase font-normal
-             block  whitespace-no-wrap bg-transparent "
-            >
-              Shop Nail polish
-            </Link>
-          </button>
+            Shop Nail polish
+          </Link>
         </div>
       </div>
 
@@ -109,20 +98,15 @@ const Layout = (props) => {
           <h5 className="inline-block break-words">
             beautiful concealer that would leave you looking stunning
           </h5>
-          <button
+          <Link
+            to="/type/foundation"
             className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
            shadow-md hover:shadow-lg outline-none focus:outline-none mt-3 mb-3"
             type="button"
             style={{ transition: "all .15s ease" }}
           >
-            <Link
-              to="/type/foundation"
-              className="text-white uppercase font-normal
-             block  whitespace-no-wrap bg-transparent "
-            >
-              shop our eyeshadow
-            </Link>
-          </button>
+            shop concealer
+          </Link>
         </div>
       </div>
 
@@ -135,20 +119,15 @@ const Layout = (props) => {
           />
         </div>
         <div className="mb-20">
-          <button
+          <Link
+            to="/mascara"
             className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
             type="button"
             style={{ transition: "all .15s ease" }}
           >
-            <Link
-              to="/mascara"
-              className=" text-white uppercase font-normal
-             block  whitespace-no-wrap bg-transparent "
-            >
-              shop our mascara
-            </Link>
-          </button>
+            shop our mascara
+          </Link>
         </div>
       </div>
 
@@ -172,20 +151,15 @@ const Layout = (props) => {
           <h5 className="inline-block break-words mb-3">
             elegant new items from glossier.
           </h5>
-          <button
+          <Link
+            to="/type/glossier"
             className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
             type="button"
             style={{ transition: "all .15s ease" }}
           >
-            <Link
-              to="/type/glossier"
-              className="text-white uppercase font-normal
-             block  whitespace-no-wrap bg-transparent "
-            >
-              shop items from glossier
-            </Link>
-          </button>
+            shop items from glossier
+          </Link>
         </div>
       </div>
 
@@ -198,20 +172,15 @@ const Layout = (props) => {
           />
         </div>
         <div className="mb-20">
-          <button
+          <Link
+            to="/type/bronzer"
             className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
             type="button"
             style={{ transition: "all .15s ease" }}
           >
-            <Link
-              to="/type/bronzer"
-              className="text-white uppercase font-normal
-             block  whitespace-no-wrap bg-transparent "
-            >
-              shop our bronzer
-            </Link>
-          </button>
+            shop our bronzer
+          </Link>
         </div>
       </div>
       <div className="flex flex-col md:flex-row px-16 items-stretch items-center uppercase ">
@@ -234,27 +203,20 @@ const Layout = (props) => {
           <h5 className="inline-block break-words">
             butter london products that would leave you coming back for more
           </h5>
-          <div className="mb-20">
-            <button
+          <div className="">
+            <Link
+              to="/type/butter%20london"
               className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
               type="button"
               style={{ transition: "all .15s ease" }}
             >
-              <Link
-                to="/type/butter%20london"
-                className="text-white uppercase font-normal
-             block  whitespace-no-wrap bg-transparent "
-              >
-                shop butter london
-              </Link>
-            </button>
+              shop butter london
+            </Link>
           </div>
         </div>
       </div>
-      {/* <div>
-        <Block info={newCart} />
-      </div> */}
+
       <Footer />
     </div>
   );
