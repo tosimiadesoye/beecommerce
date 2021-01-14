@@ -6,7 +6,7 @@ import { isEmail, isEmpty } from "validator";
 import { Link } from "react-router-dom";
 
 import {register} from "../../services/auth";
-import "./signup.css";
+
 
 const required = (value) => {
   if (isEmpty(value)) {
