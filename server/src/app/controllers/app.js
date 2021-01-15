@@ -4,12 +4,9 @@ const Product = require("../models/app");
 exports.createNewProduct = async (req, res) => {
   try {
     const payLoad = {
-      id: req.body.id,
       brand: req.body.brand,
       name: req.body.name,
-      price: req.body.price,
-      price_sign: req.body.price_sign,
-      currency: req.body.currency,
+      price: req.body.price,     
       image_link: req.body.image_link,
       product_link: req.body.product_link,
       website_link: req.body.website_link,
@@ -19,7 +16,7 @@ exports.createNewProduct = async (req, res) => {
       product_type: req.body.product_type,
       tag_list: req.body.tag_list,
       product_api_url: req.body.product_api_url,
-      api_featured_image: req.file.path,
+      api_featured_image: req.body.api_featured_image,
       product_colors: req.body.product_colors,
       item_available: req.body.item_available,
     };

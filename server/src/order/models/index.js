@@ -4,12 +4,18 @@ const Schema = mongoose.Schema
 
 const OrderSchema = new Schema({
     productId:{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Makeups'
     },
     quantity: Number,
-    total: Number
-},{timestamps: true, collection:'order'})
+    subtotal: Number
+})
 
+const Total = new Schema({
+    item:[OrderSchema],
+    total:Number,
+    shipping: Number,
+
+},{timestamps: true, collection:'order'})
 const order = mongoose.model("Order", OrderSchema);
 module.exports = order

@@ -1,21 +1,31 @@
 const Order = require("../models");
 const productRepo = require('../../app/repository/app.js')
 const httpResponse = require('../../utils')
-exports.postOrder = async (res, req) => {
-   const{productId}= req.body
+exports.createOrderedItem = async (res, req) => {
     try {
         const payLoad = {
-           productId: productId,
+           productId: req.body.productId,
             quantity: req.body.quantity,
-            total: req.body.total,
+            subtotal: req.body.subtotal,
        } 
-         const itemsOrdered = await Order.create(payLoad)
-        const productDetails = await productRepo.findProductById(productId._id)
+    //    select:'name price total'
+         let cart = await Order.find({}).populate({
+            path:"item.productId",
+            
+        })
+        const productDetails = await productRepo.findProductById(payLoad.productId)
 
         if (productDetails) {
+            const orderData={
+                order:[payload],
+                total:req.body.total,
+                shipping:req.body.shipping
+            }
+            const itemOrdered = await Order.create({orderData})
             res.status(201).json({
                 status:true,
-                product: itemsOrdered
+                product: itemOrdered,
+                response:'order created'
             })
             // return httpResponse.send(itemsOrdered, 201, 'order created')
         }
@@ -29,7 +39,9 @@ exports.postOrder = async (res, req) => {
 
 exports.getOrder = async (req,res) => {
     try {
-        let order = await Order.find()
+        let order = await Order.find().populate({
+            path:"item.productId"
+        })
         httpResponse.send(order, 200, 'order sent')
     } catch (error){
         httpResponse.send(error, 400, 'bad request')
