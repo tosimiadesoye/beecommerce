@@ -3,10 +3,10 @@ import { useLocation } from "react-router-dom";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown, faCheck, faArrowUp} from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import ReactHtmlParser from "react-html-parser";
-library.add(faAngleDown, faCheck);
+library.add(faArrowDown, faCheck, faArrowUp);
 
 const DisplayOnlyOneItem = () => {
   const [shadeName, setShadeName] = useState([]);
@@ -133,10 +133,17 @@ const DisplayOnlyOneItem = () => {
               }}
             >
               Description
-              <FontAwesomeIcon
-                className="animate-bounce w-6 hover:animate-none"
-                icon="angle-down"
-              />
+              {showDescription ? (
+                <FontAwesomeIcon
+                  className="animate-bounce w-6 hover:animate-none"
+                  icon="arrow-up"
+                />
+              ) : (
+                <FontAwesomeIcon
+                  className="animate-bounce w-6 hover:animate-none"
+                  icon="arrow-down"
+                />
+              )}
             </div>
           </div>
 

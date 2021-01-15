@@ -63,7 +63,7 @@ const Layout = (props) => {
         </div>
         <div className="mb-20">
           <Link
-            to="/type/nail-polish"
+            to="/type/nail_polish"
             className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
             type="button"
@@ -99,7 +99,7 @@ const Layout = (props) => {
             beautiful concealer that would leave you looking stunning
           </h5>
           <Link
-            to="/type/foundation"
+            to="/type/concealer"
             className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
            shadow-md hover:shadow-lg outline-none focus:outline-none mt-3 mb-3"
             type="button"

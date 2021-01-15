@@ -1,21 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { shippingPrices } from "../../models/productArrays";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const Shipping = (props) => {
-  const { total, cart, removeAllProductsInStorage, redirect } = props
+  const { total, cart, removeAllProductsInStorage, redirectToShopAll } = props;
   const [totalPlusShipping, setTotalPlusShipping] = useState([]);
-
+  const [user, setUser] = useState(false);
+  const checkStorageForUser = () => {
+    // const user = JSON.parse(localStorage.getItem("user"));
+    if (localStorage.getItem("user") !== null) {
+      setUser(true);
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
   };
   const AddTotalPlusShipping = (id) => {
-    return shippingPrices.filter(item => {
+    return shippingPrices.filter((item) => {
       if (item.id === id) {
         setTotalPlusShipping(item.price + parseFloat(total.addSubtotal));
       }
     });
   };
+
+  const redirectToLogin = () => {
+    window.location.replace('/login')
+  }
+  useEffect(() => {
+    checkStorageForUser();
+  }, []);
 
   if (cart === null) return "";
 
@@ -59,7 +72,11 @@ const Shipping = (props) => {
           </div>
 
           <div>
-            <button
+           
+            
+            {user ? (
+              <>
+                 <button
               className="text-white shadow  bg-black shadow border border-solid
                border-white hover:bg-pink hover:text-black
                 active:bg-white-600 font-bold uppercase text-sm px-6 py-3
@@ -68,22 +85,39 @@ const Shipping = (props) => {
               style={{ transition: "all .15s ease" }}
               onClick={() => {
                 removeAllProductsInStorage();
-                redirect();
+                redirectToShopAll();
               }}
             >
               Empty cart
             </button>{" "}
-            <Link
-              className="text-white shadow  bg-black shadow border border-solid border-white 
+                <Link
+                  className="text-white shadow  bg-black shadow border border-solid border-white 
               hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
                text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
-              type="button"
-              style={{ transition: "all .15s ease" }}
-              to="/checkout"
-              onClick={() => removeAllProductsInStorage()}
-            >
-              Check out
-            </Link>
+                  type="button"
+                  style={{ transition: "all .15s ease" }}
+                  to="/checkout"
+                  onClick={() => removeAllProductsInStorage()}
+                >
+                  Check out
+                </Link>
+                </>
+            ) : (
+                <>
+                <h2 className='text-red-400'> Please login to continue to checkout</h2>
+                <button
+                    className="text-white shadow  bg-black shadow border border-solid border-white 
+              hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
+               text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
+                    type="button"
+                    style={{ transition: "all .15s ease" }}
+                    onClick={()=>redirectToLogin()}
+                >
+                    go to login
+                </button>
+                  </>
+              )}
+          
           </div>
         </form>
       </div>

@@ -3,7 +3,7 @@ import { ProductCard } from "../../components";
 import PropTypes from "prop-types";
 const MakeupTypeCardContainer = (props) => {
   const { type, params, makeup_type, productType } = props;
-
+  console.log(props);
   useEffect(() => {
     productType(type);
   }, [type]);
@@ -14,7 +14,8 @@ const MakeupTypeCardContainer = (props) => {
           {makeup_type.map((type) => {
             if (
               params.slug === type.product_type ||
-              params.slug === type.brand || params.slug === type.category
+              params.slug === type.brand ||
+              params.slug === type.category
             ) {
               return (
                 <div key={type.id}>

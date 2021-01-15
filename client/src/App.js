@@ -236,7 +236,7 @@ function App() {
           <Route
             exact
             path={`/:slug/:_id`}
-            render={() => (
+            render={(match) => (
               <>
                 <Navigation
                   setMakeupType={setMakeupType}
@@ -244,6 +244,13 @@ function App() {
                   setType={setType}
                 />
                 <DisplayOnlyOneItem />
+                {/* <MakeupTypeCardContainer
+                  {...match}
+                  setMakeup_type={setMakeup_type}
+                  makeup_type={parseProducts(makeup_type)}
+                  productType={productType}
+                  type={type}
+                /> */}
               </>
             )}
           />

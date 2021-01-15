@@ -63,7 +63,7 @@ const Cart = () => {
     setCart(remove);
   };
 
-  const redirect = () => {
+  const redirectToShopAll = () => {
     window.location.replace("/shop");
   };
 
@@ -124,7 +124,7 @@ const Cart = () => {
             cart={cart}
             total={total}
             removeAllProductsInStorage={removeAllProductsInStorage}
-            redirect={redirect}
+            redirectToShopAll={redirectToShopAll}
           />
         </div>
       </div>
