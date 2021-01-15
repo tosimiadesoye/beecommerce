@@ -3,12 +3,18 @@ import { useLocation } from "react-router-dom";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDown, faCheck, faArrowUp} from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowDown,
+  faCheck,
+  faArrowUp,
+} from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import ReactHtmlParser from "react-html-parser";
+import { MakeupTypeCardContainer } from "../../components";
 library.add(faArrowDown, faCheck, faArrowUp);
 
-const DisplayOnlyOneItem = () => {
+const DisplayOnlyOneItem = (props) => {
+  const { setMakeup_type, makeup_type, type, productType, makeupType }=props
   const [shadeName, setShadeName] = useState([]);
   const [popover, setPopover] = useState([]);
   const [cartAlertPopoverIsVisible, setCartAlertPopoverIsVisible] = useState(
@@ -18,7 +24,8 @@ const DisplayOnlyOneItem = () => {
   const [expandDescription, setExpandDescription] = useState("");
   let location = useLocation();
   const item = location.state.itemData;
-
+  
+  console.log(makeupType)
   // this function check if a product exist before adding to cart
   const addProductToCart = (productId, quantity, price) => {
     let cart = [];
@@ -50,7 +57,8 @@ const DisplayOnlyOneItem = () => {
 
     localStorage.setItem("cart", JSON.stringify(cart));
   };
-
+  
+  
   const handleExpandDescription = (description) => {
     if (description === item.description) {
       setExpandDescription(description);
@@ -216,6 +224,14 @@ const DisplayOnlyOneItem = () => {
             )}
           </div>
         </div>
+      </div>
+      <div>
+        {/* <MakeupTypeCardContainer
+          setMakeup_type={setMakeup_type}
+          makeup_type={makeup_type}
+          type={type}
+          productType={productType}
+        /> */}
       </div>
     </>
   );

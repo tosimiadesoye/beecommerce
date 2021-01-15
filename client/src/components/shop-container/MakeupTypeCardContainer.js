@@ -3,7 +3,7 @@ import { ProductCard } from "../../components";
 import PropTypes from "prop-types";
 const MakeupTypeCardContainer = (props) => {
   const { type, params, makeup_type, productType } = props;
-  console.log(props);
+  
   useEffect(() => {
     productType(type);
   }, [type]);

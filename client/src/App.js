@@ -36,6 +36,7 @@ function App() {
   const [activePage, setCurrentPage] = useState(1);
   const [productForLayout, setProductForLayout] = useState([]);
   const [bronzer, setBronzer] = useState([]);
+  const [similarItem, setSimilarItem] = useState([]);
 
   const displayedProductsPerPage = 9;
 
@@ -58,6 +59,20 @@ function App() {
     if (response) {
       setBronzer(response.data.product);
     }
+  };
+
+  const similarProduct = async (type) => {
+    // const response = await getLayoutProductForBronzer();
+    return await axios
+      .get(`http://localhost:5000/api/product/5/product_type?keyword=${type}`)
+      .then((res) => {
+        if (res) {
+          setSimilarItem(res.data.product);
+        }
+      })
+      .catch((error) => {
+        console.log("error: ", error);
+      });
   };
 
   const layoutProductForMascara = async () => {
@@ -216,11 +231,7 @@ function App() {
             path="/type/:slug"
             render={({ match }) => (
               <>
-                <Navigation
-                  setMakeupType={setMakeupType}
-                  makeupType={makeupType}
-                  setType={setType}
-                />
+                <Navigation makeupType={makeupType} />
                 <Search searchProduct={setMakeup_type} />
                 <MakeupTypeCardContainer
                   {...match}
@@ -228,6 +239,7 @@ function App() {
                   makeup_type={parseProducts(makeup_type)}
                   productType={productType}
                   type={type}
+                  makeupType={makeupType}
                 />
               </>
             )}
@@ -236,21 +248,20 @@ function App() {
           <Route
             exact
             path={`/:slug/:_id`}
-            render={(match) => (
+            render={() => (
               <>
                 <Navigation
                   setMakeupType={setMakeupType}
                   makeupType={makeupType}
                   setType={setType}
                 />
-                <DisplayOnlyOneItem />
-                {/* <MakeupTypeCardContainer
-                  {...match}
-                  setMakeup_type={setMakeup_type}
-                  makeup_type={parseProducts(makeup_type)}
-                  productType={productType}
+                <DisplayOnlyOneItem
+                  setMakeup_type={setSimilarItem}
+                  makeup_type={parseProducts(similarItem)}
                   type={type}
-                /> */}
+                  productType={similarProduct}
+                  makeupType={makeupType}
+                />
               </>
             )}
           />
