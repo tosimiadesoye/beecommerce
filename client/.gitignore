@@ -31,6 +31,5 @@ src/index.css.map
 src/tailwind.scss
 src/tailwind.css
 src/tailwind.css.map
-src/components/navbar/notinuse
-src/components/product-type/notinuse
-src/pages/shop/notinuse
+src/components/administrator
+

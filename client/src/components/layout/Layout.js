@@ -63,7 +63,7 @@ const Layout = (props) => {
         </div>
         <div className="mb-20">
           <Link
-            to="/nail-polish"
+            to="/type/nail-polish"
             className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
             type="button"
@@ -118,9 +118,9 @@ const Layout = (props) => {
             makeupProduct={layoutProductForMascara}
           />
         </div>
-        <div className="mb-20">
+        <div className="mb-20 ">
           <Link
-            to="/mascara"
+            to="/type/mascara"
             className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
             type="button"
