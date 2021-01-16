@@ -10,6 +10,10 @@ Markup : Things users can do:
               1.  click on view items to view a product
               2.  pick the color of product they want to shop for
               
+              Markup : - Bullet list
+              - Nested bullet
+                  - Sub-nested bullet etc
+              
 
 This project was created with Taillwindcss and the MERN stack(MongoDB, Express,React,Node)
 ## Available Scripts
