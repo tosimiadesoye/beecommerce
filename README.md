@@ -4,20 +4,11 @@
 This is a makeup ecommerce web app, to shop for items
 
 ## Things users can do
-, users can click on the shop icon and click on the type of product they want to shop for. to view items, users can. users can pick the color of product they want to shop for, and users can view and unview description,can also shop by similar products. users can also increment, decrement and delete the items in their cart and pick the type of delivery they want, users have to login to checkout.   
+Users can click on the shop icon and click on the type of product they want to shop for. to view items, users can click on view items to view a product, pick the color of product they want to shop for, view and unview  a product description, shop by similar products, can also increment, decrement and delete the items in their cart and pick the type of delivery they want, to checkout users have to login.   
 
 
 
               
-              Markup : - Things users can do:
-              click on view items to view a product
-              pick the color of product they want to shop for
-              - Nested bullet
-                  - Sub-nested bullet etc
-                  
-                  
-              
-
 This project was created with Taillwindcss and the MERN stack(MongoDB, Express,React,Node)
 ## Available Scripts
 
