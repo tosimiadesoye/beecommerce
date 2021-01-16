@@ -6,6 +6,11 @@ This is a makeup ecommerce web app, to shop for items
 ## Things users can do
 , users can click on the shop icon and click on the type of product they want to shop for. to view items, users can. users can pick the color of product they want to shop for, and users can view and unview description,can also shop by similar products. users can also increment, decrement and delete the items in their cart and pick the type of delivery they want, users have to login to checkout.   
 
+Markup : 1. A numbered list
+              1. A nested numbered list
+              2. Which is numbered
+          2. Which is numbered
+          
 Markup : Things users can do:
               1.  click on view items to view a product
               2.  pick the color of product they want to shop for
@@ -13,6 +18,8 @@ Markup : Things users can do:
               Markup : - Bullet list
               - Nested bullet
                   - Sub-nested bullet etc
+                  
+                  
               
 
 This project was created with Taillwindcss and the MERN stack(MongoDB, Express,React,Node)
