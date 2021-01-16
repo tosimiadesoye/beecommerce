@@ -39,52 +39,7 @@ exports.createNewProduct = async (req, res) => {
   }
 };
 
-exports.getLayoutProducts = async (req, res) => {
-  console.log(req.params.pId, "your pId");
-  const { page = req.params.pId, limit = 3 } = parseInt(req.query);
 
-  try {
-    let product = await Product.find()
-
-      .limit(limit)
-      .skip(page * limit)
-      .exec();
-
-    res.status(200).json({
-      product: product,
-    });
-  } catch (error) {
-    res.status(400).json({
-      status: false,
-      err: error.message,
-    });
-  }
-};
-
-exports.getLayoutProductForType = async (req, res) => {
-  const { page = req.params.pId, limit = 3 } = parseInt(req.query);
-  const keyword = req.query.keyword;
-  try {
-    let product = await Product.find({
-      product_type: {
-        $regex: keyword,
-        $options: "i",
-      },
-    })
-      .limit(limit)
-      .skip(page * limit)
-      .exec();
-
-    res.status(200).json({
-      product: product,
-    });
-  } catch (error) {
-    res.status(400).json({
-      status: false,
-      err: error.message,
-    });
-  }
-};
 
 exports.getProduct = async (req, res) => {
   try {
@@ -270,6 +225,52 @@ exports.getProductBrand= async (req, res) => {
   } catch (err) {
     res.status(400).json({
       error: err.message,
+    });
+  }
+};
+exports.getLayoutProducts = async (req, res) => {
+  
+  const { page = req.params.pId, limit = 3 } = parseInt(req.query);
+
+  try {
+    let product = await Product.find()
+
+      .limit(limit)
+      .skip(page * limit)
+      .exec();
+
+    res.status(200).json({
+      product: product,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      err: error.message,
+    });
+  }
+};
+
+exports.getLayoutProductForType = async (req, res) => {
+  const { page = req.params.pId, limit = 3 } = parseInt(req.query);
+  const keyword = req.query.keyword;
+  try {
+    let product = await Product.find({
+      product_type: {
+        $regex: keyword,
+        $options: "i",
+      },
+    })
+      .limit(limit)
+      .skip(page * limit)
+      .exec();
+
+    res.status(200).json({
+      product: product,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      err: error.message,
     });
   }
 };

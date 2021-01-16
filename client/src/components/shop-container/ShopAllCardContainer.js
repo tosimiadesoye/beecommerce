@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import PropTypes from "prop-types";
-import { ProductCard } from '../../components'
+import { ProductCard } from "../../components";
 
 const ShopAllCardContainer = (props) => {
-  const { product, makeupProduct, addToCart } = props;
+  const { product, makeupProduct } = props;
 
   useEffect(() => {
     makeupProduct();
@@ -15,7 +15,7 @@ const ShopAllCardContainer = (props) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-x-3">
           {product.map((data) => (
             <div key={data.id}>
-              <ProductCard info={data} addToCart={addToCart} />
+              <ProductCard info={data} />
             </div>
           ))}
         </div>
@@ -27,7 +27,6 @@ const ShopAllCardContainer = (props) => {
 ShopAllCardContainer.propTypes = {
   product: PropTypes.array,
   makeupProduct: PropTypes.func,
-  addToCart: PropTypes.func,
 };
 
 export default ShopAllCardContainer;

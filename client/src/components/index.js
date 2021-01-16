@@ -8,7 +8,7 @@ import ShopAllCardContainer from "./shop-container/ShopAllCardContainer";
 import DisplayOnlyOneItem from "./product-card/DisplayOnlyOneItem";
 import ProductCard from "./product-card/ProductCard";
 import Navigation from "./navbar/Navbar";
-
+import SimilarProducts from "./product-card/SimilarProducts";
 export {
   ShopAllCardContainer,
   MakeupTypeCardContainer,
@@ -20,4 +20,5 @@ export {
   DisplayOnlyOneItem,
   ProductCard,
   Navigation,
+  SimilarProducts
 };

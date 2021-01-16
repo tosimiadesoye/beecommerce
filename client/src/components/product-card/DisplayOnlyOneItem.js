@@ -10,11 +10,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import ReactHtmlParser from "react-html-parser";
-import { MakeupTypeCardContainer } from "../../components";
+import { SimilarProducts, ShopAllCardContainer } from "../../components";
 library.add(faArrowDown, faCheck, faArrowUp);
 
 const DisplayOnlyOneItem = (props) => {
-  const { setMakeup_type, makeup_type, type, productType, makeupType }=props
+  const { similarProduct, similarItem, makeupType } = props;
+
   const [shadeName, setShadeName] = useState([]);
   const [popover, setPopover] = useState([]);
   const [cartAlertPopoverIsVisible, setCartAlertPopoverIsVisible] = useState(
@@ -24,8 +25,7 @@ const DisplayOnlyOneItem = (props) => {
   const [expandDescription, setExpandDescription] = useState("");
   let location = useLocation();
   const item = location.state.itemData;
-  
-  console.log(makeupType)
+
   // this function check if a product exist before adding to cart
   const addProductToCart = (productId, quantity, price) => {
     let cart = [];
@@ -57,8 +57,7 @@ const DisplayOnlyOneItem = (props) => {
 
     localStorage.setItem("cart", JSON.stringify(cart));
   };
-  
-  
+
   const handleExpandDescription = (description) => {
     if (description === item.description) {
       setExpandDescription(description);
@@ -96,118 +95,119 @@ const DisplayOnlyOneItem = (props) => {
 
   return (
     <>
-      <div
-        key={location.key}
-        className="flex flex-col md:flex-row lg-flex-row 
+      <div>
+        <div
+          key={location.key}
+          className="flex flex-col md:flex-row lg-flex-row 
          bg-gray-300
            container text-center
           shadow-sm items-center justify-center space-x-0 md:space-x-20
           overflow-y-auto
           "
-      >
-        <div>
-          <div className="w-20 md:w-60 flex text-black mt-5">
-            <AliceCarousel
-              autoPlay
-              autoPlayInterval="4000"
-              autoPlayStrategy="default"
-              disableButtonsControls="true"
-              infinite
-            >
-              <img src={item.api_featured_image} alt={item.name} />
-              <img src={item.image_link} alt={item.name} />
-            </AliceCarousel>
-          </div>
+        >
           <div>
-            <div className={showDescription ? "inline-block" : "hidden"}>
-              <p className="break-normal w-40">
-                {" "}
-                {ReactHtmlParser(expandDescription)}
-              </p>
+            <div className="w-20 md:w-60 flex text-black mt-5">
+              <AliceCarousel
+                autoPlay
+                autoPlayInterval="4000"
+                autoPlayStrategy="default"
+                disableButtonsControls="true"
+                infinite
+              >
+                <img src={item.api_featured_image} alt={item.name} />
+                <img src={item.image_link} alt={item.name} />
+              </AliceCarousel>
             </div>
-          </div>
-        </div>
-
-        <div className="mt-5 w-50">
-          <div>
-            <h2>{`${item.brand} ${item.category}`}</h2>
-
-            <h4>{item.name}</h4>
-            <h5>{`£${item.price}`}</h5>
-            <div
-              onClick={() => {
-                handleExpandDescription(item.description);
-                setShowDescription(!showDescription);
-              }}
-            >
-              Description
-              {showDescription ? (
-                <FontAwesomeIcon
-                  className="animate-bounce w-6 hover:animate-none"
-                  icon="arrow-up"
-                />
-              ) : (
-                <FontAwesomeIcon
-                  className="animate-bounce w-6 hover:animate-none"
-                  icon="arrow-down"
-                />
-              )}
-            </div>
-          </div>
-
-          <div>
-            {/*color name displayed  */}
-            <select className="space-x-1 appearance-none select-none">
-              {shadeName &&
-                shadeName.map((color) => (
-                  <option
-                    key={color.colour_name}
-                  >{`Color: ${color.colour_name}`}</option>
-                ))}
-            </select>
-          </div>
-          <div>
-            {/* color button clicked */}
-            <div className="mb-2 flex flex-wrap gap-1 px-4">
-              {item.product_colors.map((color) => (
-                <>
-                  <button
-                    key={color.hex_value}
-                    className="inline-block w-3 hover:opacity-70 rounded-full h-6 w-6"
-                    style={{
-                      backgroundColor: color.hex_value,
-                    }}
-                    onClick={() => changeColorName(color.colour_name)}
-                  >
-                    &nbsp;
-                  </button>
-                </>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            {/* if item is unavailable remove button */}
             <div>
-              {item.item_available === 0 ? (
-                <h5 className="text-red-500">Out of Stock</h5>
-              ) : (
-                <button
-                  className=" shadow p-2 text-white mb-5 rounded-sm bg-black focus:ring-2"
-                  onClick={() => {
-                    addProductToCart(item, 1, item.price);
-                    flashCard(item.name);
-                    setCartAlertPopoverIsVisible(true);
-                  }}
-                >
-                  Add to bag
-                </button>
-              )}
+              <div className={showDescription ? "inline-block" : "hidden"}>
+                <p className="break-normal w-40">
+                  {" "}
+                  {ReactHtmlParser(expandDescription)}
+                </p>
+              </div>
             </div>
-            {/* notify users that a product has been added to cart */}
-            {cartAlertPopoverIsVisible ? (
-              <p
-                className="
+          </div>
+
+          <div className="mt-5 w-50">
+            <div>
+              <h2>{`${item.brand} ${item.category}`}</h2>
+
+              <h4>{item.name}</h4>
+              <h5>{`£${item.price}`}</h5>
+              <div
+                onClick={() => {
+                  handleExpandDescription(item.description);
+                  setShowDescription(!showDescription);
+                }}
+              >
+                Description
+                {showDescription ? (
+                  <FontAwesomeIcon
+                    className="animate-bounce w-6 hover:animate-none"
+                    icon="arrow-up"
+                  />
+                ) : (
+                  <FontAwesomeIcon
+                    className="animate-bounce w-6 hover:animate-none"
+                    icon="arrow-down"
+                  />
+                )}
+              </div>
+            </div>
+
+            <div>
+              {/*color name displayed  */}
+              <select className="space-x-1 appearance-none select-none">
+                {shadeName &&
+                  shadeName.map((color) => (
+                    <option
+                      key={color.colour_name}
+                    >{`Color: ${color.colour_name}`}</option>
+                  ))}
+              </select>
+            </div>
+            <div>
+              {/* color button clicked */}
+              <div className="mb-2 flex flex-wrap gap-1 px-4">
+                {item.product_colors.map((color) => (
+                  <>
+                    <button
+                      key={color.hex_value}
+                      className="inline-block w-3 hover:opacity-70 rounded-full h-6 w-6"
+                      style={{
+                        backgroundColor: color.hex_value,
+                      }}
+                      onClick={() => changeColorName(color.colour_name)}
+                    >
+                      &nbsp;
+                    </button>
+                  </>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              {/* if item is unavailable remove button */}
+              <div>
+                {item.item_available === 0 ? (
+                  <h5 className="text-red-500">Out of Stock</h5>
+                ) : (
+                  <button
+                    className=" shadow p-2 text-white mb-5 rounded-sm bg-black focus:ring-2"
+                    onClick={() => {
+                      addProductToCart(item, 1, item.price);
+                      flashCard(item.name);
+                      setCartAlertPopoverIsVisible(true);
+                    }}
+                  >
+                    Add to bag
+                  </button>
+                )}
+              </div>
+              {/* notify users that a product has been added to cart */}
+              {cartAlertPopoverIsVisible ? (
+                <p
+                  className="
                 bg-white
                 text-center
                 shadow
@@ -216,22 +216,22 @@ const DisplayOnlyOneItem = (props) => {
               text-sm px-6 py-3 rounded border-blue border-2 hover:shadow-lg 
               outline-none focus:outline-none mr-1 mb-1
               "
-              >
-                {popover}
-              </p>
-            ) : (
-              <span />
-            )}
+                >
+                  {popover}
+                </p>
+              ) : (
+                <span />
+              )}
+            </div>
           </div>
         </div>
       </div>
       <div>
-        {/* <MakeupTypeCardContainer
-          setMakeup_type={setMakeup_type}
-          makeup_type={makeup_type}
-          type={type}
-          productType={productType}
-        /> */}
+        <h2 className='text-center mt-5'>Shop similar Products</h2>
+        <SimilarProducts
+          similarItem={similarItem}
+          similarProduct={similarProduct}
+        />
       </div>
     </>
   );

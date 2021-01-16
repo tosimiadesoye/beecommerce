@@ -1,12 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ProductCard } from "../../components";
 import PropTypes from "prop-types";
 const MakeupTypeCardContainer = (props) => {
-  const { type, params, makeup_type, productType } = props;
-  
+  const [type] = useState([]);
+  const { params, makeup_type, productType } = props;
+
   useEffect(() => {
     productType(type);
   }, [type]);
+
   return (
     <>
       {makeup_type && (
