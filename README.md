@@ -10,6 +10,10 @@ This project was created with Taillwindcss and the MERN stack(MongoDB, Express,R
 To begin the project
 ## `npm i or npm install`
 
+and then cd client
+
+## `npm i or npm install`
+
 To start both the client and server 
 
 ### `npm run develop`
