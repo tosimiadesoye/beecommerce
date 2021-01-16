@@ -12,7 +12,7 @@ const Cart = () => {
     let index = cartItem.findIndex((item) => item.productId._id === id);
     for (let i = cartItem.length - 1; i >= 0; i--) {
       if (cartItem[i].productId._id === id) {
-        let price = parseFloat(cartItem[i].productId.price);
+        let price = parseFloat(cartItem[i].productId.price).toFixed();
 //increment when it true and decrement when fals
         cartItem[i].quantity = checkBoolean
           ? cartItem[i].quantity + 1

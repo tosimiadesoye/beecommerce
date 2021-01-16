@@ -11,6 +11,7 @@ import {
   Search,
   Checkout,
   Navigation,
+  Contact
 } from "./components";
 import Login from "./pages/auth/Lognin";
 import Profile from "./pages/user/Profile";
@@ -22,11 +23,11 @@ import {
   getLayoutProductForMascara,
 } from "./services/product";
 import { dropdownList, type } from "./models/productArrays";
-import Contact from "./pages/contact/Contact";
+
 import "./App.css";
 
 function App() {
-  const [makeupType, setMakeupType] = useState(dropdownList);
+  const makeupType = dropdownList;
   const [mascara, setMascara] = useState([]);
   const [product, setProduct] = useState([]);
   const [makeup_type, setMakeup_type] = useState([]);

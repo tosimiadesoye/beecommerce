@@ -24,7 +24,7 @@ const RenderCart = (props) => {
           <h5> {`£ ${info.productId.price}`}</h5>
         </div>
 
-        <div className="border-2 border-gray-900 w-20 h-13   md:h-10 text-center">
+        <div className="border-2 border-gray-900 w-20 h-12 text-center">
           <button
             className="mr-2"
             onClick={() => editQuantity(info.productId._id, false)}

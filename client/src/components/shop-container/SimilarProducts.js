@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { ProductCard } from "..";
 const SimilarProducts = (props) => {
-  const { similarProduct, similarItem, item } = props;
+  const { similarProduct, similarItem } = props;
 
   useEffect(() => {
     similarProduct();

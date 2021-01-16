@@ -102,8 +102,8 @@ const Shipping = (props) => {
               </>
             ) : (
               <>
-                <h2 className="text-red-400">
-                  {" "}
+                <h2 className="text-red-400 float-left">
+                  
                   Please login to continue to checkout
                 </h2>
                 <button
