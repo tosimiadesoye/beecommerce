@@ -11,7 +11,6 @@ import {
   Search,
   Checkout,
   Navigation,
-  
 } from "./components";
 import Login from "./pages/auth/Lognin";
 import Profile from "./pages/user/Profile";
@@ -232,10 +231,9 @@ function App() {
               <>
                 <Navigation makeupType={makeupType} />
                 <DisplayOnlyOneItem
-                similarItem={similarItem}
-                similarProduct={similarProduct}
+                  similarItem={parseProducts(similarItem)}
+                  similarProduct={similarProduct}
                 />
-               
               </>
             )}
           />

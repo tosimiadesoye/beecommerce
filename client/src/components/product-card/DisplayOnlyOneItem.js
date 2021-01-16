@@ -231,6 +231,7 @@ const DisplayOnlyOneItem = (props) => {
         <SimilarProducts
           similarItem={similarItem}
           similarProduct={similarProduct}
+          item={item}
         />
       </div>
     </>

@@ -6,7 +6,7 @@ const getProduct = () => {
 };
 
 const findMakeup = (value) => {
-  const CATEGORY_URI = `http://localhost:5000/api/category?keyword=${value}`;
+  const CATEGORY_URI = `http://localhost:5000/api/description?keyword=${value}`;
   return axios.get(CATEGORY_URI);
 };
 

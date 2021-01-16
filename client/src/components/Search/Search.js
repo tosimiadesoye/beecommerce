@@ -2,7 +2,7 @@ import { useState } from "react";
 import { findMakeup} from "../../services/product";
 import PropTypes from "prop-types";
 const Search = ({ searchProduct }) => {
- 
+ //the query for search api is key word
   const [keyword, setKeyword] = useState("");
 
   const findMakeupItems = async (value) => {

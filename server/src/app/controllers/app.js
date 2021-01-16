@@ -6,7 +6,7 @@ exports.createNewProduct = async (req, res) => {
     const payLoad = {
       brand: req.body.brand,
       name: req.body.name,
-      price: req.body.price,     
+      price: req.body.price,
       image_link: req.body.image_link,
       product_link: req.body.product_link,
       website_link: req.body.website_link,
@@ -38,8 +38,6 @@ exports.createNewProduct = async (req, res) => {
     });
   }
 };
-
-
 
 exports.getProduct = async (req, res) => {
   try {
@@ -192,15 +190,14 @@ exports.getDescription = async (req, res) => {
 //trying to create a query function that returns tag_list products
 //function doesn't work
 exports.getProductByCategory = async (req, res) => {
-  const {category}= req.query;
+  const { category } = req.query;
   //localhost:5000/api/product/tag_list?keyword=Vegan
   try {
     const product = await Product.find({
-   
-          category: {
-            $regex: category,$options: ""
-          },
-     
+      category: {
+        $regex: category,
+        $options: "",
+      },
     });
     res.status(200).json({ product: product });
   } catch (err) {
@@ -210,16 +207,15 @@ exports.getProductByCategory = async (req, res) => {
   }
 };
 
-exports.getProductBrand= async (req, res) => {
-  const { brand} = req.query;
+exports.getProductBrand = async (req, res) => {
+  const { brand } = req.query;
   // localhost:5000/api/product/query?brand=colourpop&type=lip_liner
   try {
     const product = await Product.find({
-     
-          brand: {
-            $regex: brand, $options: "" 
-          },
-       
+      brand: {
+        $regex: brand,
+        $options: "",
+      },
     });
     res.status(200).json({ product: product });
   } catch (err) {
@@ -229,7 +225,6 @@ exports.getProductBrand= async (req, res) => {
   }
 };
 exports.getLayoutProducts = async (req, res) => {
-  
   const { page = req.params.pId, limit = 3 } = parseInt(req.query);
 
   try {
@@ -255,11 +250,20 @@ exports.getLayoutProductForType = async (req, res) => {
   const keyword = req.query.keyword;
   try {
     let product = await Product.find({
-      product_type: {
-        $regex: keyword,
-        $options: "i",
-      },
+      $or: [
+        {product_type: {
+          $regex: keyword,
+          $options: "i",
+        }},{ category: {
+          $regex: keyword,
+          $options: "i",
+        },},{ brand: {
+          $regex: keyword,
+          $options: "i",
+        },}
+      ]
     })
+
       .limit(limit)
       .skip(page * limit)
       .exec();
