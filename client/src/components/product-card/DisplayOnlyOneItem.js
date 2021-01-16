@@ -227,7 +227,7 @@ const DisplayOnlyOneItem = (props) => {
         </div>
       </div>
       <div>
-        <h2 className='text-center mt-5'>Shop similar Products</h2>
+        <h1 className='text-center mt-5'>You might also like</h1>
         <SimilarProducts
           similarItem={similarItem}
           similarProduct={similarProduct}
