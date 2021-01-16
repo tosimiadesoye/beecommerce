@@ -1,12 +1,10 @@
 
 # Beecommerce
 
-This is a makeup ecommerce web app, to shop for items
+Beecommerce is a makeup ecommerce web app
 
 ## Things users can do
 Users can click on the shop icon and click on the type of product they want to shop for. To view an item, users can click on view item to view a product, pick the color of product they want to shop for, view and unview a product description, shop by similar products, can also increment, decrement and delete the items in their cart and pick the type of delivery they want. To checkout users have to login.   
-
-
 
               
 This project was created with Taillwindcss and the MERN stack(MongoDB, Express,React,Node)
