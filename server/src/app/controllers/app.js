@@ -248,20 +248,30 @@ exports.getLayoutProducts = async (req, res) => {
 exports.getLayoutProductForType = async (req, res) => {
   const { page = req.params.pId, limit = 3 } = parseInt(req.query);
   const keyword = req.query.keyword;
+  /**
+  const { productType,category,brand } = req.query
   try {
     let product = await Product.find({
       $or: [
         {product_type: {
-          $regex: keyword,
+          $regex: productType,
           $options: "i",
         }},{ category: {
-          $regex: keyword,
+          $regex: category,
           $options: "i",
         },},{ brand: {
-          $regex: keyword,
+          $regex: brand,
           $options: "i",
         },}
       ]
+    }) */
+  try {
+    
+    let product = await Product.find({
+      product_type: {
+        $regex: keyword,
+        $options: "i",
+      },
     })
 
       .limit(limit)

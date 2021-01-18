@@ -63,7 +63,7 @@ function App() {
   const similarProduct = () => {
     type.map(async (type) => {
       await axios
-        .get(`http://localhost:5000/api/product/4/product_type?keyword=${type}`)
+        .get(`http://localhost:5000/api/product/1/product_type?keyword=${type}`)
         .then((res) => {
           if (res) {
             setSimilarItem(res.data.product);

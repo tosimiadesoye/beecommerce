@@ -1,24 +1,27 @@
 import React, { useEffect } from "react";
 import { ProductCard } from "..";
 const SimilarProducts = (props) => {
-  const { similarProduct, similarItem } = props;
+  const { similarProduct, similarItem, item } = props;
 
   useEffect(() => {
     similarProduct();
   }, []);
 
+  const filterItem = similarItem.filter(
+    (type) => type.product_type === item.product_type
+  );
+  console.log(filterItem);
   return (
     <div>
-      {similarItem && (
+      {filterItem && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-x-3">
-          {similarItem.map((type) => {
+          {filterItem.map((type) => {
             return (
               <div key={type._id + type.id}>
                 <ProductCard info={type} />
               </div>
             );
-            //   }
-          })}{" "}
+          })}
         </div>
       )}
     </div>

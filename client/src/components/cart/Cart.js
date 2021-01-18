@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import RenderCart from "./RenderCart";
 import Shipping from "../../components/shipment/Shipping";
@@ -13,7 +13,7 @@ const Cart = () => {
     for (let i = cartItem.length - 1; i >= 0; i--) {
       if (cartItem[i].productId._id === id) {
         let price = parseFloat(cartItem[i].productId.price).toFixed();
-//increment when it true and decrement when fals
+        //increment when it true and decrement when false
         cartItem[i].quantity = checkBoolean
           ? cartItem[i].quantity + 1
           : cartItem[i].quantity - 1;
@@ -73,24 +73,23 @@ const Cart = () => {
 
   if (cart === null)
     return (
-      <div className='flex flex-col items-center'>
+      <div className="flex flex-col items-center">
         <h1 className="text-center text-purple-500"> Your Cart is empty</h1>
         <Link
-          to='/shop'
-              className="text-white shadow  bg-black shadow border border-solid border-white 
+          to="/shop"
+          className="text-white shadow  bg-black shadow border border-solid border-white 
               hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
                text-sm px-6  py-3 rounded outline-none focus:outline-none mr-1 "
-              type="button"
-              style={{ transition: "all .15s ease" }}
-              
-            >
-              Go to shopping
-            </Link>
+          type="button"
+          style={{ transition: "all .15s ease" }}
+        >
+          Go to shopping
+        </Link>
       </div>
     );
 
   return (
-    <div className="container ">
+    <div className="container">
       <div className="flex flex-col lg:flex-row  ">
         {cart && (
           <div className="bg-gray-300 ">

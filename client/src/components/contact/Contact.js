@@ -7,12 +7,13 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
+  
   const onChangeName = (e) => {
     const name = e.target.value;
     setName(name);
   };
   const onChangeEmail = (e) => {
-    const email = e.target.value;
+    const email = e.target.value || '';
     console.log(email);
     setEmail(email);
   };
@@ -31,6 +32,8 @@ const Contact = () => {
         console.log("error", error);
       });
   };
+
+
   return (
     <form
       onSubmit={handleContact}
@@ -49,6 +52,7 @@ const Contact = () => {
           focus:outline-none focus:shadow-outline"
           value={name}
           required
+          
         />
       </div>
       <div className="my-3">
@@ -81,6 +85,7 @@ const Contact = () => {
         <input
           type="submit"
           className="p-2 bg-purple-400 text-white rounded shadow-sm"
+          
         />
       </div>
     </form>
