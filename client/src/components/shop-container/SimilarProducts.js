@@ -7,15 +7,14 @@ const SimilarProducts = (props) => {
     similarProduct();
   }, []);
 
-  const filterItem = similarItem.filter(
-    (type) => type.product_type === item.product_type
-  );
-  console.log(filterItem);
+
+ 
   return (
-    <div>
-      {filterItem && (
+    <div className='item'>
+      {similarItem  &&(
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-x-3">
-          {filterItem.map((type) => {
+          {similarItem.map((type) => {
+            console.log(type, 'type')
             return (
               <div key={type._id + type.id}>
                 <ProductCard info={type} />

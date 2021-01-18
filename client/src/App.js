@@ -66,6 +66,7 @@ function App() {
         .get(`http://localhost:5000/api/product/1/product_type?keyword=${type}`)
         .then((res) => {
           if (res) {
+            console.log(res.data.product)
             setSimilarItem(res.data.product);
           }
         })

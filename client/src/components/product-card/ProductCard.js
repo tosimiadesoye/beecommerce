@@ -7,7 +7,7 @@ const ProductCard = ({ info }) => {
       <div
         className=" py-6 md:py-8 
       place-content-center
-       flex flex-row items-center mx-5 my-5 border-0 border-white bg-gray-300 truncate"
+       flex flex-row items-center mx-5 my-5 border-0 border-white bg-gray-300 h-4/6 "
       >
         <div>
           <img
@@ -17,7 +17,7 @@ const ProductCard = ({ info }) => {
           />
         </div>
         <div className="text-black text-gray-900 space-x-4 px-2 py-1">
-          <p className="w-3 ">{info.name}</p>
+          <p className="break-words">{info.name}</p>
 
           <p>{`£ ${info.price}`}</p>
           <Link
