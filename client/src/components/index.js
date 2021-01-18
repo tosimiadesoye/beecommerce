@@ -2,7 +2,7 @@ import ProductContentPagination from "./pagination/PaginationContent";
 import Search from "./Search/Search";
 import Cart from "./cart/Cart";
 import Checkout from "./checkout/Checkout";
-import Layout from "./layout/Layout";
+import Homepage from "./homepage/Homepage";
 import MakeupTypeCardContainer from "./shop-container/MakeupTypeCardContainer";
 import ShopAllCardContainer from "./shop-container/ShopAllCardContainer";
 import DisplayOnlyOneItem from "./product-card/DisplayOnlyOneItem";
@@ -17,7 +17,7 @@ export {
   Search,
   Cart,
   Checkout,
-  Layout,
+  Homepage,
   DisplayOnlyOneItem,
   ProductCard,
   Navigation,

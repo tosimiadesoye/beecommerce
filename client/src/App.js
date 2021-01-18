@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Signup from "./pages/auth/Signup";
 import {
-  Layout,
+  Homepage,
   ShopAllCardContainer,
   MakeupTypeCardContainer,
   Cart,
@@ -132,7 +132,7 @@ function App() {
               <>
                 <Navigation makeupType={makeupType} />
 
-                <Layout
+                <Homepage
                   product={parseProducts(productForLayout)}
                   layoutProductForBronzer={layoutProductForBronzer}
                   layoutProductForMascara={layoutProductForMascara}

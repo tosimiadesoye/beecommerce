@@ -1,9 +1,9 @@
 import React from "react";
 import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
-import { ShopAllCardContainer } from "../../components";
+import { ShopAllCardContainer } from "..";
 
-const Layout = (props) => {
+const Homepage = (props) => {
   const {
     layoutProduct,
     product,
@@ -222,4 +222,4 @@ const Layout = (props) => {
   );
 };
 
-export default Layout;
+export default Homepage;
