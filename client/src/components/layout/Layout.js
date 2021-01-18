@@ -51,7 +51,7 @@ const Layout = (props) => {
         </div>
       </div>
 
-      <div className="mt-10 ">
+      <div className=" my-20 ">
         <h3 className=" uppercase mt-5 text-center">
           Our uniquely made nail polish
         </h3>
@@ -61,7 +61,7 @@ const Layout = (props) => {
             makeupProduct={layoutProduct}
           />
         </div>
-        <div className="mb-20">
+        <div className="flex flex-col items-center mb-20">
           <Link
             to="/type/nail_polish"
             className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
@@ -118,7 +118,7 @@ const Layout = (props) => {
             makeupProduct={layoutProductForMascara}
           />
         </div>
-        <div className="mb-20 ">
+        <div className="flex flex-col items-center mb-20 ">
           <Link
             to="/type/mascara"
             className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
@@ -171,7 +171,7 @@ const Layout = (props) => {
             makeupProduct={layoutProductForBronzer}
           />
         </div>
-        <div className="mb-20">
+        <div className="flex flex-col items-center mb-20">
           <Link
             to="/type/bronzer"
             className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3

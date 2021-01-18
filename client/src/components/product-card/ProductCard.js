@@ -12,13 +12,13 @@ const ProductCard = ({ info }) => {
         <div>
           <img
             alt={info.name}
-            
             src={info.api_featured_image}
             className="shadow w-24 object-scale-down"
           />
         </div>
         <div className="text-black text-gray-900 space-x-4 px-2 py-1">
-          <p className="break-normal w-3">{info.name}</p>
+          <p className="w-3 ">{info.name}</p>
+
           <p>{`£ ${info.price}`}</p>
           <Link
             to={{
