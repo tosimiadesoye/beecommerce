@@ -1,4 +1,4 @@
-/config/config.js
+/config/index.js
 .env
 /node_modules
 /src/cart/notinuse
