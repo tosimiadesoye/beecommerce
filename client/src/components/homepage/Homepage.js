@@ -86,13 +86,13 @@ const Homepage = (props) => {
         </div>
 
         <div
-          className="px-16 text-center box-border border-white bg-gradient-to-l
+          className=" md:px-16 text-center box-border border-white bg-gradient-to-l
          md:bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500"
         >
-          <h2 className="text-5xl font-normal leading-normal mt-3 mb-3 text-pink-800">
+          <h2 className="text-5xl font-normal leading-normal my-3 text-pink-800">
             new!
           </h2>
-          <h5 className="text-4xl font-normal leading-normal mt-3 mb-3 text-red-800">
+          <h5 className="text-2xl md:text-4xl font-normal leading-normal my-3 md:text-red-800">
             concealer
           </h5>
           <h5 className="inline-block break-words">
@@ -139,13 +139,13 @@ const Homepage = (props) => {
           />
         </div>
         <div
-          className="px-32  text-center box-border border-white bg-gradient-to-l
+          className="px-16 md:px-32  text-center box-border border-white bg-gradient-to-l
          md:bg-gradient-to-r from-yellow-500 via-red-300 to-yellow-900"
         >
           <h2 className="text-5xl font-normal leading-normal mt-3 mb-3 text-pink-800">
             new!
           </h2>
-          <h5 className="text-4xl font-normal leading-normal mt-3 mb-3 text-red-800">
+          <h5 className="md:text-4xl font-normal leading-normal mt-3 mb-3 text-red-800">
             all things glossier
           </h5>
           <h5 className="inline-block break-words mb-3">
@@ -153,7 +153,7 @@ const Homepage = (props) => {
           </h5>
           <Link
             to="/type/glossier"
-            className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
+            className="bg-black text-white active:bg-black font-bold uppercase text-base md:px-8 py-3
            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
             type="button"
             style={{ transition: "all .15s ease" }}
@@ -191,13 +191,13 @@ const Homepage = (props) => {
           />
         </div>
         <div
-          className="px-16  text-center box-border border-white bg-gradient-to-l
+          className="text-center px-16 text-center box-border border-white bg-gradient-to-l
          md:bg-gradient-to-r from-yellow-400 via-red-200 to-blue-500"
         >
-          <h2 className="text-5xl font-normal leading-normal mt-3 mb-3 text-pink-800">
+          <h2 className="text-5xl font-normal leading-normal my-3 text-pink-800">
             new
           </h2>
-          <h5 className="text-4xl font-normal leading-normal mt-3 mb-3 text-red-800">
+          <h5 className="text-2xl md:text-4xl font-normal leading-normal my-3 text-red-800">
             butter london
           </h5>
           <h5 className="inline-block break-words">
@@ -206,7 +206,7 @@ const Homepage = (props) => {
           <div className="">
             <Link
               to="/type/butter%20london"
-              className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
+              className="bg-black  text-white active:bg-black font-bold uppercase text-base md:px-8 py-3
            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
               type="button"
               style={{ transition: "all .15s ease" }}
