@@ -27,7 +27,7 @@ yarn-error.log*
 .eslintcache
 package-lock.json
 src/index.scss
-src/index.css
+
 src/index.css.map
 src/tailwind.scss
 src/tailwind.css
