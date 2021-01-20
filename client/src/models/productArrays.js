@@ -15,18 +15,7 @@ export const shippingPrices = [
     price: 0.0,
   },
 ];
-export const type = [
-  "blush",
-  "bronzer",
-  "eyebrow",
-  "eyeliner",
-  "eyeshadow",
-  "foundation",
-  "lip_liner",
-  "lipstick",
-  "mascara",
-  "nail_polish",
-];
+
 export const dropdownList = [
   {
     id: 0,

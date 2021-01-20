@@ -18,8 +18,7 @@ const required = (value) => {
   }
 };
 
-function Login(props) {
-  console.log(props);
+function Login() {
   const checkBtn = useRef();
   const form = useRef();
 
@@ -43,14 +42,10 @@ function Login(props) {
     setMessage("");
     setLoading(true);
     form.current.validateAll();
-    // console.log(form)
-    // console.log(checkBtn)
 
     if (checkBtn.current.context._errors.length === 0) {
       login(username, password).then(
         (res) => {
-          //props.history is not working
-
           window.location.replace("/");
         },
         (error) => {
@@ -138,4 +133,3 @@ function Login(props) {
 }
 
 export default Login;
-

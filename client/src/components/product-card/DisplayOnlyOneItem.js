@@ -14,7 +14,7 @@ import { SimilarProducts, ShopAllCardContainer } from "../../components";
 library.add(faArrowDown, faCheck, faArrowUp);
 
 const DisplayOnlyOneItem = (props) => {
-  const { similarProduct, similarItem, makeupType } = props;
+  const { similarProduct, similarProductItem, makeupType } = props;
 
   const [shadeName, setShadeName] = useState([]);
   const [popover, setPopover] = useState([]);
@@ -43,7 +43,7 @@ const DisplayOnlyOneItem = (props) => {
         break;
       }
     }
-    //if it is in increment quantity and the price
+    //if it is in, increment quantity and the price
     if (isAlreadyIn) {
       cart[number].quantity = cart[number].quantity + quantity;
       cart[number].subTotal = cart[number].quantity * subTotal;
@@ -90,6 +90,7 @@ const DisplayOnlyOneItem = (props) => {
     return setTimeout(() => setCartAlertPopoverIsVisible(false), 5000);
   };
   useEffect(() => {
+     // eslint-disable-next-line
     setTimer();
   }, [setTimer()]);
 
@@ -229,7 +230,7 @@ const DisplayOnlyOneItem = (props) => {
       <div>
         <h1 className='text-center mt-5'>You might also like</h1>
         <SimilarProducts
-          similarItem={similarItem}
+          similarProductItem={similarProductItem}
           similarProduct={similarProduct}
           item={item}
         />

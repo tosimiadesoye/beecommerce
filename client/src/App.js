@@ -11,7 +11,7 @@ import {
   Search,
   Checkout,
   Navigation,
-  Contact
+  Contact,
 } from "./components";
 import Login from "./pages/auth/Lognin";
 import Profile from "./pages/user/Profile";
@@ -31,11 +31,10 @@ function App() {
   const [mascara, setMascara] = useState([]);
   const [product, setProduct] = useState([]);
   const [makeup_type, setMakeup_type] = useState([]);
-
   const [activePage, setCurrentPage] = useState(1);
   const [productForLayout, setProductForLayout] = useState([]);
   const [bronzer, setBronzer] = useState([]);
-  const [similarItem, setSimilarItem] = useState([]);
+  const [similarProductItem, setSimilarProductItem] = useState([]);
 
   const displayedProductsPerPage = 9;
 
@@ -61,19 +60,16 @@ function App() {
   };
 
   const similarProduct = async (type) => {
-    // type.map(async (type) => {
-      await axios
-        .get(`http://localhost:5000/api/product/1/product_type?keyword=${type}`)
-        .then((res) => {
-          if (res) {
-            console.log(res.data.product)
-            setSimilarItem(res.data.product);
-          }
-        })
-        .catch((error) => {
-          console.log("error: ", error);
-        });
-    // });
+    await axios
+      .get(`http://localhost:5000/api/product/1/product_type?keyword=${type}`)
+      .then((res) => {
+        if (res) {
+          setSimilarProductItem(res.data.product);
+        }
+      })
+      .catch((error) => {
+        console.log("error: ", error);
+      });
   };
 
   const layoutProductForMascara = async () => {
@@ -233,7 +229,7 @@ function App() {
               <>
                 <Navigation makeupType={makeupType} />
                 <DisplayOnlyOneItem
-                  similarItem={parseProducts(similarItem)}
+                  similarProductItem={parseProducts(similarProductItem)}
                   similarProduct={similarProduct}
                 />
               </>
