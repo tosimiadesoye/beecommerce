@@ -76,10 +76,11 @@ const Homepage = (props) => {
 
       <div
         // style={{ alignItems: 'stretch' }}
-        className="flex flex-col md:flex-row items-stretch px-16 items-center uppercase "
+        className="flex flex-col md:flex-row items-stretch px-12 items-center uppercase "
       >
-        <div className="w-1/3">
+        <div>
           <img
+            className="md:max-h-42 lg:max-h-96"
             src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/847/original/open-uri20171224-4-1se9mcb?1514074989"
             alt="eyeshadow"
           />
@@ -131,9 +132,10 @@ const Homepage = (props) => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row px-16 items-stretch  items-center uppercase ">
-        <div className="w-1/4 ">
+      <div className="flex flex-col md:flex-row px-12 items-stretch  items-center uppercase ">
+        <div>
           <img
+            className="md:max-h-42 lg:max-h-96"
             src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/999/original/open-uri20171227-4-2ul0s6?1514341420"
             alt="eyeshadow"
           />
@@ -183,9 +185,11 @@ const Homepage = (props) => {
           </Link>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row px-16 items-stretch items-center uppercase ">
-        <div className="w-1/4">
+
+      <div className="flex flex-col md:flex-row px-12 items-stretch  items-center uppercase ">
+        <div>
           <img
+            className="md:max-h-42 lg:max-h-96"
             src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/001/000/original/open-uri20171227-4-14arcgf?1514342096"
             alt="eyeshadow"
           />

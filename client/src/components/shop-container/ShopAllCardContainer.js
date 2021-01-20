@@ -7,7 +7,7 @@ const ShopAllCardContainer = (props) => {
 
   useEffect(() => {
     makeupProduct();
-  }, []);
+  }, []); // eslint-disable-next-line react-hooks/exhaustive-deps
 
   return (
     <>

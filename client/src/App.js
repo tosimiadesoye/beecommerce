@@ -60,8 +60,8 @@ function App() {
     }
   };
 
-  const similarProduct = () => {
-    type.map(async (type) => {
+  const similarProduct = async (type) => {
+    // type.map(async (type) => {
       await axios
         .get(`http://localhost:5000/api/product/1/product_type?keyword=${type}`)
         .then((res) => {
@@ -73,7 +73,7 @@ function App() {
         .catch((error) => {
           console.log("error: ", error);
         });
-    });
+    // });
   };
 
   const layoutProductForMascara = async () => {

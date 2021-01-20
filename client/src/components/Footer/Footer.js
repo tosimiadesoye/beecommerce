@@ -8,7 +8,7 @@ function Footer() {
         <p>Developer/Author: Tosimi Adesoye</p>
         <p>
           contact me:
-          <a className="text-gray-500  hover:black" href="mailto:tosimiadesoye111@gmail.com" target="_blank">
+          <a className="text-gray-500  hover:black" href="mailto:tosimiadesoye111@gmail.com" target="_blank" rel="noreferrer">
             {" "}
             tosimiadesoye111@gmail.com
           </a>
@@ -28,12 +28,12 @@ function Footer() {
       <div>
         {" "}
         <p>
-          <a className="text-gray-500" href="https://github.com/tosimiadesoye" target="_blank">
+          <a className="text-gray-500" href="https://github.com/tosimiadesoye" target="_blank" rel="noreferrer">
             github
           </a>
         </p>
         <p>
-          <a className="text-gray-500" href="" target="_blank">
+          <a className="text-gray-500" href="" target="_blank" rel="noreferrer">
             twitter
           </a>
         </p>
@@ -42,6 +42,7 @@ function Footer() {
             className="text-gray-500"
             href="https://www.linkedin.com/in/tosimi-adesoye/"
             target="_blank"
+            rel="noreferrer"
           >
             linkedin
           </a>

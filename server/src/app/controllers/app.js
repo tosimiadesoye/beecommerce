@@ -267,14 +267,11 @@ exports.getLayoutProductForType = async (req, res) => {
     }) */
   try {
     
-    // console.log(similarItem)
-    // const filterItem = similarItem.filter(
-    //   (type) => type.product_type === item.product_type
-    // );
+   
     let product = await Product.find({
       product_type: {
         $regex: keyword,
-        $options: "i",
+        $options: "gi",
       },
     })
 
