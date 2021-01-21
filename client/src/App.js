@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import NotFound from './pages/NotFound' 
 import Signup from "./pages/auth/Signup";
 import {
   Homepage,
@@ -259,6 +260,8 @@ function App() {
               </>
             )}
           />
+
+          <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
     </div>
