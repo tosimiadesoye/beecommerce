@@ -1,5 +1,5 @@
 
-# Beecommerce
+# ecommerce
 
 Beecommerce is a makeup ecommerce web app
 
