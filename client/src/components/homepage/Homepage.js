@@ -155,8 +155,8 @@ const Homepage = (props) => {
           </h5>
           <Link
             to="/type/glossier"
-            className="bg-black text-white active:bg-black font-bold uppercase text-base md:px-8 py-3
-           shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+            className="bg-black text-white active:bg-black font-bold uppercase text-base px-4 py-3
+           shadow-md hover:shadow-lg outline-none focus:outline-none mr-3 mb-3"
             type="button"
             style={{ transition: "all .15s ease" }}
           >
@@ -187,10 +187,11 @@ const Homepage = (props) => {
       </div>
 
       <div className="flex flex-col md:flex-row px-12 items-stretch  items-center uppercase ">
+       
         <div>
           <img
             className="md:max-h-42 lg:max-h-96"
-            src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/001/000/original/open-uri20171227-4-14arcgf?1514342096"
+            src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/674/original/open-uri20171223-4-1wtdzyq?1514062744"
             alt="eyeshadow"
           />
         </div>
@@ -210,8 +211,8 @@ const Homepage = (props) => {
           <div className="">
             <Link
               to="/type/butter%20london"
-              className="bg-black  text-white active:bg-black font-bold uppercase text-base md:px-8 py-3
-           shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+              className="bg-black  text-white active:bg-black font-bold uppercase text-base px-4 py-3
+           shadow-md hover:shadow-lg outline-none focus:outline-none mr-3 mb-3"
               type="button"
               style={{ transition: "all .15s ease" }}
             >

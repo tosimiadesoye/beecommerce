@@ -37,9 +37,10 @@ const Contact = () => {
   return (
     <form
       onSubmit={handleContact}
-      className="bg-black flex flex-col container  items-center w-50 text-white shadow-sm"
+      className="bg-black flex flex-col container items-center lg:w-2/4 text-white shadow-sm"
+      style={{ width: "340px", height: "485px" }}
     >
-      <h1 className="my-3 text-center">Contact customer care</h1>
+      <h1 className="my-2 text-center w-1/2 lg:w-100 text-purple-400">Contact customer care</h1>
       <div className="my-3">
         <label className="mr-4">
           <b>Name:</b>
@@ -84,7 +85,7 @@ const Contact = () => {
       <div>
         <input
           type="submit"
-          className="p-2 bg-purple-400 text-white rounded shadow-sm"
+          className="p-2 bg-transparent box-border border-2 border-purple-400 text-purple-500 shadow-sm"
           
         />
       </div>

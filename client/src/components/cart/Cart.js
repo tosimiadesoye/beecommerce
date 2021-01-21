@@ -43,11 +43,6 @@ const Cart = () => {
       setTotal({ itemCount, addSubtotal });
     }
   };
-  const getProductFromStorage = () => {
-    const storage = JSON.parse(localStorage.getItem("cart"));
-    calTotalAndItemCount(storage);
-    setCart(storage);
-  };
 
   const removeOneItemFromCart = (id) => {
     const cartItem = JSON.parse(localStorage.getItem("cart"));
@@ -68,6 +63,11 @@ const Cart = () => {
   };
 
   useEffect(() => {
+    const getProductFromStorage = () => {
+      const storage = JSON.parse(localStorage.getItem("cart"));
+      calTotalAndItemCount(storage);
+      setCart(storage);
+    };
     getProductFromStorage();
   }, []);
 

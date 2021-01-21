@@ -10,11 +10,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import ReactHtmlParser from "react-html-parser";
-import { SimilarProducts, ShopAllCardContainer } from "../../components";
+import { SimilarProducts } from "../../components";
 library.add(faArrowDown, faCheck, faArrowUp);
 
 const DisplayOnlyOneItem = (props) => {
-  const { similarProduct, similarProductItem, makeupType } = props;
+  const { similarProduct, similarProductItem } = props;
 
   const [shadeName, setShadeName] = useState([]);
   const [popover, setPopover] = useState([]);
@@ -24,8 +24,9 @@ const DisplayOnlyOneItem = (props) => {
   const [showDescription, setShowDescription] = useState(false);
   const [expandDescription, setExpandDescription] = useState("");
   let location = useLocation();
+  console.log(location)
   const item = location.state.itemData;
-
+  
   // this function check if a product exist before adding to cart
   const addProductToCart = (productId, quantity, price) => {
     let cart = [];
@@ -86,11 +87,11 @@ const DisplayOnlyOneItem = (props) => {
   };
 
   //popover is only true when a button id clicked
+  // eslint-disable-next-line
   const setTimer = () => {
     return setTimeout(() => setCartAlertPopoverIsVisible(false), 5000);
   };
   useEffect(() => {
-     // eslint-disable-next-line
     setTimer();
   }, [setTimer()]);
 
@@ -133,7 +134,7 @@ const DisplayOnlyOneItem = (props) => {
             <div>
               <h2>{`${item.brand} ${item.category}`}</h2>
 
-              <h4>{item.name}</h4>
+              <h4>{ReactHtmlParser(item.name)}</h4>
               <h5>{`£${item.price}`}</h5>
               <div
                 onClick={() => {
@@ -227,14 +228,19 @@ const DisplayOnlyOneItem = (props) => {
           </div>
         </div>
       </div>
-      <div>
-        <h1 className='text-center mt-5'>You might also like</h1>
-        <SimilarProducts
-          similarProductItem={similarProductItem}
-          similarProduct={similarProduct}
-          item={item}
-        />
-      </div>
+
+      {item.category !== null ? (
+        <div>
+          <h1 className="text-center mt-5">You might also like</h1>
+          <SimilarProducts
+            similarProductItem={similarProductItem}
+            similarProduct={similarProduct}
+            item={item}
+          />
+        </div>
+      ) : (
+        ""
+      )}
     </>
   );
 };

@@ -272,9 +272,9 @@ exports.getLayoutProductForType = async (req, res) => {
       ]
     })
       .limit(limit)
-      .skip(page * limit)
+      .skip(0 * limit)
       .exec();
-console.log(product)
+
     res.status(200).json({
       product: product,
     });

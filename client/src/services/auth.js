@@ -19,7 +19,7 @@ const login = (username, password) => {
     })
     .then((response) => {
       console.log(response.data);
-      if (response.data.accessToken) {
+      if (response.data.email) {
         localStorage.setItem("user", JSON.stringify(response.data));
       }
       return response.data;

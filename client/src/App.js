@@ -22,7 +22,7 @@ import {
   getProduct,
   getLayoutProductForMascara,
 } from "./services/product";
-import { dropdownList, type } from "./models/productArrays";
+import { dropdownList } from "./models/productArrays";
 
 import "./App.css";
 
@@ -59,6 +59,7 @@ function App() {
     }
   };
 
+  // eslint-disable-next-line
   const similarProduct = async (type) => {
     await axios
       .get(`http://localhost:5000/api/product/1/product_type?keyword=${type}`)
@@ -78,6 +79,7 @@ function App() {
       setMascara(response.data.product);
     }
   };
+
   const productType = async (item) => {
     return await axios
       .get(`http://localhost:5000/api/product_type?keyword=${item}`)

@@ -13,7 +13,7 @@ function Footer() {
             tosimiadesoye111@gmail.com
           </a>
         </p>
-        <p>&copy; all rights reserved</p>
+        <p>&copy; tosimi</p>
       </div>
       <div>
         <Link className="text-gray-500 mr-10 hover:black" to="/contact">
@@ -33,7 +33,7 @@ function Footer() {
           </a>
         </p>
         <p>
-          <a className="text-gray-500" href="" target="_blank" rel="noreferrer">
+          <a className="text-gray-500" href="https://twitter.com/tosimiadesoye" target="_blank" rel="noreferrer">
             twitter
           </a>
         </p>
