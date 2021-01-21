@@ -1,5 +1,5 @@
 
-# Beecommerce
+# ecommerce
 
 This is a makeup ecommerce web app
 
