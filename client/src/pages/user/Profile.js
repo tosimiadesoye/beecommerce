@@ -12,10 +12,19 @@ const Profile = () => {
         <h3>
           <strong>{currentUser.username}</strong>'s Profile
         </h3>
-
+        <p>
+          <strong>Id:</strong> {currentUser.id}
+        </p>
         <p>
           <strong>Email:</strong> {currentUser.email}
         </p>
+        <ul>
+          {currentUser.roles &&
+            currentUser.roles.map((role, index) => {
+              
+              return <li key={index}>{role}</li>;
+            })}
+        </ul>
       </header>
     </div>
   );

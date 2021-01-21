@@ -46,7 +46,7 @@ const Homepage = (props) => {
             type="button"
             style={{ transition: "all .15s ease" }}
           >
-            shop All
+            shop now
           </Link>
         </div>
       </div>

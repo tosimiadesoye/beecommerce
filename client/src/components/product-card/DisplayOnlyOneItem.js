@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation} from "react-router-dom";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,9 +24,13 @@ const DisplayOnlyOneItem = (props) => {
   const [showDescription, setShowDescription] = useState(false);
   const [expandDescription, setExpandDescription] = useState("");
   let location = useLocation();
-  console.log(location)
-  const item = location.state.itemData;
-  
+  let item;
+  if (location.state === undefined) {
+    window.location.replace('/')
+  } else {
+    item = location.state.itemData;
+  }
+
   // this function check if a product exist before adding to cart
   const addProductToCart = (productId, quantity, price) => {
     let cart = [];
