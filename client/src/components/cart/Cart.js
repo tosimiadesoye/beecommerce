@@ -73,7 +73,7 @@ const Cart = () => {
 
   if (cart === null)
     return (
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center my-20">
         <h1 className="text-center text-purple-500"> Your Cart is empty</h1>
         <Link
           to="/shop"
@@ -119,7 +119,8 @@ const Cart = () => {
               </div>
             </div>
           </div>
-          <Shipping
+         
+           <Shipping
             cart={cart}
             total={total}
             removeAllProductsInStorage={removeAllProductsInStorage}

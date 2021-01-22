@@ -14,7 +14,7 @@ const Homepage = (props) => {
   } = props;
   return (
     <div>
-      <div className="flex flex-col items-stretch lg:flex-row m-2">
+      <div className="flex flex-col items-stretch lg:flex-row m-2 xl:m-auto">
         <img
           className=" md:max-h-42 lg:max-h-96 "
           src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/001/000/original/open-uri20171227-4-14arcgf?1514342096"
@@ -29,7 +29,7 @@ const Homepage = (props) => {
           className=" md:max-h-42 lg:max-h-96 text-center uppercase box-border border-white bg-gradient-to-l
          md:bg-gradient-to-r from-yellow-900 via-yellow-600 to-yellow-500"
         >
-          <h2 className="text-5xl font-normal leading-normal mt-3 mb-3 text-pink-800">
+          <h2 className="text-5xl font-normal leading-normal mt-3 mb-3 text-black">
             new!
           </h2>
           <h5 className="text-4xl font-normal leading-normal mt-3 mb-3 text-red-800">
@@ -41,7 +41,7 @@ const Homepage = (props) => {
           </h5>
           <Link
             to="/shop"
-            className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
+            className="bg-pink-800 text-white active:bg-black  font-bold uppercase text-base px-8 py-3
            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
             type="button"
             style={{ transition: "all .15s ease" }}

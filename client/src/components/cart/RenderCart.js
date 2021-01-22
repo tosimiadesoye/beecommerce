@@ -21,7 +21,7 @@ const RenderCart = (props) => {
         </div>
         <div>
           {" "}
-          <h5> {`£ ${info.productId.price}`}</h5>
+          <h5> {`£ ${info.productId.price}0`}</h5>
         </div>
 
         <div className="border-2 border-gray-900 w:10 md:w-20 h-15 md:h-12 text-center">

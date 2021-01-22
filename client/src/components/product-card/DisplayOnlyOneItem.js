@@ -126,7 +126,7 @@ const DisplayOnlyOneItem = (props) => {
             </div>
             <div>
               <div className={showDescription ? "inline-block" : "hidden"}>
-                <p className="break-normal w-40">
+                <p className="break-normal w-40 mt-3">
                   {" "}
                   {ReactHtmlParser(expandDescription)}
                 </p>
@@ -136,10 +136,10 @@ const DisplayOnlyOneItem = (props) => {
 
           <div className="mt-5 w-50">
             <div>
-              <h2>{`${item.brand} ${item.category}`}</h2>
+              <h2 className='uppercase'>{`${item.brand} ${item.category}`}</h2>
 
               <h4>{ReactHtmlParser(item.name)}</h4>
-              <h5>{`£${item.price}`}</h5>
+              <h5>{`£${item.price}0`}</h5>
               <div
                 onClick={() => {
                   handleExpandDescription(item.description);
@@ -159,6 +159,7 @@ const DisplayOnlyOneItem = (props) => {
                   />
                 )}
               </div>
+             
             </div>
 
             <div>
@@ -233,18 +234,18 @@ const DisplayOnlyOneItem = (props) => {
         </div>
       </div>
 
-      {item.category !== null ? (
+       {item.category !== null? ( 
         <div>
-          <h1 className="text-center mt-5">You might also like</h1>
+          <h1 className="text-center mt-5">Explore other products</h1>
           <SimilarProducts
             similarProductItem={similarProductItem}
             similarProduct={similarProduct}
             item={item}
           />
         </div>
-      ) : (
-        ""
-      )}
+       ) : ( 
+         "" 
+       )} 
     </>
   );
 };
