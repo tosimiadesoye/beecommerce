@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,7 +26,7 @@ const DisplayOnlyOneItem = (props) => {
   let location = useLocation();
   let item;
   if (location.state === undefined) {
-    window.location.replace('/')
+    window.location.replace("/");
   } else {
     item = location.state.itemData;
   }
@@ -136,10 +136,10 @@ const DisplayOnlyOneItem = (props) => {
 
           <div className="mt-5 w-50">
             <div>
-              <h2 className='uppercase'>{`${item.brand} ${item.category}`}</h2>
+              <h2 className="uppercase">{`${item.brand} ${item.category}`}</h2>
 
               <h4>{ReactHtmlParser(item.name)}</h4>
-              <h5>{`£${item.price}0`}</h5>
+              <h5>{`£${item.price}`}</h5>
               <div
                 onClick={() => {
                   handleExpandDescription(item.description);
@@ -159,7 +159,6 @@ const DisplayOnlyOneItem = (props) => {
                   />
                 )}
               </div>
-             
             </div>
 
             <div>
@@ -233,19 +232,24 @@ const DisplayOnlyOneItem = (props) => {
           </div>
         </div>
       </div>
-
-       {item.category !== null? ( 
-        <div>
-          <h1 className="text-center mt-5">Explore other products</h1>
+      <div>
+        <h1 className="text-center mt-5">Explore other products</h1>
+        {item.category !== null ? (
           <SimilarProducts
             similarProductItem={similarProductItem}
             similarProduct={similarProduct}
             item={item}
+            query={item.category}
           />
-        </div>
-       ) : ( 
-         "" 
-       )} 
+        ) : (
+          <SimilarProducts
+            similarProductItem={similarProductItem}
+            similarProduct={similarProduct}
+            item={item}
+            query={item.product_type}
+          />
+        )}
+      </div>
     </>
   );
 };
