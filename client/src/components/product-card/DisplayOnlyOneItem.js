@@ -31,7 +31,7 @@ const DisplayOnlyOneItem = (props) => {
     item = location.state.itemData;
   }
 
-  // this function check if a product exist before adding to cart
+
   const addProductToCart = (productId, quantity, price) => {
     let cart = [];
     if (localStorage.getItem("cart")) {
@@ -40,7 +40,6 @@ const DisplayOnlyOneItem = (props) => {
     let isAlreadyIn = false;
     let number;
     let subTotal = parseFloat(price);
-    //check if product is already
     for (let i = cart.length - 1; i >= 0; i--) {
       if (cart[i].productId._id === productId._id) {
         isAlreadyIn = true;
@@ -48,7 +47,6 @@ const DisplayOnlyOneItem = (props) => {
         break;
       }
     }
-    //if it is in, increment quantity and the price
     if (isAlreadyIn) {
       cart[number].quantity = cart[number].quantity + quantity;
       cart[number].subTotal = cart[number].quantity * subTotal;
@@ -233,7 +231,9 @@ const DisplayOnlyOneItem = (props) => {
         </div>
       </div>
       <div>
-        <h1 className="text-center mt-5">Explore other products</h1>
+        <h1 className="text-center my-5 text-800 uppercase">
+          other products you might like
+        </h1>
         {item.category !== null ? (
           <SimilarProducts
             similarProductItem={similarProductItem}

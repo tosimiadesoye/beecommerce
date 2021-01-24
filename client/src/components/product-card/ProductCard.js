@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 const ProductCard = ({ info }) => {
   return (
     <>
+      
       <div
         className=" py-6 md:py-8 
       place-content-center
@@ -19,7 +20,7 @@ const ProductCard = ({ info }) => {
         <div className="text-black text-gray-900 space-x-4 px-2 py-1">
           <p className="break-words">{info.name}</p>
 
-          <p>{`£ ${info.price}0`}</p>
+          <p>{`£ ${info.price}`}</p>
           <Link
             to={{
               pathname: `/:slug/${info._id}`,

@@ -5,10 +5,9 @@ import CheckButton from "react-validation/build/button";
 import { isEmail, isEmpty } from "validator";
 import { Link } from "react-router-dom";
 
-import {register} from "../../services/auth";
+import { register } from "../../services/auth";
 
-
-const required = (value) => {
+ const required = (value) => {
   if (isEmpty(value)) {
     return (
       <div role="alert" className="text-red-500">
@@ -18,7 +17,7 @@ const required = (value) => {
   }
 };
 
-const validEmail = (value) => {
+export const validEmail = (value) => {
   if (!isEmail(value)) {
     return (
       <div role="alert" className="text-red-500">
@@ -85,10 +84,11 @@ const Signup = () => {
     if (checkBtn.current.context._errors.length === 0) {
       register(username, email, password).then(
         (response) => {
-          
-          setMessage(response.data.message);
-          setSuccessful(true);
-          
+          if (response.data.message) {
+            setMessage(response.data.message);
+            setSuccessful(true);
+            window.location.replace('/login')
+          }
         },
         (error) => {
           console.log(error.response.data);
@@ -104,13 +104,17 @@ const Signup = () => {
         }
       );
     }
+ 
+
   };
   return (
     <Form
-    className="flex flex-col container bg-black rounded text-white items-center"
-    style={{ width: "340px", height: "485px" }}
-      onSubmit={handleSignup} ref={form}>
-      <h1 className = "text-purple-400 border-purple-400 border-b-2 ">Sign Up</h1>
+      className="flex flex-col container bg-black rounded text-white items-center"
+       style={{ width: "340px", height: "585px" }}
+      onSubmit={handleSignup}
+      ref={form}
+    >
+      <h1 className="text-purple-400 border-purple-400 border-b-2 ">Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
 
       <label htmlFor="username">
@@ -160,18 +164,24 @@ const Signup = () => {
           {message}
         </div>
       )}
-      <button type="submit"
-       className="bg-transparent border text-purple-400 border-purple-400
+      <button
+        type="submit"
+        className="bg-transparent border text-purple-400 border-purple-400
        my-5 active:bg-black font-bold uppercase text-base px-8 py-2
-         shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1">
+         shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+      >
         Sign Up
       </button>
       <CheckButton style={{ display: "none" }} ref={checkBtn} />
 
       <div>
-        <Link to="/login" 
-             className="text-white active:bg-black font-bold uppercase text-base px-8 py-3
-            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1">Already have an account? </Link>
+        <Link
+          to="/login"
+          className="text-white active:bg-black font-bold uppercase text-base px-8 py-3
+            shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+        >
+          Already have an account?{" "}
+        </Link>
       </div>
     </Form>
   );

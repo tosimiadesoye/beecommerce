@@ -246,7 +246,7 @@ exports.getLayoutProducts = async (req, res) => {
 };
 
 exports.getLayoutProductForType = async (req, res) => {
-  const { page = req.params.pId, limit = 3 } = parseInt(req.query);
+  const { page = req.params.pId, limit = 3} = parseInt(req.query);
   const keyword = req.query.keyword;
   
   try {

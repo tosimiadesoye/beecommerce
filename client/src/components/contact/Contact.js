@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { postContact } from "../../services/product";
 
 const Contact = () => {
@@ -7,13 +6,12 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  
   const onChangeName = (e) => {
     const name = e.target.value;
     setName(name);
   };
   const onChangeEmail = (e) => {
-    const email = e.target.value || '';
+    const email = e.target.value || "";
     console.log(email);
     setEmail(email);
   };
@@ -31,8 +29,12 @@ const Contact = () => {
       .catch((error) => {
         console.log("error", error);
       });
-  };
 
+    //To clear the input string
+    setName("");
+    setEmail("");
+    setMessage("");
+  };
 
   return (
     <form
@@ -40,7 +42,9 @@ const Contact = () => {
       className="bg-black flex flex-col container items-center lg:w-2/4 text-white shadow-sm"
       style={{ width: "340px", height: "485px" }}
     >
-      <h1 className="my-2 text-center w-1/2 lg:w-100 text-purple-400">Contact customer care</h1>
+      <h1 className="my-2 text-center w-1/2 lg:w-100 text-purple-400">
+        Contact us
+      </h1>
       <div className="my-3">
         <label className="mr-4">
           <b>Name:</b>
@@ -53,7 +57,7 @@ const Contact = () => {
           focus:outline-none focus:shadow-outline"
           value={name}
           required
-          
+         
         />
       </div>
       <div className="my-3">
@@ -67,6 +71,7 @@ const Contact = () => {
           placeholder="Email..."
           className="border-b bg-black placeholder-white::placeholder text-sm outline-none
           focus:outline-none focus:shadow-outline"
+        
         />
       </div>
 
@@ -86,7 +91,6 @@ const Contact = () => {
         <input
           type="submit"
           className="p-2 bg-transparent box-border border-2 border-purple-400 text-purple-500 shadow-sm"
-          
         />
       </div>
     </form>
