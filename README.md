@@ -22,7 +22,7 @@ To start both the client and server
 
 ### `npm run develop`
 
-to start them separately navigate to the server & client directory, and run:
+to start them separately navigate to the parent & client directory, and run:
 
 ### `npm start`
 
