@@ -1,7 +1,13 @@
-This project was created with Taillwindcss and the MERN stack(MongoDB, Express,React,Node)
 # ecommerce
 
-This is a makeup ecommerce web app 
+This project was created with Taillwindcss and the MERN stack(MongoDB, Express,React,Node)
+
+## Project structure
+* client
+* server
+* README.MD
+
+## This is a makeup ecommerce fullstack web app 
 
 ## Features
 
@@ -15,6 +21,8 @@ This is a makeup ecommerce web app
 * To checkout users have to login.
 * A login and signup button for personalised user experience
 
+
+ 
 ## Available Scripts
 
 
