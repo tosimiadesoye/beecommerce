@@ -1,7 +1,7 @@
 
 # ecommerce
 
-This is a makeup ecommerce web app
+This is a makeup ecommerce web app 
 
 ## Features
 
@@ -11,9 +11,11 @@ This is a makeup ecommerce web app
 *Ability to pick product color, view and unview desciption
 *The ability for Users to add a product to cart and increment, decrement and delete items in their cart
 *Ability for users to pick the delivery type. 
-*Searchbar functionality
+*Searchbar & contact functionality
 *To checkout users have to login.
 * A login and signup button for personalised user experience
+
+
 
 
               
