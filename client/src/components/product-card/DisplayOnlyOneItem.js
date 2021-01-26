@@ -96,7 +96,7 @@ const DisplayOnlyOneItem = (props) => {
   useEffect(() => {
     setTimer();
   }, [setTimer()]);
-
+console.log(item)
   return (
     <>
       <div>
@@ -137,8 +137,9 @@ const DisplayOnlyOneItem = (props) => {
               <h2 className="uppercase">{`${item.brand} ${item.category}`}</h2>
 
               <h4>{ReactHtmlParser(item.name)}</h4>
-              <h5>{item.currency}</h5>
-              <h5>{`${item.price_sign}${item.price}`}</h5>
+
+              <h5>{item.currency !== undefined? item.currency : "GBP"}</h5>
+              <h5>{`${item.price_sign !== undefined? item.price_sign: "£"}${item.price}`}</h5>
               <div
                 onClick={() => {
                   handleExpandDescription(item.description);

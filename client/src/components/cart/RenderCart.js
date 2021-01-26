@@ -16,7 +16,7 @@ const RenderCart = (props) => {
         </div>
         <div className="mr-2">
           {" "}
-          <p className="inline-block break-normal w-20">
+          <p className="inline-block break-words w-20">
             {info.productId.name}
           </p>
         </div>
@@ -33,7 +33,7 @@ const RenderCart = (props) => {
             -
           </button>
 
-          <button className="mr-2">{info.quantity}</button>
+          <button className="mr-2">{`${info.quantity}`}</button>
 
           <button
             className="mr-2"
@@ -44,7 +44,7 @@ const RenderCart = (props) => {
         </div>
         <div>
           {" "}
-          <h5> {` ${info.subTotal}`}</h5>
+          <h5> {`${info.productId.price_sign}  ${info.subTotal}.00`}</h5>
           <button
             className="text-red-500 active:bg-pink-600 font-bold uppercase 
           text-xs px-4 py-2 rounded  hover:shadow-md outline-none focus:outline-none mr-1 mb-1"

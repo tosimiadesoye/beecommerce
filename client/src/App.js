@@ -18,7 +18,7 @@ import Login from "./pages/auth/Lognin";
 import Profile from "./pages/user/Profile";
 import axios from "axios";
 import {
-  getLayoutProduct,
+  getLayoutProductForNailPolish,
   getLayoutProductForBronzer,
   getProduct,
   getLayoutProductForMascara,
@@ -33,7 +33,7 @@ function App() {
   const [product, setProduct] = useState([]);
   const [makeup_type, setMakeup_type] = useState([]);
   const [activePage, setCurrentPage] = useState(1);
-  const [productForLayout, setProductForLayout] = useState([]);
+  const [layoutProductForNailPolish, setLayoutProductForNailPolish] = useState([]);
   const [bronzer, setBronzer] = useState([]);
   const [similarProductItem, setSimilarProductItem] = useState([]);
 
@@ -47,9 +47,9 @@ function App() {
   };
 
   const layoutProduct = async () => {
-    const response = await getLayoutProduct();
+    const response = await getLayoutProductForNailPolish();
     if (response) {
-      setProductForLayout(response.data.product);
+      setLayoutProductForNailPolish(response.data.product);
     }
   };
 
@@ -135,7 +135,7 @@ currency: makeup.currency
                 <Navigation makeupType={makeupType} />
 
                 <Homepage
-                  product={parseProducts(productForLayout)}
+                  product={parseProducts(layoutProductForNailPolish)}
                   layoutProductForBronzer={layoutProductForBronzer}
                   layoutProductForMascara={layoutProductForMascara}
                   bronzer={parseProducts(bronzer)}

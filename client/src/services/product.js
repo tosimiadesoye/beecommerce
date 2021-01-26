@@ -10,9 +10,9 @@ const findMakeup = (value) => {
   return axios.get(CATEGORY_URI);
 };
 
-const getLayoutProduct = () => {
+const getLayoutProductForNailPolish = () => {
 const API_URI = "http://localhost:5000/api/product/layout/1/product_type?keyword=nail_polish"
-    // 'http://localhost:5000/api/product/100'
+   
   return axios.get(API_URI)
 }
 
@@ -36,7 +36,7 @@ const postContact = (name, email, message) => {
 export {
   getProduct,
   findMakeup,
-  getLayoutProduct,
+  getLayoutProductForNailPolish,
   getLayoutProductForBronzer,
   getLayoutProductForMascara,
   postContact
