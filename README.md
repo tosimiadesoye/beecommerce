@@ -6,12 +6,12 @@ This is a makeup ecommerce web app
 ## Features
 
 * User & mobile friendly navigation
-* Mobile Responsiveness
+* Mobile Responsiveness and useraccesssibity
 * A shop icon for users to click on a product type
-* Ability to pick product color, view and unview desciption
-* The ability for Users to add a product to cart and increment, decrement and delete items in their cart
+* Ability to pick product color, view and unview product desciption
+* The ability for Users to add a product to cart inc,rement, decrement and delete items in their cart
 * Ability for users to pick the delivery type. 
-* Searchbar & contact functionality
+* Searchbar & contact page functionality
 * To checkout users have to login.
 * A login and signup button for personalised user experience
 
