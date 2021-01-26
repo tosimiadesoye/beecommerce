@@ -17,7 +17,7 @@ const Shipping = (props) => {
   const AddTotalPlusShipping = (id) => {
     return shippingPrices.filter((item) => {
       if (item.id === id) {
-        setTotalPlusShipping(item.price + parseFloat(total.addSubtotal));
+        setTotalPlusShipping(Math.round(item.price + parseFloat(total.addSubtotal)));
       }
     });
   };
@@ -67,7 +67,7 @@ const Shipping = (props) => {
           </button>
           <div>
             <h2>Total</h2>
-            <h2>{`£${totalPlusShipping}`}</h2>
+            <h2>{`£${totalPlusShipping}.00`}</h2>
           </div>
 
           <div>
