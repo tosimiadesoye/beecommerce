@@ -152,6 +152,7 @@ exports.deleteManyProducts = async (req, res) => {
   }
 };
 
+//product type, brand and category api
 exports.getProductType = async (req, res) => {
   const keyword = req.query.keyword;
   try {
@@ -169,6 +170,7 @@ exports.getProductType = async (req, res) => {
   }
 };
 
+//search api
 exports.getDescription = async (req, res) => {
   const keyword = req.query.keyword;
   //* matches any character
@@ -187,48 +189,18 @@ exports.getDescription = async (req, res) => {
   }
 };
 
-//trying to create a query function that returns tag_list products
-//function doesn't work
-exports.getProductByCategory = async (req, res) => {
-  const { category } = req.query;
-  //localhost:5000/api/product/tag_list?keyword=Vegan
-  try {
-    const product = await Product.find({
-      category: {
-        $regex: category,
-        $options: "",
-      },
-    });
-    res.status(200).json({ product: product });
-  } catch (err) {
-    res.status(400).json({
-      error: err.message,
-    });
-  }
-};
-
-exports.getProductBrand = async (req, res) => {
-  const { brand } = req.query;
-  // localhost:5000/api/product/query?brand=colourpop&type=lip_liner
-  try {
-    const product = await Product.find({
-      brand: {
-        $regex: brand,
-        $options: "",
-      },
-    });
-    res.status(200).json({ product: product });
-  } catch (err) {
-    res.status(400).json({
-      error: err.message,
-    });
-  }
-};
-exports.getLayoutProducts = async (req, res) => {
+//homepage api
+exports.getHomeProductsType = async (req, res) => {
   const { page = req.params.pId, limit = 3 } = parseInt(req.query);
-
+  const keyword = req.query.keyword;
   try {
-    let product = await Product.find()
+    const product = await Product.find({
+      product_type: {
+        $regex: keyword,
+
+        $options: "",
+      },
+    })
 
       .limit(limit)
       .skip(page * limit)
@@ -245,34 +217,36 @@ exports.getLayoutProducts = async (req, res) => {
   }
 };
 
-exports.getLayoutProductForType = async (req, res) => {
-  const { page = req.params.pId, limit = 3} = parseInt(req.query);
+//similar product api
+exports.getSimilarProductForType = async (req, res) => {
+  const { page = req.params.pId, limit = 7 } = parseInt(req.query);
   const keyword = req.query.keyword;
-  
-  try {
 
+  try {
     let product = await Product.find({
       $or: [
         {
           product_type: {
             $regex: keyword,
             $options: "i",
-          }
-        }, {
+          },
+        },
+        {
           category: {
             $regex: keyword,
             $options: "i",
           },
-        }, {
+        },
+        {
           brand: {
             $regex: keyword,
             $options: "i",
           },
-        }
-      ]
+        },
+      ],
     })
       .limit(limit)
-      .skip(0 * limit)
+      .skip(page * limit)
       .exec();
 
     res.status(200).json({

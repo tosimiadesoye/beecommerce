@@ -115,7 +115,7 @@ const Cart = () => {
               </div>
               <div>
                 <h4>SubTotal price</h4>
-                <h4>{`£${total.addSubtotal}`} </h4>
+                <h4>{`${total.addSubtotal}`} </h4>
               </div>
             </div>
           </div>

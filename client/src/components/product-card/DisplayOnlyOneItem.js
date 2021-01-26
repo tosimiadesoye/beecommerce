@@ -137,7 +137,8 @@ const DisplayOnlyOneItem = (props) => {
               <h2 className="uppercase">{`${item.brand} ${item.category}`}</h2>
 
               <h4>{ReactHtmlParser(item.name)}</h4>
-              <h5>{`£${item.price}`}</h5>
+              <h5>{item.currency}</h5>
+              <h5>{`${item.price_sign}${item.price}`}</h5>
               <div
                 onClick={() => {
                   handleExpandDescription(item.description);
@@ -231,9 +232,9 @@ const DisplayOnlyOneItem = (props) => {
         </div>
       </div>
       <div>
-        <h1 className="text-center my-5 text-800 uppercase">
+        {/* <h1 className="text-center my-5 text-800 uppercase">
           other products you might like
-        </h1>
+        </h1> */}
         {item.category !== null ? (
           <SimilarProducts
             similarProductItem={similarProductItem}

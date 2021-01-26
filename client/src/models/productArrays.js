@@ -31,6 +31,7 @@ export const dropdownList = [
       "lipstick",
       "mascara",
       "nail_polish",
+ 
     ],
   },
   {

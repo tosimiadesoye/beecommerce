@@ -117,6 +117,8 @@ function App() {
         category: makeup.category,
         image_link: makeup.image_link,
         item_available: makeup.item_available,
+        price_sign: makeup.price_sign,
+currency: makeup.currency
       };
     });
   };

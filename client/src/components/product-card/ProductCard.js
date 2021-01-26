@@ -20,7 +20,7 @@ const ProductCard = ({ info }) => {
         <div className="text-black text-gray-900 space-x-4 px-2 py-1">
           <p className="break-words">{info.name}</p>
 
-          <p>{`£ ${info.price}`}</p>
+          <p>{`${info.price_sign} ${info.price}`}</p>
           <Link
             to={{
               pathname: `/:slug/${info._id}`,
@@ -56,6 +56,8 @@ ProductCard.propTypes = {
     product_type: PropTypes.string,
     image_link: PropTypes.string,
     item_available: PropTypes.number,
+    price_sign: PropTypes.string,
+    currency:PropTypes.string
   }),
 };
 export default ProductCard;

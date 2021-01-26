@@ -2,6 +2,7 @@ import React from "react";
 
 const RenderCart = (props) => {
   const { info, editQuantity, removeOneItemFromCart } = props;
+ 
   return (
     <>
       <div className="flex flex-row gap-2 md:gap-9 lg:gap-20 p-4 md:p-9 mx-2 md:mx-4 ">
@@ -21,7 +22,7 @@ const RenderCart = (props) => {
         </div>
         <div>
           {" "}
-          <h5> {`£ ${info.productId.price}0`}</h5>
+          <h5> {`${info.productId.price_sign} ${info.productId.price}`}</h5>
         </div>
 
         <div className="border-2 border-gray-900 w:10 md:w-20 h-15 md:h-12 text-center">
@@ -43,7 +44,7 @@ const RenderCart = (props) => {
         </div>
         <div>
           {" "}
-          <h5> {`£ ${info.subTotal}`}</h5>
+          <h5> {` ${info.subTotal}`}</h5>
           <button
             className="text-red-500 active:bg-pink-600 font-bold uppercase 
           text-xs px-4 py-2 rounded  hover:shadow-md outline-none focus:outline-none mr-1 mb-1"
