@@ -22,7 +22,7 @@ const RenderCart = (props) => {
         </div>
         <div>
           {" "}
-          <h5> {`${info.productId.price_sign} ${info.productId.price}`}</h5>
+          <h5> {`£${info.productId.price}`}</h5>
         </div>
 
         <div className="border-2 border-gray-900 w:10 md:w-20 h-15 md:h-12 text-center">
@@ -44,7 +44,7 @@ const RenderCart = (props) => {
         </div>
         <div>
           {" "}
-          <h5> {`${info.productId.price_sign}  ${info.subTotal}.00`}</h5>
+          <h5> {`£${info.subTotal}`}</h5>
           <button
             className="text-red-500 active:bg-pink-600 font-bold uppercase 
           text-xs px-4 py-2 rounded  hover:shadow-md outline-none focus:outline-none mr-1 mb-1"
