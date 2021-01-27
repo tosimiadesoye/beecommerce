@@ -14,7 +14,7 @@ const Homepage = (props) => {
   } = props;
   return (
     <div>
-      <div className="flex flex-col items-stretch lg:flex-row m-2 xl:m-auto">
+      <div className="flex flex-col items-stretch justify-center lg:flex-row m-2 xl:m-auto">
         <img
           className=" md:max-h-42 lg:max-h-96 "
           src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/001/000/original/open-uri20171227-4-14arcgf?1514342096"
@@ -76,7 +76,7 @@ const Homepage = (props) => {
 
       <div
         // style={{ alignItems: 'stretch' }}
-        className="flex flex-col md:flex-row items-stretch px-12 items-center uppercase "
+        className="flex flex-col md:flex-row items-stretch px-12 uppercase justify-center"
       >
         <div>
           <img
@@ -132,7 +132,7 @@ const Homepage = (props) => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row px-12 items-stretch  items-center uppercase ">
+      <div className="flex flex-col md:flex-row px-12 items-stretch  uppercase justify-center">
         <div>
           <img
             className="md:max-h-42 lg:max-h-96"
@@ -141,7 +141,7 @@ const Homepage = (props) => {
           />
         </div>
         <div
-          className="px-16 md:px-32  text-center box-border border-white bg-gradient-to-l
+          className="px-16 md:px-32 text-center box-border border-white bg-gradient-to-l
          md:bg-gradient-to-r from-yellow-500 via-red-300 to-yellow-900"
         >
           <h2 className="text-5xl font-normal leading-normal mt-3 mb-3 text-pink-800">
@@ -186,7 +186,7 @@ const Homepage = (props) => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row px-12 items-stretch  items-center uppercase ">
+      <div className="flex flex-col md:flex-row px-12 items-stretch justify-center uppercase ">
        
         <div>
           <img
