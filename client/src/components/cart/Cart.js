@@ -32,9 +32,18 @@ const Cart = () => {
 
   const calTotalAndItemCount = (cartItem) => {
     if (cartItem !== null) {
+      console.log(cartItem);
       let itemCount = cartItem
         .map((item) => item.quantity)
         .reduce((accumulator, nextValue) => accumulator + nextValue, 0);
+      // let currency = cartItem.filter(item => {
+      //   console.log(item.productId.currency)
+      //   if (item.productId.currency === "USD") {
+      //     return 
+      //   }
+      // }
+      // )
+      
       let addSubtotal = cartItem
         .map((item) => item.subTotal)
         .reduce((accumulator, nextValue) => accumulator + nextValue, 0)
@@ -115,12 +124,12 @@ const Cart = () => {
               </div>
               <div>
                 <h4>SubTotal price</h4>
-                <h4>{`£${total.addSubtotal}`} </h4>
+                <h4>{`${total.addSubtotal}`} </h4>
               </div>
             </div>
           </div>
-         
-           <Shipping
+
+          <Shipping
             cart={cart}
             total={total}
             removeAllProductsInStorage={removeAllProductsInStorage}

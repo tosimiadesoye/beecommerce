@@ -67,7 +67,7 @@ const Shipping = (props) => {
           </button>
           <div>
             <h2>Total</h2>
-            <h2>{`£${totalPlusShipping}.00`}</h2>
+            <h2>{`${totalPlusShipping}.00`}</h2>
           </div>
 
           <div>

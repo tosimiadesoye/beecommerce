@@ -31,7 +31,6 @@ const DisplayOnlyOneItem = (props) => {
     item = location.state.itemData;
   }
 
-
   const addProductToCart = (productId, quantity, price) => {
     let cart = [];
     if (localStorage.getItem("cart")) {
@@ -39,7 +38,10 @@ const DisplayOnlyOneItem = (props) => {
     }
     let isAlreadyIn = false;
     let number;
+
+    let newPrice = parseFloat(price);
     let subTotal = parseFloat(price);
+
     for (let i = cart.length - 1; i >= 0; i--) {
       if (cart[i].productId._id === productId._id) {
         isAlreadyIn = true;
@@ -47,17 +49,29 @@ const DisplayOnlyOneItem = (props) => {
         break;
       }
     }
+    let USD, GBP, CAD;
     if (isAlreadyIn) {
       cart[number].quantity = cart[number].quantity + quantity;
       cart[number].subTotal = cart[number].quantity * subTotal;
+
+      if (newPrice === "USD") {
+        return (USD = cart[number].newPrice = cart[number].quantity * newPrice);
+      } else if (newPrice === "GDP") {
+        return (GBP = cart[number].newPrice = cart[number].quantity * newPrice);
+      } else {
+        return (CAD = cart[number].newPrice = cart[number].quantity * newPrice);
+      }
     } else {
       cart.push({
         productId: productId,
         quantity: quantity,
         subTotal: subTotal,
+        USD: USD,
+        GBP: GBP,
+        CAD: CAD,
       });
     }
-
+console.log(cart.USD)
     localStorage.setItem("cart", JSON.stringify(cart));
   };
 
@@ -96,7 +110,7 @@ const DisplayOnlyOneItem = (props) => {
   useEffect(() => {
     setTimer();
   }, [setTimer()]);
-console.log(item)
+  
   return (
     <>
       <div>
@@ -138,8 +152,10 @@ console.log(item)
 
               <h4>{ReactHtmlParser(item.name)}</h4>
 
-              <h5>{item.currency !== undefined? item.currency : "GBP"}</h5>
-              <h5>{`${item.price_sign !== undefined? item.price_sign: "£"}${item.price}`}</h5>
+              <h5>{item.currency !== undefined ? item.currency : "GBP"}</h5>
+              <h5>{`${item.price_sign !== undefined ? item.price_sign : "£"}${
+                item.price
+              }`}</h5>
               <div
                 onClick={() => {
                   handleExpandDescription(item.description);
