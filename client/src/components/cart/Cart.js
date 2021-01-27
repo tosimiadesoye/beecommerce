@@ -18,6 +18,14 @@ const Cart = () => {
           ? cartItem[i].quantity + 1
           : cartItem[i].quantity - 1;
         cartItem[i].subTotal = price * cartItem[i].quantity;
+        //calculate the total price of each currency
+        if (cartItem[i].productId.currency === "USD") {
+          cartItem[i].USD = price * cartItem[i].quantity;
+        } else if (cartItem[i].productId.currency === "GBP") {
+          cartItem[i].GBP = price * cartItem[i].quantity;
+        } else {
+          cartItem[i].CAD = price * cartItem[i].quantity;
+        }
         //delete a product from local storage if the quantity is zero
         if (index !== -1 && cartItem[i].quantity <= 0) {
           cartItem.splice(index, 1);
@@ -32,24 +40,28 @@ const Cart = () => {
 
   const calTotalAndItemCount = (cartItem) => {
     if (cartItem !== null) {
-      console.log(cartItem);
       let itemCount = cartItem
         .map((item) => item.quantity)
         .reduce((accumulator, nextValue) => accumulator + nextValue, 0);
-      // let currency = cartItem.filter(item => {
-      //   console.log(item.productId.currency)
-      //   if (item.productId.currency === "USD") {
-      //     return 
-      //   }
-      // }
-      // )
-      
+
       let addSubtotal = cartItem
         .map((item) => item.subTotal)
         .reduce((accumulator, nextValue) => accumulator + nextValue, 0)
         .toFixed(2);
-
-      setTotal({ itemCount, addSubtotal });
+      let GBP = cartItem
+        .map((item) => console.log(item.GBP))
+        .reduce((accumulator, nextValue) => accumulator + nextValue, 0)
+        .toFixed(2);
+      let CAD = cartItem
+        .map((item) => console.log(item.CAD))
+        .reduce((accumulator, nextValue) => accumulator + nextValue, 0)
+        .toFixed(2);
+      let USD = cartItem
+        .map((item) => console.log(item.USD))
+          .reduce((accumulator, nextValue) => accumulator + nextValue, 0)
+         .toFixed(2);
+      console.log(USD)
+      setTotal({ itemCount, addSubtotal, USD, CAD, GBP });
     }
   };
 
@@ -79,7 +91,7 @@ const Cart = () => {
     };
     getProductFromStorage();
   }, []);
-
+ 
   if (cart === null)
     return (
       <div className="flex flex-col items-center my-20">
@@ -125,6 +137,18 @@ const Cart = () => {
               <div>
                 <h4>SubTotal price</h4>
                 <h4>{`${total.addSubtotal}`} </h4>
+              </div>
+              <div>
+                <h4>CAD</h4>
+                <h4>{`${total.CAD}`} </h4>
+              </div>
+              <div>
+                <h4>USD</h4>
+                <h4>{`${total.USD}`} </h4>
+              </div>
+              <div>
+                <h4>GBP</h4>
+                <h4>{`${total.GBP}`} </h4>
               </div>
             </div>
           </div>
