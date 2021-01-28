@@ -17,5 +17,5 @@ const Total = new Schema({
     shipping: Number,
 
 },{timestamps: true, collection:'order'})
-const order = mongoose.model("Order", OrderSchema);
+const order = mongoose.model("Order", Total);
 module.exports = order

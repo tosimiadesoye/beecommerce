@@ -96,7 +96,7 @@ const DisplayOnlyOneItem = (props) => {
   useEffect(() => {
     setTimer();
   }, [setTimer()]);
-console.log(item)
+
   return (
     <>
       <div>
