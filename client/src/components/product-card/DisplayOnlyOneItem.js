@@ -138,7 +138,7 @@ const DisplayOnlyOneItem = (props) => {
               <h4>{ReactHtmlParser(item.name)}</h4>
 
               <h5>{item.currency !== undefined? item.currency : "GDP"}</h5>
-              <h5>{`${item.price_sign !== undefined? item.price_sign : "£"}${item.price}`}</h5>
+              <h5>{`${item.price_sign !== undefined? item.price_sign : "£"} ${item.price}`}</h5>
               <div
                 onClick={() => {
                   handleExpandDescription(item.description);
