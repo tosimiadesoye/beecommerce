@@ -49,18 +49,18 @@ const Cart = () => {
         .reduce((accumulator, nextValue) => accumulator + nextValue, 0)
         .toFixed(2);
       let GBP = cartItem
-        .map((item) => console.log(item.GBP))
+        .map((item) => item.GBP)
         .reduce((accumulator, nextValue) => accumulator + nextValue, 0)
         .toFixed(2);
       let CAD = cartItem
-        .map((item) => console.log(item.CAD))
+        .map((item) => item.CAD)
         .reduce((accumulator, nextValue) => accumulator + nextValue, 0)
         .toFixed(2);
       let USD = cartItem
-        .map((item) => console.log(item.USD))
+        .map((item) => item.USD)
           .reduce((accumulator, nextValue) => accumulator + nextValue, 0)
          .toFixed(2);
-      console.log(USD)
+      
       setTotal({ itemCount, addSubtotal, USD, CAD, GBP });
     }
   };
