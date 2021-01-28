@@ -5,6 +5,7 @@ const SimilarProducts = (props) => {
  
   useEffect(() => {
     similarProduct(query);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 

@@ -6,8 +6,8 @@ const MakeupTypeCardContainer = (props) => {
   const { params, makeup_type, productType } = props;
 
   useEffect(() => {
-    //  eslint-disable-next-line react-hooks/exhaustive-deps
     productType(type);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type]);
 
   return (

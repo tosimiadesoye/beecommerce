@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import NotFound from './pages/NotFound' 
+import NotFound from "./pages/NotFound";
 import Signup from "./pages/auth/Signup";
 import {
   Homepage,
@@ -33,7 +33,9 @@ function App() {
   const [product, setProduct] = useState([]);
   const [makeup_type, setMakeup_type] = useState([]);
   const [activePage, setCurrentPage] = useState(1);
-  const [layoutProductForNailPolish, setLayoutProductForNailPolish] = useState([]);
+  const [layoutProductForNailPolish, setLayoutProductForNailPolish] = useState(
+    []
+  );
   const [bronzer, setBronzer] = useState([]);
   const [similarProductItem, setSimilarProductItem] = useState([]);
 
@@ -60,7 +62,6 @@ function App() {
     }
   };
 
-  // eslint-disable-next-line
   const similarProduct = async (type) => {
     await axios
       .get(`http://localhost:5000/api/product/1/product_type?keyword=${type}`)
@@ -118,7 +119,7 @@ function App() {
         image_link: makeup.image_link,
         item_available: makeup.item_available,
         price_sign: makeup.price_sign,
-currency: makeup.currency
+        currency: makeup.currency,
       };
     });
   };
