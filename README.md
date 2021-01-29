@@ -36,8 +36,7 @@ The api is based on a CRUD operation
 
 
 ## Get requests
-Sidenote:  * keyword could be anything, you'll get an HTTP response if the keyword exist 
-           * pagination can be any number 
+Note:   keyword could be anything, you'll get an HTTP response if the keyword exist,   pagination can be any number 
  * For getting a product by id: replace ':id' with the product id "rfs555w66w778"
     * api/product/:id
  * for getting all products:
