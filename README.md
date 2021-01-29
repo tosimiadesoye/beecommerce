@@ -25,7 +25,7 @@ The api is based on a CRUD operation
 ## About the Rest Api:
 * Protocal: The transport is HTTP
 * The API Endpoints:  http://localhost:5000/
-* Type: GET, Post, Put, Patch
+* Type: GET, Post, Put, Patch, Delete
 * Response Format: Json
 
 ## Post requests
@@ -60,7 +60,7 @@ Sidenote: keyword could be anything, you'll get an HTTP response if the keyword 
     * /api/product/:id
  
  ## put request
- * updatwMany
+ * updateMany
     * /api/product
  
   
