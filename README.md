@@ -36,7 +36,8 @@ The api is based on a CRUD operation
 
 
 ## Get requests
-Sidenote: keyword could be anything, you'll get an HTTP response if the keyword exist 
+Sidenote:  * keyword could be anything, you'll get an HTTP response if the keyword exist 
+           * pagination can be any number 
  * For getting a product by id: replace ':id' with the product id "rfs555w66w778"
     * api/product/:id
  * for getting all products:
@@ -46,7 +47,7 @@ Sidenote: keyword could be anything, you'll get an HTTP response if the keyword 
  * For paginating and quering by product_type: paginate '1', 'keyword=nail_polish'
     *  api/product/layout/1/product_type?keyword=nail_polish
  * For paginating and quering by brand or category or product_type: paginate '3', 'keyword=concealer'
-    * api/product/1/product_type?keyword=concealer
+    * api/product/3/product_type?keyword=concealer
  * For quering product_type with no pagination: 'keyword:lip_stick' 
     * api/product_type?keyword=lipstick
  * For contact: /api/contact
