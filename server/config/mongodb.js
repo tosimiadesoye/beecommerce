@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
- const config = require('./config');
-const dotenv = require('dotenv');
-dotenv.config()
+require('dotenv').config()
+//use this for connecting to compass
+ const config = require('./config').dbUrl;
+
 
 const server = require('../src/authentication/server')
 
-mongoose.connect(config.dbUrl, {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

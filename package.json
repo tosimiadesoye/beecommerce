@@ -3,17 +3,17 @@
   "version": "1.0.0",
   "description": "crud operation",
   "main": "index.js",
-
   "engines": {
     "node": "v14.15.0",
-    "npm":"6.14.8"
+    "npm": "6.14.8"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "npm run start --prefix client",
     "server": "nodemon server/index.js",
     "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false &&  cd client && npm install && npm build "
   },
   "keywords": [],
   "author": "Tosimi Adesoye",
