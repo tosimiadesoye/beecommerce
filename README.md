@@ -32,6 +32,7 @@ The api is based on a CRUD operation
 * To login: api/auth/signin/
 * To signup: api/auth/signup/
 * for adding a new product to the database: /api/product
+* for contact form: /api/contact 
 
 
 ## Get requests
@@ -47,6 +48,7 @@ Sidenote: keyword could be anything, you'll get an HTTP response if the keyword 
     * api/product/1/product_type?keyword=concealer
  * For quering product_type with no pagination: 'keyword:lip_stick' 
     * api/product_type?keyword=lipstick
+ * For contact: /api/contact
   
  ## Delete requests
  * for deleting a product by  Id: replace ':id' with the product id "rfs555w66w778"
