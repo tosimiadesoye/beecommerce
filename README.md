@@ -39,7 +39,8 @@ The api is based on a CRUD operation
 Sidenote: keyword could be anything, you'll get an HTTP response if the keyword exist 
  * For getting a product by id: replace ':id' with the product id "rfs555w66w778"
     * api/product/:id
- * for finding a product by it id: /api/product
+ * for getting all products:
+   * /api/product
  * search query: To search for anything "lip", append 'keyword=lip'
     * api/description?keyword=lip 
  * For paginating and quering by product_type: paginate '1', 'keyword=nail_polish'
