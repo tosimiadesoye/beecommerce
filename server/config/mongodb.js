@@ -1,26 +1,24 @@
-const mongoose = require('mongoose');
-require('dotenv').config()
-//use this for connecting to compass
- const config = require('./config').dbUrl;
+const mongoose = require("mongoose");
+require("dotenv").config();
+//use this to connect to compass
+const config = require("./config").dbUrl;
 
-
-const server = require('../src/authentication/server')
+const server = require("../src/authentication/server");
 
 mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    //  useMongoClient: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
 });
 
+mongoose.connection.on("connected", () => {
+  console.log("connected to mongo database");
 
-// mongoose.set("useCreateIndex", true);
-mongoose.connection.on('connected', () => {
-    console.log('connected to mongo database');
-   
-    server.initial()
+  server.initial();
 });
 
-mongoose.connection.on('error', console.error.bind(console, 'connection error: '));
-
+mongoose.connection.on(
+  "error",
+  console.error.bind(console, "connection error: ")
+);

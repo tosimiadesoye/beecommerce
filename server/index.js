@@ -1,7 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 require("dotenv").config();
-const path = require('path')
+// const path = require('path')
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const corsOptions = {
@@ -32,11 +32,11 @@ app.get("/", (req, res) => {
 
 //importing mongo db connection from config
 require("./config/mongodb");
-
-app.use(express.static(path.join(__dirname, "client", "build")));
-app.use("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+//I'm gonna delete this one if it works
+// app.use(express.static(path.join(__dirname, "client", "build")));
+// app.use("/*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+// });
 
 app.listen(port, () => {
   console.log("Port running on localhost " + port);

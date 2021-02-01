@@ -23,7 +23,7 @@ This project was created with Taillwindcss and the MERN stack(MongoDB, Express,R
 
 The api is based on a CRUD operation
 ## About the Rest Api:
-* Protocal: The transport is HTTP
+* Protocol: The transport is HTTP
 * The API Endpoints:  http://localhost:5000/
 * Type: GET, Post, Put, Patch, Delete
 * Response Format: Json
@@ -63,6 +63,10 @@ Note:   keyword could be anything, you'll get an HTTP response if the keyword ex
  ## put request
  * updateMany
     * /api/product
+
+## database
+* To connect to MongoDB compass use the /server/config/config.js file
+* To connect to MongoDB Atlas use process.env.MONGO_URI
  
   
 ## Available Scripts
@@ -75,12 +79,14 @@ and then cd client
 
 ## `npm i or npm install`
 
-To start both the client and server 
-
-### `npm run develop`
-
-to start them separately navigate to the parent & client directory, and run:
+To start client 
+* cd client
 
 ### `npm start`
+
+To start server
+* cd server
+
+### `nodemon index`
 
 
