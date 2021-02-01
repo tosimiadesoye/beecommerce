@@ -10,7 +10,7 @@ const corsOptions = {
   // header
 };
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 80;
 const app = express();
 
 //passing the middleware before the routes to avoid getting undefined
