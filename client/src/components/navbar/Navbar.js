@@ -40,7 +40,7 @@ const Navigation = ({ makeupType, fixed }) => {
                 <button
                   className="text-black cursor-pointer text-xl leading-none px-3 
                   py-1 border border-solid border-black
-                   rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+                   rounded bg-gray-600 block lg:hidden outline-none focus:outline-none"
                   type="button"
                   onClick={() => setMenuOpen(!menuOpen)}
                 >

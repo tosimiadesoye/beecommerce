@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { ProductCard } from "..";
 const SimilarProducts = (props) => {
-  const { similarProduct, similarProductItem, item,query } = props;
- 
+  const { similarProduct, similarProductItem, item, query } = props;
+
   useEffect(() => {
     similarProduct(query);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
 
   return (
     <div className="item">
@@ -20,6 +19,8 @@ const SimilarProducts = (props) => {
                   <ProductCard info={type} />
                 </div>
               );
+            } else {
+              return ""
             }
           })}
         </div>

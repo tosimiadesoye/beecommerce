@@ -70,7 +70,7 @@ const Cart = () => {
     };
     getProductFromStorage();
   }, []);
-console.table(cart)
+
   if (cart === null)
     return (
       <div className="flex flex-col items-center my-20">
@@ -119,8 +119,8 @@ console.table(cart)
               </div>
             </div>
           </div>
-         
-           <Shipping
+
+          <Shipping
             cart={cart}
             total={total}
             removeAllProductsInStorage={removeAllProductsInStorage}

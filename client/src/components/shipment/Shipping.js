@@ -14,10 +14,12 @@ const Shipping = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-  const AddTotalPlusShipping = (id) => {
-    return shippingPrices.filter((item) => {
+  const addTotalPlusShipping = (id) => {
+    return shippingPrices.forEach((item) => {
       if (item.id === id) {
-        setTotalPlusShipping(Math.round(item.price + parseFloat(total.addSubtotal)));
+        setTotalPlusShipping(
+          Math.round(item.price + parseFloat(total.addSubtotal))
+        );
       }
     });
   };
@@ -48,7 +50,7 @@ const Shipping = (props) => {
                   <input
                     type="checkbox"
                     className="form-checkbox"
-                    onClick={() => AddTotalPlusShipping(item.id)}
+                    onClick={() => addTotalPlusShipping(item.id)}
                   />
                   <p>{`£${item.price > 0 ? item.price : "0.00"}`}</p>
                 </div>
@@ -109,14 +111,11 @@ const Shipping = (props) => {
                   style={{ transition: "all .15s ease" }}
                   onClick={() => redirectToLogin()}
                 >
-                    go to login
+                  go to login
                 </button>
-                  <div className="text-red-400 w-32 m-auto ">
-                  <h2 >
-                    Please login to continue to checkout
-                </h2>
-                  </div>
-
+                <div className="text-red-400 w-32 m-auto ">
+                  <h2>Please login to continue to checkout</h2>
+                </div>
               </>
             )}
           </div>

@@ -25,6 +25,8 @@ const MakeupTypeCardContainer = (props) => {
                   <ProductCard info={type} />
                 </div>
               );
+            } else {
+              return "";
             }
           })}
         </div>
