@@ -22,9 +22,9 @@ import {
   getLayoutProductForBronzer,
   getProduct,
   getLayoutProductForMascara,
+  port
 } from "./services/product";
 import { dropdownList } from "./models/productArrays";
-
 import "./App.css";
 
 function App() {
@@ -64,7 +64,7 @@ function App() {
 
   const similarProduct = async (type) => {
     await axios
-      .get(`http://localhost:5000/api/product/1/product_type?keyword=${type}`)
+      .get(`${port}api/product/1/product_type?keyword=${type}`)
       .then((res) => {
         if (res) {
           setSimilarProductItem(res.data.product);
@@ -84,7 +84,7 @@ function App() {
 
   const productType = async (item) => {
     return await axios
-      .get(`http://localhost:5000/api/product_type?keyword=${item}`)
+      .get(`${port}api/product_type?keyword=${item}`)
 
       .then((res) => {
         if (res) {

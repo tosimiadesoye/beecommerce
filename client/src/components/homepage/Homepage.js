@@ -187,7 +187,6 @@ const Homepage = (props) => {
       </div>
 
       <div className="flex flex-col md:flex-row px-12 items-stretch justify-center uppercase ">
-       
         <div>
           <img
             className="md:max-h-42 lg:max-h-96"

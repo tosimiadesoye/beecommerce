@@ -1,7 +1,7 @@
 import axios from "axios";
-
+import { port } from "../services/product";
 const register = (username, email, password) => {
-  const API_URI = "http://localhost:5000/api/auth/signup/";
+  const API_URI = `${port}api/auth/signup/`;
   return axios.post(API_URI, {
     username,
     email,
@@ -10,7 +10,7 @@ const register = (username, email, password) => {
 };
 
 const login = (username, password) => {
-  const API_URI = "http://localhost:5000/api/auth/signin/";
+  const API_URI = `${port}api/auth/signin/`;
 
   return axios
     .post(API_URI, {
@@ -34,9 +34,4 @@ const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user"));
 };
 
-export {
-  register,
-  login,
-  logout,
-  getCurrentUser,
-};
+export { register, login, logout, getCurrentUser };
