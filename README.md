@@ -27,7 +27,7 @@ The api is based on a CRUD operation
 ## About the Rest Api:
 
 - Protocol: The transport is HTTP
-- The API Endpoints: ${port}
+- The API Endpoints: http://localhost:5000
 - Type: GET, Post, Put, Patch, Delete
 - Response Format: Json
 
