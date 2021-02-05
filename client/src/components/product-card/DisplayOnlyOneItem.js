@@ -11,7 +11,7 @@ import {
 import { library } from "@fortawesome/fontawesome-svg-core";
 import ReactHtmlParser from "react-html-parser";
 import { SimilarProducts } from "../../components";
-import Img from 'react-cool-img'
+import Img from "react-cool-img";
 library.add(faArrowDown, faCheck, faArrowUp);
 
 const DisplayOnlyOneItem = (props) => {
@@ -97,7 +97,7 @@ const DisplayOnlyOneItem = (props) => {
     setTimer();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setTimer()]);
-console.log(item)
+  console.log(item);
   return (
     <>
       <div>
@@ -119,8 +119,12 @@ console.log(item)
                 disableButtonsControls="true"
                 infinite
               >
-                <Img src={item.api_featured_image} alt={item.name} sizes={[400]} />
-                <Img src={item.image_link} alt={item.name} sizes={[400]}/>
+                <Img
+                  src={item.api_featured_image}
+                  alt={item.name}
+                  sizes={[400]}
+                />
+                <Img src={item.image_link} alt={item.name} sizes={[400]} />
               </AliceCarousel>
             </div>
             <div>
@@ -135,14 +139,21 @@ console.log(item)
 
           <div className="mt-5 w-50">
             <div>
-              <h2 className="uppercase">{`${item.brand} ${item.category}`}</h2>
+              <h3 className="text-4xl font-normal leading-normal mt-0 mb-2 uppercase">
+                {`${item.brand} ${item.category}`}</h3>
 
-              <h4>{ReactHtmlParser(item.name)}</h4>
+              <h4 className="text-3xl font-normal leading-normal mt-0 mb-2 ">
+                {ReactHtmlParser(item.name)}
+              </h4>
 
-              <h5>{item.currency !== undefined ? item.currency : "GDP"}</h5>
-              <h5>{`${item.price_sign !== undefined ? item.price_sign : "£"} ${
-                item.price
-              }`}</h5>
+              <h5 className="text-2xl font-normal leading-normal mt-0 mb-2 ">
+                {item.currency !== undefined ? item.currency : "GDP"}
+              </h5>
+              <h5 className="text-2xl font-normal leading-normal mt-0 mb-2 ">
+                {`${item.price_sign !== undefined ? item.price_sign : "£"} ${
+                  item.price
+                }`}
+              </h5>
               <div
                 onClick={() => {
                   handleExpandDescription(item.description);

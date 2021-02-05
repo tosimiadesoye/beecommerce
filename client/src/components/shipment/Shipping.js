@@ -40,13 +40,13 @@ const Shipping = (props) => {
           className="  container border border-box box-2 "
           onSubmit={handleSubmit}
         >
-          <h1>Shipping method</h1>
+          <h2 className='text-5xl font-normal leading-normal mt-0 mb-2 '>Shipping method</h2>
           <p>Select the one you want</p>
           <div>
             {shippingPrices &&
               shippingPrices.map((item) => (
                 <div key={item.price}>
-                  <h2>{item.method}</h2>
+                  <h4 className='text-3xl font-normal leading-normal mt-0 mb-2'>{item.method}</h4>
                   <input
                     type="checkbox"
                     className="form-checkbox"
@@ -57,7 +57,7 @@ const Shipping = (props) => {
               ))}
           </div>
 
-          <h2>Coupon code</h2>
+          <h4 className='text-3xl font-normal leading-normal mt-0 mb-2'>Coupon code</h4>
 
           <input
             placeholder="Enter your coupon code…"
@@ -68,8 +68,8 @@ const Shipping = (props) => {
             apply
           </button>
           <div>
-            <h2>Total</h2>
-            <h2>{`£${totalPlusShipping}.00`}</h2>
+            <h4 className='text-3xl font-normal leading-normal mt-0 mb-2'>Total</h4>
+            <h4 className='text-3xl font-normal leading-normal mt-0 mb-2'>{`£${totalPlusShipping}.00`}</h4>
           </div>
 
           <div>
@@ -114,7 +114,8 @@ const Shipping = (props) => {
                   go to login
                 </button>
                 <div className="text-red-400 w-32 m-auto ">
-                  <h2>Please login to continue to checkout</h2>
+                    <h4 className='text-3xl font-normal leading-normal mt-0 mb-2'>
+                      Please login to continue to checkout</h4>
                 </div>
               </>
             )}

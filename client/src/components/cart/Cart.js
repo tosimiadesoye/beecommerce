@@ -90,7 +90,7 @@ const Cart = () => {
 
   return (
     <div className="container">
-      <div className="flex flex-col lg:flex-row ">
+      <div className="flex flex-col lg:flex-row items-stretch items-center justify-center align-center">
         {cart && (
           <div className="bg-gray-300 ">
             {cart.map((item) => {
@@ -110,12 +110,12 @@ const Cart = () => {
           <div className="m-5 ">
             <div className=" flex flex-col gap-5 text-center text-purple-500">
               <div>
-                <h3>Total Items</h3>
-                <h4>{total.itemCount} </h4>
+                <h3 className='text-4xl font-normal leading-normal '>Total Items</h3>
+                <h4 className='text-4xl font-normal leading-normal '>{total.itemCount} </h4>
               </div>
               <div>
-                <h4>SubTotal price</h4>
-                <h4>{`£${total.addSubtotal}`} </h4>
+                <h4 className='text-4xl font-normal leading-normal '>SubTotal price</h4>
+                <h4 className='text-4xl font-normal leading-normal '>{`£${total.addSubtotal}`} </h4>
               </div>
             </div>
           </div>
