@@ -96,7 +96,7 @@ const DisplayOnlyOneItem = (props) => {
     setTimer();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setTimer()]);
-
+console.log(item)
   return (
     <>
       <div>
@@ -105,7 +105,7 @@ const DisplayOnlyOneItem = (props) => {
           className="flex flex-col md:flex-row lg-flex-row 
          bg-gray-300
            container text-center
-          shadow-sm items-center justify-center space-x-0 md:space-x-20
+          shadow-sm items-center justify-center align-center space-x-0 
           overflow-y-auto
           "
         >

@@ -10,6 +10,7 @@ import ProductCard from "./product-card/ProductCard";
 import Navigation from "./navbar/Navbar";
 import SimilarProducts from "./shop-container/SimilarProducts";
 import Contact from "./contact/Contact";
+import Advert from './homepage/Advert'
 export {
   ShopAllCardContainer,
   MakeupTypeCardContainer,
@@ -23,4 +24,5 @@ export {
   Navigation,
   SimilarProducts,
   Contact,
+  Advert
 };

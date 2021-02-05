@@ -39,12 +39,13 @@ const Contact = () => {
   return (
     <form
       onSubmit={handleContact}
-      className="bg-black flex flex-col container items-center lg:w-2/4 text-white shadow-sm"
+      className="bg-black flex flex-col container items-center justify-center lg:w-2/4 text-white shadow-sm"
       style={{ width: "340px", height: "485px" }}
     >
-      <h1 className="my-2 text-center w-1/2 lg:w-100 text-purple-400">
+      <h2 className="text-5xl font-normal leading-normal mt-0 mb-2
+       text-center w-1/2 lg:w-100 text-purple-400">
         Contact us
-      </h1>
+      </h2>
       <div className="my-3">
         <label className="mr-4">
           <b>Name:</b>

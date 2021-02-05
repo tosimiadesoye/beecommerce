@@ -73,8 +73,8 @@ const Cart = () => {
 
   if (cart === null)
     return (
-      <div className="flex flex-col items-center my-20">
-        <h1 className="text-center text-purple-500"> Your Cart is empty</h1>
+      <div className="flex flex-col items-center justify-center align-center my-20">
+        <h1 className="text-5xl font-normal leading-normal text-center text-purple-500"> Your Cart is empty</h1>
         <Link
           to="/shop"
           className="text-white shadow  bg-black shadow border border-solid border-white 

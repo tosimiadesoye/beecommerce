@@ -66,13 +66,16 @@ function Login() {
   };
   return (
     <Form
-      className="flex flex-col container bg-black rounded text-white items-center"
+      className="flex flex-col container bg-black rounded text-white items-center justify-center align-center"
       style={{ width: "340px", height: "485px" }}
       onSubmit={handleLogin}
       ref={form}
     >
-      <h1 className="text-purple-400 border-purple-400 border-b-2 ">Login</h1>
+      <h1 className="text-5xl font-normal leading-normal text-purple-400 border-purple-400 border-b-2 ">Login</h1>
+      <div className='text-center'>
       <p>Please fill in this form to create an account.</p>
+      </div>
+      
 
       <label htmlFor="username">
         <b>username</b>

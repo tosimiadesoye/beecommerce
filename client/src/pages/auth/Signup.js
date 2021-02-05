@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 import { register } from "../../services/auth";
 
- const required = (value) => {
+const required = (value) => {
   if (isEmpty(value)) {
     return (
       <div role="alert" className="text-red-500">
@@ -87,7 +87,7 @@ const Signup = () => {
           if (response.data.message) {
             setMessage(response.data.message);
             setSuccessful(true);
-            window.location.replace('/login')
+            window.location.replace("/login");
           }
         },
         (error) => {
@@ -104,18 +104,20 @@ const Signup = () => {
         }
       );
     }
- 
-
   };
   return (
     <Form
-      className="flex flex-col container bg-black rounded text-white items-center"
-       style={{ width: "340px", height: "585px" }}
+      className="flex flex-col container bg-black rounded text-white items-center justify-center align-center"
+      style={{ width: "340px", height: "585px" }}
       onSubmit={handleSignup}
       ref={form}
     >
-      <h1 className="text-purple-400 border-purple-400 border-b-2 ">Sign Up</h1>
-      <p>Please fill in this form to create an account.</p>
+      <h1 className="text-5xl font-normal leading-normal text-purple-400 border-purple-400 border-b-2 ">
+        Sign Up
+      </h1>
+      <div className="text-center ">
+        <p>Please fill in this form to create an account.</p>
+      </div>
 
       <label htmlFor="username">
         <b>Username</b>
