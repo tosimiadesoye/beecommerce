@@ -29,10 +29,11 @@ const AdvertContainer = ({ advert }) => {
         </h5>
         <Link
           to={advert.linkTo}
-          className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
-           shadow-md hover:shadow-lg outline-none focus:outline-none mt-3 mb-3"
-          type="button"
-          style={{ transition: "all .15s ease" }}
+          className="text-white shadow  bg-black shadow border border-solid border-white 
+          hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
+           text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
+              type="button"
+              style={{ transition: "all .15s ease" }}
         >
           {advert.linkText}
         </Link>

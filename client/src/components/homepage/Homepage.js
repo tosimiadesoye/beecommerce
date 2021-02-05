@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import { ShopAllCardContainer, Advert } from "..";
-import Img from 'react-cool-img'
+import Img from "react-cool-img";
 import { advert } from "./advertData";
 const Homepage = (props) => {
   const {
@@ -44,8 +44,9 @@ const Homepage = (props) => {
           </h6>
           <Link
             to="/shop"
-            className="bg-pink-800 text-white active:bg-black  font-bold uppercase text-base px-8 py-3
-           shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+            className="text-white shadow  bg-black shadow border border-solid border-white 
+            hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
+             text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
             type="button"
             style={{ transition: "all .15s ease" }}
           >
@@ -70,8 +71,9 @@ const Homepage = (props) => {
         <div className="flex flex-col items-center mb-20">
           <Link
             to="/type/nail_polish"
-            className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
-           shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+            className="text-white shadow  bg-black shadow border border-solid border-white 
+            hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
+             text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
             type="button"
             style={{ transition: "all .15s ease" }}
           >
@@ -97,8 +99,9 @@ const Homepage = (props) => {
         <div className="flex flex-col items-center mb-20 ">
           <Link
             to="/type/mascara"
-            className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
-           shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+            className="text-white shadow  bg-black shadow border border-solid border-white 
+              hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
+               text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
             type="button"
             style={{ transition: "all .15s ease" }}
           >
@@ -108,8 +111,6 @@ const Homepage = (props) => {
       </div>
 
       <Advert advert={advert[1]} />
-      
-     
 
       <div className="mt-20">
         <h3
@@ -128,8 +129,9 @@ const Homepage = (props) => {
         <div className="flex flex-col items-center mb-20">
           <Link
             to="/type/bronzer"
-            className="bg-black text-white active:bg-black font-bold uppercase text-base px-8 py-3
-           shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+            className="text-white shadow  bg-black shadow border border-solid border-white 
+            hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
+             text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
             type="button"
             style={{ transition: "all .15s ease" }}
           >
@@ -138,7 +140,6 @@ const Homepage = (props) => {
         </div>
       </div>
       <Advert advert={advert[2]} />
-      
 
       <Footer />
     </div>
