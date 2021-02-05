@@ -16,6 +16,9 @@
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
     "contentful": "^8.1.4",
+    "express": "^4.17.1",
+    "express-favicon": "^2.0.1",
+    "path": "^0.12.7",
     "postcss": "^7.0.35",
     "react": "^17.0.1",
     "react-alice-carousel": "^2.2.0",
@@ -30,7 +33,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "node server.js",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
