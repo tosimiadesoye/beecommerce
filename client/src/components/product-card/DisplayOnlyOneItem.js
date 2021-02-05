@@ -11,6 +11,7 @@ import {
 import { library } from "@fortawesome/fontawesome-svg-core";
 import ReactHtmlParser from "react-html-parser";
 import { SimilarProducts } from "../../components";
+import Img from 'react-cool-img'
 library.add(faArrowDown, faCheck, faArrowUp);
 
 const DisplayOnlyOneItem = (props) => {
@@ -118,8 +119,8 @@ console.log(item)
                 disableButtonsControls="true"
                 infinite
               >
-                <img src={item.api_featured_image} alt={item.name} />
-                <img src={item.image_link} alt={item.name} />
+                <Img src={item.api_featured_image} alt={item.name} sizes={[400]} />
+                <Img src={item.image_link} alt={item.name} sizes={[400]}/>
               </AliceCarousel>
             </div>
             <div>

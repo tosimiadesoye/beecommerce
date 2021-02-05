@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-
+import Img from 'react-cool-img'
 const ProductCard = ({ info }) => {
  
   return (
@@ -12,10 +12,11 @@ const ProductCard = ({ info }) => {
        flex flex-row items-center mx-5 my-5 border-0 border-white bg-gray-300 h-4/6 "
       >
         <div>
-          <img
+          <Img
             alt={info.name}
             src={info.api_featured_image}
             className="shadow w-24 object-scale-down"
+            sizes={[400]}
           />
         </div>
         <div className="text-black text-gray-900 space-x-4 px-2 py-1">

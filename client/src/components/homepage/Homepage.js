@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import { ShopAllCardContainer, Advert } from "..";
+import Img from 'react-cool-img'
 import { advert } from "./advertData";
 const Homepage = (props) => {
   const {
@@ -15,15 +16,17 @@ const Homepage = (props) => {
   return (
     <div>
       <div className="flex flex-col lg:flex-row items-stretch justify-center  m-2 xl:m-auto">
-        <img
+        <Img
           className=" md:max-h-42 lg:max-h-96 "
           src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/001/000/original/open-uri20171227-4-14arcgf?1514342096"
           alt="skincare"
+          sizes={[400]}
         />
-        <img
+        <Img
           className=" md:max-h-42 lg:max-h-96 "
           src="//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/001/001/original/open-uri20171227-4-1das33x?1514342770"
           alt="bronzer"
+          sizes={[400]}
         />
         <div
           className=" md:max-h-42 lg:max-h-96 text-center uppercase box-border border-white bg-gradient-to-l

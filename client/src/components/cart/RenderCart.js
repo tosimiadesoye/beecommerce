@@ -1,4 +1,5 @@
 import React from "react";
+import Img from 'react-cool-img'
 
 const RenderCart = (props) => {
   const { info, editQuantity, removeOneItemFromCart } = props;
@@ -7,9 +8,10 @@ const RenderCart = (props) => {
     <>
       <div className="flex flex-row gap-2 md:gap-9 lg:gap-20 p-4 md:p-9 mx-2 md:mx-4 ">
         <div>
-          <img
+          <Img
             src={info.productId.api_featured_image}
             className="w-10 md:w-20 shadow"
+            sizes={[400]}
             alt={info.productId.name}
           />
           
