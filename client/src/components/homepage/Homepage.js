@@ -29,7 +29,7 @@ const Homepage = (props) => {
           sizes={[400]}
         />
         <div
-          className=" md:max-h-42 lg:max-h-96 text-center uppercase box-border border-white bg-gradient-to-l
+          className=" md:max-h-42 lg:max-h-96 text-center uppercase box-border border-transparent bg-gradient-to-l
          md:bg-gradient-to-r from-yellow-900 via-yellow-600 to-yellow-500"
         >
           <h2 className="text-5xl font-normal leading-normal mt-3 mb-0 text-black">
@@ -44,7 +44,7 @@ const Homepage = (props) => {
           </h6>
           <Link
             to="/shop"
-            className="bg-pink-800 text-white shadow  bg-black shadow border border-solid border-white 
+            className="bg-pink-800 text-white shadow  bg-black shadow border border-solid border-transparent 
             hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
              text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
             type="button"
@@ -71,7 +71,7 @@ const Homepage = (props) => {
         <div className="flex flex-col items-center mb-20">
           <Link
             to="/type/nail_polish"
-            className="text-white shadow  bg-black shadow border border-solid border-white 
+            className="text-white shadow  bg-black shadow border border-solid border-transparent 
             hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
              text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
             type="button"
@@ -99,7 +99,7 @@ const Homepage = (props) => {
         <div className="flex flex-col items-center mb-20 ">
           <Link
             to="/type/mascara"
-            className="text-white shadow  bg-black shadow border border-solid border-white 
+            className="text-white shadow  bg-black shadow border border-solid border-transparent 
               hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
                text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
             type="button"
@@ -129,7 +129,7 @@ const Homepage = (props) => {
         <div className="flex flex-col items-center mb-20">
           <Link
             to="/type/bronzer"
-            className="text-white shadow  bg-black shadow border border-solid border-white 
+            className="text-white shadow  bg-black shadow border border-solid border-transparent 
             hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
              text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
             type="button"
