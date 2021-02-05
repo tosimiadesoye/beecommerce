@@ -91,7 +91,7 @@ and then cd client
 To start client
 
 - cd client
-
+-go to package.json in scripts change start from node server.js to craco start and change it back if when deploying it
 ### `npm start`
 
 To start server
