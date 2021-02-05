@@ -1,5 +1,5 @@
 import React from "react";
-import Img from 'react-cool-img'
+import Img from "react-cool-img";
 import { Link } from "react-router-dom";
 const AdvertContainer = ({ advert }) => {
   return (
@@ -13,8 +13,17 @@ const AdvertContainer = ({ advert }) => {
         />
       </div>
       <div className={"md:px-16 text-center" + advert.gradient}>
-        <h2 className=" text-pink-800">{advert.text1}</h2>
-        <h4 className={advert.secondHeadingColor}>{advert.text2}</h4>
+        <h2 className="text-5xl font-normal leading-normal mt-0 mb-2 text-pink-800">
+          {advert.text1}
+        </h2>
+        <h4
+          className={
+            "text-3xl font-normal leading-normal mt-0 mb-2" +
+            advert.secondHeadingColor
+          }
+        >
+          {advert.text2}
+        </h4>
         <h5 className="text-2xl font-normal leading-normal inline-block break-words">
           {advert.text3}
         </h5>
