@@ -44,7 +44,7 @@ const Homepage = (props) => {
           </h6>
           <Link
             to="/shop"
-            className="text-white shadow  bg-black shadow border border-solid border-white 
+            className="bg-pink-800 text-white shadow  bg-black shadow border border-solid border-white 
             hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
              text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
             type="button"
