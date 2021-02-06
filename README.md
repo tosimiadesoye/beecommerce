@@ -1,14 +1,30 @@
 # ecommerce
+## Table of content
+* [General info](#General-Info)
+* [Technologies](#Technologies)
+* [Project stucture](#Project-structure)
+* [Features](#Features)
+* [Endpoints](#Endpoints)
+* [Setup](#setup)
 
-This project was created with Taillwindcss and the MERN stack(MongoDB, Express,React,Node)
+
+## General info
+This is a makeup ecommerce fullstack web app
+
+
+## Technologies
+* MongoDB
+* Express
+* React
+* Node 
+* Tailwind
+* MongoDB
 
 ## Project structure
 
 - client
 - server
 - README.MD
-
-## This is a makeup ecommerce fullstack web app
 
 ## Features
 
@@ -21,6 +37,8 @@ This project was created with Taillwindcss and the MERN stack(MongoDB, Express,R
 - Searchbar & contact page functionality
 - To checkout users have to login.
 - A login and signup button for personalised user experience
+
+## endpoints
 
 The api is based on a CRUD operation
 
@@ -78,7 +96,7 @@ Note: keyword could be anything, you'll get an HTTP response if the keyword exis
 - To connect to MongoDB compass use the /server/config/config.js file
 - To connect to MongoDB Atlas use process.env.MONGO_URI
 
-## Available Scripts
+## setup
 
 To begin the project
 
@@ -91,7 +109,7 @@ and then cd client
 To start client
 
 - cd client
-- go to package.json in scripts change start from node server.js to craco start and change it back if when deploying it
+- go to package.json in scripts change start from node server.js to craco start and change it back when deploying it
 ### `npm start`
 
 To start server
