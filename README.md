@@ -1,6 +1,14 @@
 # ecommerce
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Project stucture](## structure)
+* [Features](## features)
+* [Setup](## setup)
+*
 
 This is a makeup ecommerce fullstack web app
+
 
 ## Technologies
 * MongoDB
