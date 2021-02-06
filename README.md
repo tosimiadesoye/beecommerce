@@ -45,7 +45,7 @@ The api is based on a CRUD operation
 ## About the Rest Api:
 
 - Protocol: The transport is HTTP
-- The API Endpoints: http://localhost:5000
+- The API Endpoints: http://localhost:5000 or https://beecommerce-tosimi.herokuapp.com/
 - Type: GET, Post, Put, Patch, Delete
 - Response Format: Json
 
