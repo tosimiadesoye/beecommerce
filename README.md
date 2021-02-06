@@ -16,7 +16,7 @@ This is a makeup ecommerce fullstack web app
 * MongoDB
 * Express
 * React
-* Node 
+* NodeJs 
 * Tailwind
 * MongoDB
 
