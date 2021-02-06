@@ -1,12 +1,13 @@
 # ecommerce
 ## Table of contents
-* [General info](#general-info)
-* [Technologies](#technologies)
-* [Project stucture](##structure)
-* [Features](##features)
+* [General info](##General Info)
+* [Technologies](##Technologies)
+* [Project stucture](##Project structure)
+* [Features](##Features)
 * [Setup](##setup)
 *
 
+## General info
 This is a makeup ecommerce fullstack web app
 
 
