@@ -1,4 +1,4 @@
-# ecommerce
+# Ecommerce
 ## Table of content
 * [General info](#General-Info)
 * [Technologies](#Technologies)
@@ -38,7 +38,7 @@ This is a makeup ecommerce fullstack web app
 - To checkout users have to login.
 - A login and signup button for personalised user experience
 
-## endpoints
+## Endpoints
 
 The api is based on a CRUD operation
 
