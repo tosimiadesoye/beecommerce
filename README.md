@@ -1,5 +1,5 @@
 # ecommerce
-## Table of contents
+## Table of content
 * [General info](#General-Info)
 * [Technologies](#Technologies)
 * [Project stucture](#Project-structure)
