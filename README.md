@@ -38,6 +38,8 @@ This is a makeup ecommerce fullstack web app
 - To checkout users have to login.
 - A login and signup button for personalised user experience
 
+## endpoints
+
 The api is based on a CRUD operation
 
 ## About the Rest Api:
@@ -94,7 +96,7 @@ Note: keyword could be anything, you'll get an HTTP response if the keyword exis
 - To connect to MongoDB compass use the /server/config/config.js file
 - To connect to MongoDB Atlas use process.env.MONGO_URI
 
-## Available Scripts
+## setup
 
 To begin the project
 
