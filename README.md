@@ -1,6 +1,6 @@
 # ecommerce
 
-## This is a makeup ecommerce fullstack web app
+This is a makeup ecommerce fullstack web app
 
 ## Technologies
 * MongoDB
