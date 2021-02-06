@@ -80,8 +80,8 @@ const DisplayOnlyOneItem = (props) => {
     if (nameOfItemAddedToCart) {
       const card = (
         <div>
-          <FontAwesomeIcon icon="check" /> You added{" "}
-          <b className="text-bold">{item.name}</b>to cart
+          <FontAwesomeIcon icon="check" /> You added
+          <b className="text-bold">{item.name}</b> to cart
         </div>
       );
       setPopover(card);

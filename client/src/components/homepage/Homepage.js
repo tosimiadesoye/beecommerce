@@ -44,13 +44,15 @@ const Homepage = (props) => {
           </h6>
           <Link
             to="/shop"
-            className="bg-pink-800 text-white shadow  bg-black shadow border border-solid border-transparent 
-            hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
-             text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
-            type="button"
-            style={{ transition: "all .15s ease" }}
+            
           >
-            shop now
+            <button
+              className="bg-pink-800 text-white shadow  
+              bg-black shadow border-solid border-pink-800
+             hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
+              text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
+            type="button"
+            style={{ transition: "all .15s ease" }}>shop now</button>
           </Link>
         </div>
       </div>
@@ -71,13 +73,13 @@ const Homepage = (props) => {
         <div className="flex flex-col items-center mb-20">
           <Link
             to="/type/nail_polish"
-            className="text-white shadow  bg-black shadow border border-solid border-transparent 
+            
+          >
+            <button className="text-white shadow  bg-black shadow border border-solid border-transparent 
             hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
              text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
             type="button"
-            style={{ transition: "all .15s ease" }}
-          >
-            Shop Nail polish
+            style={{ transition: "all .15s ease" }}>Shop Nail polish</button>
           </Link>
         </div>
       </div>
@@ -99,13 +101,13 @@ const Homepage = (props) => {
         <div className="flex flex-col items-center mb-20 ">
           <Link
             to="/type/mascara"
-            className="text-white shadow  bg-black shadow border border-solid border-transparent 
+            >
+            <button className="text-white shadow  bg-black shadow border border-solid border-transparent 
               hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
                text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
             type="button"
             style={{ transition: "all .15s ease" }}
-          >
-            shop our mascara
+          >shop our mascara</button>
           </Link>
         </div>
       </div>
@@ -129,13 +131,14 @@ const Homepage = (props) => {
         <div className="flex flex-col items-center mb-20">
           <Link
             to="/type/bronzer"
+           
+          >
+            <button  
             className="text-white shadow  bg-black shadow border border-solid border-transparent 
             hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
              text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 "
             type="button"
-            style={{ transition: "all .15s ease" }}
-          >
-            shop our bronzer
+            style={{ transition: "all .15s ease" }}>shop our bronzer</button>
           </Link>
         </div>
       </div>

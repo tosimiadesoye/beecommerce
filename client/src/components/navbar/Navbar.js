@@ -2,6 +2,11 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getCurrentUser,logout} from "../../services/auth";
 import { Dropdown } from "./Dropdown";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBars
+} from "@fortawesome/free-solid-svg-icons";
+
 
 const Navigation = ({ makeupType, fixed }) => {
 
@@ -39,12 +44,13 @@ const Navigation = ({ makeupType, fixed }) => {
 
                 <button
                   className="text-black cursor-pointer text-xl leading-none px-3 
-                  py-1 border border-solid border-black
-                   rounded bg-gray-600 block lg:hidden outline-none focus:outline-none"
+                  py-1 border border-solid border-transparent
+                   rounded bg-transparent block lg:hidden outline-none focus:outline-none"
                   type="button"
                   onClick={() => setMenuOpen(!menuOpen)}
                 >
-                  <i className="fas fa-bars"></i>
+                  
+                  <FontAwesomeIcon icon={faBars}/>
                 </button>
               </div>
               <div

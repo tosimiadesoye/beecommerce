@@ -91,7 +91,7 @@ const Contact = () => {
       <div>
         <input
           type="submit"
-          className="p-2 bg-transparent box-border border-2 border-purple-400 text-purple-500 shadow-sm"
+          className="p-2 bg-transparent box-border border-2 border text-purple-500 shadow-sm"
         />
       </div>
     </form>

@@ -77,13 +77,13 @@ const Cart = () => {
         <h1 className="text-5xl font-normal leading-normal text-center text-purple-500"> Your Cart is empty</h1>
         <Link
           to="/shop"
-          className="text-white shadow  bg-black shadow border border-solid border-white 
+          
+        >
+          <button className="text-white shadow  bg-black shadow border border-solid border-white 
               hover:bg-pink hover:text-black active:bg-white-600 font-bold uppercase
                text-sm px-6  py-3 rounded outline-none focus:outline-none mr-1 "
           type="button"
-          style={{ transition: "all .15s ease" }}
-        >
-          Go to shopping
+          style={{ transition: "all .15s ease" }}>Go to shopping</button>
         </Link>
       </div>
     );
