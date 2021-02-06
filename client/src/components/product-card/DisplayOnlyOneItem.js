@@ -97,7 +97,7 @@ const DisplayOnlyOneItem = (props) => {
     setTimer();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setTimer()]);
-  console.log(item);
+ 
   return (
     <>
       <div>

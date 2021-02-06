@@ -6,7 +6,8 @@ const RenderCart = (props) => {
  
   return (
     <>
-      <div className="flex flex-row gap-2 md:gap-9 lg:gap-20 p-4 md:p-9 mx-2 md:mx-4 ">
+      <div className="flex flex-row  gap-2 md:gap-9 lg:gap-20 p-4 items-center 
+      justify-center align-center md:p-9 mx-2 md:mx-4 ">
         <div>
           <Img
             src={info.productId.api_featured_image}
@@ -26,7 +27,7 @@ const RenderCart = (props) => {
         <h5> {`${info.productId.price_sign} ${info.productId.price}`}</h5>
         </div>
 
-        <div className="flex-col md:flex-row border-2 border-gray-900 w:10 md:w-20 h-15 md:h-12 text-center">
+        <div className="flex flex-col md:flex-row border-2 border-gray-900 w:10 md:w-20 h-15 md:h-12 text-center">
           <button
             className="mr-2"
             onClick={() => editQuantity(info.productId._id, false)}
