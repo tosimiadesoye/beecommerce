@@ -100,6 +100,8 @@ Note: keyword could be anything, you'll get an HTTP response if the keyword exis
 
 To begin the project
 
+## `git clone https://github.com/tosimiadesoye/ecommerce`
+
 ## `npm i or npm install`
 
 and then cd client
