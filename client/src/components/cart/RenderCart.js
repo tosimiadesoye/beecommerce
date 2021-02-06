@@ -6,7 +6,7 @@ const RenderCart = (props) => {
  
   return (
     <>
-      <div className="flex flex-row  gap-2 md:gap-9 lg:gap-20 p-4 items-center 
+      <div className="flex flex-row  gap-4 md:gap-9 lg:gap-20 p-4 items-center 
       justify-center align-center md:p-9 mx-2 md:mx-4 ">
         <div>
           <Img
