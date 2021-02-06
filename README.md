@@ -30,7 +30,7 @@ This is a makeup ecommerce fullstack web app
 
 - User & mobile friendly navigation
 - Mobile Responsiveness and user accesssibity
-- A shop icon for users to click on a product type
+- A shop icon for users to shop for product type, brand and category
 - Ability to pick product color, view and unview product desciption
 - The ability for Users to add a product to cart inc,rement, decrement and delete items in their cart
 - Ability for users to pick the delivery type.
