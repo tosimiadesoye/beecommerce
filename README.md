@@ -97,10 +97,10 @@ Note: keyword could be anything, you'll get an HTTP response if the keyword exis
 - To connect to MongoDB Atlas use process.env.MONGO_URI
 
 ## setup
+To clone the project
+## `git clone https://github.com/tosimiadesoye/ecommerce`
 
 To begin the project
-
-## `git clone https://github.com/tosimiadesoye/ecommerce`
 
 ## `npm i or npm install`
 
