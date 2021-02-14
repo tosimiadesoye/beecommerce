@@ -5,7 +5,7 @@ const config = require("./config").dbUrl;
 
 const server = require("../src/authentication/server");
 
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(config, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,

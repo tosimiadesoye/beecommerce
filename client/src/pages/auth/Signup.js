@@ -108,22 +108,22 @@ const Signup = () => {
   return (
     <Form
       className="flex flex-col container bg-black rounded text-white items-center justify-center align-center"
-      style={{ width: "340px", height: "585px" }}
+      style={{ width: "340px", height: "680px" }}
       onSubmit={handleSignup}
       ref={form}
     >
-      <h1 className="text-5xl font-normal leading-normal text-purple-400 border-purple-400 border-b-2 ">
+      <h1 className="text-5xl font-normal leading-normal text-purple-400 mb-5 border-purple-400 border-b-2 ">
         Sign Up
       </h1>
-      <div className="text-center ">
-        <p>Please fill in this form to create an account.</p>
+      <div className="text-center mb-2">
+        <p >Please fill in this form to create an account.</p>
       </div>
 
       <label htmlFor="username">
         <b>Username</b>
       </label>
       <Input
-        className="border-b bg-black placeholder-white::placeholder"
+        className="border-b bg-black my-1 placeholder-white::placeholder"
         type="text"
         placeholder="Enter username"
         name="username"
@@ -136,7 +136,7 @@ const Signup = () => {
         <b>Email</b>
       </label>
       <Input
-        className="border-b bg-black placeholder-white::placeholder"
+        className="border-b bg-black my-1 placeholder-white::placeholder"
         type="text"
         placeholder="Enter Email"
         name="email"
@@ -150,7 +150,7 @@ const Signup = () => {
       </label>
       <Input
         type="password"
-        className="border-b bg-black placeholder-white::placeholder"
+        className="border-b bg-black my-1 placeholder-white::placeholder"
         placeholder="Enter Password"
         name="password"
         value={password}

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const port = process.env.REACT_APP_PRODUCTION || process.env.REACT_APP_ENVIRONMENT
+const port = process.env.REACT_APP_PRODUCTION || process.env.REACT_APP_DEVELOPMENT
 
 const getProduct = () => {
   const API_URI = `${port}api/product`;

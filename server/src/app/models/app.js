@@ -21,5 +21,5 @@ const ProductSchema = new Schema({
     item_available:Number,
 }, { timestamps: true });
 
-const product = mongoose.model("Makeups", ProductSchema)
+const product = mongoose.model("Data", ProductSchema, "data")
 module.exports = product;

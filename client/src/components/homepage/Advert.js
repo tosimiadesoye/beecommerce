@@ -12,7 +12,7 @@ const AdvertContainer = ({ advert }) => {
           sizes={[400]}
         />
       </div>
-      <div className={"md:px-16 text-center" + advert.gradient}>
+      <div className={" md:px-16 text-center" + advert.gradient}>
         <h2 className="text-5xl font-normal leading-normal mt-0 mb-2 text-pink-800">
           {advert.text1}
         </h2>
