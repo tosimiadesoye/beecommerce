@@ -6,7 +6,7 @@ const Checkout = () => {
   } else {
     return (
       <div className="text-center">
-        <h1>Thank you for shopping with us!! your order is on it's way.</h1>
+        <h1 className='text-4xl'>Thank you for shopping with us!! your order is on it's way.</h1>
       </div>
     );
   }

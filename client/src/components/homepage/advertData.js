@@ -15,20 +15,20 @@ export const advert = [
 
   {
     image:
-    "//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/001/002/original/open-uri20171227-4-1ne7r73?1514343097",
+    "//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/784/original/data?1514072336",
     gradient:
       "box-border border-white bg-gradient-to-l md:bg-gradient-to-r from-yellow-500 via-red-300 to-yellow-900",
     firstHeadingColor: "text-pink-800",
     secondHeadingColor: "text-red-800",
     text1: "new!",
-    text3: "elegant new items from glossier.",
+    text3: "elegant new, heart warming items from glossier",
     text2: "all things glossier",
     linkTo: "/type/glossier",
     linkText: "shop items from glossier",
   },
   {
     image:
-      "//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/674/original/open-uri20171223-4-1wtdzyq?1514062744",
+    "//s3.amazonaws.com/donovanbailey/products/api_featured_images/000/000/607/original/open-uri20171223-4-rt97dn?1514061756",
     gradient:
       "box-border border-white bg-gradient-to-l md:bg-gradient-to-r from-yellow-400 via-red-200 to-blue-500",
     firstHeadingColor: "text-pink-800",
