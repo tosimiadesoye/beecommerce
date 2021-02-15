@@ -1,4 +1,4 @@
-# ecommerce
+# Ecommerce
 ## Table of content
 * [General info](#General-Info)
 * [Technologies](#Technologies)
@@ -16,7 +16,7 @@ This is a makeup ecommerce fullstack web app
 * MongoDB
 * Express
 * React
-* Node 
+* NodeJs 
 * Tailwind
 * MongoDB
 
@@ -30,7 +30,7 @@ This is a makeup ecommerce fullstack web app
 
 - User & mobile friendly navigation
 - Mobile Responsiveness and user accesssibity
-- A shop icon for users to click on a product type
+- A shop icon for users to shop for product type, brand and category
 - Ability to pick product color, view and unview product desciption
 - The ability for Users to add a product to cart inc,rement, decrement and delete items in their cart
 - Ability for users to pick the delivery type.
@@ -38,14 +38,14 @@ This is a makeup ecommerce fullstack web app
 - To checkout users have to login.
 - A login and signup button for personalised user experience
 
-## endpoints
+## Endpoints
 
 The api is based on a CRUD operation
 
 ## About the Rest Api:
 
 - Protocol: The transport is HTTP
-- The API Endpoints: http://localhost:5000
+- The API Endpoints: http://localhost:5000 or https://beecommerce-tosimi.herokuapp.com/
 - Type: GET, Post, Put, Patch, Delete
 - Response Format: Json
 
