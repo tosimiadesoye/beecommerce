@@ -9,7 +9,7 @@
 
 
 ## General info
-This is a makeup ecommerce fullstack web app
+This is a makeup ecommerce fullstack web app, that's easy to navigate through, user and mobile friendly 
 
 
 ## Technologies
